@@ -1,0 +1,48 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature", 
+      "geometry": {
+        "type": "LineString", 
+        "coordinates": [
+            [11.37706, 47.28433], 
+            [13.61893, 47.71109]
+          ]
+      },
+      "properties": {
+        "name": "13. August 1882"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.37706, 47.28433
+        ]
+      },
+      "properties": {
+        "title": "Innsbruck",
+        "timestamp": ["1882-08-13"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Innsbruck"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.61893, 47.71109
+        ]
+      },
+      "properties": {
+        "title": "Bad Ischl",
+        "timestamp": ["1882-08-13"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Bad_Ischl"
+      }
+      }
+  ]
+}

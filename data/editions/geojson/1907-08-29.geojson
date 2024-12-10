@@ -1,0 +1,61 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature", 
+      "geometry": {
+        "type": "LineString", 
+        "coordinates": [
+            [11.58817, 46.41147], 
+            [11.81358, 46.48772], 
+            [11.76929, 46.47627]
+          ]
+      },
+      "properties": {
+        "name": "29. August 1907"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.81358, 46.48772
+        ]
+      },
+      "properties": {
+        "title": "Passo Pordoi",
+        "timestamp": ["1907-08-29"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.58817, 46.41147
+        ]
+      },
+      "properties": {
+        "title": "Carezza",
+        "timestamp": ["1907-08-29"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.76929, 46.47627
+        ]
+      },
+      "properties": {
+        "title": "Canazei",
+        "timestamp": ["1907-08-29"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      }
+  ]
+}

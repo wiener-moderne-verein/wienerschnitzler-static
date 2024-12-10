@@ -1,0 +1,94 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature", 
+      "geometry": {
+        "type": "LineString", 
+        "coordinates": [
+            [13.95658, 47.7526], 
+            [13.95573, 47.85493], 
+            [13.814361, 47.861897], 
+            [13.8, 47.85], 
+            [13.78939, 47.84462]
+          ]
+      },
+      "properties": {
+        "name": "10. August 1889"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.78939, 47.84462
+        ]
+      },
+      "properties": {
+        "title": "Traunkirchen",
+        "timestamp": ["1889-08-10"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Traunkirchen"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.8, 47.85
+        ]
+      },
+      "properties": {
+        "title": "Traunsee",
+        "timestamp": ["1889-08-10"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.95573, 47.85493
+        ]
+      },
+      "properties": {
+        "title": "Grünau im Almtal",
+        "timestamp": ["1889-08-10"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Gr%C3%BCnau_im_Almtal"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.95658, 47.7526
+        ]
+      },
+      "properties": {
+        "title": "Almsee",
+        "timestamp": ["1889-08-10"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.814361, 47.861897
+        ]
+      },
+      "properties": {
+        "title": "Miesweg",
+        "timestamp": ["1889-08-10"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Miesweg"
+      }
+      }
+  ]
+}

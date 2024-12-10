@@ -1,0 +1,108 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature", 
+      "geometry": {
+        "type": "LineString", 
+        "coordinates": [
+            [14.03333, 48.15], 
+            [16.16265, 48.19512], 
+            [16.373056, 48.208333], 
+            [16.33679, 48.22806], 
+            [16.33716, 48.23188], 
+            [16.09456, 48.25022]
+          ]
+      },
+      "properties": {
+        "name": "21. April 1930"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          16.373056, 48.208333
+        ]
+      },
+      "properties": {
+        "title": "Wien",
+        "timestamp": ["1930-04-21"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Wien"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          16.16265, 48.19512
+        ]
+      },
+      "properties": {
+        "title": "Purkersdorf",
+        "timestamp": ["1930-04-21"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Purkersdorf"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          16.33679, 48.22806
+        ]
+      },
+      "properties": {
+        "title": "Café Währingerhof",
+        "timestamp": ["1930-04-21"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          16.09456, 48.25022
+        ]
+      },
+      "properties": {
+        "title": "Riederberg",
+        "timestamp": ["1930-04-21"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          14.03333, 48.15
+        ]
+      },
+      "properties": {
+        "title": "Thalheim bei Wels",
+        "timestamp": ["1930-04-21"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          16.33716, 48.23188
+        ]
+      },
+      "properties": {
+        "title": "Sternwartestraße 71",
+        "timestamp": ["1930-04-21"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      }
+  ]
+}

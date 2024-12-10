@@ -1,0 +1,31 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature", 
+      "geometry": {
+        "type": "LineString", 
+        "coordinates": [
+            [13.16667, 47.6]
+          ]
+      },
+      "properties": {
+        "name": "16. September 1920"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.16667, 47.6
+        ]
+      },
+      "properties": {
+        "title": "Golling an der Salzach",
+        "timestamp": ["1920-09-16"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      }
+  ]
+}

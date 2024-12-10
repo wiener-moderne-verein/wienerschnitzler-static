@@ -1,0 +1,79 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature", 
+      "geometry": {
+        "type": "LineString", 
+        "coordinates": [
+            [13.7666, 51.0833], 
+            [13.41053, 52.52437], 
+            [13.376389, 52.5225], 
+            [13.373611, 52.51]
+          ]
+      },
+      "properties": {
+        "name": "2. November 1911"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.7666, 51.0833
+        ]
+      },
+      "properties": {
+        "title": "Dresden",
+        "timestamp": ["1911-11-02"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Dresden"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.41053, 52.52437
+        ]
+      },
+      "properties": {
+        "title": "Berlin",
+        "timestamp": ["1911-11-02"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Berlin"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.376389, 52.5225
+        ]
+      },
+      "properties": {
+        "title": "Lessing-Theater",
+        "timestamp": ["1911-11-02"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.373611, 52.51
+        ]
+      },
+      "properties": {
+        "title": "Café Josty",
+        "timestamp": ["1911-11-02"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Caf%C3%A9_Josty"
+      }
+      }
+  ]
+}

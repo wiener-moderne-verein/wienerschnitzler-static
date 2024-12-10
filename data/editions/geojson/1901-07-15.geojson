@@ -1,0 +1,46 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature", 
+      "geometry": {
+        "type": "LineString", 
+        "coordinates": [
+            [11.65598, 46.71503], 
+            [11.63749, 46.73901]
+          ]
+      },
+      "properties": {
+        "name": "15. Juli 1901"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.63749, 46.73901
+        ]
+      },
+      "properties": {
+        "title": "Vahrn",
+        "timestamp": ["1901-07-15"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.65598, 46.71503
+        ]
+      },
+      "properties": {
+        "title": "Brixen",
+        "timestamp": ["1901-07-15"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature", 
+      "geometry": {
+        "type": "LineString", 
+        "coordinates": [
+            [7.86638, 46.68387], 
+            [8.30635, 47.05048]
+          ]
+      },
+      "properties": {
+        "name": "24. Mai 1910"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.30635, 47.05048
+        ]
+      },
+      "properties": {
+        "title": "Luzern",
+        "timestamp": ["1910-05-24"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Luzern"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.86638, 46.68387
+        ]
+      },
+      "properties": {
+        "title": "Interlaken",
+        "timestamp": ["1910-05-24"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Interlaken"
+      }
+      }
+  ]
+}

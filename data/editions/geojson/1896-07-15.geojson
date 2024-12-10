@@ -1,0 +1,61 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature", 
+      "geometry": {
+        "type": "LineString", 
+        "coordinates": [
+            [10.39506, 63.43049], 
+            [10.3988, 63.432], 
+            [10.39188, 63.4352]
+          ]
+      },
+      "properties": {
+        "name": "15. Juli 1896"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.39506, 63.43049
+        ]
+      },
+      "properties": {
+        "title": "Trondheim",
+        "timestamp": ["1896-07-15"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.3988, 63.432
+        ]
+      },
+      "properties": {
+        "title": "Britannia Hotel",
+        "timestamp": ["1896-07-15"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.39188, 63.4352
+        ]
+      },
+      "properties": {
+        "title": "Trondheim havn",
+        "timestamp": ["1896-07-15"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      }
+  ]
+}

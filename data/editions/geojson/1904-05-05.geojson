@@ -1,0 +1,110 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature", 
+      "geometry": {
+        "type": "LineString", 
+        "coordinates": [
+            [12.486944, 41.888333], 
+            [12.51133, 41.89193], 
+            [12.49479, 41.90399], 
+            [12.492194, 41.914194], 
+            [12.479653, 41.911763], 
+            [12.4533, 41.90225]
+          ]
+      },
+      "properties": {
+        "name": "5. Mai 1904"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.51133, 41.89193
+        ]
+      },
+      "properties": {
+        "title": "Rom",
+        "timestamp": ["1904-05-05"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Rom"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.49479, 41.90399
+        ]
+      },
+      "properties": {
+        "title": "Grand Hotel Roma",
+        "timestamp": ["1904-05-05"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.4533, 41.90225
+        ]
+      },
+      "properties": {
+        "title": "Vatikan",
+        "timestamp": ["1904-05-05"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Vatikanstadt"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.486944, 41.888333
+        ]
+      },
+      "properties": {
+        "title": "Palatin",
+        "timestamp": ["1904-05-05"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Palatin_(Rom)"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.492194, 41.914194
+        ]
+      },
+      "properties": {
+        "title": "Villa Borghese Pinciana",
+        "timestamp": ["1904-05-05"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.479653, 41.911763
+        ]
+      },
+      "properties": {
+        "title": "Monte Pincio",
+        "timestamp": ["1904-05-05"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Pincio"
+      }
+      }
+  ]
+}

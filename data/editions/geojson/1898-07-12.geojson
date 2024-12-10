@@ -1,0 +1,62 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature", 
+      "geometry": {
+        "type": "LineString", 
+        "coordinates": [
+            [15.432721959267678, 47.07077648409787], 
+            [15.43333, 47.06667], 
+            [15.43778, 47.07673]
+          ]
+      },
+      "properties": {
+        "name": "12. Juli 1898"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          15.43333, 47.06667
+        ]
+      },
+      "properties": {
+        "title": "Graz",
+        "timestamp": ["1898-07-12"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Graz"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          15.43778, 47.07673
+        ]
+      },
+      "properties": {
+        "title": "Schlossberg",
+        "timestamp": ["1898-07-12"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          15.432721959267678, 47.07077648409787
+        ]
+      },
+      "properties": {
+        "title": "Hotel Elephant",
+        "timestamp": ["1898-07-12"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      }
+  ]
+}

@@ -1,0 +1,140 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature", 
+      "geometry": {
+        "type": "LineString", 
+        "coordinates": [
+            [18.06430278, 59.32093333], 
+            [18.07277778, 59.32], 
+            [18.101, 59.32445], 
+            [18.10616, 59.32548], 
+            [18.0996, 59.3257], 
+            [18.075556, 59.329722], 
+            [18.06273, 59.3254], 
+            [18.05, 59.325]
+          ]
+      },
+      "properties": {
+        "name": "27. Juli 1896"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          18.05, 59.325
+        ]
+      },
+      "properties": {
+        "title": "Stockholm",
+        "timestamp": ["1896-07-27"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Stockholm"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          18.075556, 59.329722
+        ]
+      },
+      "properties": {
+        "title": "Grand Hotel Stockholm",
+        "timestamp": ["1896-07-27"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          18.06430278, 59.32093333
+        ]
+      },
+      "properties": {
+        "title": "Mariahissen",
+        "timestamp": ["1896-07-27"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Mariahissen"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          18.07277778, 59.32
+        ]
+      },
+      "properties": {
+        "title": "Katarinahissen",
+        "timestamp": ["1896-07-27"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Katarinahissen"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          18.101, 59.32445
+        ]
+      },
+      "properties": {
+        "title": "Skansen",
+        "timestamp": ["1896-07-27"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Skansen_(Stockholm)"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          18.0996, 59.3257
+        ]
+      },
+      "properties": {
+        "title": "Hasselbacken",
+        "timestamp": ["1896-07-27"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          18.06273, 59.3254
+        ]
+      },
+      "properties": {
+        "title": "Riddarholmen",
+        "timestamp": ["1896-07-27"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          18.10616, 59.32548
+        ]
+      },
+      "properties": {
+        "title": "Djurgården",
+        "timestamp": ["1896-07-27"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      }
+  ]
+}

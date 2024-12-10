@@ -1,0 +1,109 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature", 
+      "geometry": {
+        "type": "LineString", 
+        "coordinates": [
+            [10.83333, 47.36667], 
+            [10.8807, 47.40358], 
+            [10.91667, 47.4], 
+            [11.097, 47.4918], 
+            [10.74085, 47.55631], 
+            [10.71667, 47.48333]
+          ]
+      },
+      "properties": {
+        "name": "27. August 1928"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.74085, 47.55631
+        ]
+      },
+      "properties": {
+        "title": "Hohenschwangau",
+        "timestamp": ["1928-08-27"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.71667, 47.48333
+        ]
+      },
+      "properties": {
+        "title": "Reutte",
+        "timestamp": ["1928-08-27"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Reutte"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.83333, 47.36667
+        ]
+      },
+      "properties": {
+        "title": "Fernpass",
+        "timestamp": ["1928-08-27"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.8807, 47.40358
+        ]
+      },
+      "properties": {
+        "title": "Lermoos",
+        "timestamp": ["1928-08-27"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.097, 47.4918
+        ]
+      },
+      "properties": {
+        "title": "Bayerische Zugspitzbahn",
+        "timestamp": ["1928-08-27"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Bayerische_Zugspitzbahn"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.91667, 47.4
+        ]
+      },
+      "properties": {
+        "title": "Ehrwald",
+        "timestamp": ["1928-08-27"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Ehrwald"
+      }
+      }
+  ]
+}

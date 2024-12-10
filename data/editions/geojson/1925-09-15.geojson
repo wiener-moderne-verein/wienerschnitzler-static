@@ -1,0 +1,47 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature", 
+      "geometry": {
+        "type": "LineString", 
+        "coordinates": [
+            [11.24626, 43.77925], 
+            [11.29487, 43.80455]
+          ]
+      },
+      "properties": {
+        "name": "15. September 1925"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.24626, 43.77925
+        ]
+      },
+      "properties": {
+        "title": "Florenz",
+        "timestamp": ["1925-09-15"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Florenz"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.29487, 43.80455
+        ]
+      },
+      "properties": {
+        "title": "Fiesole",
+        "timestamp": ["1925-09-15"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      }
+  ]
+}

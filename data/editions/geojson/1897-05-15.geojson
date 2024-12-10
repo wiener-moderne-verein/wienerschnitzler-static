@@ -1,0 +1,109 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature", 
+      "geometry": {
+        "type": "LineString", 
+        "coordinates": [
+            [2.3488, 48.85341], 
+            [2.336389, 48.8625], 
+            [2.340682, 48.876305], 
+            [2.26416, 48.878375], 
+            [2.1011250154847976, 48.8981152417184], 
+            [2.08333, 48.9]
+          ]
+      },
+      "properties": {
+        "name": "15. Mai 1897"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.3488, 48.85341
+        ]
+      },
+      "properties": {
+        "title": "Paris",
+        "timestamp": ["1897-05-15"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Paris"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.340682, 48.876305
+        ]
+      },
+      "properties": {
+        "title": "rue de Maubeuge",
+        "timestamp": ["1897-05-15"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.336389, 48.8625
+        ]
+      },
+      "properties": {
+        "title": "Musée du Louvre",
+        "timestamp": ["1897-05-15"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.1011250154847976, 48.8981152417184
+        ]
+      },
+      "properties": {
+        "title": "Pavillon Henri IV",
+        "timestamp": ["1897-05-15"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.26416, 48.878375
+        ]
+      },
+      "properties": {
+        "title": "Jardin d'Acclimatation",
+        "timestamp": ["1897-05-15"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Jardin_d%E2%80%99Acclimatation"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.08333, 48.9
+        ]
+      },
+      "properties": {
+        "title": "Saint-Germain-en-Laye",
+        "timestamp": ["1897-05-15"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Saint-Germain-en-Laye_(Saint-Germain-en-Laye) https://de.wikipedia.org/wiki/Saint-Germain-en-Laye"
+      }
+      }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature", 
+      "geometry": {
+        "type": "LineString", 
+        "coordinates": [
+            [13.00187, 47.63236]
+          ]
+      },
+      "properties": {
+        "name": "20. August 1922"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.00187, 47.63236
+        ]
+      },
+      "properties": {
+        "title": "Berchtesgaden",
+        "timestamp": ["1922-08-20"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Berchtesgaden"
+      }
+      }
+  ]
+}

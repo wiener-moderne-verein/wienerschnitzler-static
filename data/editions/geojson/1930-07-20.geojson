@@ -1,0 +1,76 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature", 
+      "geometry": {
+        "type": "LineString", 
+        "coordinates": [
+            [9.76364, 46.42886], 
+            [9.83986, 46.42963], 
+            [9.90126, 46.4955], 
+            [9.84327, 46.49937]
+          ]
+      },
+      "properties": {
+        "name": "20. Juli 1930"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.84327, 46.49937
+        ]
+      },
+      "properties": {
+        "title": "Sankt Moritz",
+        "timestamp": ["1930-07-20"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.90126, 46.4955
+        ]
+      },
+      "properties": {
+        "title": "Pontresina",
+        "timestamp": ["1930-07-20"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.83986, 46.42963
+        ]
+      },
+      "properties": {
+        "title": "Fuorcla Surlej",
+        "timestamp": ["1930-07-20"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.76364, 46.42886
+        ]
+      },
+      "properties": {
+        "title": "Sils-Segl Maria",
+        "timestamp": ["1930-07-20"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      }
+  ]
+}

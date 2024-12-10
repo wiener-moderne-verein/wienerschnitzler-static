@@ -1,0 +1,109 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature", 
+      "geometry": {
+        "type": "LineString", 
+        "coordinates": [
+            [13.330665, 52.506631], 
+            [13.366666, 52.516666], 
+            [13.41053, 52.52437], 
+            [13.388194, 52.521572], 
+            [13.376389, 52.5225], 
+            [13.36774, 52.52031]
+          ]
+      },
+      "properties": {
+        "name": "26. November 1905"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.41053, 52.52437
+        ]
+      },
+      "properties": {
+        "title": "Berlin",
+        "timestamp": ["1905-11-26"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Berlin"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.376389, 52.5225
+        ]
+      },
+      "properties": {
+        "title": "Lessing-Theater",
+        "timestamp": ["1905-11-26"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.366666, 52.516666
+        ]
+      },
+      "properties": {
+        "title": "Tiergarten",
+        "timestamp": ["1905-11-26"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Berlin-Tiergarten"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.330665, 52.506631
+        ]
+      },
+      "properties": {
+        "title": "Hardenbergstraße 24",
+        "timestamp": ["1905-11-26"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.388194, 52.521572
+        ]
+      },
+      "properties": {
+        "title": "Hotel Savoy [Berlin]",
+        "timestamp": ["1905-11-26"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Savoy_Hotel_(Berlin)"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.36774, 52.52031
+        ]
+      },
+      "properties": {
+        "title": "Kronprinzenufer 7/In den Zelten 14",
+        "timestamp": ["1905-11-26"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      }
+  ]
+}

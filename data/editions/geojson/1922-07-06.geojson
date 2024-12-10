@@ -1,0 +1,46 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature", 
+      "geometry": {
+        "type": "LineString", 
+        "coordinates": [
+            [16.03425, 47.51062], 
+            [16.01667, 47.55]
+          ]
+      },
+      "properties": {
+        "name": "6. Juli 1922"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          16.03425, 47.51062
+        ]
+      },
+      "properties": {
+        "title": "Mönichkirchen",
+        "timestamp": ["1922-07-06"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          16.01667, 47.55
+        ]
+      },
+      "properties": {
+        "title": "Sankt Peter am Wechsel",
+        "timestamp": ["1922-07-06"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature", 
+      "geometry": {
+        "type": "LineString", 
+        "coordinates": [
+            [12.56553, 55.67594], 
+            [12.588912857735648, 55.68301054011226]
+          ]
+      },
+      "properties": {
+        "name": "14. Mai 1923"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.588912857735648, 55.68301054011226
+        ]
+      },
+      "properties": {
+        "title": "Hotel Phönix",
+        "timestamp": ["1923-05-14"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.56553, 55.67594
+        ]
+      },
+      "properties": {
+        "title": "Kopenhagen",
+        "timestamp": ["1923-05-14"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Kopenhagen"
+      }
+      }
+  ]
+}

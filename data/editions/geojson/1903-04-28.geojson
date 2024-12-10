@@ -1,0 +1,92 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature", 
+      "geometry": {
+        "type": "LineString", 
+        "coordinates": [
+            [16.347077, 48.204439], 
+            [16.373056, 48.208333], 
+            [16.365195, 48.21575], 
+            [16.35736, 48.21533], 
+            [16.336096, 48.219176]
+          ]
+      },
+      "properties": {
+        "name": "28. April 1903"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          16.373056, 48.208333
+        ]
+      },
+      "properties": {
+        "title": "Wien",
+        "timestamp": ["1903-04-28"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Wien"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          16.347077, 48.204439
+        ]
+      },
+      "properties": {
+        "title": "Burggasse 72",
+        "timestamp": ["1903-04-28"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          16.365195, 48.21575
+        ]
+      },
+      "properties": {
+        "title": "Wipplingerstraße 38",
+        "timestamp": ["1903-04-28"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          16.336096, 48.219176
+        ]
+      },
+      "properties": {
+        "title": "Pezzlgasse 14",
+        "timestamp": ["1903-04-28"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          16.35736, 48.21533
+        ]
+      },
+      "properties": {
+        "title": "Frankgasse 1",
+        "timestamp": ["1903-04-28"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      }
+  ]
+}

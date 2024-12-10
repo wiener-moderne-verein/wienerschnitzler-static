@@ -1,0 +1,62 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature", 
+      "geometry": {
+        "type": "LineString", 
+        "coordinates": [
+            [16.373056, 48.208333], 
+            [16.362803, 48.215589], 
+            [16.33472, 48.2304]
+          ]
+      },
+      "properties": {
+        "name": "25. März 1906"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          16.373056, 48.208333
+        ]
+      },
+      "properties": {
+        "title": "Wien",
+        "timestamp": ["1906-03-25"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Wien"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          16.362803, 48.215589
+        ]
+      },
+      "properties": {
+        "title": "Wasagasse 4",
+        "timestamp": ["1906-03-25"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          16.33472, 48.2304
+        ]
+      },
+      "properties": {
+        "title": "Edmund-Weiß-Gasse 7",
+        "timestamp": ["1906-03-25"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      }
+  ]
+}

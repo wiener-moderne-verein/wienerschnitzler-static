@@ -1,0 +1,47 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature", 
+      "geometry": {
+        "type": "LineString", 
+        "coordinates": [
+            [10.211, 47.13], 
+            [9.75, 47.53333]
+          ]
+      },
+      "properties": {
+        "name": "14. September 1923"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.75, 47.53333
+        ]
+      },
+      "properties": {
+        "title": "Lochau",
+        "timestamp": ["1923-09-14"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.211, 47.13
+        ]
+      },
+      "properties": {
+        "title": "Arlberg",
+        "timestamp": ["1923-09-14"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Arlberg"
+      }
+      }
+  ]
+}

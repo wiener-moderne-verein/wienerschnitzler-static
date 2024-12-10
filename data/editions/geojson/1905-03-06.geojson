@@ -1,0 +1,78 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature", 
+      "geometry": {
+        "type": "LineString", 
+        "coordinates": [
+            [7.50435, 43.77649], 
+            [7.48207, 43.76408], 
+            [7.41667, 43.73333], 
+            [9.95347, 44.29844]
+          ]
+      },
+      "properties": {
+        "name": "6. März 1905"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.95347, 44.29844
+        ]
+      },
+      "properties": {
+        "title": "Villafranca in Lunigiana",
+        "timestamp": ["1905-03-06"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.41667, 43.73333
+        ]
+      },
+      "properties": {
+        "title": "Monaco",
+        "timestamp": ["1905-03-06"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Monaco"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.48207, 43.76408
+        ]
+      },
+      "properties": {
+        "title": "Roquebrune-Cap-Martin",
+        "timestamp": ["1905-03-06"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.50435, 43.77649
+        ]
+      },
+      "properties": {
+        "title": "Menton",
+        "timestamp": ["1905-03-06"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Menton"
+      }
+      }
+  ]
+}

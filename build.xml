@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project basedir="." name="tei2html">
-    <property name="index" value="./data/meta/about.xml"/>
+    <property name="index" value="./data/indices/listplace.xml"/>
     <property name="target" value="./html"/>
     <property name="target_xml" value="./html/xml-view"/>
     <delete>
         <fileset dir="${target}" includes="*.html"/>
     </delete>
-    <xslt in="${index}" out="${target}/index.html" style="./xslt/index.xsl">
+  <!--  <xslt in="${index}" out="${target}/index.html" style="./xslt/index.xsl">
         <factory name="net.sf.saxon.TransformerFactoryImpl"/>
         <classpath location="${basedir}/saxon/saxon9he.jar"/>
     </xslt>
     <xslt in="${index}" out="${target}/404.html" style="./xslt/404.xsl">
         <factory name="net.sf.saxon.TransformerFactoryImpl"/>
         <classpath location="${basedir}/saxon/saxon9he.jar"/>
-    </xslt>
-    <xslt style="./xslt/editions.xsl"  basedir="./data/editions" destdir="${target}" includes="*.xml">
+    </xslt>-->
+    <!--<xslt style="./xslt/editions.xsl"  basedir="./data/editions/xml" destdir="${target}" includes="*.xml">
         <factory name="net.sf.saxon.TransformerFactoryImpl"/>
         <classpath location="${basedir}/saxon/saxon9he.jar"/>
-    </xslt>
+    </xslt>-->
     <xslt style="./xslt/meta.xsl"  basedir="./data/meta" destdir="${target}" includes="*.xml">
         <factory name="net.sf.saxon.TransformerFactoryImpl"/>
         <classpath location="${basedir}/saxon/saxon9he.jar"/>
     </xslt>
-    <xslt in="${index}" out="${target}/toc.html" style="./xslt/toc.xsl">
+   <!-- <xslt in="${index}" out="${target}/toc.html" style="./xslt/toc.xsl">
         <factory name="net.sf.saxon.TransformerFactoryImpl"/>
         <classpath location="${basedir}/saxon/saxon9he.jar"/>
     </xslt>
@@ -38,11 +38,11 @@
         <factory name="net.sf.saxon.TransformerFactoryImpl"/>
         <classpath location="${basedir}/saxon/saxon9he.jar"/>
     </xslt>
-    <xslt in="./data/indices/listplace.xml" out="${target}/listplace.html" style="./xslt/listplace.xsl">
+   --> <xslt in="./data/indices/listplace.xml" out="${target}/listplace.html" style="./xslt/listplace.xsl">
         <factory name="net.sf.saxon.TransformerFactoryImpl"/>
         <classpath location="${basedir}/saxon/saxon9he.jar"/>
     </xslt>
-    <xslt in="./data/indices/listorg.xml" out="${target}/listorg.html" style="./xslt/listorg.xsl">
+ <!--   <xslt in="./data/indices/listorg.xml" out="${target}/listorg.html" style="./xslt/listorg.xsl">
         <factory name="net.sf.saxon.TransformerFactoryImpl"/>
         <classpath location="${basedir}/saxon/saxon9he.jar"/>
     </xslt>
@@ -54,7 +54,7 @@
         <factory name="net.sf.saxon.TransformerFactoryImpl"/>
         <classpath location="${basedir}/saxon/saxon9he.jar"/>
     </xslt>
-    <replace dir="${target}" value="">
+ -->   <replace dir="${target}" value="">
         <include name="*.html"/>
         <replacetoken> xmlns=""</replacetoken>
     </replace>

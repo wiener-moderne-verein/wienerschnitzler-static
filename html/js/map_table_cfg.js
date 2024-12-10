@@ -37,7 +37,7 @@ const columns = [
   },
   {
     headerFilter: "input",
-    title: "Erwähnungen",
+    title: "Aufenthalte",
     field: "mentions",
     formatter: "plaintext",
     resizable: true,

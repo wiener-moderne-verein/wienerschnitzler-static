@@ -1,0 +1,124 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature", 
+      "geometry": {
+        "type": "LineString", 
+        "coordinates": [
+            [16.17591, 48.0366], 
+            [16.15737, 48.02541], 
+            [16.21359, 47.96533], 
+            [16.23264, 48.00543], 
+            [16.373056, 48.208333], 
+            [16.357233, 48.212477], 
+            [16.24801, 48.08509]
+          ]
+      },
+      "properties": {
+        "name": "21. Mai 1893"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          16.21359, 47.96533
+        ]
+      },
+      "properties": {
+        "title": "Bad Vöslau",
+        "timestamp": ["1893-05-21"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Bad_V%C3%B6slau"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          16.15737, 48.02541
+        ]
+      },
+      "properties": {
+        "title": "Krainerhütte",
+        "timestamp": ["1893-05-21"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          16.24801, 48.08509
+        ]
+      },
+      "properties": {
+        "title": "Brühl",
+        "timestamp": ["1893-05-21"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          16.373056, 48.208333
+        ]
+      },
+      "properties": {
+        "title": "Wien",
+        "timestamp": ["1893-05-21"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Wien"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          16.17591, 48.0366
+        ]
+      },
+      "properties": {
+        "title": "Siegenfeld",
+        "timestamp": ["1893-05-21"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          16.23264, 48.00543
+        ]
+      },
+      "properties": {
+        "title": "Baden bei Wien",
+        "timestamp": ["1893-05-21"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Baden_(Nieder%C3%B6sterreich)"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          16.357233, 48.212477
+        ]
+      },
+      "properties": {
+        "title": "Wohnung und Ordination Arthur Schnitzler Grillparzerstraße 7/3. Stock",
+        "timestamp": ["1893-05-21"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      }
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature", 
+      "geometry": {
+        "type": "LineString", 
+        "coordinates": [
+            [6.1485, 46.2079], 
+            [6.14569, 46.20222], 
+            [6.94084, 46.45179], 
+            [6.46906, 46.43774]
+          ]
+      },
+      "properties": {
+        "name": "17. August 1898"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.14569, 46.20222
+        ]
+      },
+      "properties": {
+        "title": "Genf",
+        "timestamp": ["1898-08-17"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Genf"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.1485, 46.2079
+        ]
+      },
+      "properties": {
+        "title": "Hôtel de la Paix [Genf]",
+        "timestamp": ["1898-08-17"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.46906, 46.43774
+        ]
+      },
+      "properties": {
+        "title": "Genfer See",
+        "timestamp": ["1898-08-17"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Genfersee"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.94084, 46.45179
+        ]
+      },
+      "properties": {
+        "title": "Montreux",
+        "timestamp": ["1898-08-17"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Montreux"
+      }
+      }
+  ]
+}

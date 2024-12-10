@@ -1,0 +1,63 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature", 
+      "geometry": {
+        "type": "LineString", 
+        "coordinates": [
+            [-0.12574, 51.50853], 
+            [3.57361, 51.4425], 
+            [9.73322, 52.37052]
+          ]
+      },
+      "properties": {
+        "name": "1. Juni 1897"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.12574, 51.50853
+        ]
+      },
+      "properties": {
+        "title": "London",
+        "timestamp": ["1897-06-01"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/London"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          3.57361, 51.4425
+        ]
+      },
+      "properties": {
+        "title": "Flushing",
+        "timestamp": ["1897-06-01"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.73322, 52.37052
+        ]
+      },
+      "properties": {
+        "title": "Hannover",
+        "timestamp": ["1897-06-01"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Hannover"
+      }
+      }
+  ]
+}

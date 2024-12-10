@@ -1,0 +1,62 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature", 
+      "geometry": {
+        "type": "LineString", 
+        "coordinates": [
+            [10.07889, 46.29313], 
+            [10.31856, 46.32652], 
+            [10.37008, 46.46717]
+          ]
+      },
+      "properties": {
+        "name": "26. August 1900"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.07889, 46.29313
+        ]
+      },
+      "properties": {
+        "title": "Le Prese",
+        "timestamp": ["1900-08-26"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Le_Prese"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.31856, 46.32652
+        ]
+      },
+      "properties": {
+        "title": "Bolladore",
+        "timestamp": ["1900-08-26"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.37008, 46.46717
+        ]
+      },
+      "properties": {
+        "title": "Bormio",
+        "timestamp": ["1900-08-26"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      }
+  ]
+}

@@ -1,0 +1,95 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature", 
+      "geometry": {
+        "type": "LineString", 
+        "coordinates": [
+            [2.337222, 48.846944], 
+            [2.34646, 48.84673], 
+            [2.3488, 48.85341], 
+            [2.3488888888889, 48.870833333333], 
+            [2.340682, 48.876305]
+          ]
+      },
+      "properties": {
+        "name": "17. April 1897"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.3488, 48.85341
+        ]
+      },
+      "properties": {
+        "title": "Paris",
+        "timestamp": ["1897-04-17"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Paris"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.340682, 48.876305
+        ]
+      },
+      "properties": {
+        "title": "rue de Maubeuge",
+        "timestamp": ["1897-04-17"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.34646, 48.84673
+        ]
+      },
+      "properties": {
+        "title": "Panthéon",
+        "timestamp": ["1897-04-17"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Panth%C3%A9on_(Paris)"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.3488888888889, 48.870833333333
+        ]
+      },
+      "properties": {
+        "title": "Théâtre du Gymnase Marie Bell",
+        "timestamp": ["1897-04-17"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Th%C3%A9%C3%A2tre_du_Gymnase_Marie_Bell"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.337222, 48.846944
+        ]
+      },
+      "properties": {
+        "title": "Jardin du Luxembourg",
+        "timestamp": ["1897-04-17"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Jardin_du_Luxembourg"
+      }
+      }
+  ]
+}

@@ -1,0 +1,110 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature", 
+      "geometry": {
+        "type": "LineString", 
+        "coordinates": [
+            [15.71667, 47.7], 
+            [15.826389, 47.652222], 
+            [15.8241, 47.64224], 
+            [15.83, 47.647222], 
+            [16.373056, 48.208333], 
+            [16.33716, 48.23188]
+          ]
+      },
+      "properties": {
+        "name": "17. November 1928"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          16.373056, 48.208333
+        ]
+      },
+      "properties": {
+        "title": "Wien",
+        "timestamp": ["1928-11-17"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Wien"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          15.8241, 47.64224
+        ]
+      },
+      "properties": {
+        "title": "Semmering",
+        "timestamp": ["1928-11-17"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Semmering_(Nieder%C3%B6sterreich)"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          15.83, 47.647222
+        ]
+      },
+      "properties": {
+        "title": "Südbahnhotel [Semmering]",
+        "timestamp": ["1928-11-17"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/S%C3%BCdbahnhotel"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          15.71667, 47.7
+        ]
+      },
+      "properties": {
+        "title": "Raxalpe",
+        "timestamp": ["1928-11-17"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          15.826389, 47.652222
+        ]
+      },
+      "properties": {
+        "title": "Kurhaus Semmering",
+        "timestamp": ["1928-11-17"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Kurhaus_Semmering"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          16.33716, 48.23188
+        ]
+      },
+      "properties": {
+        "title": "Sternwartestraße 71",
+        "timestamp": ["1928-11-17"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      }
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature", 
+      "geometry": {
+        "type": "LineString", 
+        "coordinates": [
+            [8.33695, 46.56102], 
+            [8.36196, 46.56226], 
+            [8.38605, 46.60454], 
+            [8.1872, 46.72709]
+          ]
+      },
+      "properties": {
+        "name": "20. August 1898"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.1872, 46.72709
+        ]
+      },
+      "properties": {
+        "title": "Meiringen",
+        "timestamp": ["1898-08-20"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.33695, 46.56102
+        ]
+      },
+      "properties": {
+        "title": "Grimselpass",
+        "timestamp": ["1898-08-20"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.36196, 46.56226
+        ]
+      },
+      "properties": {
+        "title": "Gletsch",
+        "timestamp": ["1898-08-20"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.38605, 46.60454
+        ]
+      },
+      "properties": {
+        "title": "Rhonegletscher",
+        "timestamp": ["1898-08-20"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Rhonegletscher"
+      }
+      }
+  ]
+}

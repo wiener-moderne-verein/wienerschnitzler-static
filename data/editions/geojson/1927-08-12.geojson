@@ -1,0 +1,48 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature", 
+      "geometry": {
+        "type": "LineString", 
+        "coordinates": [
+            [10.82582, 46.22671], 
+            [11.33982, 46.49067]
+          ]
+      },
+      "properties": {
+        "name": "12. August 1927"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.33982, 46.49067
+        ]
+      },
+      "properties": {
+        "title": "Bozen",
+        "timestamp": ["1927-08-12"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Bozen"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.82582, 46.22671
+        ]
+      },
+      "properties": {
+        "title": "Madonna di Campiglio",
+        "timestamp": ["1927-08-12"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Madonna_di_Campiglio"
+      }
+      }
+  ]
+}

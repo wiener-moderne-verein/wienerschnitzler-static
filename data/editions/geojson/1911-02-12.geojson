@@ -1,0 +1,32 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature", 
+      "geometry": {
+        "type": "LineString", 
+        "coordinates": [
+            [16.60961111, 49.19213889]
+          ]
+      },
+      "properties": {
+        "name": "12. Februar 1911"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          16.60961111, 49.19213889
+        ]
+      },
+      "properties": {
+        "title": "Reduta",
+        "timestamp": ["1911-02-12"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Reduta_(Br%C3%BCnn)"
+      }
+      }
+  ]
+}

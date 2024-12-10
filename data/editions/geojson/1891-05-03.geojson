@@ -1,0 +1,108 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature", 
+      "geometry": {
+        "type": "LineString", 
+        "coordinates": [
+            [16.38201, 48.165217], 
+            [16.43333, 48.08333], 
+            [16.373056, 48.208333], 
+            [16.37196, 48.20143], 
+            [16.361139, 48.210333], 
+            [16.360277777778, 48.178333333333]
+          ]
+      },
+      "properties": {
+        "name": "3. Mai 1891"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          16.373056, 48.208333
+        ]
+      },
+      "properties": {
+        "title": "Wien",
+        "timestamp": ["1891-05-03"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Wien"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          16.360277777778, 48.178333333333
+        ]
+      },
+      "properties": {
+        "title": "Matzleinsdorfer Friedhof",
+        "timestamp": ["1891-05-03"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Evangelischer_Friedhof_Matzleinsdorf"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          16.43333, 48.08333
+        ]
+      },
+      "properties": {
+        "title": "Himberg",
+        "timestamp": ["1891-05-03"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          16.38201, 48.165217
+        ]
+      },
+      "properties": {
+        "title": "Himbergerstraße",
+        "timestamp": ["1891-05-03"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          16.361139, 48.210333
+        ]
+      },
+      "properties": {
+        "title": "Burgtheater",
+        "timestamp": ["1891-05-03"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          16.37196, 48.20143
+        ]
+      },
+      "properties": {
+        "title": "Kärntnerring 12/Bösendorferstraße 11",
+        "timestamp": ["1891-05-03"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      }
+  ]
+}

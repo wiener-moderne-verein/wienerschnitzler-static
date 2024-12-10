@@ -1,0 +1,63 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature", 
+      "geometry": {
+        "type": "LineString", 
+        "coordinates": [
+            [1.31257, 51.12598], 
+            [2.92711, 51.2119], 
+            [-0.12574, 51.50853]
+          ]
+      },
+      "properties": {
+        "name": "31. Juli 1888"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.12574, 51.50853
+        ]
+      },
+      "properties": {
+        "title": "London",
+        "timestamp": ["1888-07-31"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/London"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1.31257, 51.12598
+        ]
+      },
+      "properties": {
+        "title": "Dover",
+        "timestamp": ["1888-07-31"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.92711, 51.2119
+        ]
+      },
+      "properties": {
+        "title": "Ostende",
+        "timestamp": ["1888-07-31"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Ostende"
+      }
+      }
+  ]
+}

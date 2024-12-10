@@ -1,0 +1,48 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature", 
+      "geometry": {
+        "type": "LineString", 
+        "coordinates": [
+            [15.83333, 47.7], 
+            [13.61893, 47.71109]
+          ]
+      },
+      "properties": {
+        "name": "16. August 1886"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          15.83333, 47.7
+        ]
+      },
+      "properties": {
+        "title": "Reichenau an der Rax",
+        "timestamp": ["1886-08-16"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Reichenau_an_der_Rax"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.61893, 47.71109
+        ]
+      },
+      "properties": {
+        "title": "Bad Ischl",
+        "timestamp": ["1886-08-16"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Bad_Ischl"
+      }
+      }
+  ]
+}

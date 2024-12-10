@@ -1,0 +1,47 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature", 
+      "geometry": {
+        "type": "LineString", 
+        "coordinates": [
+            [8.53834, 45.88158], 
+            [8.96004, 46.01008]
+          ]
+      },
+      "properties": {
+        "name": "29. August 1924"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.96004, 46.01008
+        ]
+      },
+      "properties": {
+        "title": "Lugano",
+        "timestamp": ["1924-08-29"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Lugano"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.53834, 45.88158
+        ]
+      },
+      "properties": {
+        "title": "Stresa",
+        "timestamp": ["1924-08-29"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      }
+  ]
+}

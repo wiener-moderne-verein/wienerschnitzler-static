@@ -1,0 +1,109 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature", 
+      "geometry": {
+        "type": "LineString", 
+        "coordinates": [
+            [16.33472, 48.2304], 
+            [16.373056, 48.208333], 
+            [16.6130914, 49.1926992], 
+            [16.60796, 49.19522], 
+            [16.606667, 49.199167], 
+            [16.577222222222, 49.191666666667]
+          ]
+      },
+      "properties": {
+        "name": "19. Oktober 1903"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          16.373056, 48.208333
+        ]
+      },
+      "properties": {
+        "title": "Wien",
+        "timestamp": ["1903-10-19"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Wien"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          16.60796, 49.19522
+        ]
+      },
+      "properties": {
+        "title": "Brünn",
+        "timestamp": ["1903-10-19"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Br%C3%BCnn"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          16.606667, 49.199167
+        ]
+      },
+      "properties": {
+        "title": "Deutsches Haus [Brünn]",
+        "timestamp": ["1903-10-19"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Deutsches_Haus_(Br%C3%BCnn)"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          16.6130914, 49.1926992
+        ]
+      },
+      "properties": {
+        "title": "Grand Hotel [Brünn]",
+        "timestamp": ["1903-10-19"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          16.577222222222, 49.191666666667
+        ]
+      },
+      "properties": {
+        "title": "Pisárky",
+        "timestamp": ["1903-10-19"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          16.33472, 48.2304
+        ]
+      },
+      "properties": {
+        "title": "Edmund-Weiß-Gasse 7",
+        "timestamp": ["1903-10-19"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      }
+  ]
+}

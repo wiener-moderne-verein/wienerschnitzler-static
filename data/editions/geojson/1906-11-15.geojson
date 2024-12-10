@@ -1,0 +1,32 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature", 
+      "geometry": {
+        "type": "LineString", 
+        "coordinates": [
+            [15.8241, 47.64224]
+          ]
+      },
+      "properties": {
+        "name": "15. November 1906"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          15.8241, 47.64224
+        ]
+      },
+      "properties": {
+        "title": "Semmering",
+        "timestamp": ["1906-11-15"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Semmering_(Nieder%C3%B6sterreich)"
+      }
+      }
+  ]
+}

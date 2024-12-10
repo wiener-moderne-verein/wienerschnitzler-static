@@ -1,0 +1,48 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature", 
+      "geometry": {
+        "type": "LineString", 
+        "coordinates": [
+            [14.47188, 47.56155], 
+            [16.3538456, 48.2134031]
+          ]
+      },
+      "properties": {
+        "name": "3. Juli 1900"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          14.47188, 47.56155
+        ]
+      },
+      "properties": {
+        "title": "Admont",
+        "timestamp": ["1900-07-03"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Admont"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          16.3538456, 48.2134031
+        ]
+      },
+      "properties": {
+        "title": "Riedhof",
+        "timestamp": ["1900-07-03"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wiengeschichtewiki": "https://www.geschichtewiki.wien.gv.at/Riedhof"
+      }
+      }
+  ]
+}

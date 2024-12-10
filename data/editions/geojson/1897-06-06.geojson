@@ -1,0 +1,93 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature", 
+      "geometry": {
+        "type": "LineString", 
+        "coordinates": [
+            [15.08818, 47.929], 
+            [16.373056, 48.208333], 
+            [16.35736, 48.21533], 
+            [15.63333, 48.2], 
+            [15.2, 48.2]
+          ]
+      },
+      "properties": {
+        "name": "6. Juni 1897"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          16.373056, 48.208333
+        ]
+      },
+      "properties": {
+        "title": "Wien",
+        "timestamp": ["1897-06-06"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Wien"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          15.63333, 48.2
+        ]
+      },
+      "properties": {
+        "title": "St. Pölten",
+        "timestamp": ["1897-06-06"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/St._P%C3%B6lten"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          15.2, 48.2
+        ]
+      },
+      "properties": {
+        "title": "Pöchlarn",
+        "timestamp": ["1897-06-06"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          15.08818, 47.929
+        ]
+      },
+      "properties": {
+        "title": "Gaming",
+        "timestamp": ["1897-06-06"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          16.35736, 48.21533
+        ]
+      },
+      "properties": {
+        "title": "Frankgasse 1",
+        "timestamp": ["1897-06-06"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      }
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature", 
+      "geometry": {
+        "type": "LineString", 
+        "coordinates": [
+            [13.61893, 47.71109], 
+            [13.62156, 47.71319], 
+            [14.03333, 48.16667], 
+            [10.08047, 52.62264]
+          ]
+      },
+      "properties": {
+        "name": "9. Juni 1894"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.61893, 47.71109
+        ]
+      },
+      "properties": {
+        "title": "Bad Ischl",
+        "timestamp": ["1894-06-09"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Bad_Ischl"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.62156, 47.71319
+        ]
+      },
+      "properties": {
+        "title": "Hotel zum goldenen Kreuz",
+        "timestamp": ["1894-06-09"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          14.03333, 48.16667
+        ]
+      },
+      "properties": {
+        "title": "Wels",
+        "timestamp": ["1894-06-09"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.08047, 52.62264
+        ]
+      },
+      "properties": {
+        "title": "Celle",
+        "timestamp": ["1894-06-09"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      }
+  ]
+}

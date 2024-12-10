@@ -1,0 +1,48 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature", 
+      "geometry": {
+        "type": "LineString", 
+        "coordinates": [
+            [12.882423, 47.730685], 
+            [13.04532, 47.80067]
+          ]
+      },
+      "properties": {
+        "name": "22. Juni 1901"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.04532, 47.80067
+        ]
+      },
+      "properties": {
+        "title": "Salzburg",
+        "timestamp": ["1901-06-22"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Salzburg"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.882423, 47.730685
+        ]
+      },
+      "properties": {
+        "title": "Bad Reichenhall",
+        "timestamp": ["1901-06-22"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Bad_Reichenhall"
+      }
+      }
+  ]
+}

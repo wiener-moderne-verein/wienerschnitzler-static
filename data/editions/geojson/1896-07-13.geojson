@@ -1,0 +1,91 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature", 
+      "geometry": {
+        "type": "LineString", 
+        "coordinates": [
+            [13.91097, 54.24364], 
+            [7.21667, 62.1], 
+            [6.98333, 62.11667], 
+            [6.86769, 62.08549], 
+            [6.73333, 62.18333]
+          ]
+      },
+      "properties": {
+        "name": "13. Juli 1896"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.91097, 54.24364
+        ]
+      },
+      "properties": {
+        "title": "Oie",
+        "timestamp": ["1896-07-13"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.73333, 62.18333
+        ]
+      },
+      "properties": {
+        "title": "Norangsdalen",
+        "timestamp": ["1896-07-13"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.86769, 62.08549
+        ]
+      },
+      "properties": {
+        "title": "Hellesylt",
+        "timestamp": ["1896-07-13"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.21667, 62.1
+        ]
+      },
+      "properties": {
+        "title": "Maråk",
+        "timestamp": ["1896-07-13"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.98333, 62.11667
+        ]
+      },
+      "properties": {
+        "title": "Geirangerfjord",
+        "timestamp": ["1896-07-13"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      }
+  ]
+}

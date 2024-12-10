@@ -1,0 +1,79 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature", 
+      "geometry": {
+        "type": "LineString", 
+        "coordinates": [
+            [13.392222, 52.513611], 
+            [13.4195, 52.51645], 
+            [13.41053, 52.52437], 
+            [13.387238, 52.518762]
+          ]
+      },
+      "properties": {
+        "name": "5. Mai 1888"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.41053, 52.52437
+        ]
+      },
+      "properties": {
+        "title": "Berlin",
+        "timestamp": ["1888-05-05"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Berlin"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.387238, 52.518762
+        ]
+      },
+      "properties": {
+        "title": "Dorotheenstraße 60",
+        "timestamp": ["1888-05-05"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.4195, 52.51645
+        ]
+      },
+      "properties": {
+        "title": "Wallnertheater",
+        "timestamp": ["1888-05-05"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Wallner-Theater"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.392222, 52.513611
+        ]
+      },
+      "properties": {
+        "title": "Schauspielhaus Berlin",
+        "timestamp": ["1888-05-05"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Schauspielhaus_(Berlin)"
+      }
+      }
+  ]
+}

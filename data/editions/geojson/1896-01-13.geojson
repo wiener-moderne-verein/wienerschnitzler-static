@@ -1,0 +1,95 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature", 
+      "geometry": {
+        "type": "LineString", 
+        "coordinates": [
+            [8.67556, 50.11], 
+            [8.68417, 50.11552], 
+            [6.958333333333333, 50.94138888888889], 
+            [6.95427, 50.93835], 
+            [6.951649, 50.936904]
+          ]
+      },
+      "properties": {
+        "name": "13. Januar 1896"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.68417, 50.11552
+        ]
+      },
+      "properties": {
+        "title": "Frankfurt am Main",
+        "timestamp": ["1896-01-13"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Frankfurt_am_Main"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.67556, 50.11
+        ]
+      },
+      "properties": {
+        "title": "Frankfurter Hof",
+        "timestamp": ["1896-01-13"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Frankfurter_Hof"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.95427, 50.93835
+        ]
+      },
+      "properties": {
+        "title": "Köln",
+        "timestamp": ["1896-01-13"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/K%C3%B6ln"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.958333333333333, 50.94138888888889
+        ]
+      },
+      "properties": {
+        "title": "Kölner Dom",
+        "timestamp": ["1896-01-13"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/K%C3%B6lner_Dom"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.951649, 50.936904
+        ]
+      },
+      "properties": {
+        "title": "Kreuzgasse",
+        "timestamp": ["1896-01-13"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      }
+  ]
+}

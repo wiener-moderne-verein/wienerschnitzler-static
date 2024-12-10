@@ -1,0 +1,93 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature", 
+      "geometry": {
+        "type": "LineString", 
+        "coordinates": [
+            [11.942143, 57.696899], 
+            [11.96679, 57.70716], 
+            [12.299002, 58.28764], 
+            [12.28864, 58.28365], 
+            [12.2771, 58.2799]
+          ]
+      },
+      "properties": {
+        "name": "1. August 1896"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.96679, 57.70716
+        ]
+      },
+      "properties": {
+        "title": "Göteborg",
+        "timestamp": ["1896-08-01"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/G%C3%B6teborg"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.2771, 58.2799
+        ]
+      },
+      "properties": {
+        "title": "Trollhättan-Fälle",
+        "timestamp": ["1896-08-01"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Trollh%C3%A4ttan-F%C3%A4lle"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.299002, 58.28764
+        ]
+      },
+      "properties": {
+        "title": "Trollhättan sentralstasjon",
+        "timestamp": ["1896-08-01"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.942143, 57.696899
+        ]
+      },
+      "properties": {
+        "title": "Masthugget",
+        "timestamp": ["1896-08-01"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.28864, 58.28365
+        ]
+      },
+      "properties": {
+        "title": "Trollhättan",
+        "timestamp": ["1896-08-01"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      }
+  ]
+}

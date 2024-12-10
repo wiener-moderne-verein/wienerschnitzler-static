@@ -1,0 +1,47 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature", 
+      "geometry": {
+        "type": "LineString", 
+        "coordinates": [
+            [16.24809, 48.08611], 
+            [16.241739, 48.090788]
+          ]
+      },
+      "properties": {
+        "name": "30. Mai 1907"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          16.24809, 48.08611
+        ]
+      },
+      "properties": {
+        "title": "Hinterbrühl",
+        "timestamp": ["1907-05-30"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Hinterbr%C3%BChl"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          16.241739, 48.090788
+        ]
+      },
+      "properties": {
+        "title": "Hotel Radetzky",
+        "timestamp": ["1907-05-30"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      }
+  ]
+}

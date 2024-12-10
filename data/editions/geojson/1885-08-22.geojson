@@ -1,0 +1,123 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature", 
+      "geometry": {
+        "type": "LineString", 
+        "coordinates": [
+            [8.74512, 46.00185], 
+            [8.52676, 45.89556], 
+            [8.85927, 45.97167], 
+            [8.96004, 46.01008], 
+            [9.23907, 46.02075], 
+            [9.12921, 46.03714], 
+            [8.79953, 46.17086]
+          ]
+      },
+      "properties": {
+        "name": "22. August 1885"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.79953, 46.17086
+        ]
+      },
+      "properties": {
+        "title": "Locarno",
+        "timestamp": ["1885-08-22"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Locarno"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.52676, 45.89556
+        ]
+      },
+      "properties": {
+        "title": "Isola Bella",
+        "timestamp": ["1885-08-22"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.74512, 46.00185
+        ]
+      },
+      "properties": {
+        "title": "Luino",
+        "timestamp": ["1885-08-22"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.96004, 46.01008
+        ]
+      },
+      "properties": {
+        "title": "Lugano",
+        "timestamp": ["1885-08-22"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Lugano"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.12921, 46.03714
+        ]
+      },
+      "properties": {
+        "title": "Porlezza",
+        "timestamp": ["1885-08-22"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.23907, 46.02075
+        ]
+      },
+      "properties": {
+        "title": "Menaggio",
+        "timestamp": ["1885-08-22"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.85927, 45.97167
+        ]
+      },
+      "properties": {
+        "title": "Ponte Tresa",
+        "timestamp": ["1885-08-22"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      }
+  ]
+}

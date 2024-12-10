@@ -1,0 +1,79 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature", 
+      "geometry": {
+        "type": "LineString", 
+        "coordinates": [
+            [9.98277778, 53.54], 
+            [10.008484, 53.553694], 
+            [10.01534, 53.57532], 
+            [9.7972, 53.5652]
+          ]
+      },
+      "properties": {
+        "name": "5. Juli 1896"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.008484, 53.553694
+        ]
+      },
+      "properties": {
+        "title": "Hotel zum Kronprinzen [Hamburg]",
+        "timestamp": ["1896-07-05"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.01534, 53.57532
+        ]
+      },
+      "properties": {
+        "title": "Hamburg",
+        "timestamp": ["1896-07-05"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Hamburg"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.7972, 53.5652
+        ]
+      },
+      "properties": {
+        "title": "Blankenese",
+        "timestamp": ["1896-07-05"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Hamburg-Blankenese"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.98277778, 53.54
+        ]
+      },
+      "properties": {
+        "title": "Hamburger Hafen",
+        "timestamp": ["1896-07-05"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Hamburger_Hafen"
+      }
+      }
+  ]
+}

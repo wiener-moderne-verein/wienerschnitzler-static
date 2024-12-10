@@ -1,0 +1,64 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature", 
+      "geometry": {
+        "type": "LineString", 
+        "coordinates": [
+            [11.564675, 48.142331], 
+            [11.57549, 48.13743], 
+            [11.591944, 48.152778]
+          ]
+      },
+      "properties": {
+        "name": "28. August 1896"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.57549, 48.13743
+        ]
+      },
+      "properties": {
+        "title": "München",
+        "timestamp": ["1896-08-28"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/M%C3%BCnchen"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.564675, 48.142331
+        ]
+      },
+      "properties": {
+        "title": "Glaspalast",
+        "timestamp": ["1896-08-28"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Glaspalast_(M%C3%BCnchen)"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.591944, 48.152778
+        ]
+      },
+      "properties": {
+        "title": "Englischer Garten [München]",
+        "timestamp": ["1896-08-28"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Englischer_Garten_(M%C3%BCnchen)"
+      }
+      }
+  ]
+}

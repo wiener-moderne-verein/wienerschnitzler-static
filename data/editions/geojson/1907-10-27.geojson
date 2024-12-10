@@ -1,0 +1,48 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature", 
+      "geometry": {
+        "type": "LineString", 
+        "coordinates": [
+            [15.8241, 47.64224], 
+            [16.296768550115, 48.248935842869]
+          ]
+      },
+      "properties": {
+        "name": "27. Oktober 1907"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          15.8241, 47.64224
+        ]
+      },
+      "properties": {
+        "title": "Semmering",
+        "timestamp": ["1907-10-27"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Semmering_(Nieder%C3%B6sterreich)"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          16.296768550115, 48.248935842869
+        ]
+      },
+      "properties": {
+        "title": "Sommerhaidenweg",
+        "timestamp": ["1907-10-27"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Sommerhaidenweg"
+      }
+      }
+  ]
+}

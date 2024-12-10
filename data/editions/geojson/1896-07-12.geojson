@@ -1,0 +1,76 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature", 
+      "geometry": {
+        "type": "LineString", 
+        "coordinates": [
+            [6.41474, 60.62869], 
+            [6.83795, 60.87773], 
+            [7.02868, 60.98268], 
+            [6.6799, 60.83626]
+          ]
+      },
+      "properties": {
+        "name": "12. Juli 1896"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.41474, 60.62869
+        ]
+      },
+      "properties": {
+        "title": "Voss",
+        "timestamp": ["1896-07-12"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.6799, 60.83626
+        ]
+      },
+      "properties": {
+        "title": "Stalheim",
+        "timestamp": ["1896-07-12"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.83795, 60.87773
+        ]
+      },
+      "properties": {
+        "title": "Gudvangen",
+        "timestamp": ["1896-07-12"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          7.02868, 60.98268
+        ]
+      },
+      "properties": {
+        "title": "Nærøyfjord",
+        "timestamp": ["1896-07-12"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      }
+  ]
+}

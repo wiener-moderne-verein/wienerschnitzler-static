@@ -1,0 +1,79 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature", 
+      "geometry": {
+        "type": "LineString", 
+        "coordinates": [
+            [12.52447, 41.84867], 
+            [12.51133, 41.89193], 
+            [12.476944444444445, 41.89861111111111], 
+            [12.454347, 41.906456]
+          ]
+      },
+      "properties": {
+        "name": "2. April 1901"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.51133, 41.89193
+        ]
+      },
+      "properties": {
+        "title": "Rom",
+        "timestamp": ["1901-04-02"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Rom"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.476944444444445, 41.89861111111111
+        ]
+      },
+      "properties": {
+        "title": "Pantheon",
+        "timestamp": ["1901-04-02"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Pantheon_(Rom)"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.454347, 41.906456
+        ]
+      },
+      "properties": {
+        "title": "Vatikanische Museen",
+        "timestamp": ["1901-04-02"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Vatikanische_Museen"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.52447, 41.84867
+        ]
+      },
+      "properties": {
+        "title": "Via Appia",
+        "timestamp": ["1901-04-02"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      }
+  ]
+}

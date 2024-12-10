@@ -1,0 +1,31 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature", 
+      "geometry": {
+        "type": "LineString", 
+        "coordinates": [
+            [10.56679, 47.12575]
+          ]
+      },
+      "properties": {
+        "name": "29. Juni 1901"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.56679, 47.12575
+        ]
+      },
+      "properties": {
+        "title": "Landeck",
+        "timestamp": ["1901-06-29"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      }
+  ]
+}

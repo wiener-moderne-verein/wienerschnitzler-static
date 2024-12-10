@@ -1,0 +1,78 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature", 
+      "geometry": {
+        "type": "LineString", 
+        "coordinates": [
+            [12.13903, 46.5369], 
+            [12.20259, 46.55672], 
+            [12.25275, 46.58108], 
+            [12.21722, 46.62111]
+          ]
+      },
+      "properties": {
+        "name": "6. August 1899"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.21722, 46.62111
+        ]
+      },
+      "properties": {
+        "title": "Carbonin",
+        "timestamp": ["1899-08-06"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Schluderbach"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.13903, 46.5369
+        ]
+      },
+      "properties": {
+        "title": "Cortina d’Ampezzo",
+        "timestamp": ["1899-08-06"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Cortina_d%E2%80%99Ampezzo"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.25275, 46.58108
+        ]
+      },
+      "properties": {
+        "title": "Misurina",
+        "timestamp": ["1899-08-06"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.20259, 46.55672
+        ]
+      },
+      "properties": {
+        "title": "Passo Tre Croci",
+        "timestamp": ["1899-08-06"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      }
+  ]
+}

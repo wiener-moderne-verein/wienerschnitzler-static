@@ -10,10 +10,12 @@
     <xsl:import href="partials/html_head.xsl"/>
     <xsl:import href="partials/html_footer.xsl"/>
     <xsl:import href="partials/place.xsl"/>
-    
+   
+   <xsl:param name="distinctPlaces" select="document('../data/editions/xml/wienerschnitzler_distinctPlaces.xml')/tei:TEI/tei:text/tei:body/tei:listPlace" as="node()"/>
+   
     <xsl:template match="/">
         <xsl:variable name="doc_title">
-            <xsl:value-of select=".//tei:titleStmt/tei:title[1]/text()"/>
+            <xsl:text>Verzeichnis der Aufenthaltsorte Schnitzlers</xsl:text>
         </xsl:variable>
         <html class="h-100">
             
@@ -44,7 +46,7 @@
                             <thead>
                                 <tr>
                                     <th scope="col">Ortsname</th>
-                                    <th scope="col">Erwähnungen</th>
+                                    <th scope="col">Aufenthalte</th>
                                     <th scope="col">lat</th>
                                     <th scope="col">lng</th>
                                     <th scope="col">linkToEntity</th>
@@ -60,7 +62,8 @@
                                             <xsl:value-of select="./tei:placeName[1]/text()"/>
                                         </td>
                                         <td>
-                                            <xsl:value-of select="count(.//tei:note[@type='mentions'])"/>
+                                            
+                                            <xsl:value-of select="$distinctPlaces/tei:place[@xml:id = $id]/tei:listEvent/count(tei:event)"/>
                                         </td>
                                         <td>
                                             <xsl:choose>
@@ -91,7 +94,7 @@
                 <script src="js/make_map_and_table.js"/>
                 
                 <script>
-                    build_map_and_table(map_cfg, table_cfg, wms_cfg=null, tms_cfg=tms_cfg);
+                    build_map_and_table(map_cfg, table_cfg, wms_cfg=null, tms_cfg=null);
                 </script>
             </body>
         </html>
@@ -114,9 +117,7 @@
                                     <xsl:value-of select="$name"/>
                                 </h1>
                                 <xsl:call-template name="place_detail"/>
-                                <xsl:if test="./tei:location/tei:geo">
-                                <div id="map_detail"/>
-                                </xsl:if>
+                                
                             </div>
                         </main>
                         <xsl:call-template name="html_footer"/>

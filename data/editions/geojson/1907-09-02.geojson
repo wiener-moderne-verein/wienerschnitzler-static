@@ -1,0 +1,31 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature", 
+      "geometry": {
+        "type": "LineString", 
+        "coordinates": [
+            [11.22485, 46.67159]
+          ]
+      },
+      "properties": {
+        "name": "2. September 1907"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.22485, 46.67159
+        ]
+      },
+      "properties": {
+        "title": "Naiftal",
+        "timestamp": ["1907-09-02"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      }
+  ]
+}

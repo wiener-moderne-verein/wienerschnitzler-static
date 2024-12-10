@@ -1,0 +1,46 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature", 
+      "geometry": {
+        "type": "LineString", 
+        "coordinates": [
+            [11.29326, 47.94602], 
+            [11.561467767769052, 48.13907960520144]
+          ]
+      },
+      "properties": {
+        "name": "6. August 1922"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.29326, 47.94602
+        ]
+      },
+      "properties": {
+        "title": "Feldafing",
+        "timestamp": ["1922-08-06"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.561467767769052, 48.13907960520144
+        ]
+      },
+      "properties": {
+        "title": "Hotel Rheinischer Hof München",
+        "timestamp": ["1922-08-06"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      }
+  ]
+}

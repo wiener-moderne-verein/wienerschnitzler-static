@@ -1,0 +1,76 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature", 
+      "geometry": {
+        "type": "LineString", 
+        "coordinates": [
+            [9.82738, 46.49103], 
+            [9.84327, 46.49937], 
+            [9.835247, 46.501438], 
+            [9.8188, 46.50812]
+          ]
+      },
+      "properties": {
+        "name": "29. Juli 1930"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.84327, 46.49937
+        ]
+      },
+      "properties": {
+        "title": "Sankt Moritz",
+        "timestamp": ["1930-07-29"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.835247, 46.501438
+        ]
+      },
+      "properties": {
+        "title": "Chantarella",
+        "timestamp": ["1930-07-29"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.8188, 46.50812
+        ]
+      },
+      "properties": {
+        "title": "Corviglia",
+        "timestamp": ["1930-07-29"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.82738, 46.49103
+        ]
+      },
+      "properties": {
+        "title": "Alpina",
+        "timestamp": ["1930-07-29"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      }
+  ]
+}

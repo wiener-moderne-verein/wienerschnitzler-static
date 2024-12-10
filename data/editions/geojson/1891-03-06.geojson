@@ -1,0 +1,47 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature", 
+      "geometry": {
+        "type": "LineString", 
+        "coordinates": [
+            [13.04532, 47.80067], 
+            [13.042778, 47.802778]
+          ]
+      },
+      "properties": {
+        "name": "6. März 1891"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.04532, 47.80067
+        ]
+      },
+      "properties": {
+        "title": "Salzburg",
+        "timestamp": ["1891-03-06"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Salzburg"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.042778, 47.802778
+        ]
+      },
+      "properties": {
+        "title": "Salzburger Landestheater",
+        "timestamp": ["1891-03-06"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      }
+  ]
+}

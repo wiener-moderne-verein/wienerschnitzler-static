@@ -1,0 +1,32 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature", 
+      "geometry": {
+        "type": "LineString", 
+        "coordinates": [
+            [4.29861, 52.07667]
+          ]
+      },
+      "properties": {
+        "name": "3. Mai 1922"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.29861, 52.07667
+        ]
+      },
+      "properties": {
+        "title": "Den Haag",
+        "timestamp": ["1922-05-03"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Den_Haag"
+      }
+      }
+  ]
+}

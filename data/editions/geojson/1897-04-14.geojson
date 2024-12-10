@@ -1,0 +1,93 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature", 
+      "geometry": {
+        "type": "LineString", 
+        "coordinates": [
+            [2.3282229279027873, 48.866009148511814], 
+            [2.3488, 48.85341], 
+            [2.340682, 48.876305], 
+            [2.3444, 48.8925], 
+            [2.3377777777778, 48.881944444444]
+          ]
+      },
+      "properties": {
+        "name": "14. April 1897"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.3488, 48.85341
+        ]
+      },
+      "properties": {
+        "title": "Paris",
+        "timestamp": ["1897-04-14"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Paris"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.3282229279027873, 48.866009148511814
+        ]
+      },
+      "properties": {
+        "title": "Hotel Castiglione",
+        "timestamp": ["1897-04-14"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.340682, 48.876305
+        ]
+      },
+      "properties": {
+        "title": "rue de Maubeuge",
+        "timestamp": ["1897-04-14"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.3377777777778, 48.881944444444
+        ]
+      },
+      "properties": {
+        "title": "Café de la Nouvelle Athènes",
+        "timestamp": ["1897-04-14"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Caf%C3%A9_de_la_Nouvelle_Ath%C3%A8nes"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.3444, 48.8925
+        ]
+      },
+      "properties": {
+        "title": "18. arrondissement [Buttes-Montmartre]",
+        "timestamp": ["1897-04-14"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      }
+  ]
+}

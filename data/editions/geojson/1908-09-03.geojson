@@ -1,0 +1,62 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature", 
+      "geometry": {
+        "type": "LineString", 
+        "coordinates": [
+            [11.8, 46.26667], 
+            [11.36266523227271, 46.50083719693118], 
+            [11.33982, 46.49067]
+          ]
+      },
+      "properties": {
+        "name": "3. September 1908"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.33982, 46.49067
+        ]
+      },
+      "properties": {
+        "title": "Bozen",
+        "timestamp": ["1908-09-03"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Bozen"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.8, 46.26667
+        ]
+      },
+      "properties": {
+        "title": "San Martino di Castrozza",
+        "timestamp": ["1908-09-03"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          11.36266523227271, 46.50083719693118
+        ]
+      },
+      "properties": {
+        "title": "Hotel Stiegl",
+        "timestamp": ["1908-09-03"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      }
+  ]
+}

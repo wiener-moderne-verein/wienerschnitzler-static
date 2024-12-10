@@ -1,0 +1,32 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature", 
+      "geometry": {
+        "type": "LineString", 
+        "coordinates": [
+            [23.71622, 37.97945]
+          ]
+      },
+      "properties": {
+        "name": "19. April 1928"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.71622, 37.97945
+        ]
+      },
+      "properties": {
+        "title": "Athen",
+        "timestamp": ["1928-04-19"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Athen"
+      }
+      }
+  ]
+}

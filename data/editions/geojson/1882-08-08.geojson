@@ -1,0 +1,92 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature", 
+      "geometry": {
+        "type": "LineString", 
+        "coordinates": [
+            [10.07889, 46.29313], 
+            [10.08814, 46.30994], 
+            [10.05823, 46.32441], 
+            [9.90126, 46.4955], 
+            [9.17114, 46.49714]
+          ]
+      },
+      "properties": {
+        "name": "8. August 1882"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.90126, 46.4955
+        ]
+      },
+      "properties": {
+        "title": "Pontresina",
+        "timestamp": ["1882-08-08"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.08814, 46.30994
+        ]
+      },
+      "properties": {
+        "title": "Bernina [Bezirk]",
+        "timestamp": ["1882-08-08"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.05823, 46.32441
+        ]
+      },
+      "properties": {
+        "title": "Poschiavo",
+        "timestamp": ["1882-08-08"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.07889, 46.29313
+        ]
+      },
+      "properties": {
+        "title": "Le Prese",
+        "timestamp": ["1882-08-08"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Le_Prese"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.17114, 46.49714
+        ]
+      },
+      "properties": {
+        "title": "San Bernardino Pass",
+        "timestamp": ["1882-08-08"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      }
+  ]
+}

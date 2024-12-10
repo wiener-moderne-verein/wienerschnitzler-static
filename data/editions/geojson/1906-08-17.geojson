@@ -1,0 +1,63 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature", 
+      "geometry": {
+        "type": "LineString", 
+        "coordinates": [
+            [10.725, 50.705556], 
+            [10.9199, 50.6912], 
+            [10.31522, 50.9807]
+          ]
+      },
+      "properties": {
+        "name": "17. August 1906"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.9199, 50.6912
+        ]
+      },
+      "properties": {
+        "title": "Ilmenau",
+        "timestamp": ["1906-08-17"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.725, 50.705556
+        ]
+      },
+      "properties": {
+        "title": "Oberhof [Thüringen]",
+        "timestamp": ["1906-08-17"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Oberhof"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.31522, 50.9807
+        ]
+      },
+      "properties": {
+        "title": "Eisenach",
+        "timestamp": ["1906-08-17"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Eisenach"
+      }
+      }
+  ]
+}

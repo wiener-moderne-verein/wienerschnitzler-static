@@ -1,0 +1,63 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature", 
+      "geometry": {
+        "type": "LineString", 
+        "coordinates": [
+            [8.61554, 46.98666], 
+            [8.60538, 46.9936], 
+            [8.30635, 47.05048]
+          ]
+      },
+      "properties": {
+        "name": "20. August 1885"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.30635, 47.05048
+        ]
+      },
+      "properties": {
+        "title": "Luzern",
+        "timestamp": ["1885-08-20"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Luzern"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.60538, 46.9936
+        ]
+      },
+      "properties": {
+        "title": "Brunnen",
+        "timestamp": ["1885-08-20"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Brunnen_SZ"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.61554, 46.98666
+        ]
+      },
+      "properties": {
+        "title": "Axenstein",
+        "timestamp": ["1885-08-20"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      }
+  ]
+}

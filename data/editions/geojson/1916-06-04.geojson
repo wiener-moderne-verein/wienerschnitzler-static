@@ -1,0 +1,48 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature", 
+      "geometry": {
+        "type": "LineString", 
+        "coordinates": [
+            [14.28333, 48.3], 
+            [14.287495, 48.307291]
+          ]
+      },
+      "properties": {
+        "name": "4. Juni 1916"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          14.28333, 48.3
+        ]
+      },
+      "properties": {
+        "title": "Linz",
+        "timestamp": ["1916-06-04"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Linz"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          14.287495, 48.307291
+        ]
+      },
+      "properties": {
+        "title": "Hotel Weinzinger",
+        "timestamp": ["1916-06-04"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
+        "wikipedia": "https://de.wikipedia.org/wiki/Hotel_Weinzinger"
+      }
+      }
+  ]
+}
