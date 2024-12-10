@@ -14,25 +14,41 @@
     <xsl:import href="./partials/one_time_alert.xsl"/>
 
     <xsl:template match="/">
-        <xsl:variable name="doc_title">
-            <xsl:value-of select='"wienerschnitzler"'/>
-        </xsl:variable>
         <html class="h-100">
             <head>
-                <xsl:call-template name="html_head">
-                    <xsl:with-param name="html_title" select="$doc_title"></xsl:with-param>
-                </xsl:call-template>
-            </head>            
-            <body class="d-flex flex-column h-100">
-                <xsl:call-template name="nav_bar"/>
-                <main class="flex-shrink-0 flex-grow-1">
-                    <div class="container">
-                        <xsl:call-template name="one_time_alert"/>
-                        <h1><xsl:value-of select="$project_short_title"/></h1>
-                        <h2><xsl:value-of select="$project_title"/></h2>
+                <meta charset="UTF-8"/>
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+                        <title>Arthur Schnitzler</title>
+                        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+            </head>
+            <body>
+                <!-- Navbar -->
+                <div id="navbar"></div>
+                
+                <main class="container py-5">
+                    <div class="row align-items-center">
+                        <div class="col-md-6">
+                            <h1>Wiener Schnitzler – Schnitzlers Wien</h1>
+                            <p class="lead">Arthur Schnitzler kam 1862 in Wien auf die Welt und er starb 1931 in der selben Stadt,
+                                in der die meisten seiner literarischen Werke angesiedelt sind. Wien
+                                verließ er nur für Reisen und Sommeraufenthalte. Ein einziges Mal blieb er länger als zwei Monate fort.
+                                Durch sein <a href="https://schnitzler-tagebuch.acdh.oeaw.ac.at/" target="_blank">Tagebuch</a>,
+                                seine <a href="https://schnitzler-briefe.acdh.oeaw.ac.at/" target="_blank">Korrespondenz</a> und andere Dokumente können wir über 
+                                35.000 Aufenthalte an über 2.500 Orten bestimmen. So wird an ihm beispielhaft erfassbar, was
+                                derzeit für keine Zeitgenossin und keinen Zeitgenossen vorliegt: Der geographische Raum, 
+                                in dem er sich bewegte, Orte, die er kannte, die ihm wichtig waren. Und im Gegenzug auch jene 
+                                Häuser, Straßen, 
+                                Bezirke, Städte und Länder, die er nicht besuchte.
+                            </p>
+                        </div>
+                        <div class="col-md-6">
+                            <img src="./images/schnitzler-index.jpg" alt="Arthur Schnitzler als digitalen Avatar" class="img-fluid rounded"/>
+                        </div>
                     </div>
                 </main>
-                <xsl:call-template name="html_footer"/>
+                
+                <!-- Footer -->
+                <div id="footer"></div>
             </body>
         </html>
     </xsl:template>

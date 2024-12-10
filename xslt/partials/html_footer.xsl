@@ -6,12 +6,22 @@
     exclude-result-prefixes="#all"
     version="2.0">
     <xsl:template match="/" name="html_footer">
-        <footer class="py-3 bg-body-tertiary">
-            <div class="text-center">
-                <a href="{$github_url}">
-                    <i aria-hidden="true" class="bi bi-github fs-2"></i>
-                    <span class="visually-hidden">GitHub repo</span>
-                </a>
+        <footer class="text-center py-4">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 text-center">
+                        <p>Ein Projekt von:</p>
+                        <img src="./images/wmv-logo-white.jpg" alt="Logo Wiener Moderne Verein" class="img-fluid my-2" width="200px"/>
+                            
+                            <p>Wiener Moderne Verein<br/>Hebragasse 4/19<br/>1090 Wien</p>
+                    </div>
+                    <div class="col-md-6 text-center">
+                        <img src="./images/Stadt_Wien_Kultur_pos_rgb.jpg" alt="Logo Stadt Wien Kultur" class="img-fluid my-2" width="200px"
+                            />
+                            <p>Gefördert von der Stadt
+                                Wien Kultur (2024–2025)</p>
+                    </div>
+                </div>
             </div>
         </footer>
         <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>

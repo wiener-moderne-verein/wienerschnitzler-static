@@ -28,30 +28,27 @@
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="toc.html">Editionseinheiten</a>
+                                <a class="dropdown-item" href="listplace.html">Orte</a>
                             </li>
 
                             <li class="nav-item dropdown disabled">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Register</a>
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Zeiträume</a>
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <a class="dropdown-item" href="listperson.html">Personen</a>
+                                        <a class="dropdown-item" href="tag.html">Einzelner Tag</a>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="listplace.html">Orte</a>
+                                        <a class="dropdown-item" href="monat.html">Monat</a>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="listorg.html">Organisationen</a>
+                                        <a class="dropdown-item" href="jahr.html">Jahr</a>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="listbibl.html">Werke</a>
+                                        <a class="dropdown-item" href="dekade.html">Dekade</a>
                                     </li>
                                 </ul>
                             </li>
 
-                            <li class="nav-item">
-                                <a title="Suche" class="nav-link" href="search.html">Suche</a>
-                            </li>
                         </ul>
                     </div>
                 </div>
