@@ -1,6 +1,11 @@
+
 /* needed for interactive map in listplace.xsl */
 div#map {
     height: 50vh;
+    width: 90%; /* Maximale Breite */
+  max-width: 90%; /* Sicherstellen, dass es nicht überschreitet */
+  margin: 0; /* Kein Abstand nach außen */
+  padding: 0; /* Kein Innenabstand */
 }
 
 /** Match bootstrap navlink focus outline color. */
@@ -30,36 +35,39 @@ h1 {
     border: 1px solid #ccc;
 }
 
-  /* Carousel Container */
-    #storyCarousel {
-      width: 90vw;
-      height: 70vh;
-      margin: 0 auto; /* Center horizontally */
-    }
-
-    /* Ensure each Slide fills the Carousel */
-    .carousel-item {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center; /* Center content vertically */
-      justify-content: center; /* Center content horizontally */
-      text-align: center;
-      color: #333;
-    }
-
-    /* Background Colors for Slides */
-    .slide-1 {
-      background-color: #ffcccc; /* Light Red */
-    }
-    .slide-2 {
-      background-color: #cce5ff; /* Light Blue */
-    }
-    .slide-3 {
-      background-color: #d4edda; /* Light Green */
-    }
-    
-    .carousel-item div {
-  padding: 0;
-  margin: 0;
+/* OpenStreetMap  */
+ .osm-link {
+  font-size: 0.85rem; /* Kleine Schriftgröße */
+  color: gray; /* Dezente Farbe */
+  text-decoration: none; /* Entfernt Unterstreichung */
+  float: right; /* Rechtsbündig */
+  margin-top: 5px; /* Abstand nach oben */
+  margin-right: 10px; /* Abstand nach rechts */
 }
+
+  .osm-link:hover {
+    text-decoration: underline; /* Unterstreichung bei Hover */
+    color: black; /* Dunklere Farbe beim Hover */
+  }
+  
+  /* Accordion ohne Rahmen */
+
+.accordion {
+ --bs-accordion-btn-bg: rgba(4, 83, 68, 0.1); /* 10% Deckkraft */
+--bs-accordion-active-bg: rgba(4, 83, 68, 0.1); /* 10% Deckkraft */
+        }
+
+
+.rounded-pill {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-right:10px;
+    transition: border-width 0.3s ease, transform 0.3s ease; /* Animation */
+}
+
+.rounded-pill:hover {
+    transform: scale(1.05); /* Buttons leicht vergrößern */
+}
+
+
+ 
