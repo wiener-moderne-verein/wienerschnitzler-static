@@ -14,7 +14,3 @@
             console.error(`Error loading partial: ${filePath}`, error);
         });
 }
-
-// Partials laden
-loadPartial('#navbar', './partials/html_navbar.html');
-loadPartial('#footer', './partials/html_footer.html');

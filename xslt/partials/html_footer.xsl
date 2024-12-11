@@ -8,22 +8,21 @@
     <xsl:template match="/" name="html_footer">
         <footer class="text-center py-4">
             <div class="container">
-                <div class="row">
-                    <div class="col-md-6 text-center">
+                <div class="row justify-content-between">
+                    <div class="col-md-5 text-start mb-4">
                         <p>Ein Projekt von:</p>
                         <img src="./images/wmv-logo-white.jpg" alt="Logo Wiener Moderne Verein" class="img-fluid my-2" width="200px"/>
-                            
-                            <p>Wiener Moderne Verein<br/>Hebragasse 4/19<br/>1090 Wien</p>
+                        <p>Wiener Moderne Verein</p>
                     </div>
-                    <div class="col-md-6 text-center">
-                        <img src="./images/Stadt_Wien_Kultur_pos_rgb.jpg" alt="Logo Stadt Wien Kultur" class="img-fluid my-2" width="200px"
-                            />
-                            <p>Gefördert von der Stadt
-                                Wien Kultur (2024–2025)</p>
+                    <div class="col-md-5 text-end mb-4">
+                        <img src="./images/Stadt_Wien_Kultur_pos_rgb.jpg" alt="Logo Stadt Wien Kultur" class="img-fluid my-2" width="200px"/>
+                        <p>Gefördert von der Stadt Wien Kultur (2024–2025)</p>
                     </div>
                 </div>
             </div>
         </footer>
+        
+        
         <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
         
