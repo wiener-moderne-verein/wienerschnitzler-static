@@ -9,7 +9,7 @@ function clearGeoJsonLayers() {
 
 // Funktion zum Laden von GeoJSON basierend auf einem Datum
 function loadGeoJsonByDate(date) {
-    const url = `https://raw.githubusercontent.com/wiener-moderne-verein/wienerschnitzler-data/main/editions/geojson/${date}.geojson`;
+    const url = `https://raw.githubusercontent.com/wiener-moderne-verein/wienerschnitzler-data/main/data//editions/geojson/${date}.geojson`;
 
     // Entferne vorherige Layer
     clearGeoJsonLayers();
@@ -26,7 +26,7 @@ function loadGeoJsonByDate(date) {
             const newLayer = L.geoJSON(data, {
                 style: function (feature) {
                     return {
-                        color: '#FF3B30', // Linienfarbe
+                        color: '#FF0000', // Linienfarbe
                         weight: 2, // Dicke der Linie
                         opacity: 1 // Deckkraft der Linie
                     };
@@ -34,8 +34,8 @@ function loadGeoJsonByDate(date) {
                 pointToLayer: function (feature, latlng) {
                     return L.circleMarker(latlng, {
                         radius: 5,
-                        color: '#007BFF', // Randfarbe
-                        fillColor: '#FFFF00', // Füllfarbe
+                        color: '#FF0000', // Randfarbe
+                        fillColor: '#e6c828', // Füllfarbe
                         fillOpacity: 1, // Füllungsdeckkraft (1 = vollständig undurchsichtig)
                         weight: 2 // Optional: Randgewicht auf 0 setzen, um nur den Punkt zu sehen
                     });
@@ -173,7 +173,7 @@ function setSchnitzlerChronikLink() {
     
     // Wenn kein Datum vorhanden ist, setze den Standardwert '1999-01-01'
     if (!date) {
-        date = '1999-01-01';
+        date = '1895-01-23';
     }
     
     // Den Button holen
@@ -194,4 +194,32 @@ setSchnitzlerChronikLink();
 // Überwache Änderungen am URL-Fragment, um den Link bei Änderungen der URL zu aktualisieren
 window.addEventListener('hashchange', setSchnitzlerChronikLink);
  
-
+ // Toggle intro text visibility
+                    document.getElementById('toggle-intro').addEventListener('click', function () {
+                    const header = document.querySelector('header p');
+                    const button = this;
+                    
+                    if (header.style.display === 'none') {
+                    header.style.display = 'block';
+                    button.textContent = 'X';
+                    } else {
+                    header.style.display = 'none';
+                    button.textContent = '+';
+                    }
+                    });
+                    
+                    function loadPartial(selector, filePath) {
+                    fetch(filePath)
+                    .then(response => {
+                    if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                    }
+                    return response.text();
+                    })
+                    .then(data => {
+                    document.querySelector(selector).innerHTML = data;
+                    })
+                    .catch(error => {
+                    console.error(`Error loading partial: ${filePath}`, error);
+                    });
+                    }

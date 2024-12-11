@@ -9,7 +9,7 @@
         select="document('../data/editions/xml/wienerschnitzler_distinctPlaces.xml')/tei:TEI/tei:text/tei:body/tei:listPlace"
         as="node()"/>
     <xsl:template match="tei:place" name="place_detail">
-        <div class="container-fluid" style="margin-bottom:35px; margin-top:50px;">
+        <div style="margin-bottom:35px; margin-top:50px;">
             <!--<div class="d-flex justify-content-around">
                 <!-\- Button zum Kartenbereich -\->
                 <a href="#accordionMap" class="btn btn-secondary">
@@ -29,7 +29,7 @@
         <xsl:variable name="current-xml-id" select="@xml:id" as="xs:string"/>
         <xsl:choose>
             <xsl:when test="./tei:location[@type = 'coords']/tei:geo">
-                <div class="accordion w-100" id="accordionMap" style="margin-bottom:35px;">
+                <div class="accordion" id="accordionMap" style="margin-bottom:35px;">
                     <div class="accordion-item">
                         <h2 class="accordion-header bg-default" id="headingMap">
                             <button class="accordion-button" id="toggleMapButton" type="button"
@@ -39,19 +39,19 @@
                         <xsl:if
                             test="key('only-relevant-uris', tei:idno/@subtype, $relevant-uris)[1]">
                             <div class="container w-75 mx-auto mt-2">
-                            <p class="text-center">
-                                <xsl:variable name="idnos-of-current" as="node()">
-                                    <xsl:element name="nodeset_place">
-                                        <xsl:for-each select="tei:idno">
-                                            <xsl:copy-of select="."/>
-                                        </xsl:for-each>
-                                    </xsl:element>
-                                </xsl:variable>
-                                <xsl:call-template name="mam:idnosToLinks">
-                                    <xsl:with-param name="idnos-of-current"
-                                        select="$idnos-of-current"/>
-                                </xsl:call-template>
-                            </p>
+                                <p class="text-center">
+                                    <xsl:variable name="idnos-of-current" as="node()">
+                                        <xsl:element name="nodeset_place">
+                                            <xsl:for-each select="tei:idno">
+                                                <xsl:copy-of select="."/>
+                                            </xsl:for-each>
+                                        </xsl:element>
+                                    </xsl:variable>
+                                    <xsl:call-template name="mam:idnosToLinks">
+                                        <xsl:with-param name="idnos-of-current"
+                                            select="$idnos-of-current"/>
+                                    </xsl:call-template>
+                                </p>
                             </div>
                         </xsl:if>
                         <!-- Karte im Collapse -->
@@ -117,24 +117,14 @@
                                 <tr>
                                     <th> Namensvarianten: </th>
                                     <td>
-                                        <xsl:choose>
-                                            <xsl:when
-                                                test="count(distinct-values(tei:placeName[not(@type = 'legacy-name') and not(@type = 'legacy-name-merge')])) = 2">
-                                                <xsl:value-of
-                                                  select="tei:placeName[not(@type = 'legacy-name') and not(@type = 'legacy-name-merge') and not(. = $placeName1)]"
-                                                />
-                                            </xsl:when>
-                                            <xsl:otherwise>
-                                                <ul>
-                                                  <xsl:for-each
-                                                  select="distinct-values(tei:placeName[not(@type = 'legacy-name') and not(@type = 'legacy-name-merge') and not(. = $placeName1)])">
-                                                  <li>
+                                        <ul>
+                                            <xsl:for-each
+                                                select="distinct-values(tei:placeName[not(@type = 'legacy-name') and not(@type = 'legacy-name-merge') and not(. = $placeName1)])">
+                                                <li>
                                                   <xsl:value-of select="."/>
-                                                  </li>
-                                                  </xsl:for-each>
-                                                </ul>
-                                            </xsl:otherwise>
-                                        </xsl:choose>
+                                                </li>
+                                            </xsl:for-each>
+                                        </ul>
                                     </td>
                                 </tr>
                             </xsl:if>

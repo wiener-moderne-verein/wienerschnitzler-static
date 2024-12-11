@@ -61,7 +61,7 @@ function expandDates(feature) {
 }
 
 // Load and expand GeoJSON data
-fetch('https://raw.githubusercontent.com/wiener-moderne-verein/wienerschnitzler-data/refs/heads/main/editions/geojson/wienerschnitzler_complete_points.geojson')
+fetch('https://raw.githubusercontent.com/wiener-moderne-verein/wienerschnitzler-data/refs/heads/main/data/editions/geojson/wienerschnitzler_complete_points.geojson')
     .then(response => response.json())
     .then(data => {
         var expandedData = {

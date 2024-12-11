@@ -1,17 +1,34 @@
+/* Custom Theme for Bootstrap 5 */
+
+:root {
+    /* Primary colors */
+    --primary: #ff0000;
+    --secondary: #292929;
+    --success: #ff5a64;
+    --info: #aaaafa;
+    --dark: #49274b;
+    --light: #d4c8d4;
+    --danger: #4b4b82;
+    --warning: #910000;
+    --erfolg: #005738;
+}
 
 /* needed for interactive map in listplace.xsl */
-div#map {
+
+#map {
     height: 50vh;
     width: 90%; /* Maximale Breite */
-  max-width: 90%; /* Sicherstellen, dass es nicht überschreitet */
-  margin: 0; /* Kein Abstand nach außen */
-  padding: 0; /* Kein Innenabstand */
+    max-width: 90%; /* Sicherstellen, dass es nicht überschreitet */
+    margin: 0; /* Kein Abstand nach außen */
+    padding: 0; /* Kein Innenabstand */
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /** Match bootstrap navlink focus outline color. */
 :focus-visible {
     outline: 0;
-    box-shadow: 0 0 0 .25rem rgba(13,110,253,.25);
+    box-shadow: 0 0 0 .25rem rgba(13, 110, 253, .25);
 }
 
 body {
@@ -28,40 +45,33 @@ h1 {
     text-align: center;
 }
 
-#map {
-    width: 90vw;
-    height: 70vh;
-    margin-top: 20px;
-    border: 1px solid #ccc;
-}
-
 /* OpenStreetMap  */
- .osm-link {
-  font-size: 0.85rem; /* Kleine Schriftgröße */
-  color: gray; /* Dezente Farbe */
-  text-decoration: none; /* Entfernt Unterstreichung */
-  float: right; /* Rechtsbündig */
-  margin-top: 5px; /* Abstand nach oben */
-  margin-right: 10px; /* Abstand nach rechts */
+.osm-link {
+    font-size: 0.85rem; /* Kleine Schriftgröße */
+    color: gray; /* Dezente Farbe */
+    text-decoration: none; /* Entfernt Unterstreichung */
+    float: right; /* Rechtsbündig */
+    margin-top: 5px; /* Abstand nach oben */
+    margin-right: 10px; /* Abstand nach rechts */
 }
 
-  .osm-link:hover {
+.osm-link:hover {
     text-decoration: underline; /* Unterstreichung bei Hover */
     color: black; /* Dunklere Farbe beim Hover */
-  }
-  
-  /* Accordion ohne Rahmen */
+}
+
+/* Accordion ohne Rahmen */
 
 .accordion {
- --bs-accordion-btn-bg: rgba(4, 83, 68, 0.1); /* 10% Deckkraft */
---bs-accordion-active-bg: rgba(4, 83, 68, 0.1); /* 10% Deckkraft */
-        }
+    --bs-accordion-btn-bg: rgba(4, 83, 68, 0.1); /* 10% Deckkraft */
+    --bs-accordion-active-bg: rgba(4, 83, 68, 0.1); /* 10% Deckkraft */
+}
 
 
 .rounded-pill {
     margin-top: 5px;
     margin-bottom: 5px;
-    margin-right:10px;
+    margin-right: 10px;
     transition: border-width 0.3s ease, transform 0.3s ease; /* Animation */
 }
 
@@ -70,4 +80,52 @@ h1 {
 }
 
 
- 
+/* Dropdown Hintergrundfarbe  */
+.dropdown-menu {
+    background-color: white;
+}
+
+/* Dropdown-Items Textfarbe schwarz */
+.dropdown-item {
+    color: black; /*  Schwarz */
+}
+
+/* Hover-Zustand: Hintergrundfarbe hellrot, Text bleibt schwarz */
+.dropdown-item:hover {
+    background-color: #e6e5fe;
+    color: #292929 /* Text bleibt schwarz */
+}
+
+/* Active Dropdown-Item */
+.dropdown-item.active,
+.dropdown-item:active {
+    background-color: #e6e5fe;
+    color: #292929 /* Text bleibt schwarz */
+}
+
+#schnitzler-chronik-btn {
+    background-color: #C67F53;
+    color: white;
+    position: fixed;
+    top: 50px; /* Abstand von oben */
+    right: 50px; /* Abstand von rechts */
+    width: 150px; /* Größe des Buttons */
+    height: 50px;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease; /* Übergang für alle Eigenschaften */
+    transform: rotate(15deg); /* Button drehen */
+}
+
+#schnitzler-chronik-btn:hover {
+    color: white; /* Schriftfarbe bleibt weiß */
+    background-color: #a55c47; /* Optionale Änderung der Hintergrundfarbe */
+    transform: rotate(15deg) scale(1.1); /* Leichtes Vergrößern (110%) */
+}
+
+
