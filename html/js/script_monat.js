@@ -1,131 +1,155 @@
-// Create the map and set the initial view
-var mapDaily = L.map('map', {
-    center: [48.2082, 16.3738],
-    zoom: 10,
-    timeDimension: true,
-    timeDimensionControl: true,
-    timeDimensionControlOptions: {
-        position: 'bottomleft',
-        autoPlay: true,
-        backwardButton: true,
-        forwardButton: true,
-        timeSlider: true,
-        speedSlider: false,
-        loopButton: false,
-        timeFormat: "YYYY-MM",
-        playerOptions: {
-            transitionTime: 1000,
-            loop: false,
-            startOver: false
+// Array zur Verwaltung der GeoJSON-Layer
+const geoJsonLayers =[];
+
+// Funktion zum Entfernen aller GeoJSON-Layer
+function clearGeoJsonLayers() {
+    geoJsonLayers.forEach(layer => map.removeLayer(layer));
+    geoJsonLayers.length = 0;
+    // Array leeren
+}
+
+// Funktion zum Laden von GeoJSON basierend auf einem Monat
+function loadGeoJsonByMonth(month) {
+    const url = `https://raw.githubusercontent.com/wiener-moderne-verein/wienerschnitzler-data/main/data/editions/geojson/${month}.geojson`;
+    
+    // Entferne vorherige Layer
+    clearGeoJsonLayers();
+    
+    // GeoJSON laden und anzeigen
+    fetch(url).then(response => {
+        if (! response.ok) {
+            throw new Error(`GeoJSON für ${month} nicht gefunden.`);
         }
-    },
-    timeDimensionOptions: {
-        timeInterval: "1869-01-01/1931-12-31",
-        period: "P1M",
-        currentTime: Date.parse("1890-01-01")
+        return response.json();
+    }).then(data => {
+        const newLayer = L.geoJSON(data, {
+            style: function (feature) {
+                return {
+                    color: '#FF0000', // Linienfarbe
+                    weight: 2, // Dicke der Linie
+                    opacity: 1 // Deckkraft der Linie
+                };
+            },
+            pointToLayer: function (feature, latlng) {
+                return L.circleMarker(latlng, {
+                    radius: 5,
+                    color: '#FF0000', // Randfarbe
+                    fillColor: '#e6c828', // Füllfarbe
+                    fillOpacity: 1, // Füllungsdeckkraft
+                    weight: 2
+                });
+            },
+            onEachFeature: function (feature, layer) {
+                if (feature.properties) {
+                    const title = feature.properties.title || 'Kein Titel';
+                    const dates = feature.properties.timestamp ||[];
+                    const links = dates.map(date =>
+                    `<a href="https://schnitzler-chronik.acdh.oeaw.ac.at/entry__${date}.html" target="_blank">${date}</a>`).join('<br>');
+                    const popupContent = ` < b > $ {
+                        title
+                    } < / b > < br >
+                    $ {
+                        links
+                    }
+                    `;
+                    layer.bindPopup(popupContent, {
+                        maxWidth: 300
+                    });
+                }
+            }
+        }).addTo(map);
+        
+        geoJsonLayers.push(newLayer);
+        
+        if (newLayer.getLayers().length > 0) {
+            map.fitBounds(newLayer.getBounds());
+        } else {
+            console.warn('Keine gültigen Features gefunden.');
+        }
+    }). catch (error => {
+        console.error('Error loading GeoJSON:', error);
+        clearGeoJsonLayers();
+    });
+}
+
+// Funktion, um das Fragment in der URL zu aktualisieren
+function updateUrlFragment(month) {
+    if (window.location.hash.substring(1) !== month) {
+        window.location.hash = month;
+    }
+}
+
+// Funktion, um das Datum aus der URL zu lesen
+function getMonthFromUrl() {
+    const hash = window.location.hash;
+    return hash ? hash.substring(1): null;
+}
+
+// Funktion zum Ändern des Monats in der Eingabe und URL
+function setMonthAndLoad(month) {
+    document.getElementById('date-input').value = month;
+    updateUrlFragment(month);
+    loadGeoJsonByMonth(month);
+}
+
+// Funktion zum Formatieren des Monats als `YYYY-MM`
+function formatMonthToISO(date) {
+    return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}`;
+}
+
+// Funktion, um den aktuellen Monat um eine Anzahl Monate zu ändern
+function changeMonthByMonths(currentMonth, months) {
+    const[year, month] = currentMonth.split('-').map(Number);
+    const newDate = new Date(year, month - 1 + months, 1);
+    return formatMonthToISO(newDate);
+}
+
+// Initialisierung der Karte
+const map = L.map('map').setView([48.2082, 16.3738], 5);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 18
+}).addTo(map);
+
+// Eventlistener für das Monatseingabefeld
+document.getElementById('date-input').addEventListener('change', function () {
+    const month = this.value;
+    if (month) {
+        setMonthAndLoad(month);
     }
 });
 
-// Add OpenStreetMap tile layer
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 18
-}).addTo(mapDaily);
-
-// Function to expand dates into individual GeoJSON features
-function expandDates(feature) {
-    var features = [];
-    if (feature.properties.dates && Array.isArray(feature.properties.dates)) {
-        feature.properties.dates.forEach(date => {
-            features.push({
-                type: "Feature",
-                geometry: feature.geometry,
-                properties: {
-                    ...feature.properties,
-                    time: date.slice(0, 7) // Use the date in "YYYY-MM" format
-                }
-            });
-        });
-    } else if (feature.properties.date) {
-        features.push({
-            type: "Feature",
-            geometry: feature.geometry,
-            properties: {
-                ...feature.properties,
-                time: feature.properties.date.slice(0, 7) // Use the date in "YYYY-MM" format
-            }
-        });
-    } else {
-        features.push(feature);
+// Eventlistener für den "Laden"-Button
+document.getElementById('load-data').addEventListener('click', function () {
+    const month = document.getElementById('date-input').value;
+    if (month) {
+        setMonthAndLoad(month);
     }
-    return features;
-}
+});
 
-// Load and expand GeoJSON data
-fetch('https://raw.githubusercontent.com/wiener-moderne-verein/wienerschnitzler-data/refs/heads/main/data/editions/geojson/wienerschnitzler_complete_points.geojson')
-    .then(response => response.json())
-    .then(data => {
-        var expandedData = {
-            type: "FeatureCollection",
-            features: data.features.flatMap(expandDates)
-        };
+// Eventlistener für den "Vorheriger Monat"-Button
+document.getElementById('prev-day').addEventListener('click', function () {
+    const dateInput = document.getElementById('date-input');
+    const currentMonth = dateInput.value;
+    const newMonth = changeMonthByMonths(currentMonth, -1);
+    setMonthAndLoad(newMonth);
+});
 
-        console.log(expandedData); // Check expanded data in the console
+// Eventlistener für den "Nächster Monat"-Button
+document.getElementById('next-day').addEventListener('click', function () {
+    const dateInput = document.getElementById('date-input');
+    const currentMonth = dateInput.value;
+    const newMonth = changeMonthByMonths(currentMonth, 1);
+    setMonthAndLoad(newMonth);
+});
 
-        // Create GeoJSON layer for TimeDimension
-        var geoJsonLayer = L.geoJSON(expandedData, {
-            pointToLayer: function (feature, latlng) {
-                return L.circleMarker(latlng, { radius: 5, color: 'red' });
-            },
-            onEachFeature: function (feature, layer) {
-                if (feature.properties && feature.properties.title) {
-                    layer.bindPopup(
-                        `<b>${feature.properties.title}</b><br>${feature.properties.time}`
-                    );
-                }
-            }
-        });
+// Überwache Änderungen am URL-Fragment
+window.addEventListener('hashchange', function () {
+    const month = getMonthFromUrl();
+    if (month) {
+        setMonthAndLoad(month);
+    }
+});
 
-        var timeLayer = L.timeDimension.layer.geoJson(geoJsonLayer, {
-            updateTimeDimension: true,
-            updateTimeDimensionMode: 'replace',
-            addlastPoint: true,
-            duration: 'P1M'
-        });
-
-        timeLayer.addTo(mapDaily);
-
-        // Center the map initially to fit all bounds
-        var initialBounds = geoJsonLayer.getBounds();
-        mapDaily.fitBounds(initialBounds);
-
-        // Adjust the view dynamically on time load
-        mapDaily.timeDimension.on('timeload', function() {
-            var visibleLayers = [];
-            var currentTime = new Date(mapDaily.timeDimension.getCurrentTime()).toISOString().slice(0, 7);
-
-            // Find features for the current month
-            geoJsonLayer.eachLayer(function(layer) {
-                var feature = layer.feature;
-                if (feature && feature.properties && feature.properties.time) {
-                    if (feature.properties.time === currentTime) {
-                        visibleLayers.push(layer.getLatLng());
-                    }
-                }
-            });
-
-            if (visibleLayers.length > 0) {
-                var currentBounds = L.latLngBounds(visibleLayers);
-                mapDaily.fitBounds(currentBounds, {
-                    padding: [10, 10], // Optional: Add padding around the bounds
-                    maxZoom: 18 // Ensure it doesn't zoom in too much beyond max zoom level
-                });
-            }
-
-            // Update the date display to show only year and month
-            var dateElement = document.querySelector('.leaflet-control-timecontrol.timecontrol-date');
-            if (dateElement) {
-                dateElement.textContent = currentTime;
-            }
-        });
-    })
-    .catch(error => console.error('Error loading GeoJSON data:', error));
+// Initialisiere die Karte mit dem Monat aus der URL oder einem Standardwert
+const initialMonth = getMonthFromUrl() || '1895-01';
+setMonthAndLoad(initialMonth);
