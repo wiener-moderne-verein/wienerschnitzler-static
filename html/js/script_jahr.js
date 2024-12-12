@@ -89,7 +89,8 @@ function setYearAndLoad(year) {
 // Funktion, um das aktuelle Jahr zu ändern
 function changeYearByYears(currentYear, years) {
     const year = parseInt(currentYear, 10);
-    return String(year + years);
+    const newYear = year + years;
+    return Math.max(1869, Math.min(1931, newYear)).toString();
 }
 
 // Initialisierung der Karte
@@ -114,21 +115,6 @@ document.getElementById('load-data').addEventListener('click', function () {
     }
 });
 
-// Eventlistener für den "Vorheriges Jahr"-Button
-document.getElementById('prev-day').addEventListener('click', function () {
-    const dateInput = document.getElementById('date-input');
-    const currentYear = dateInput.value;
-    const newYear = changeYearByYears(currentYear, -1);
-    setYearAndLoad(newYear);
-});
-
-// Eventlistener für den "Nächstes Jahr"-Button
-document.getElementById('next-day').addEventListener('click', function () {
-    const dateInput = document.getElementById('date-input');
-    const currentYear = dateInput.value;
-    const newYear = changeYearByYears(currentYear, 1);
-    setYearAndLoad(newYear);
-});
 
 // Überwache Änderungen am URL-Fragment
 window.addEventListener('hashchange', function () {

@@ -28,20 +28,12 @@
                         <h1>Jahre</h1>
                         <div
                             class="controls d-flex justify-content-between align-items-center mb-3 gap-3">
-                            <div class="d-flex justify-content-start">
-                                <button id="prev-day" class="btn btn-secondary bg-success">
-                                    <i class="bi bi-arrow-left-circle"/>
-                                </button>
-                            </div>
+                            <div/>
                             <div class="d-flex center-content-start">
                                 <!-- Eingabefeld für Jahre -->
                                 <input type="number" id="date-input" placeholder="Jahr eingeben" value="1890"  min="1869" max="1931" step="1"/>
                             </div>
-                            <div class="d-flex justify-content-end">
-                                <button id="next-day" class="btn btn-secondary bg-success">
-                                    <i class="bi bi-arrow-right-circle"/>
-                                </button>
-                            </div>
+                            <div/>
                         </div>
                         
                         <!-- Map -->
