@@ -45,13 +45,7 @@ function loadGeoJsonByYear(year) {
                     const dates = feature.properties.timestamp ||[];
                     const links = dates.map(date =>
                     `<a href="https://schnitzler-chronik.acdh.oeaw.ac.at/entry__${date}.html" target="_blank">${date}</a>`).join('<br>');
-                    const popupContent = ` < b > $ {
-                        title
-                    } < / b > < br >
-                    $ {
-                        links
-                    }
-                    `;
+                    const popupContent = `<b>${title}</b><br>${links}`;
                     layer.bindPopup(popupContent, {
                         maxWidth: 300
                     });
