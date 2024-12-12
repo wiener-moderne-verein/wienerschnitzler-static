@@ -35,7 +35,7 @@
                             </div>
                             <div class="d-flex center-content-start">
                                 <!-- Eingabefeld für Jahre -->
-                                <input type="number" id="date-input" placeholder="Jahr eingeben" min="1869" max="1931" step="1"/>
+                                <input type="number" id="date-input" placeholder="Jahr eingeben" value="1890"  min="1869" max="1931" step="1"/>
                             </div>
                             <div class="d-flex justify-content-end">
                                 <button id="next-day" class="btn btn-secondary bg-success">
