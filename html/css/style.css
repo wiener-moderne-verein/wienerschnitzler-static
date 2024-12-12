@@ -103,29 +103,10 @@ h1 {
     color: #292929 /* Text bleibt schwarz */
 }
 
-#schnitzler-chronik-btn {
-    background-color: #C67F53;
-    color: white;
-    position: fixed;
-    top: 50px; /* Abstand von oben */
-    right: 50px; /* Abstand von rechts */
-    width: 150px; /* Größe des Buttons */
-    height: 50px;
-    border: none;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 12px;
-    cursor: pointer;
-    transition: all 0.3s ease; /* Übergang für alle Eigenschaften */
-    transform: rotate(15deg); /* Button drehen */
-}
-
-#schnitzler-chronik-btn:hover {
-    color: white; /* Schriftfarbe bleibt weiß */
-    background-color: #a55c47; /* Optionale Änderung der Hintergrundfarbe */
-    transform: rotate(15deg) scale(1.1); /* Leichtes Vergrößern (110%) */
+#schnitzler-chronik-link {
+    color: #C67F53;
+    font-weight: bold;
+    text-decoration: none;
 }
 
 

@@ -43,17 +43,15 @@
                                 </button>
                             </div>
                         </div>
-                        <!-- Modal -->
-                        <button id="schnitzler-chronik-btn" type="submit"
-                            class="btn btn-outline-success schnitzler-chronik-btn"><b>Schnitzler
-                            Chronik</b></button>
+                        
                         <!-- Map -->
                         <div id="map"/>
                         <div class="d-flex justify-content-center mt-5">
                         <div class="col-sm-6 mb-5">
                             <div class="text-start mx-auto">
-                                <p class="text-start">Auf dieser Seite werden die einzelnen Tage in
-                                    Schnitzlers Leben visualisiert.</p>
+                                <p class="text-start">Auf dieser Seite werden die einzelnen Tage in Schnitzlers Leben visualisiert. Weitere Informationen zum jeweiligen Tag finden sich in der 
+    <a class="schnitzler-chronik-link" id="schnitzler-chronik-link" href="https://schnitzler-chronik.acdh.oeaw.ac.at/" target="_blank">Schnitzler Chronik</a>.
+</p>
                                 <p class="text-start">Zu sehen sind die bislang ermittelten
                                     Aufenthaltsorte sowie, an Tagen, an denen sich Schnitzler in
                                     Wien aufhält, seine aktuelle Wohnadresse.</p>

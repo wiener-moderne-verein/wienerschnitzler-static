@@ -167,59 +167,35 @@ function getDateFromUrl() {
     return hash ? hash.substring(1) : null; // Gibt das Datum zurück, oder null, wenn kein Datum vorhanden ist
 }
 
+// Funktion zum Holen des Datums aus der URL nach "#"
+function getDateFromUrl() {
+    const hash = window.location.hash;
+    return hash ? hash.substring(1) : null; // Gibt das Datum zurück, oder null, wenn kein Datum vorhanden ist
+}
+
 // Funktion zum Setzen des Links für "Schnitzler Chronik" basierend auf dem Datum aus der URL
 function setSchnitzlerChronikLink() {
     let date = getDateFromUrl(); // Datum aus der URL holen
     
-    // Wenn kein Datum vorhanden ist, setze den Standardwert '1999-01-01'
+    // Wenn kein Datum vorhanden ist, setze den Standardwert '1895-01-23'
     if (!date) {
         date = '1895-01-23';
     }
     
-    // Den Button holen
-    const button = document.getElementById('schnitzler-chronik-btn');
+    // Den Link mit der Klasse 'schnitzler-chronik-link' holen
+    const link = document.querySelector('.schnitzler-chronik-link');
     
-    // Den Link des Buttons aktualisieren
-    button.onclick = function() {
-        window.open(`https://schnitzler-chronik.acdh.oeaw.ac.at/${date}.html`, '_blank');
-    };
-    
-    // Optional: Den Button-Text mit dem Datum aktualisieren
-    button.textContent = `Schnitzler Chronik`;  // Hier wird der Button-Text dynamisch angepasst
+    // Prüfen, ob das Element gefunden wurde
+    if (link) {
+        // Den href des Links aktualisieren
+        link.href = `https://schnitzler-chronik.acdh.oeaw.ac.at/${date}.html`;
+    } else {
+        console.error('Element mit Klasse "schnitzler-chronik-link" nicht gefunden.');
+    }
 }
 
 // Rufe die Funktion auf, um den Link beim Laden der Seite zu setzen
-setSchnitzlerChronikLink();
+document.addEventListener('DOMContentLoaded', setSchnitzlerChronikLink);
 
-// Überwache Änderungen am URL-Fragment, um den Link bei Änderungen der URL zu aktualisieren
+// Überwache Änderungen am URL-Fragment
 window.addEventListener('hashchange', setSchnitzlerChronikLink);
- 
- // Toggle intro text visibility
-                    document.getElementById('toggle-intro').addEventListener('click', function () {
-                    const header = document.querySelector('header p');
-                    const button = this;
-                    
-                    if (header.style.display === 'none') {
-                    header.style.display = 'block';
-                    button.textContent = 'X';
-                    } else {
-                    header.style.display = 'none';
-                    button.textContent = '+';
-                    }
-                    });
-                    
-                    function loadPartial(selector, filePath) {
-                    fetch(filePath)
-                    .then(response => {
-                    if (!response.ok) {
-                    throw new Error(`HTTP error! Status: ${response.status}`);
-                    }
-                    return response.text();
-                    })
-                    .then(data => {
-                    document.querySelector(selector).innerHTML = data;
-                    })
-                    .catch(error => {
-                    console.error(`Error loading partial: ${filePath}`, error);
-                    });
-                    }
