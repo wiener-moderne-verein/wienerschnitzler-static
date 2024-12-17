@@ -39,12 +39,12 @@
                                     href="https://schnitzler-briefe.acdh.oeaw.ac.at/"
                                     target="_blank"
                                     style="color: #A63437; font-weight: bold; text-decoration: none;"
-                                    >Korrespondenz</a> und andere Dokumente können wir über 35.000
-                                Aufenthalte an über 2.500 Orten bestimmen. So wird an ihm
-                                beispielhaft erfassbar, was derzeit für keine Zeitgenossin und
-                                keinen Zeitgenossen vorliegt: Der geographische Raum, in dem er sich
-                                bewegte, Orte, die er kannte, die ihm wichtig waren. Und im Gegenzug
-                                auch jene Häuser, Straßen, Bezirke, Städte und Länder, die er nicht
+                                    >Korrespondenz</a> und andere Dokumente können wir derzeit 35.000
+                                Aufenthalte an über 2.700 Orten bestimmen. Für keine Zeitgenossin,
+                                für keinen Zeitgenossen dürften derzeit so viele georeferenzierte Daten frei verfügbar 
+                                sein. Damit lässt sich der geographischen Raum bestimmen, in dem Schnitzler sich
+                                bewegte, Häuser, Straßen, Bezirke, Städte und Länder, die er kannte, die ihm wichtig waren. Und im Gegenzug
+                                auch jene Orte, die er nicht
                                 besuchte. </p>
                         </div>
                         <div class="col-md-6">
