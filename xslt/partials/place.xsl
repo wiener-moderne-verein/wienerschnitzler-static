@@ -36,27 +36,28 @@
                                 data-bs-toggle="collapse" data-bs-target="#collapseMap"
                                 aria-expanded="true" aria-controls="collapseMap"> Karte </button>
                         </h2>
-                        <xsl:if
-                            test="key('only-relevant-uris', tei:idno/@subtype, $relevant-uris)[1]">
-                            <div class="container w-75 mx-auto mt-2">
-                                <p class="text-center">
-                                    <xsl:variable name="idnos-of-current" as="node()">
-                                        <xsl:element name="nodeset_place">
-                                            <xsl:for-each select="tei:idno">
-                                                <xsl:copy-of select="."/>
-                                            </xsl:for-each>
-                                        </xsl:element>
-                                    </xsl:variable>
-                                    <xsl:call-template name="mam:idnosToLinks">
-                                        <xsl:with-param name="idnos-of-current"
-                                            select="$idnos-of-current"/>
-                                    </xsl:call-template>
-                                </p>
-                            </div>
-                        </xsl:if>
+                        
                         <!-- Karte im Collapse -->
                         <div id="collapseMap" class="accordion-collapse collapse show"
                             aria-labelledby="headingMap" data-bs-parent="#accordionMap">
+                            <xsl:if
+                                test="key('only-relevant-uris', tei:idno/@subtype, $relevant-uris)[1]">
+                                <div class="container w-75 mx-auto mt-2">
+                                    <p class="text-center">
+                                        <xsl:variable name="idnos-of-current" as="node()">
+                                            <xsl:element name="nodeset_place">
+                                                <xsl:for-each select="tei:idno">
+                                                    <xsl:copy-of select="."/>
+                                                </xsl:for-each>
+                                            </xsl:element>
+                                        </xsl:variable>
+                                        <xsl:call-template name="mam:idnosToLinks">
+                                            <xsl:with-param name="idnos-of-current"
+                                                select="$idnos-of-current"/>
+                                        </xsl:call-template>
+                                    </p>
+                                </div>
+                            </xsl:if>
                             <div class="accordion-body">
                                 <div id="map_detail" style="height: 500px;"/>
                             </div>
@@ -231,11 +232,14 @@
                                     <line x1="50" y1="10" x2="50" y2="250" stroke="black" />
                                     <line x1="50" y1="250" x2="950" y2="250" stroke="black" />
                                     
-                                    <!-- Dynamische Y-Achsen-Beschriftungen -->
+                                    <!-- Dynamische Y-Achsen-Beschriftungen mit Zwischenstrichen -->
                                     <xsl:variable name="y-step" select="if ($max-count > 100) then 25 else 10" />
                                     <xsl:variable name="max-steps" select="xs:integer(floor($max-count div $y-step))" />
+                                    
+                                    <!-- Haupt- und Zwischenstriche auf der Y-Achse -->
                                     <xsl:for-each select="for $i in 0 to $max-steps return $i * $y-step">
                                         <xsl:variable name="count" select="." />
+                                        <!-- Hauptstrich -->
                                         <line 
                                             x1="45" 
                                             y1="{250 - $count * (240 div $max-count)}" 
@@ -249,18 +253,52 @@
                                             text-anchor="end">
                                             <xsl:value-of select="$count" />
                                         </text>
+                                        
+                                        <!-- Zwischenstriche -->
+                                        <xsl:for-each select="1 to 4">
+                                            <xsl:variable name="sub-step" select="$count + (. * $y-step div 5)" />
+                                            <line 
+                                                x1="47" 
+                                                y1="{250 - $sub-step * (240 div $max-count)}" 
+                                                x2="50" 
+                                                y2="{250 - $sub-step * (240 div $max-count)}" 
+                                                stroke="gray" />
+                                        </xsl:for-each>
                                     </xsl:for-each>
                                     
-                                    
-                                    <!-- Jahrzehnte-Beschriftungen auf der X-Achse -->
+                                    <!-- Jahrzehnte-Beschriftungen und Hauptstriche auf der X-Achse -->
                                     <xsl:for-each select="$years[position() mod 10 = 2]">
                                         <xsl:variable name="year" select="." />
                                         <xsl:if test="$year mod 10 = 0">
-                                            <text x="{50 + ($year - $start-year) * 10}" y="270" font-size="10" text-anchor="middle">
+                                            <!-- Hauptstrich -->
+                                            <line 
+                                                x1="{50 + ($year - $start-year) * 10}" 
+                                                y1="250" 
+                                                x2="{50 + ($year - $start-year) * 10}" 
+                                                y2="255" 
+                                                stroke="black" />
+                                            <!-- Beschriftung -->
+                                            <text 
+                                                x="{50 + ($year - $start-year) * 10}" 
+                                                y="270" 
+                                                font-size="10" 
+                                                text-anchor="middle">
                                                 <xsl:value-of select="$year" />
                                             </text>
                                         </xsl:if>
+                                        
+                                        <!-- Zwischenstriche -->
+                                        <xsl:for-each select="1 to 9">
+                                            <xsl:variable name="sub-step-x" select="$year + . * 1" />
+                                            <line 
+                                                x1="{50 + ($sub-step-x - $start-year) * 10}" 
+                                                y1="250" 
+                                                x2="{50 + ($sub-step-x - $start-year) * 10}" 
+                                                y2="253" 
+                                                stroke="gray" />
+                                        </xsl:for-each>
                                     </xsl:for-each>
+                                    
                                     
                                     <!-- Balken -->
                                     <xsl:for-each select="$years">
