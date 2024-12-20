@@ -6,8 +6,9 @@
       "geometry": {
         "type": "LineString", 
         "coordinates": [
-            [16.353889, 48.1975], 
             [16.36471, 48.200556], 
+            [16.367295, 48.207185], 
+            [16.35689, 48.21787], 
             [16.33716, 48.23188]
           ]
       },
@@ -34,6 +35,20 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          16.367295, 48.207185
+        ]
+      },
+      "properties": {
+        "title": "Reitschulgasse 2",
+        "timestamp": ["1930-01-24"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           16.33716, 48.23188
         ]
       },
@@ -48,15 +63,13 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          16.353889, 48.1975
+          16.35689, 48.21787
         ]
       },
       "properties": {
-        "title": "Apollo-Theater [Wien]",
+        "title": "Beethovengasse 6",
         "timestamp": ["1930-01-24"],
-        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
-        "wikipedia": "https://de.wikipedia.org/wiki/Apollo-Theater_(Wien)", 
-        "wiengeschichtewiki": "https://www.geschichtewiki.wien.gv.at/Apollokino"
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
       }
       }
   ]

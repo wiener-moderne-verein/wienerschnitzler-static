@@ -7,6 +7,7 @@
         "type": "LineString", 
         "coordinates": [
             [16.33716, 48.23188], 
+            [16.32092, 48.24077], 
             [16.30627, 48.2435]
           ]
       },
@@ -19,11 +20,11 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          16.33716, 48.23188
+          16.30627, 48.2435
         ]
       },
       "properties": {
-        "title": "Sternwartestraße 71",
+        "title": "Zum weißen Lamm",
         "timestamp": ["1923-07-21"],
         "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
       }
@@ -33,11 +34,25 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          16.30627, 48.2435
+          16.32092, 48.24077
         ]
       },
       "properties": {
-        "title": "Zum weißen Lamm",
+        "title": "Windmühlhöhe",
+        "timestamp": ["1923-07-21"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          16.33716, 48.23188
+        ]
+      },
+      "properties": {
+        "title": "Sternwartestraße 71",
         "timestamp": ["1923-07-21"],
         "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
       }

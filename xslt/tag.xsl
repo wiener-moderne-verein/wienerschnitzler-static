@@ -42,24 +42,23 @@
                                 </button>
                             </div>
                         </div>
-                        
                         <!-- Map -->
                         <div id="map"/>
                         <div class="d-flex justify-content-center mt-5">
-                        <div class="col-sm-6 mb-5">
-                            <div class="text-start mx-auto">
-                                <p class="text-start">Auf dieser Seite werden die einzelnen Tage in Schnitzlers Leben visualisiert. Weitere Informationen zum jeweiligen Tag finden sich in der 
-    <a class="schnitzler-chronik-link" id="schnitzler-chronik-link" href="https://schnitzler-chronik.acdh.oeaw.ac.at/" target="_blank">Schnitzler Chronik</a>.
-</p>
-                                <p class="text-start">Zu sehen sind die bislang ermittelten
-                                    Aufenthaltsorte sowie, an Tagen, an denen sich Schnitzler in
-                                    Wien aufhält, seine aktuelle Wohnadresse.</p>
-                                <p class="text-start"><span class="fw-bold text-danger"
-                                        >Achtung</span>: Die Verbindungslinie zwischen den Orten
-                                    macht den geografischen Raum besser sichtbar. Sie stellt keine
-                                    tatsächlichen Wegverläufe und Zeitabläufe dar. </p>
+                            <div class="col-sm-6 mb-5">
+                                <div class="text-start mx-auto">
+                                    <div id="map-inhalt-text"/>
+                                </div>
+                                <div class="text-start mx-auto">
+                                    <!-- Oberer Text -->
+                                    <p class="text-start text-muted small"> Auf dieser Seite werden
+                                        die einzelnen Tage in Schnitzlers Leben visualisiert. <span
+                                            class="fw-bold text-danger">Achtung</span>: Die
+                                        Verbindungslinie zwischen den Orten macht den geografischen
+                                        Raum besser sichtbar. Sie stellt keine tatsächlichen
+                                        Wegverläufe und Zeitabläufe dar. </p>
+                                </div>
                             </div>
-                        </div>
                         </div>
                     </div>
                 </main>

@@ -6,11 +6,10 @@
       "geometry": {
         "type": "LineString", 
         "coordinates": [
-            [16.37561, 48.18769], 
+            [16.367295, 48.207185], 
             [16.430054, 48.194558], 
             [16.338016, 48.234091], 
-            [16.33716, 48.23188], 
-            [16.275701, 48.219421]
+            [16.33716, 48.23188]
           ]
       },
       "properties": {
@@ -37,6 +36,20 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          16.367295, 48.207185
+        ]
+      },
+      "properties": {
+        "title": "Reitschulgasse 2",
+        "timestamp": ["1928-11-13"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           16.33716, 48.23188
         ]
       },
@@ -51,40 +64,11 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          16.275701, 48.219421
-        ]
-      },
-      "properties": {
-        "title": "Gallitzinberg",
-        "timestamp": ["1928-11-13"],
-        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//", 
-        "wikipedia": "https://de.wikipedia.org/wiki/Gallitzinberg"
-      }
-      },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           16.338016, 48.234091
         ]
       },
       "properties": {
         "title": "Gregor-Mendel-Straße 34",
-        "timestamp": ["1928-11-13"],
-        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
-      }
-      },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          16.37561, 48.18769
-        ]
-      },
-      "properties": {
-        "title": "Schelleingasse 10",
         "timestamp": ["1928-11-13"],
         "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
       }

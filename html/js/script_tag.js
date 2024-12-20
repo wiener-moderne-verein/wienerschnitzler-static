@@ -1,3 +1,21 @@
+// Funktion zum Aktualisieren des Textfelds mit den Titeln
+function updateMapInhaltText(titles, date, name) {
+    const mapInhaltTextDiv = document.getElementById('map-inhalt-text');
+    if (mapInhaltTextDiv) {
+        // Filtere leere Titel heraus
+        const filteredTitles = titles.filter(title => title && title.trim() !== '');
+        
+        // Erstelle den Text mit Datum und Titeln
+        const textContent = filteredTitles.length > 0 
+            ? `Am <a class="schnitzler-chronik-link" href="https://schnitzler-chronik.acdh.oeaw.ac.at/${date}.html" target="_blank">${name}</a> war Schnitzler an folgenden Orten: ${filteredTitles.map(title => `<a href="https://de.wikipedia.org/wiki/${encodeURIComponent(title)}" target="_blank">${title}</a>`).join(', ')}<br/><br/>`
+            : `Am ${date} sind keine Orte bekannt.<br/><br/>`;
+        
+        mapInhaltTextDiv.innerHTML = textContent;
+    } else {
+        console.error('Element mit ID "map-inhalt-text" nicht gefunden.');
+    }
+}
+
 // Array zur Verwaltung der GeoJSON-Layer
 const geoJsonLayers = [];
 
@@ -5,6 +23,7 @@ const geoJsonLayers = [];
 function clearGeoJsonLayers() {
     geoJsonLayers.forEach(layer => map.removeLayer(layer));
     geoJsonLayers.length = 0; // Array leeren
+    updateMapInhaltText([], ''); // Leere das Textfeld, wenn die Layer entfernt werden
 }
 
 // Funktion zum Laden von GeoJSON basierend auf einem Datum
@@ -23,6 +42,8 @@ function loadGeoJsonByDate(date) {
             return response.json();
         })
         .then(data => {
+            const titles = [];
+            const name = data.features[0].properties.name || date; // Extrahiere den Namen aus dem ersten Feature
             const newLayer = L.geoJSON(data, {
                 style: function (feature) {
                     return {
@@ -42,27 +63,37 @@ function loadGeoJsonByDate(date) {
                 },
                 onEachFeature: function (feature, layer) {
                     if (feature.properties) {
-                        const title = feature.properties.title || 'Kein Titel';
-                        const date = feature.properties.timestamp || 'Kein Datum';
-            
-                        // Erstelle den Link, falls ein Datum vorhanden ist
-                        const link = date !== 'Kein Datum'
-                            ? `<a href="https://schnitzler-chronik.acdh.oeaw.ac.at/${date}.html" target="_blank">Schnitzler-Chronik</a>`
+                        let title = feature.properties.title 
+                            ? `<a href="${feature.properties.pmb.split('/').filter(Boolean).pop()}.html">${feature.properties.title}</a>` 
+                            : 'Kein Titel';
+                        const featureDate = feature.properties.timestamp || 'Kein Datum';
+                        const wikipediaLink = feature.properties.wikipedia 
+                            ? `<a href="${feature.properties.wikipedia}" target="_blank">Wikipedia</a>` 
                             : '';
-            
+                        
+                        // Erstelle den Link, falls ein Datum vorhanden ist
+                        const chronikLink = featureDate !== 'Kein Datum'
+                            ? `<a class="schnitzler-chronik-link" href="https://schnitzler-chronik.acdh.oeaw.ac.at/${date}.html" target="_blank">${name}</a>`
+                            : '';
+
                         // Popup-Inhalt
                         const popupContent = `
                             <b>${title}</b><br>
-                            ${date}<br>
-                            ${link}
+                            ${chronikLink}<br>
+                            ${wikipediaLink}
                         `;
-            
+
                         layer.bindPopup(popupContent, { maxWidth: 300 });
+
+                        // Füge den Titel zur Liste hinzu
+                        titles.push(feature.properties.pmb 
+                            ? `<a href="${feature.properties.pmb}" target="_blank">${title}</a>` 
+                            : title);
+
                     }
                 }
             }).addTo(map);
             
-
             // Hinzufügen der neuen Layer-Referenz zur Liste
             geoJsonLayers.push(newLayer);
 
@@ -72,6 +103,9 @@ function loadGeoJsonByDate(date) {
             } else {
                 console.warn('Keine gültigen Features gefunden.');
             }
+
+            // Aktualisiere das Textfeld mit den gesammelten Titeln und dem Datum
+            updateMapInhaltText(titles, date, name);
         })
         .catch(error => {
             console.error('Error loading GeoJSON:', error);
@@ -125,14 +159,6 @@ document.getElementById('date-input').addEventListener('change', function () {
     }
 });
 
-// Eventlistener für den "Laden"-Button
-// document.getElementById('load-data').addEventListener('click', function () {
-//     const date = document.getElementById('date-input').value;
-//     if (date) {
-//         setDateAndLoad(date);
-//     }
-// });
-
 // Eventlistener für den "Vorheriger Tag"-Button
 document.getElementById('prev-day').addEventListener('click', function () {
     const dateInput = document.getElementById('date-input');
@@ -160,12 +186,6 @@ window.addEventListener('hashchange', function () {
 // Initialisiere die Karte mit dem Datum aus der URL oder einem Standardwert
 const initialDate = getDateFromUrl() || '1895-01-23';
 setDateAndLoad(initialDate);
-
-// Funktion zum Holen des Datums aus der URL nach "#"
-function getDateFromUrl() {
-    const hash = window.location.hash;
-    return hash ? hash.substring(1) : null; // Gibt das Datum zurück, oder null, wenn kein Datum vorhanden ist
-}
 
 // Funktion zum Holen des Datums aus der URL nach "#"
 function getDateFromUrl() {

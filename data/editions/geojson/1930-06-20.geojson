@@ -6,11 +6,13 @@
       "geometry": {
         "type": "LineString", 
         "coordinates": [
-            [16.28610371233, 48.233119188484], 
+            [16.35137, 48.21346], 
+            [16.367725, 48.212284], 
             [16.33716, 48.23188], 
+            [16.338016, 48.234091], 
+            [16.2911, 48.2553], 
             [16.30627, 48.2435], 
-            [16.300034240016, 48.246838181084], 
-            [16.2911, 48.2553]
+            [16.28610371233, 48.233119188484]
           ]
       },
       "properties": {
@@ -36,11 +38,11 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          16.300034240016, 48.246838181084
+          16.30627, 48.2435
         ]
       },
       "properties": {
-        "title": "Pötzleinsdorf",
+        "title": "Zum weißen Lamm",
         "timestamp": ["1930-06-20"],
         "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
       }
@@ -79,11 +81,39 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          16.30627, 48.2435
+          16.367725, 48.212284
         ]
       },
       "properties": {
-        "title": "Zum weißen Lamm",
+        "title": "Tiefer Graben 17",
+        "timestamp": ["1930-06-20"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          16.35137, 48.21346
+        ]
+      },
+      "properties": {
+        "title": "Laudongasse 12",
+        "timestamp": ["1930-06-20"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          16.338016, 48.234091
+        ]
+      },
+      "properties": {
+        "title": "Gregor-Mendel-Straße 34",
         "timestamp": ["1930-06-20"],
         "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
       }

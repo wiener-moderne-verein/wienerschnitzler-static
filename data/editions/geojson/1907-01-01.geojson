@@ -6,7 +6,9 @@
       "geometry": {
         "type": "LineString", 
         "coordinates": [
-            [16.33472, 48.2304]
+            [16.33472, 48.2304], 
+            [16.344253, 48.236143], 
+            [16.33641, 48.23362]
           ]
       },
       "properties": {
@@ -18,11 +20,39 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          16.33641, 48.23362
+        ]
+      },
+      "properties": {
+        "title": "Türkenschanzstraße 48",
+        "timestamp": ["1907-01-01"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           16.33472, 48.2304
         ]
       },
       "properties": {
         "title": "Edmund-Weiß-Gasse 7",
+        "timestamp": ["1907-01-01"],
+        "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
+      }
+      },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          16.344253, 48.236143
+        ]
+      },
+      "properties": {
+        "title": "Lannerstraße 24",
         "timestamp": ["1907-01-01"],
         "pmb": "https://pmb.acdh.oeaw.ac.at/entity//"
       }

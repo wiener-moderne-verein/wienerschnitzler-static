@@ -14,7 +14,7 @@
         <factory name="net.sf.saxon.TransformerFactoryImpl"/>
         <classpath location="${basedir}/saxon/saxon9he.jar"/>
     </xslt>
-    <xslt in="${index}" out="${target}/monat.html" style="./xslt/monat.xsl">
+    <!-- <xslt in="${index}" out="${target}/monat.html" style="./xslt/monat.xsl">
         <factory name="net.sf.saxon.TransformerFactoryImpl"/>
         <classpath location="${basedir}/saxon/saxon9he.jar"/>
     </xslt>
@@ -38,7 +38,7 @@
         style="./xslt/listplace.xsl">
         <factory name="net.sf.saxon.TransformerFactoryImpl"/>
         <classpath location="${basedir}/saxon/saxon9he.jar"/>
-    </xslt>
+    </xslt>-->
     <!--<xslt style="./xslt/editions.xsl"  basedir="./data/editions/xml" destdir="${target}" includes="*.xml">
         <factory name="net.sf.saxon.TransformerFactoryImpl"/>
         <classpath location="${basedir}/saxon/saxon9he.jar"/>
