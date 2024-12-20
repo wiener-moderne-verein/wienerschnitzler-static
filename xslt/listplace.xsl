@@ -57,6 +57,9 @@
                                     </xsl:variable>
                                     <tr>
                                         <td>
+                                            <xsl:if test="starts-with(tei:placeName[1]/text(), '?') or starts-with(tei:placeName[1]/text(), '[')">
+                                                    <span hidden="hidden">ZZZ</span>
+                                            </xsl:if>
                                             <xsl:value-of select="./tei:placeName[1]/text()"/>
                                         </td>
                                         <td>

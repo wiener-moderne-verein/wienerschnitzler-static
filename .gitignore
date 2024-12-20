@@ -4,6 +4,9 @@ html/*.xml
 /saxon
 data/imprint.xml
 
+# just so that I don't push abbreviated build files:
+build.xml
+
 data/indices/*.xml
 data/editions/*.xml
 data/meta/*.xml
