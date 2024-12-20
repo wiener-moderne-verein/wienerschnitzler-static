@@ -126,12 +126,12 @@ document.getElementById('date-input').addEventListener('change', function () {
 });
 
 // Eventlistener für den "Laden"-Button
-document.getElementById('load-data').addEventListener('click', function () {
-    const date = document.getElementById('date-input').value;
-    if (date) {
-        setDateAndLoad(date);
-    }
-});
+// document.getElementById('load-data').addEventListener('click', function () {
+//     const date = document.getElementById('date-input').value;
+//     if (date) {
+//         setDateAndLoad(date);
+//     }
+// });
 
 // Eventlistener für den "Vorheriger Tag"-Button
 document.getElementById('prev-day').addEventListener('click', function () {

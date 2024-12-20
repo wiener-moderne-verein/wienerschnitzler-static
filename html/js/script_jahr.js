@@ -81,7 +81,9 @@ function loadGeoJsonByYear(year) {
 
 // Funktion zum Ändern des Jahres und GeoJSON-Ladens
 function setYearAndLoad(year) {
-    document.getElementById('date-input').value = year;
+    const yearInput = document.getElementById('date-input');
+    year = Math.max(1869, Math.min(1931, year)); // Begrenzung auf gültigen Bereich
+    yearInput.value = year;
     updateUrlFragment(year);
     loadGeoJsonByYear(year);
 }
@@ -101,11 +103,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Eventlistener für das Jahreseingabefeld
     document.getElementById('date-input').addEventListener('change', function () {
-        const year = this.value;
+        const year = parseInt(this.value, 10);
         if (year) {
             setYearAndLoad(year);
         }
     });
+
+    // Eventlistener für "vorheriges Jahr"
+    document.getElementById('prev-year').addEventListener('click', () => {
+        const currentYear = parseInt(document.getElementById('date-input').value, 10);
+        setYearAndLoad(currentYear - 1);
+    });
+
+    // Eventlistener für "nächstes Jahr"
+    document.getElementById('next-year').addEventListener('click', () => {
+        const currentYear = parseInt(document.getElementById('date-input').value, 10);
+        setYearAndLoad(currentYear + 1);
+    });
+
+   // Entferne diesen Teil
+// document.getElementById('load-data').addEventListener('click', () => {
+//     const year = parseInt(document.getElementById('date-input').value, 10);
+//     if (year) {
+//         setYearAndLoad(year);
+//     }
+// });
+
 
     // Überwache Änderungen am URL-Fragment
     window.addEventListener('hashchange', function () {

@@ -35,7 +35,6 @@
                             </div>
                             <div class="d-flex center-content-start">
                                 <input type="date" id="date-input" class="form-control w-auto"/>
-                                <button id="load-data" class="btn btn-light">Laden</button>
                             </div>
                             <div class="d-flex justify-content-end">
                                 <button id="next-day" class="btn btn-secondary bg-success">

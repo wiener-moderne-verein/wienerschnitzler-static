@@ -46,6 +46,7 @@
                                 bewegte, Häuser, Straßen, Bezirke, Städte und Länder, die er kannte, die ihm wichtig waren. Und im Gegenzug
                                 auch jene Orte, die er nicht
                                 besuchte. </p>
+                            <p>Die Detailtiefe der derzeit erfassten Daten schwankt. Die Jahre 1890–1906 und 1929 sind besonders dicht.</p>
                         </div>
                         <div class="col-md-6">
                             <img src="./images/schnitzler-index.jpg"
