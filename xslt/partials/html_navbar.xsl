@@ -29,13 +29,13 @@
                                 
                                 <!-- Orte Dropdown -->
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <a class="nav-link dropdown-toggle" href="#" id="OrteDropdown" role="button"  data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Orte
                                     </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="listplace.html">Verzeichnis</a>
-                                        <a class="dropdown-item" href="https://kepler.gl/demo/map?mapUrl=https://dl.dropboxusercontent.com/scl/fi/y8bpsyosh2uwvawwi2jdh/keplergl_ygz1fc.json?rlkey=rl5x7uoswnd0cttr1mw2ncw18" target="_blank">Visualisierung mit Kepler.gl</a>
-                                    </div>
+                                    <ul class="dropdown-menu" aria-labelledby="OrteDropdown">
+                                        <li><a class="dropdown-item" href="listplace.html">Verzeichnis</a></li>
+                                        <li><a class="dropdown-item" href="https://kepler.gl/demo/map?mapUrl=https://dl.dropboxusercontent.com/scl/fi/y8bpsyosh2uwvawwi2jdh/keplergl_ygz1fc.json?rlkey=rl5x7uoswnd0cttr1mw2ncw18" target="_blank">Visualisierung mit Kepler.gl</a></li>
+                                    </ul>
                                 </li>
                                 
                                 <!-- Zeiträume Dropdown -->

@@ -28,9 +28,9 @@
                     <div class="row">
                         <div class="col-md-6">
                             <h2>Wiener Schnitzler – Schnitzlers Wien</h2>
-                            <p class="lead">Arthur Schnitzler kam 1862 in Wien auf die Welt. Hier
-                                starb er 1931. In Wien sind die meisten seiner literarischen Werke
-                                angesiedelt. Er verließ die Stadt nur für ausgedehnte Reisen und
+                            <p class="lead">Arthur Schnitzler kam 1862 in Wien in der Praterstraße auf die Welt. 
+                            Zehn Kilometer entfernt, in der Sternwartestraße, starb er 1931. Er verfasste erfolgreiche Dramen, 
+                            Romane und Erzählungen, von denen die meisten in Wien angesiedelt sind. Die Stadt verließ er nur für ausgedehnte Reisen und
                                 Sommeraufenthalte. Durch sein <a
                                     href="https://schnitzler-tagebuch.acdh.oeaw.ac.at/"
                                     target="_blank"
@@ -39,14 +39,14 @@
                                     href="https://schnitzler-briefe.acdh.oeaw.ac.at/"
                                     target="_blank"
                                     style="color: #A63437; font-weight: bold; text-decoration: none;"
-                                    >Korrespondenz</a> und andere Dokumente können wir derzeit 35.000
-                                Aufenthalte an über 2.700 Orten bestimmen. Für keine Zeitgenossin,
+                                    >Korrespondenz</a> und andere Dokumente können wir derzeit 56.000
+                                Aufenthalte an über 3.000 Orten bestimmen. Für keine Zeitgenossin,
                                 für keinen Zeitgenossen dürften derzeit so viele georeferenzierte Daten frei verfügbar 
                                 sein. Damit lässt sich der geographischen Raum bestimmen, in dem Schnitzler sich
                                 bewegte, Häuser, Straßen, Bezirke, Städte und Länder, die er kannte, die ihm wichtig waren. Und im Gegenzug
                                 auch jene Orte, die er nicht
                                 besuchte. </p>
-                            <p>Die Detailtiefe der derzeit erfassten Daten schwankt. Die Jahre 1890–1906 und 1929 sind besonders dicht.</p>
+                            <p>Die Detailtiefe der derzeit erfassten Daten schwankt. Die Jahre 1890–1906 und 1929/1930 sind derzeit dichter.</p>
                         </div>
                         <div class="col-md-6">
                             <img src="./images/schnitzler-index.jpg"

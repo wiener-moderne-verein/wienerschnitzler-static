@@ -323,10 +323,12 @@
                                                 select="$distinctPlaces/tei:place[@xml:id = $current-xml-id]/tei:listEvent/tei:event">
                                                 <li>
                                                   <a
-                                                  href="{concat('https://schnitzler-chronik.acdh.oeaw.ac.at/', @when, '.html')}"
+                                                  href="{concat('tag.html#', @when)}"
                                                   target="_blank">
                                                   <xsl:value-of select="tei:eventName"/>
-                                                  </a>
+                                                  </a> (<a class="schnitzler-chronik-link"
+                                                      href="{concat('https://schnitzler-chronik.acdh.oeaw.ac.at/', @when, '.html')}"
+                                                      target="_blank">Schnitzler Chronik</a>)
                                                 </li>
                                             </xsl:for-each>
                                         </ul>
@@ -360,13 +362,15 @@
                                                   <ul>
                                                   <!-- Ereignisse innerhalb des Jahres -->
                                                   <xsl:for-each select="current-group()">
-                                                  <li>
-                                                  <a
-                                                  href="{concat('https://schnitzler-chronik.acdh.oeaw.ac.at/', @when, '.html')}"
-                                                  target="_blank">
-                                                  <xsl:value-of select="tei:eventName"/>
-                                                  </a>
-                                                  </li>
+                                                      <li>
+                                                          <a
+                                                              href="{concat('tag.html#', @when)}"
+                                                              target="_blank">
+                                                              <xsl:value-of select="tei:eventName"/>
+                                                          </a> (<a class="schnitzler-chronik-link"
+                                                              href="{concat('https://schnitzler-chronik.acdh.oeaw.ac.at/', @when, '.html')}"
+                                                              target="_blank">Schnitzler Chronik</a>)
+                                                      </li>
                                                   </xsl:for-each>
                                                   </ul>
                                                   </div>
