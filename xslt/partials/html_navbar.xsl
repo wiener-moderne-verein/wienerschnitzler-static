@@ -27,9 +27,15 @@
                                     </ul>
                                 </li>
                                 
-                                <!-- Orte Link -->
-                                <li class="nav-item">
-                                    <a class="nav-link" href="listplace.html">Orte</a>
+                                <!-- Orte Dropdown -->
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Orte
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="listplace.html">Verzeichnis</a>
+                                        <a class="dropdown-item" href="https://kepler.gl/demo/map?mapUrl=https://dl.dropboxusercontent.com/scl/fi/y8bpsyosh2uwvawwi2jdh/keplergl_ygz1fc.json?rlkey=rl5x7uoswnd0cttr1mw2ncw18&dl=0" target="_blank">Visualisierung mit Kepler.gl</a>
+                                    </div>
                                 </li>
                                 
                                 <!-- Zeiträume Dropdown -->
