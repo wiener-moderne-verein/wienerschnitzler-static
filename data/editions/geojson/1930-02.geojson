@@ -1,0 +1,410 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [16.373056, 48.208333]
+      },
+      "properties": {
+         "id": "pmb50",
+         "title": "Wien",
+         "lat": "48.208333",
+         "lon": "16.373056",
+         "timestamp": ["1930-02-01", "1930-02-02", "1930-02-03", "1930-02-04", "1930-02-05", "1930-02-06", "1930-02-07", "1930-02-08", "1930-02-09", "1930-02-10", "1930-02-11", "1930-02-12", "1930-02-13", "1930-02-14", "1930-02-15", "1930-02-16", "1930-02-17", "1930-02-18", "1930-02-19", "1930-02-20", "1930-02-21", "1930-02-22", "1930-02-23", "1930-02-24", "1930-02-25", "1930-02-26", "1930-02-27", "1930-02-28"],
+         "importance": "28"
+      }
+      }, 
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [16.361139, 48.210333]
+      },
+      "properties": {
+         "id": "pmb14",
+         "title": "Burgtheater",
+         "lat": "48.210333",
+         "lon": "16.361139",
+         "timestamp": ["1930-02-01"],
+         "importance": "1"
+      }
+      }, 
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [16.364351, 48.199478]
+      },
+      "properties": {
+         "id": "pmb92603",
+         "title": "Wiednertheater",
+         "lat": "48.199478",
+         "lon": "16.364351",
+         "timestamp": ["1930-02-11", "1930-02-19"],
+         "importance": "2"
+      }
+      }, 
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [16.29101, 48.17547]
+      },
+      "properties": {
+         "id": "pmb63",
+         "title": "XIII., Hietzing",
+         "lat": "48.17547",
+         "lon": "16.29101",
+         "timestamp": ["1930-02-02"],
+         "importance": "1"
+      }
+      }, 
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [16.355191, 48.248422]
+      },
+      "properties": {
+         "id": "pmb92292",
+         "title": "Hohe Warte",
+         "lat": "48.248422",
+         "lon": "16.355191",
+         "timestamp": ["1930-02-16"],
+         "importance": "1"
+      }
+      }, 
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [16.3, 48.21667]
+      },
+      "properties": {
+         "id": "pmb66",
+         "title": "XVI., Ottakring",
+         "lat": "48.21667",
+         "lon": "16.3",
+         "timestamp": ["1930-02-09"],
+         "importance": "1"
+      }
+      }, 
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [16.36471, 48.200556]
+      },
+      "properties": {
+         "id": "pmb97",
+         "title": "Zum Weingartl",
+         "lat": "48.200556",
+         "lon": "16.36471",
+         "timestamp": ["1930-02-04", "1930-02-11", "1930-02-17", "1930-02-19"],
+         "importance": "4"
+      }
+      }, 
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [16.37312, 48.20122]
+      },
+      "properties": {
+         "id": "pmb43",
+         "title": "Café Imperial",
+         "lat": "48.20122",
+         "lon": "16.37312",
+         "timestamp": ["1930-02-02", "1930-02-12", "1930-02-14", "1930-02-21", "1930-02-26"],
+         "importance": "5"
+      }
+      }, 
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [16.37312, 48.20122]
+      },
+      "properties": {
+         "id": "pmb126",
+         "title": "Hotel Imperial",
+         "lat": "48.20122",
+         "lon": "16.37312",
+         "timestamp": ["1930-02-14"],
+         "importance": "1"
+      }
+      }, 
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [16.365508, 48.200364]
+      },
+      "properties": {
+         "id": "pmb7",
+         "title": "Secession",
+         "lat": "48.200364",
+         "lon": "16.365508",
+         "timestamp": ["1930-02-14"],
+         "importance": "1"
+      }
+      }, 
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [16.33641, 48.23362]
+      },
+      "properties": {
+         "id": "pmb235132",
+         "title": "Türkenschanzstraße 48",
+         "lat": "48.23362",
+         "lon": "16.33641",
+         "timestamp": ["1930-02-10"],
+         "importance": "1"
+      }
+      }, 
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [16.35689, 48.21787]
+      },
+      "properties": {
+         "id": "pmb232768",
+         "title": "Beethovengasse 6",
+         "lat": "48.21787",
+         "lon": "16.35689",
+         "timestamp": ["1930-02-07", "1930-02-14", "1930-02-25"],
+         "importance": "3"
+      }
+      }, 
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [16.33716, 48.23188]
+      },
+      "properties": {
+         "id": "pmb168815",
+         "title": "Sternwartestraße 71",
+         "lat": "48.23188",
+         "lon": "16.33716",
+         "timestamp": ["1930-02-01", "1930-02-02", "1930-02-03", "1930-02-04", "1930-02-05", "1930-02-06", "1930-02-07", "1930-02-08", "1930-02-09", "1930-02-10", "1930-02-11", "1930-02-12", "1930-02-13", "1930-02-14", "1930-02-15", "1930-02-16", "1930-02-17", "1930-02-18", "1930-02-19", "1930-02-20", "1930-02-21", "1930-02-22", "1930-02-23", "1930-02-24", "1930-02-25", "1930-02-26", "1930-02-27", "1930-02-28"],
+         "importance": "28"
+      }
+      }, 
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [16.35137, 48.21346]
+      },
+      "properties": {
+         "id": "pmb232800",
+         "title": "Laudongasse 12",
+         "lat": "48.21346",
+         "lon": "16.35137",
+         "timestamp": ["1930-02-07", "1930-02-18", "1930-02-28"],
+         "importance": "3"
+      }
+      }, 
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [16.367725, 48.212284]
+      },
+      "properties": {
+         "id": "pmb207301",
+         "title": "Tiefer Graben 17",
+         "lat": "48.212284",
+         "lon": "16.367725",
+         "timestamp": ["1930-02-21"],
+         "importance": "1"
+      }
+      }, 
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [16.36171, 48.2116]
+      },
+      "properties": {
+         "id": "pmb235784",
+         "title": "Oppolzergasse 6",
+         "lat": "48.2116",
+         "lon": "16.36171",
+         "timestamp": ["1930-02-04"],
+         "importance": "1"
+      }
+      }, 
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [16.377117625773, 48.200254933632]
+      },
+      "properties": {
+         "id": "pmb520",
+         "title": "Akademietheater",
+         "lat": "48.200254933632",
+         "lon": "16.377117625773",
+         "timestamp": ["1930-02-26"],
+         "importance": "1"
+      }
+      }, 
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [16.379436, 48.213062]
+      },
+      "properties": {
+         "id": "pmb190479",
+         "title": "Ferdinandskino",
+         "lat": "48.213062",
+         "lon": "16.379436",
+         "timestamp": ["1930-02-17"],
+         "importance": "1"
+      }
+      }, 
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [16.338016, 48.234091]
+      },
+      "properties": {
+         "id": "pmb236372",
+         "title": "Gregor-Mendel-Straße 34",
+         "lat": "48.234091",
+         "lon": "16.338016",
+         "timestamp": ["1930-02-13", "1930-02-14", "1930-02-21", "1930-02-27"],
+         "importance": "4"
+      }
+      }, 
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [16.33286, 48.25644]
+      },
+      "properties": {
+         "id": "pmb235184",
+         "title": "Himmelstraße 55",
+         "lat": "48.25644",
+         "lon": "16.33286",
+         "timestamp": ["1930-02-05"],
+         "importance": "1"
+      }
+      }, 
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [16.309305, 48.253492]
+      },
+      "properties": {
+         "id": "pmb237889",
+         "title": "Agnesgasse 30",
+         "lat": "48.253492",
+         "lon": "16.309305",
+         "timestamp": ["1930-02-20"],
+         "importance": "1"
+      }
+      }, 
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [16.299518, 48.182697]
+      },
+      "properties": {
+         "id": "pmb237170",
+         "title": "Maxingstraße 20",
+         "lat": "48.182697",
+         "lon": "16.299518",
+         "timestamp": ["1930-02-02"],
+         "importance": "1"
+      }
+      }, 
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [16.371501, 48.207882]
+      },
+      "properties": {
+         "id": "pmb237859",
+         "title": "Amerikanisches Konsulat in Wien",
+         "lat": "48.207882",
+         "lon": "16.371501",
+         "timestamp": ["1930-02-07"],
+         "importance": "1"
+      }
+      }, 
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [16.370265, 48.208597]
+      },
+      "properties": {
+         "id": "pmb185530",
+         "title": "Franz Kasznar Grabenrestaurant",
+         "lat": "48.208597",
+         "lon": "16.370265",
+         "timestamp": ["1930-02-05"],
+         "importance": "1"
+      }
+      }, 
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [16.354785, 48.208317]
+      },
+      "properties": {
+         "id": "pmb237917",
+         "title": "Auersperg-Sanatorium",
+         "lat": "48.208317",
+         "lon": "16.354785",
+         "timestamp": ["1930-02-07"],
+         "importance": "1"
+      }
+      }, 
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [16.304464, 48.218092]
+      },
+      "properties": {
+         "id": "pmb92605",
+         "title": "Wilhelminenstraße",
+         "lat": "48.218092",
+         "lon": "16.304464",
+         "timestamp": ["1930-02-09"],
+         "importance": "1"
+      }
+      }, 
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [16.370328, 48.189755]
+      },
+      "properties": {
+         "id": "pmb92547",
+         "title": "Graf-Starhemberg-Gasse",
+         "lat": "48.189755",
+         "lon": "16.370328",
+         "timestamp": ["1930-02-20"],
+         "importance": "1"
+      }
+      }
+  ]
+}

@@ -1,0 +1,260 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [16.373056, 48.208333]
+      },
+      "properties": {
+         "id": "pmb50",
+         "title": "Wien",
+         "lat": "48.208333",
+         "lon": "16.373056",
+         "timestamp": ["1927-02-01", "1927-02-02", "1927-02-03", "1927-02-04", "1927-02-05", "1927-02-06", "1927-02-07", "1927-02-08", "1927-02-09", "1927-02-10", "1927-02-11", "1927-02-12", "1927-02-14", "1927-02-15", "1927-02-16", "1927-02-17", "1927-02-18", "1927-02-19", "1927-02-20", "1927-02-21", "1927-02-22", "1927-02-23", "1927-02-24", "1927-02-25", "1927-02-26", "1927-02-27", "1927-02-28"],
+         "importance": "27"
+      }
+      }, 
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [16.351111, 48.209583]
+      },
+      "properties": {
+         "id": "pmb40",
+         "title": "Theater in der Josefstadt",
+         "lat": "48.209583",
+         "lon": "16.351111",
+         "timestamp": ["1927-02-09"],
+         "importance": "1"
+      }
+      }, 
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [16.361139, 48.210333]
+      },
+      "properties": {
+         "id": "pmb14",
+         "title": "Burgtheater",
+         "lat": "48.210333",
+         "lon": "16.361139",
+         "timestamp": ["1927-02-02", "1927-02-25"],
+         "importance": "2"
+      }
+      }, 
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [16.33255, 48.27617]
+      },
+      "properties": {
+         "id": "pmb574",
+         "title": "Kahlenberg",
+         "lat": "48.27617",
+         "lon": "16.33255",
+         "timestamp": ["1927-02-20"],
+         "importance": "1"
+      }
+      }, 
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [16.367998, 48.203159]
+      },
+      "properties": {
+         "id": "pmb185989",
+         "title": "Opernrestaurant",
+         "lat": "48.203159",
+         "lon": "16.367998",
+         "timestamp": ["1927-02-01"],
+         "importance": "1"
+      }
+      }, 
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [16.36471, 48.200556]
+      },
+      "properties": {
+         "id": "pmb97",
+         "title": "Zum Weingartl",
+         "lat": "48.200556",
+         "lon": "16.36471",
+         "timestamp": ["1927-02-07"],
+         "importance": "1"
+      }
+      }, 
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [16.36028, 48.217575]
+      },
+      "properties": {
+         "id": "pmb34106",
+         "title": "Zum silbernen Brunnen",
+         "lat": "48.217575",
+         "lon": "16.36028",
+         "timestamp": ["1927-02-18"],
+         "importance": "1"
+      }
+      }, 
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [16.338015, 48.234046]
+      },
+      "properties": {
+         "id": "pmb185644",
+         "title": "Peregringasse 4",
+         "lat": "48.234046",
+         "lon": "16.338015",
+         "timestamp": ["1927-02-04"],
+         "importance": "1"
+      }
+      }, 
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [16.35468, 48.27475]
+      },
+      "properties": {
+         "id": "pmb90969",
+         "title": "Kahlenbergerdorf",
+         "lat": "48.27475",
+         "lon": "16.35468",
+         "timestamp": ["1927-02-20"],
+         "importance": "1"
+      }
+      }, 
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [15.80915, 47.69255]
+      },
+      "properties": {
+         "id": "pmb470",
+         "title": "Edlach",
+         "lat": "47.69255",
+         "lon": "15.80915",
+         "timestamp": ["1927-02-12", "1927-02-13", "1927-02-14"],
+         "importance": "3"
+      }
+      }, 
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [15.707639, 47.605239]
+      },
+      "properties": {
+         "id": "pmb714",
+         "title": "Hotel Edlacherhof",
+         "lat": "47.605239",
+         "lon": "15.707639",
+         "timestamp": ["1927-02-12", "1927-02-13", "1927-02-14"],
+         "importance": "3"
+      }
+      }, 
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [16.353889, 48.1975]
+      },
+      "properties": {
+         "id": "pmb52023",
+         "title": "Apollo-Theater [Wien]",
+         "lat": "48.1975",
+         "lon": "16.353889",
+         "timestamp": ["1927-02-07"],
+         "importance": "1"
+      }
+      }, 
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [16.35689, 48.21787]
+      },
+      "properties": {
+         "id": "pmb232768",
+         "title": "Beethovengasse 6",
+         "lat": "48.21787",
+         "lon": "16.35689",
+         "timestamp": ["1927-02-09", "1927-02-16", "1927-02-23"],
+         "importance": "3"
+      }
+      }, 
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [16.33716, 48.23188]
+      },
+      "properties": {
+         "id": "pmb168815",
+         "title": "Sternwartestraße 71",
+         "lat": "48.23188",
+         "lon": "16.33716",
+         "timestamp": ["1927-02-01", "1927-02-02", "1927-02-03", "1927-02-04", "1927-02-05", "1927-02-06", "1927-02-07", "1927-02-08", "1927-02-09", "1927-02-10", "1927-02-11", "1927-02-12", "1927-02-14", "1927-02-15", "1927-02-16", "1927-02-17", "1927-02-18", "1927-02-19", "1927-02-20", "1927-02-21", "1927-02-22", "1927-02-23", "1927-02-24", "1927-02-25", "1927-02-26", "1927-02-27", "1927-02-28"],
+         "importance": "27"
+      }
+      }, 
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [16.35137, 48.21346]
+      },
+      "properties": {
+         "id": "pmb232800",
+         "title": "Laudongasse 12",
+         "lat": "48.21346",
+         "lon": "16.35137",
+         "timestamp": ["1927-02-18"],
+         "importance": "1"
+      }
+      }, 
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [16.367725, 48.212284]
+      },
+      "properties": {
+         "id": "pmb207301",
+         "title": "Tiefer Graben 17",
+         "lat": "48.212284",
+         "lon": "16.367725",
+         "timestamp": ["1927-02-01", "1927-02-16"],
+         "importance": "2"
+      }
+      }, 
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [16.363758, 48.212483]
+      },
+      "properties": {
+         "id": "pmb185333",
+         "title": "Gastwirtschaft Alfred Leupold",
+         "lat": "48.212483",
+         "lon": "16.363758",
+         "timestamp": ["1927-02-25"],
+         "importance": "1"
+      }
+      }
+  ]
+}

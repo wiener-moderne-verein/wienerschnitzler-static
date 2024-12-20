@@ -1,0 +1,275 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [16.373056, 48.208333]
+      },
+      "properties": {
+         "id": "pmb50",
+         "title": "Wien",
+         "lat": "48.208333",
+         "lon": "16.373056",
+         "timestamp": ["1927-03-01", "1927-03-02", "1927-03-03", "1927-03-04", "1927-03-05", "1927-03-06", "1927-03-07", "1927-03-08", "1927-03-09", "1927-03-10", "1927-03-11", "1927-03-12", "1927-03-13", "1927-03-14", "1927-03-15", "1927-03-16", "1927-03-17", "1927-03-18", "1927-03-19", "1927-03-20", "1927-03-21", "1927-03-22", "1927-03-23", "1927-03-24", "1927-03-25", "1927-03-26", "1927-03-27", "1927-03-28", "1927-03-29", "1927-03-30", "1927-03-31"],
+         "importance": "31"
+      }
+      }, 
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [16.364351, 48.199478]
+      },
+      "properties": {
+         "id": "pmb92603",
+         "title": "Wiednertheater",
+         "lat": "48.199478",
+         "lon": "16.364351",
+         "timestamp": ["1927-03-09"],
+         "importance": "1"
+      }
+      }, 
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [16.3566, 48.205142]
+      },
+      "properties": {
+         "id": "pmb20",
+         "title": "Volkstheater",
+         "lat": "48.205142",
+         "lon": "16.3566",
+         "timestamp": ["1927-03-03"],
+         "importance": "1"
+      }
+      }, 
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [16.36471, 48.200556]
+      },
+      "properties": {
+         "id": "pmb97",
+         "title": "Zum Weingartl",
+         "lat": "48.200556",
+         "lon": "16.36471",
+         "timestamp": ["1927-03-09", "1927-03-21"],
+         "importance": "2"
+      }
+      }, 
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [16.36028, 48.217575]
+      },
+      "properties": {
+         "id": "pmb34106",
+         "title": "Zum silbernen Brunnen",
+         "lat": "48.217575",
+         "lon": "16.36028",
+         "timestamp": ["1927-03-17", "1927-03-22", "1927-03-28", "1927-03-30"],
+         "importance": "4"
+      }
+      }, 
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [16.333568462613, 48.235119783861]
+      },
+      "properties": {
+         "id": "pmb113",
+         "title": "Türkenschanzpark",
+         "lat": "48.235119783861",
+         "lon": "16.333568462613",
+         "timestamp": ["1927-03-02"],
+         "importance": "1"
+      }
+      }, 
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [16.300034240016, 48.246838181084]
+      },
+      "properties": {
+         "id": "pmb169",
+         "title": "Pötzleinsdorf",
+         "lat": "48.246838181084",
+         "lon": "16.300034240016",
+         "timestamp": ["1927-03-13"],
+         "importance": "1"
+      }
+      }, 
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [16.28610371233, 48.233119188484]
+      },
+      "properties": {
+         "id": "pmb170",
+         "title": "Neuwaldegg",
+         "lat": "48.233119188484",
+         "lon": "16.28610371233",
+         "timestamp": ["1927-03-20"],
+         "importance": "1"
+      }
+      }, 
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [16.338015, 48.234046]
+      },
+      "properties": {
+         "id": "pmb185644",
+         "title": "Peregringasse 4",
+         "lat": "48.234046",
+         "lon": "16.338015",
+         "timestamp": ["1927-03-01"],
+         "importance": "1"
+      }
+      }, 
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [16.328822485916, 48.231291362993]
+      },
+      "properties": {
+         "id": "pmb291",
+         "title": "Gersthof",
+         "lat": "48.231291362993",
+         "lon": "16.328822485916",
+         "timestamp": ["1927-03-06"],
+         "importance": "1"
+      }
+      }, 
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [16.293147561818, 48.251927827778]
+      },
+      "properties": {
+         "id": "pmb540",
+         "title": "Hameau",
+         "lat": "48.251927827778",
+         "lon": "16.293147561818",
+         "timestamp": ["1927-03-20"],
+         "importance": "1"
+      }
+      }, 
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [16.353889, 48.1975]
+      },
+      "properties": {
+         "id": "pmb52023",
+         "title": "Apollo-Theater [Wien]",
+         "lat": "48.1975",
+         "lon": "16.353889",
+         "timestamp": ["1927-03-22"],
+         "importance": "1"
+      }
+      }, 
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [16.35689, 48.21787]
+      },
+      "properties": {
+         "id": "pmb232768",
+         "title": "Beethovengasse 6",
+         "lat": "48.21787",
+         "lon": "16.35689",
+         "timestamp": ["1927-03-02", "1927-03-09", "1927-03-22"],
+         "importance": "3"
+      }
+      }, 
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [16.33716, 48.23188]
+      },
+      "properties": {
+         "id": "pmb168815",
+         "title": "Sternwartestraße 71",
+         "lat": "48.23188",
+         "lon": "16.33716",
+         "timestamp": ["1927-03-01", "1927-03-02", "1927-03-03", "1927-03-04", "1927-03-05", "1927-03-06", "1927-03-07", "1927-03-08", "1927-03-09", "1927-03-10", "1927-03-11", "1927-03-12", "1927-03-13", "1927-03-14", "1927-03-15", "1927-03-16", "1927-03-17", "1927-03-18", "1927-03-19", "1927-03-20", "1927-03-21", "1927-03-22", "1927-03-23", "1927-03-24", "1927-03-25", "1927-03-26", "1927-03-27", "1927-03-28", "1927-03-29", "1927-03-30", "1927-03-31"],
+         "importance": "31"
+      }
+      }, 
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [16.35137, 48.21346]
+      },
+      "properties": {
+         "id": "pmb232800",
+         "title": "Laudongasse 12",
+         "lat": "48.21346",
+         "lon": "16.35137",
+         "timestamp": ["1927-03-25"],
+         "importance": "1"
+      }
+      }, 
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [16.35992, 48.21681]
+      },
+      "properties": {
+         "id": "pmb190681",
+         "title": "Votivkino",
+         "lat": "48.21681",
+         "lon": "16.35992",
+         "timestamp": ["1927-03-28"],
+         "importance": "1"
+      }
+      }, 
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [16.367725, 48.212284]
+      },
+      "properties": {
+         "id": "pmb207301",
+         "title": "Tiefer Graben 17",
+         "lat": "48.212284",
+         "lon": "16.367725",
+         "timestamp": ["1927-03-15"],
+         "importance": "1"
+      }
+      }, 
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [16.377117625773, 48.200254933632]
+      },
+      "properties": {
+         "id": "pmb520",
+         "title": "Akademietheater",
+         "lat": "48.200254933632",
+         "lon": "16.377117625773",
+         "timestamp": ["1927-03-15"],
+         "importance": "1"
+      }
+      }
+  ]
+}

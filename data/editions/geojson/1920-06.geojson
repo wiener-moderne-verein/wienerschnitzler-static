@@ -1,0 +1,350 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [15.84704, 47.70466]
+      },
+      "properties": {
+         "id": "pmb796",
+         "title": "Thalhof",
+         "lat": "47.70466",
+         "lon": "15.84704",
+         "timestamp": ["1920-06-22"],
+         "importance": "1"
+      }
+      }, 
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [16.373056, 48.208333]
+      },
+      "properties": {
+         "id": "pmb50",
+         "title": "Wien",
+         "lat": "48.208333",
+         "lon": "16.373056",
+         "timestamp": ["1920-06-01", "1920-06-02", "1920-06-03", "1920-06-04", "1920-06-05", "1920-06-06", "1920-06-07", "1920-06-08", "1920-06-09", "1920-06-10", "1920-06-11", "1920-06-12", "1920-06-13", "1920-06-14", "1920-06-15", "1920-06-16", "1920-06-17", "1920-06-18", "1920-06-19", "1920-06-20", "1920-06-25", "1920-06-26", "1920-06-27", "1920-06-28", "1920-06-29", "1920-06-30"],
+         "importance": "26"
+      }
+      }, 
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [16.361139, 48.210333]
+      },
+      "properties": {
+         "id": "pmb14",
+         "title": "Burgtheater",
+         "lat": "48.210333",
+         "lon": "16.361139",
+         "timestamp": ["1920-06-01", "1920-06-10", "1920-06-12"],
+         "importance": "3"
+      }
+      }, 
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [16.36678, 48.20608]
+      },
+      "properties": {
+         "id": "pmb828",
+         "title": "Nationalbibliothek",
+         "lat": "48.20608",
+         "lon": "16.36678",
+         "timestamp": ["1920-06-11"],
+         "importance": "1"
+      }
+      }, 
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [15.83333, 47.7]
+      },
+      "properties": {
+         "id": "pmb483",
+         "title": "Reichenau an der Rax",
+         "lat": "47.7",
+         "lon": "15.83333",
+         "timestamp": ["1920-06-21", "1920-06-22", "1920-06-23", "1920-06-24"],
+         "importance": "4"
+      }
+      }, 
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [16.38091, 48.19156]
+      },
+      "properties": {
+         "id": "pmb90328",
+         "title": "Schloss Belvedere",
+         "lat": "48.19156",
+         "lon": "16.38091",
+         "timestamp": ["1920-06-17"],
+         "importance": "1"
+      }
+      }, 
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [16.3067984, 48.1806202]
+      },
+      "properties": {
+         "id": "pmb92518",
+         "title": "Schlosspark Schönbrunn",
+         "lat": "48.1806202",
+         "lon": "16.3067984",
+         "timestamp": ["1920-06-17"],
+         "importance": "1"
+      }
+      }, 
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [16.37312, 48.20122]
+      },
+      "properties": {
+         "id": "pmb43",
+         "title": "Café Imperial",
+         "lat": "48.20122",
+         "lon": "16.37312",
+         "timestamp": ["1920-06-09"],
+         "importance": "1"
+      }
+      }, 
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [16.276509500872, 48.241960480337]
+      },
+      "properties": {
+         "id": "pmb176",
+         "title": "Schwarzenbergpark",
+         "lat": "48.241960480337",
+         "lon": "16.276509500872",
+         "timestamp": ["1920-06-03", "1920-06-13", "1920-06-27", "1920-06-29"],
+         "importance": "4"
+      }
+      }, 
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [16.300034240016, 48.246838181084]
+      },
+      "properties": {
+         "id": "pmb169",
+         "title": "Pötzleinsdorf",
+         "lat": "48.246838181084",
+         "lon": "16.300034240016",
+         "timestamp": ["1920-06-03", "1920-06-05", "1920-06-06", "1920-06-09", "1920-06-20", "1920-06-27"],
+         "importance": "6"
+      }
+      }, 
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [16.28610371233, 48.233119188484]
+      },
+      "properties": {
+         "id": "pmb170",
+         "title": "Neuwaldegg",
+         "lat": "48.233119188484",
+         "lon": "16.28610371233",
+         "timestamp": ["1920-06-03", "1920-06-13", "1920-06-20", "1920-06-29"],
+         "importance": "4"
+      }
+      }, 
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [15.84453, 47.69852]
+      },
+      "properties": {
+         "id": "pmb44982",
+         "title": "Kurhaus Rudolfsbad",
+         "lat": "47.69852",
+         "lon": "15.84453",
+         "timestamp": ["1920-06-21", "1920-06-22", "1920-06-23", "1920-06-24"],
+         "importance": "4"
+      }
+      }, 
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [16.2911, 48.2553]
+      },
+      "properties": {
+         "id": "pmb242",
+         "title": "Salmannsdorf",
+         "lat": "48.2553",
+         "lon": "16.2911",
+         "timestamp": ["1920-06-03", "1920-06-13", "1920-06-20", "1920-06-27"],
+         "importance": "4"
+      }
+      }, 
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [16.293147561818, 48.251927827778]
+      },
+      "properties": {
+         "id": "pmb540",
+         "title": "Hameau",
+         "lat": "48.251927827778",
+         "lon": "16.293147561818",
+         "timestamp": ["1920-06-20", "1920-06-27"],
+         "importance": "2"
+      }
+      }, 
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [16.28606, 48.25849]
+      },
+      "properties": {
+         "id": "pmb537",
+         "title": "Dreimarkstein [Wien]",
+         "lat": "48.25849",
+         "lon": "16.28606",
+         "timestamp": ["1920-06-20"],
+         "importance": "1"
+      }
+      }, 
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [16.35689, 48.21787]
+      },
+      "properties": {
+         "id": "pmb232768",
+         "title": "Beethovengasse 6",
+         "lat": "48.21787",
+         "lon": "16.35689",
+         "timestamp": ["1920-06-09"],
+         "importance": "1"
+      }
+      }, 
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [16.301361, 48.245451]
+      },
+      "properties": {
+         "id": "pmb92313",
+         "title": "Dr.-Heinrich-Maier-Straße",
+         "lat": "48.245451",
+         "lon": "16.301361",
+         "timestamp": ["1920-06-06"],
+         "importance": "1"
+      }
+      }, 
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [16.33716, 48.23188]
+      },
+      "properties": {
+         "id": "pmb168815",
+         "title": "Sternwartestraße 71",
+         "lat": "48.23188",
+         "lon": "16.33716",
+         "timestamp": ["1920-06-01", "1920-06-02", "1920-06-03", "1920-06-04", "1920-06-05", "1920-06-06", "1920-06-07", "1920-06-08", "1920-06-09", "1920-06-10", "1920-06-11", "1920-06-12", "1920-06-13", "1920-06-14", "1920-06-15", "1920-06-16", "1920-06-17", "1920-06-18", "1920-06-19", "1920-06-20", "1920-06-25", "1920-06-26", "1920-06-27", "1920-06-28", "1920-06-29", "1920-06-30"],
+         "importance": "26"
+      }
+      }, 
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [16.35137, 48.21346]
+      },
+      "properties": {
+         "id": "pmb232800",
+         "title": "Laudongasse 12",
+         "lat": "48.21346",
+         "lon": "16.35137",
+         "timestamp": ["1920-06-08", "1920-06-19"],
+         "importance": "2"
+      }
+      }, 
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [16.367725, 48.212284]
+      },
+      "properties": {
+         "id": "pmb207301",
+         "title": "Tiefer Graben 17",
+         "lat": "48.212284",
+         "lon": "16.367725",
+         "timestamp": ["1920-06-11"],
+         "importance": "1"
+      }
+      }, 
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [16.36171, 48.2116]
+      },
+      "properties": {
+         "id": "pmb235784",
+         "title": "Oppolzergasse 6",
+         "lat": "48.2116",
+         "lon": "16.36171",
+         "timestamp": ["1920-06-01", "1920-06-09"],
+         "importance": "2"
+      }
+      }, 
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [16.32092, 48.24077]
+      },
+      "properties": {
+         "id": "pmb235218",
+         "title": "Windmühlhöhe",
+         "lat": "48.24077",
+         "lon": "16.32092",
+         "timestamp": ["1920-06-09"],
+         "importance": "1"
+      }
+      }, 
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [16.31227, 48.18479]
+      },
+      "properties": {
+         "id": "pmb21799",
+         "title": "Schloss Schönbrunn",
+         "lat": "48.18479",
+         "lon": "16.31227",
+         "timestamp": ["1920-06-25"],
+         "importance": "1"
+      }
+      }
+  ]
+}

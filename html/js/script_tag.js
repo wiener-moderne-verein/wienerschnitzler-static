@@ -7,9 +7,14 @@ function updateMapInhaltText(titles, date, name) {
         
         // Erstelle den Text mit Datum und Titeln
         const textContent = filteredTitles.length > 0 
-            ? `Am <a class="schnitzler-chronik-link" href="https://schnitzler-chronik.acdh.oeaw.ac.at/${date}.html" target="_blank">${name}</a> war Schnitzler an folgenden Orten: ${filteredTitles.map(title => `<a href="https://de.wikipedia.org/wiki/${encodeURIComponent(title)}" target="_blank">${title}</a>`).join(', ')}<br/><br/>`
-            : `Am ${date} sind keine Orte bekannt.<br/><br/>`;
-        
+    ? `Am <a class="schnitzler-chronik-link" href="https://schnitzler-chronik.acdh.oeaw.ac.at/${date}.html" target="_blank">${name}</a> war Schnitzler an folgenden Orten: ${
+        filteredTitles.length === 1
+            ? `<a href="https://de.wikipedia.org/wiki/${encodeURIComponent(filteredTitles[0])}" target="_blank">${filteredTitles[0]}</a>.`
+            : filteredTitles.slice(0, -1).map(title => `<a href="https://de.wikipedia.org/wiki/${encodeURIComponent(title)}" target="_blank">${title}</a>`).join(', ') +
+              ` und <a href="https://de.wikipedia.org/wiki/${encodeURIComponent(filteredTitles[filteredTitles.length - 1])}" target="_blank">${filteredTitles[filteredTitles.length - 1]}</a>.`
+    }<br/><br/>`
+    : `Am ${date} sind keine Orte bekannt.<br/><br/>`;
+
         mapInhaltTextDiv.innerHTML = textContent;
     } else {
         console.error('Element mit ID "map-inhalt-text" nicht gefunden.');

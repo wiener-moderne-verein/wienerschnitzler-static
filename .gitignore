@@ -9,6 +9,8 @@ build.xml
 
 data/indices/*.xml
 data/editions/*.xml
+data/editions/xml/*.xml
+data/editions/geojson/*.geojson
 data/meta/*.xml
 
 
