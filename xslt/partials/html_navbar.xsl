@@ -24,12 +24,14 @@
                                     <ul class="dropdown-menu" aria-labelledby="projektDropdown">
                                         <li><a class="dropdown-item" href="about.html">Über das Projekt</a></li>
                                         <li><a class="dropdown-item" href="imprint.html">Impressum</a></li>
+                                        <li><a class="dropdown-item" href="danke.html">Danksagung</a></li>
+                                        <li><a class="dropdown-item" href="literatur.html">Literatur</a></li>
                                     </ul>
                                 </li>
                                 
                                 <!-- Orte Dropdown -->
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="OrteDropdown" role="button"  data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <a class="nav-link dropdown-toggle" href="#" id="OrteDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Orte
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="OrteDropdown">
@@ -50,12 +52,29 @@
                                         <li><a class="dropdown-item" href="dekade.html">Dekade</a></li>
                                     </ul>
                                 </li>
+                                
+                                <!-- Schnitzler-Links Dropdown -->
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="schnitzlerLinksDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Schnitzler-Links
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="schnitzlerLinksDropdown">
+                                        <li><a class="dropdown-item" href="#">Wikipedia</a></li>
+                                        <li><a class="dropdown-item" href="#">Tagebuch</a></li>
+                                        <li><a class="dropdown-item" href="#">Briefe</a></li>
+                                        <li><a class="dropdown-item" href="#">Mikrofilme</a></li>
+                                        <li><a class="dropdown-item" href="#">Zeitungsarchiv</a></li>
+                                        <li><a class="dropdown-item" href="#">Chronik</a></li>
+                                        <li><a class="dropdown-item" href="#">PMB</a></li>
+                                    </ul>
+                                </li>
                             </ul>
                         </div>
                     </div>
                 </nav>
             </div>
         </header>
+        
         
         
     </xsl:template>
