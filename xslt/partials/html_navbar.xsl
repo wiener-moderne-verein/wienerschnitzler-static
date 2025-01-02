@@ -59,13 +59,17 @@
                                         Schnitzler-Links
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="schnitzlerLinksDropdown">
-                                        <li><a class="dropdown-item" href="#">Wikipedia</a></li>
-                                        <li><a class="dropdown-item" href="#">Tagebuch</a></li>
-                                        <li><a class="dropdown-item" href="#">Briefe</a></li>
-                                        <li><a class="dropdown-item" href="#">Mikrofilme</a></li>
-                                        <li><a class="dropdown-item" href="#">Zeitungsarchiv</a></li>
-                                        <li><a class="dropdown-item" href="#">Chronik</a></li>
-                                        <li><a class="dropdown-item" href="#">PMB</a></li>
+                                        <li><a class="dropdown-item" href="https://de.wikipedia.org/wiki/Arthur_Schnitzler" target="_blank">Wikipedia</a></li>
+                                        <li><a class="dropdown-item" href="https://www.geschichtewiki.wien.gv.at/Arthur_Schnitzler" target="_blank">Wien Geschichte Wiki</a></li>
+                                        <li><a class="dropdown-item" href="https://schnitzler-tagebuch.acdh.oeaw.ac.at/" target="_blank">Tagebuch</a></li>
+                                        <li><a class="dropdown-item" href="https://schnitzler-briefe.acdh.oeaw.ac.at/" target="_blank">Briefe</a></li>
+                                        <li><a class="dropdown-item" href="https://www.arthur-schnitzler.de" target="_blank">Digitale historisch-kritische Edition (1905–1931)</a></li>
+                                        <li><a class="dropdown-item" href="https://schnitzler-mikrofilme.acdh.oeaw.ac.at/" target="_blank">Mikrofilme</a></li>
+                                        <li><a class="dropdown-item" href="https://schnitzler-zeitungen.acdh.oeaw.ac.at/" target="_blank">Zeitungsarchiv</a></li>
+                                        <li><a class="dropdown-item" href="https://schnitzler-interviews.acdh.oeaw.ac.at/" target="_blank">Interviews</a></li>
+                                        <li><a class="dropdown-item" href="https://schnitzler-chronik.acdh.oeaw.ac.at/" target="_blank">Chronik</a></li>
+                                        <li><a class="dropdown-item" href="https://schnitzler-lektueren.acdh.oeaw.ac.at/" target="_blank">Lektüren</a></li>
+                                        <li><a class="dropdown-item" href="https://pmb.acdh.oeaw.ac.at/" target="_blank" >PMB – Personen der Moderne</a></li>
                                     </ul>
                                 </li>
                             </ul>
