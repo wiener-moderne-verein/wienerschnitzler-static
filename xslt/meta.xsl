@@ -58,7 +58,7 @@
         </div>
     </xsl:template>
     
-    <xsl:template match="tei:list" mode="faq">
+    <xsl:template match="tei:list[parent::tei:div/@type='faq']" mode="faq">
         <xsl:apply-templates select="tei:item" mode="faq"/>
     </xsl:template>
     
@@ -111,4 +111,33 @@
             <xsl:apply-templates/>
         </del>
     </xsl:template>
+    
+    <xsl:template match="tei:ref">
+        <xsl:element name="a">
+            <xsl:attribute name="href">
+                <xsl:value-of select="@target"/>
+            </xsl:attribute>
+            <xsl:if test="starts-with(@target, 'http')">
+                <xsl:attribute name="target">
+                    <xsl:text>_blank</xsl:text>
+                </xsl:attribute>
+            </xsl:if>
+            <xsl:apply-templates />
+        </xsl:element>
+    </xsl:template>
+    
+    <xsl:template match="tei:list[@type='kontakt']">
+        <ul class="list-group list-group-flush">
+            <xsl:apply-templates select="tei:item" mode="kontakt"/>
+        </ul>
+    </xsl:template>
+    
+    <xsl:template match="tei:item" mode="kontakt">
+        <li class="list-group-item">
+            <a href="#" class="text-decoration-none text-primary">
+                <xsl:apply-templates/>
+            </a>
+        </li>
+    </xsl:template>
+    
 </xsl:stylesheet>
