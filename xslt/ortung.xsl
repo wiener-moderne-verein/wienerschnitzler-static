@@ -23,7 +23,7 @@
                     <div class="container col-12" style="max-width:800px">
                         <div id="map"/>
                         <h1>Wann war Ihnen Schnitzler am nächsten?</h1>
-                        <div class="container mt-4">
+                        
                             <div class="container mt-4">
                                 <div class="row align-items-start">
                                     <!-- Linke Spalte: Button für Standort -->
@@ -49,8 +49,8 @@
                                 </div>
                             </div>
                             
-                        </div>
-                        <div class="col-md-6">
+                        
+                        <div class="container mt-4">
                         <h2>Ergebnis:</h2>
                         <p id="result">Bitte Standort teilen auswählen oder Koordinaten eingeben. (Nein, wir interessieren uns nicht für Ihre Daten.)</p>
                         </div>
