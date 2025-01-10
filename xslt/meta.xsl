@@ -9,7 +9,7 @@
     <xsl:import href="partials/html_footer.xsl"/>
     <xsl:template match="/">
         <xsl:variable name="doc_title">
-            <xsl:value-of select=".//tei:title[@type = 'main'][1]/text()"/>
+            <xsl:value-of select=".//tei:title[@level = 'a'][1]/text()"/>
         </xsl:variable>
         <html class="h-100">
             <head>
@@ -19,13 +19,33 @@
             </head>
             <body class="d-flex flex-column h-100">
                 <xsl:call-template name="nav_bar"/>
-                <main class="flex-shrink-0 flex-grow-1">
-                    <div class="container">
+                <main>
+                    <div class="container col-12" style="max-width:800px">
                         <h1>
                             <xsl:value-of select="$doc_title"/>
                         </h1>
                         <xsl:apply-templates select=".//tei:body"/>
+                        <xsl:if test="descendant::tei:note">
+                            <xsl:element name="tei:div" >
+                                <xsl:attribute name="class">footnotes</xsl:attribute>
+                                <xsl:attribute name="style">max-width:600px; margin-left: 50px; margin-top: 100px;</xsl:attribute>
+                                <small>
+                                    <dl>
+                                        <xsl:for-each select="descendant::tei:note">
+                                            <dt><xsl:variable name="zaehler" select="count(preceding::tei:note) + 1"/>
+                                                <a id="footnote-{$zaehler}" href="#note-ref-{$zaehler}">
+                                                    <xsl:value-of select="$zaehler"/>
+                                                </a>.</dt>
+                                            <dd>
+                                                <xsl:apply-templates/>
+                                            </dd>
+                                        </xsl:for-each>
+                                    </dl>
+                                </small>
+                            </xsl:element>
+                        </xsl:if>
                     </div>
+                    
                 </main>
                 <xsl:call-template name="html_footer"/>
             </body>
@@ -36,6 +56,8 @@
             <xsl:apply-templates select="tei:div[@type = 'faq']"/>
         </div>
     </xsl:template>
+    
+    
     
     <xsl:template match="tei:div[@type = 'faq']">
         <div class="accordion-item">
@@ -84,6 +106,11 @@
     
     <xsl:template match="tei:p">
         <p>
+            <xsl:if test="@rend='right'">
+                <xsl:attribute name="style">
+                    <xsl:text>text-align: right</xsl:text>
+                </xsl:attribute>
+            </xsl:if>
             <xsl:apply-templates/>
         </p>
     </xsl:template>
@@ -132,12 +159,39 @@
         </ul>
     </xsl:template>
     
+    <xsl:template match="tei:list[not(@type)]">
+        <ul class="list-group list-group-flush" style="margin-left: 40px;">
+            <xsl:apply-templates select="tei:item"/>
+        </ul>
+    </xsl:template>
+    
+    <xsl:template match="tei:item">
+        <li>
+            <xsl:apply-templates/>
+        </li>
+    </xsl:template>
+    
+    
     <xsl:template match="tei:item" mode="kontakt">
         <li class="list-group-item">
             <a href="#" class="text-decoration-none text-primary">
                 <xsl:apply-templates/>
             </a>
         </li>
+    </xsl:template>
+    
+    <xsl:template match="tei:hi[@rend='italics']">
+        <i><xsl:apply-templates/></i>
+    </xsl:template>
+    
+    <xsl:template match="tei:note">
+        <xsl:variable name="noteNumber" select="count(preceding::tei:note) +1" />
+        <!-- Verweis im Text -->
+        <sup>
+            <a href="#footnote-{$noteNumber}" id="note-ref-{$noteNumber}">
+                <xsl:value-of select="$noteNumber"/>
+            </a>
+        </sup>
     </xsl:template>
     
 </xsl:stylesheet>

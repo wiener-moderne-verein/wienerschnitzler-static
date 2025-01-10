@@ -22,12 +22,10 @@
                                         Projekt
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="projektDropdown">
-                                        <li><a class="dropdown-item" href="about.html">Über das Projekt</a></li>
+                                        <li><a class="dropdown-item" href="projekt.html">Über das Projekt</a></li>
                                         <li><a class="dropdown-item" href="faqs.html">Antworten auf häufige Fragen</a></li>
-                                        <li><a class="dropdown-item" href="imprint.html">Impressum</a></li>
-                                        <li><a class="dropdown-item" href="danke.html">Danksagung</a></li>
-                                        <li><a class="dropdown-item" href="literatur.html">Literatur</a></li>
                                         <li><a class="dropdown-item" href="kontakt.html">Kontakt</a></li>
+                                        <li><a class="dropdown-item" href="imprint.html">Impressum</a></li>
                                     </ul>
                                 </li>
                                 
