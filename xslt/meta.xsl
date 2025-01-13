@@ -64,12 +64,12 @@
             <xsl:variable name="faqId" select="@xml:id"/>
             <h2 class="accordion-header" id="{concat('heading', $faqId)}">
                 <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                    data-bs-target="{concat('#collapseCategory', $faqId)}" aria-expanded="true"
+                    data-bs-target="{concat('#collapseCategory', $faqId)}" aria-expanded="false"
                     aria-controls="{concat('collapseCategory', $faqId)}">
                     <xsl:value-of select="tei:head[1]"/>
                 </button>
             </h2>
-            <div id="{concat('collapseCategory', $faqId)}" class="accordion-collapse collapse show"
+            <div id="{concat('collapseCategory', $faqId)}" class="accordion-collapse collapse"
                 aria-labelledby="{concat('heading', $faqId)}" data-bs-parent="#faqAccordion">
                 <div class="accordion-body">
                     <div class="accordion" id="{concat('category', $faqId, 'Accordion')}">
