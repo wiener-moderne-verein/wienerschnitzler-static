@@ -36,33 +36,13 @@ function loadGeoJsonByYear(year) {
         })
         .then(data => {
             const newLayer = L.geoJSON(data, {
-                style: feature => ({
-                    color: '#FF0000',
-                    weight: 2,
-                    opacity: 1,
-                }),
-                pointToLayer: (feature, latlng) =>
-                    L.circleMarker(latlng, {
-                        radius: 5,
-                        color: '#FF0000',
-                        fillColor: '#e6c828',
-                        fillOpacity: 1,
-                        weight: 2,
-                    }),
-                onEachFeature: (feature, layer) => {
+                pointToLayer: createCircleMarker, // Verwende die ausgelagerte Funktion für Marker
+                onEachFeature: function (feature, layer) {
                     if (feature.properties) {
-                        const title = feature.properties.title || 'Kein Titel';
-                        const dates = feature.properties.timestamp || [];
-                        const links = dates
-                            .map(
-                                date =>
-                                    `<a href="https://schnitzler-chronik.acdh.oeaw.ac.at/${date}.html" target="_blank">${date}</a>`
-                            )
-                            .join('<br>');
-                        const popupContent = `<b>${title}</b><br>${links}`;
+                        const popupContent = createPopupContent(feature); // Verwende die ausgelagerte Funktion für Popups
                         layer.bindPopup(popupContent, { maxWidth: 300 });
                     }
-                },
+                }
             }).addTo(map);
 
             geoJsonLayers.push(newLayer);

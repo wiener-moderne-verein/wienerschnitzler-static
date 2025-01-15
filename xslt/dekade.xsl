@@ -57,6 +57,7 @@
                 </main>
                 <xsl:call-template name="html_footer"/>
                 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"/>
+                <script src="./js/mapUtils.js"></script>
                 <script src="./js/script_dekade.js"/>
             </body>
         </html>

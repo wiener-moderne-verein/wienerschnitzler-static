@@ -24,30 +24,10 @@ function loadGeoJsonByDecade(decade) {
         return response.json();
     }).then(data => {
         const newLayer = L.geoJSON(data, {
-            style: function (feature) {
-                return {
-                    color: '#FF0000', // Linienfarbe
-                    weight: 2, // Dicke der Linie
-                    opacity: 1 // Deckkraft der Linie
-                };
-            },
-            pointToLayer: function (feature, latlng) {
-                return L.circleMarker(latlng, {
-                    radius: 5,
-                    color: '#FF0000', // Randfarbe
-                    fillColor: '#e6c828', // Füllfarbe
-                    fillOpacity: 1, // Füllungsdeckkraft
-                    weight: 2
-                });
-            },
+            pointToLayer: createCircleMarker, // Verwende die ausgelagerte Funktion für Marker
             onEachFeature: function (feature, layer) {
                 if (feature.properties) {
-                    const title = feature.properties.title || 'Kein Titel';
-                    const dates = feature.properties.timestamp || [];
-                    const links = dates.map(date =>
-                        `<a href="https://schnitzler-chronik.acdh.oeaw.ac.at/${date}.html" target="_blank">${date}</a>`
-                    ).join('<br>');
-                    const popupContent = `<b>${title}</b><br>${links}`;
+                    const popupContent = createPopupContent(feature); // Verwende die ausgelagerte Funktion für Popups
                     layer.bindPopup(popupContent, { maxWidth: 300 });
                 }
             }
