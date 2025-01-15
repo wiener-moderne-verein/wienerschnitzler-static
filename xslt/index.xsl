@@ -44,8 +44,10 @@
                                 seiner Zeit gibt es gegenwärtig so viele frei verfügbare, 
                                 georeferenzierte Daten. Diese Daten zeigen, wo Schnitzler sich bewegte, welche
                                 Häuser, Straßen, Stadtteile, Städte und Länder er kannte und die ihm wichtig waren. Zugleich wird auch sichtbar, wo er sich nie aufgehalten hat. </p>
+                            <p style="color: red;">BETA. Unter aktiver Entwicklung, weitere Funktionen werden laufend eingebaut.</p>
                             <p>Die Detailtiefe der derzeit erfassten Daten schwankt. Die Jahre vor
                                 1909 und 1928–1931 sind derzeit dichter erfasst.</p>
+                            
                         </div>
                         <div class="col-md-6">
                             <img src="./images/schnitzler-index.jpg"
