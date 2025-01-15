@@ -36,6 +36,7 @@
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="OrteDropdown">
                                         <li><a class="dropdown-item" href="listplace.html">Verzeichnis</a></li>
+                                        <li><a class="dropdown-item" href="gesamt.html">Alle Orte</a></li>
                                         <li><a class="dropdown-item" href="ortung.html">Schnitzler und ich</a></li>
                                         <li><a class="dropdown-item" href="https://kepler.gl/demo/map?mapUrl=https://dl.dropboxusercontent.com/scl/fi/y8bpsyosh2uwvawwi2jdh/keplergl_ygz1fc.json?rlkey=rl5x7uoswnd0cttr1mw2ncw18" target="_blank">Visualisierung mit Kepler.gl</a></li>
                                     </ul>
