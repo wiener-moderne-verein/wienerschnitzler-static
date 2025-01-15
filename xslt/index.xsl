@@ -28,25 +28,24 @@
                     <div class="row">
                         <div class="col-md-6">
                             <h2>Wiener Schnitzler – Schnitzlers Wien</h2>
-                            <p class="lead">Arthur Schnitzler kam 1862 in Wien in der Praterstraße auf die Welt. 
-                            Zehn Kilometer entfernt, in der Sternwartestraße, starb er 1931. Er verfasste erfolgreiche Dramen, 
-                            Romane und Erzählungen, von denen die meisten in Wien angesiedelt sind. Die Stadt verließ er nur für ausgedehnte Reisen und
-                                Sommeraufenthalte. Durch sein <a
-                                    href="https://schnitzler-tagebuch.acdh.oeaw.ac.at/"
+                            <p class="lead">Arthur Schnitzler wurde 1862 in Wien in der Praterstraße geboren und starb 1931 in der Sternwartestraße, nur zehn Kilometer entfernt.
+                                Er verfasste erfolgreiche Dramen, Romane und
+                                Erzählungen, die meist in Wien angesiedelt sind. Die
+                                Stadt verließ er nur für Reisen und Sommeraufenthalte.
+                                Dank seines <a href="https://schnitzler-tagebuch.acdh.oeaw.ac.at/"
                                     target="_blank"
                                     style="color: #037A33; font-weight: bold; text-decoration: none;"
-                                    >Tagebuch</a>, seine <a
+                                    >Tagebuchs</a>, seiner <a
                                     href="https://schnitzler-briefe.acdh.oeaw.ac.at/"
                                     target="_blank"
                                     style="color: #A63437; font-weight: bold; text-decoration: none;"
-                                    >Korrespondenz</a> und andere Dokumente können wir derzeit 56.000
-                                Aufenthalte an über 3.000 Orten bestimmen. Für keine Zeitgenossin,
-                                für keinen Zeitgenossen dürften derzeit so viele georeferenzierte Daten frei verfügbar 
-                                sein. Damit lässt sich der geographischen Raum bestimmen, in dem Schnitzler sich
-                                bewegte, Häuser, Straßen, Bezirke, Städte und Länder, die er kannte, die ihm wichtig waren. Und im Gegenzug
-                                auch jene Orte, die er nicht
-                                besuchte. </p>
-                            <p>Die Detailtiefe der derzeit erfassten Daten schwankt. Die Jahre 1890–1906 und 1929/1930 sind derzeit dichter.</p>
+                                    >Korrespondenz</a> und weiterer Dokumente kennen wir derzeit über
+                                34.000 Aufenthalte an mehr als 3.200 Orten. Für keine andere Person
+                                seiner Zeit gibt es gegenwärtig so viele frei verfügbare, 
+                                georeferenzierte Daten. Diese Daten zeigen, wo Schnitzler sich bewegte, welche
+                                Häuser, Straßen, Stadtteile, Städte und Länder er kannte und die ihm wichtig waren. Zugleich wird auch sichtbar, wo er sich nie aufgehalten hat. </p>
+                            <p>Die Detailtiefe der derzeit erfassten Daten schwankt. Die Jahre vor
+                                1909 und 1928–1931 sind derzeit dichter erfasst.</p>
                         </div>
                         <div class="col-md-6">
                             <img src="./images/schnitzler-index.jpg"
