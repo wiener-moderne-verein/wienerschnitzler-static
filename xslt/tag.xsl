@@ -55,8 +55,8 @@
                                         die einzelnen Tage in Schnitzlers Leben visualisiert. <span
                                             class="fw-bold text-danger">Achtung</span>: Die
                                         Verbindungslinie zwischen den Orten macht den geografischen
-                                        Raum besser sichtbar. Sie stellt keine tatsächlichen
-                                        Wegverläufe und Zeitabläufe dar. </p>
+                                        Raum besser sichtbar. Sie stellt nicht die Reihenfolge 
+                                        dar, in der die Orte aufgesucht wurden. </p>
                                 </div>
                             </div>
                         </div>

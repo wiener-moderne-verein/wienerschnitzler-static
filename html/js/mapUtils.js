@@ -3,26 +3,11 @@
 function createCircleMarker(feature, latlng) {
     const importance = feature.properties.importance || 0;
     let color;
-
-    // Bestimme die Farbe basierend auf der Importance
-    if (importance <= 10) {
-        color = '#fef0d9'; // Helle Farben für geringe Wichtigkeit
-    } else if (importance <= 100) {
-        color = '#fdcc8a';
-    } else if (importance <= 500) {
-        color = '#fc8d59';
-    } else if (importance <= 5000) {
-        color = '#e34a33';
-    } else {
-        color = '#b30000'; // Dunkelrot für höchste Wichtigkeit
-    }
-
-    // Berechne den Radius basierend auf der Importance
     const radius = 3 + (importance / 5000) * 10;
 
     return L.circleMarker(latlng, {
         radius: Math.min(13, Math.max(3, radius)), // Radius von 3 bis 13
-        color: 'red', // Immer ein roter Rahmen
+        color: '#FF0000', // Immer ein roter Rahmen
         fillColor: color, // Füllfarbe basierend auf der Wichtigkeit
         fillOpacity: 1.0, // Immer vollflächig
         weight: 2 // Randbreite
@@ -43,5 +28,10 @@ function createPopupContent(feature) {
         links += `<p style="text-align: right">… <a href="${id}.html">${remainingCount} weitere</a></p>`;
     }
 
-    return `<b>${titleLink}</b><br>${links}`;
+    const wikipediaLink = feature.properties.wikipedia ? `<a href="${feature.properties.wikipedia}" target="_blank">Wikipedia</a>` : '';
+
+    // Füge das <br> nur hinzu, wenn der wikipediaLink einen Textinhalt hat
+    const wikipediaContent = wikipediaLink ? `<br>${wikipediaLink}` : '';
+
+    return `<b>${titleLink}</b><br>${links}${wikipediaContent}`;
 }

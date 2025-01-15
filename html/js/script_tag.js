@@ -52,50 +52,25 @@ function loadGeoJsonByDate(date) {
             const name = data.features[0].properties.name || date; // Extrahiere den Namen aus dem ersten Feature
             const newLayer = L.geoJSON(data, {
                 style: function (feature) {
+                    // Stil für Linien
                     return {
                         color: '#FF0000', // Linienfarbe
                         weight: 2, // Dicke der Linie
                         opacity: 1 // Deckkraft der Linie
                     };
                 },
-                pointToLayer: function (feature, latlng) {
-                    return L.circleMarker(latlng, {
-                        radius: 5,
-                        color: '#FF0000', // Randfarbe
-                        fillColor: '#e6c828', // Füllfarbe
-                        fillOpacity: 1, // Füllungsdeckkraft (1 = vollständig undurchsichtig)
-                        weight: 2 // Optional: Randgewicht auf 0 setzen, um nur den Punkt zu sehen
-                    });
-                },
+                pointToLayer: createCircleMarker, // Verwende die ausgelagerte Funktion für Marker aus mapUtils.js
                 onEachFeature: function (feature, layer) {
                     if (feature.properties) {
-                        let title = feature.properties.title 
-                            ? `<a href="${feature.properties.pmb.split('/').filter(Boolean).pop()}.html">${feature.properties.title}</a>` 
-                            : 'Kein Titel';
-                        const featureDate = feature.properties.timestamp || 'Kein Datum';
-                        const wikipediaLink = feature.properties.wikipedia 
-                            ? `<a href="${feature.properties.wikipedia}" target="_blank">Wikipedia</a>` 
-                            : '';
-                        
-                        // Erstelle den Link, falls ein Datum vorhanden ist
-                        const chronikLink = featureDate !== 'Kein Datum'
-                            ? `<a class="schnitzler-chronik-link" href="https://schnitzler-chronik.acdh.oeaw.ac.at/${date}.html" target="_blank">${name}</a>`
-                            : '';
-
-                        // Popup-Inhalt
-                        const popupContent = `
-                            <b>${title}</b><br>
-                            ${chronikLink}<br>
-                            ${wikipediaLink}
-                        `;
-
+                        const popupContent = createPopupContent(feature); // Verwende die ausgelagerte Funktion für Popups
                         layer.bindPopup(popupContent, { maxWidth: 300 });
-
                         // Füge den Titel zur Liste hinzu
-                        titles.push(feature.properties.pmb 
-                            ? `<a href="${feature.properties.pmb}" target="_blank">${title}</a>` 
+                        let title = feature.properties.title 
+                            ? `<a href="${feature.properties.id}.html">${feature.properties.title}</a>` 
+                            : 'Kein Titel';
+                        titles.push(feature.properties.id 
+                            ? `<a href="${feature.properties.id}" target="_blank">${title}</a>` 
                             : title);
-
                     }
                 }
             }).addTo(map);
@@ -198,30 +173,3 @@ function getDateFromUrl() {
     const hash = window.location.hash;
     return hash ? hash.substring(1) : null; // Gibt das Datum zurück, oder null, wenn kein Datum vorhanden ist
 }
-
-// Funktion zum Setzen des Links für "Schnitzler Chronik" basierend auf dem Datum aus der URL
-function setSchnitzlerChronikLink() {
-    let date = getDateFromUrl(); // Datum aus der URL holen
-    
-    // Wenn kein Datum vorhanden ist, setze den Standardwert '1895-01-23'
-    if (!date) {
-        date = '1895-01-23';
-    }
-    
-    // Den Link mit der Klasse 'schnitzler-chronik-link' holen
-    const link = document.querySelector('.schnitzler-chronik-link');
-    
-    // Prüfen, ob das Element gefunden wurde
-    if (link) {
-        // Den href des Links aktualisieren
-        link.href = `https://schnitzler-chronik.acdh.oeaw.ac.at/${date}.html`;
-    } else {
-        console.error('Element mit Klasse "schnitzler-chronik-link" nicht gefunden.');
-    }
-}
-
-// Rufe die Funktion auf, um den Link beim Laden der Seite zu setzen
-document.addEventListener('DOMContentLoaded', setSchnitzlerChronikLink);
-
-// Überwache Änderungen am URL-Fragment
-window.addEventListener('hashchange', setSchnitzlerChronikLink);
