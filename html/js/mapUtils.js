@@ -1,21 +1,28 @@
 // Das standardisiert die Punkte und Popups auf den Leaflet-Karten
 
+const redPalette = [
+    '#FF0000', '#E60000', '#CC0000', '#B30000', '#990000',
+    '#800000', '#730000', '#660000', '#590000', '#4D0000',
+    '#400000', '#330000', '#2B0000', '#240000', '#1E0000',
+    '#190000', '#140000', '#100000', '#0C0000', '#080000'
+];
+
+// Funktion zur Auswahl der Farbe basierend auf der Wichtigkeit (1 bis 5000)
+function getColorByImportance(importance) {
+    // Berechne den Index basierend auf einer exponentiellen Verteilung
+    for (let i = 0; i < redPalette.length; i++) {
+        const threshold = Math.pow(2, i); // 2^(i)
+        if (importance <= threshold) {
+            return redPalette[i];
+        }
+    }
+    // Fallback: die dunkelste Farbe für sehr hohe Werte
+    return redPalette[redPalette.length - 1];
+}
+
 function createCircleMarker(feature, latlng) {
     const importance = feature.properties.importance || 0;
-    let color;
-
-    // Bestimme die Farbe basierend auf der Importance
-    if (importance <= 10) {
-        color = '#fef0d9'; // Helle Farben für geringe Wichtigkeit
-    } else if (importance <= 100) {
-        color = '#fdcc8a';
-    } else if (importance <= 500) {
-        color = '#fc8d59';
-    } else if (importance <= 5000) {
-        color = '#e34a33';
-    } else {
-        color = '#b30000'; // Dunkelrot für höchste Wichtigkeit
-    }
+    const color = getColorByImportance(importance);
     const radius = 3 + (importance / 5000) * 10;
 
     return L.circleMarker(latlng, {
