@@ -120,4 +120,18 @@ h1 {
     text-decoration: none;
 }
 
+span.share-bluesky {
+    display: block;
+    height: 1.6em;
+    width: 1.6em;
+    text-align: center;
+    border-radius: 0.2em;
+    background: #1185fe;
+  }
+  span.share-bluesky > svg {
+    fill: #fff;
+    width: 1em;
+    height: 1em;
+    margin: 0.3em;
+  }
 

@@ -6,7 +6,7 @@
     <delete>
         <fileset dir="${target}" includes="*.html"/>
     </delete>
-    <xslt in="${index}" out="${target}/gesamt.html" style="./xslt/gesamt.xsl">
+   <xslt in="${index}" out="${target}/gesamt.html" style="./xslt/gesamt.xsl">
         <factory name="net.sf.saxon.TransformerFactoryImpl"/>
         <classpath location="${basedir}/saxon/saxon9he.jar"/>
     </xslt>
@@ -38,10 +38,11 @@
         <factory name="net.sf.saxon.TransformerFactoryImpl"/>
         <classpath location="${basedir}/saxon/saxon9he.jar"/>
     </xslt>
-    <xslt in="${index}" out="${target}/ortung.html" style="./xslt/ortung.xsl">
+    <xslt in="${index}" out="${target}/schnitzler-und-ich.html" style="./xslt/schnitzler-und-ich.xsl">
         <factory name="net.sf.saxon.TransformerFactoryImpl"/>
         <classpath location="${basedir}/saxon/saxon9he.jar"/>
     </xslt>
+
    <xslt in="./data/indices/listplace.xml" out="${target}/listplace.html"
         style="./xslt/listplace.xsl">
         <factory name="net.sf.saxon.TransformerFactoryImpl"/>
