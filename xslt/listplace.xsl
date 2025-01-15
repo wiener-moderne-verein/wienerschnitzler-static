@@ -40,27 +40,35 @@
                             <xsl:value-of select="$doc_title"/>
                         </h1>
                         <div id="map"/>
-                        <table id="placesTable">
+                        <table id="placesTable"
+                            style="width:100%; margin: auto;">
                             <thead>
                                 <tr>
                                     <th scope="col">Ortsname</th>
-                                    <th scope="col">Aufenthalte</th>
+                                    <th scope="col">Zugehörigkeiten</th>
+                                    <th scope="col">Erwähnungen</th>
                                     <th scope="col">lat</th>
                                     <th scope="col">lng</th>
                                     <th scope="col">linkToEntity</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <xsl:for-each select=".//tei:place[@xml:id]">
+                                <xsl:for-each select=".//tei:place">
                                     <xsl:variable name="id">
                                         <xsl:value-of select="data(@xml:id)"/>
                                     </xsl:variable>
                                     <tr>
                                         <td>
-                                            <xsl:if test="starts-with(tei:placeName[1]/text(), '?') or starts-with(tei:placeName[1]/text(), '[')">
-                                                    <span hidden="hidden">ZZZ</span>
-                                            </xsl:if>
-                                            <xsl:value-of select="./tei:placeName[1]/text()"/>
+                                            <xsl:value-of
+                                                select="descendant::tei:placeName[1]/text()"/>
+                                        </td>
+                                        <td>
+                                            <xsl:for-each select="descendant::tei:location[@type='located_in_place']">
+                                                <xsl:value-of select="tei:placeName[1]"/>
+                                                <xsl:if test="not(position()=last())">
+                                                    <xsl:text>, </xsl:text>
+                                                </xsl:if>
+                                            </xsl:for-each>
                                         </td>
                                         <td>
                                             <xsl:value-of
@@ -69,19 +77,19 @@
                                         </td>
                                         <td>
                                             <xsl:choose>
-                                                <xsl:when test="./tei:location/tei:geo">
-                                                  <xsl:value-of
-                                                  select="replace(tokenize(./tei:location[1]/tei:geo/text(), ' ')[1], ',', '.')"
-                                                  />
+                                                <xsl:when test="child::tei:location/tei:geo">
+                                                    <xsl:value-of
+                                                        select="replace(tokenize(child::tei:location[1]/tei:geo/text(), ' ')[1], ',', '.')"
+                                                    />
                                                 </xsl:when>
                                             </xsl:choose>
                                         </td>
                                         <td>
                                             <xsl:choose>
-                                                <xsl:when test="./tei:location/tei:geo">
-                                                  <xsl:value-of
-                                                  select="replace(tokenize(./tei:location[1]/tei:geo/text(), ' ')[last()], ',', '.')"
-                                                  />
+                                                <xsl:when test="child::tei:location/tei:geo">
+                                                    <xsl:value-of
+                                                        select="replace(tokenize(child::tei:location[1]/tei:geo/text(), ' ')[last()], ',', '.')"
+                                                    />
                                                 </xsl:when>
                                             </xsl:choose>
                                         </td>

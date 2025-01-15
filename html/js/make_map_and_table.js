@@ -59,7 +59,7 @@ function init_map_from_rows(rows, markers) {
   rows.forEach((row) => {
     let row_data = row.getData();
     let coordinate_key = get_coordinate_key_from_row_data(row_data);
-    var marker = L.marker(new L.LatLng(row_data.lat, row_data.lng), { title: get_tooltip_label(row_data) });
+    var marker = L.marker(new L.LatLng(row_data.lat, row_data.lng), { title: row_data.Ortsname });
     marker.bindPopup(get_popup_label_string_html(row_data));
     markers.addLayer(marker);
     existing_icons_by_coordinates[coordinate_key] = marker;

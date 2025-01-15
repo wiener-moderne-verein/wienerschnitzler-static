@@ -9,7 +9,7 @@ const map_cfg = {
   div_id: "map",
   json_url: "",
   initial_zoom: "5",
-  max_zoom: "20",
+  max_zoom: "15",
   min_zoom: "2",
   /* zoom level for a place on the map focused by clicking the corresponding row */
   on_row_click_zoom: 10,
@@ -33,11 +33,18 @@ const columns = [
     title: "Ortsname",
     field: "Ortsname",
     formatter: linkToDetailView,
-    resizable: true,
+    resizable: false,
   },
   {
     headerFilter: "input",
-    title: "Aufenthalte",
+    title: "Zugehörigkeiten",
+    field: "Zugehörigkeiten",
+    formatter: "plaintext",
+    resizable: false,
+  },
+  {
+    headerFilter: "input",
+    title: "Erwähnungen",
     field: "mentions",
     formatter: "plaintext",
     resizable: true,
@@ -150,16 +157,12 @@ let tms_cfg = {
 
 /*define the way you want to created an popup lable on the map
 you have full acces to row data via row.getData() and can write html as in example below*/
-function popupLabelCreator(row) {
-  return `<a href="${row.linkToEntity}.html">${row.Ortsname}</a>`;
+function get_bold_name(row) {
+  let label_string = `<a href="${row.linkToEntity}.html">${row.Ortsname}</a>`;
+  return label_string;
 }
 
-function tooltipLabelcreator(row) {
-  return `${row.Ortsname}`;
-}
-
-const get_popup_label_string_html = popupLabelCreator
-const get_tooltip_label = tooltipLabelcreator
+const get_popup_label_string_html = get_bold_name
 
 
 /*some helpers*/
@@ -171,4 +174,33 @@ function linkToDetailView (cell) {
   var linkText = cellData.Ortsname
   var theLink = `<a href="${linkValue}.html">${linkText}</a>`
   return theLink
+}
+
+/*helper for scrollable cell, use in custom formatter in $columns*/
+function make_cell_scrollable(table, cell, cell_html_string_in) {
+  var cell_html_element = cell.getElement();
+  cell_html_element.style.whiteSpace = "pre-wrap";
+  cell_html_element.style.overflow = "auto";
+  cell_html_element.style.maxHeight = "100px";
+  if (cell_html_string_in !== undefined) {
+    return table.emptyToSpace(cell_html_string_in);
+  } else {
+    return table.emptyToSpace(cell.getValue());
+  }
+}
+
+/* YOU DONT NEED THIS IF YOUR LIST-DATA STEMS FROM HTML, simply provide a html-list in the cell.
+this is a helper to provide you with a scrollable table cell, containing an html list;
+use in custom formatter in $columns;*/
+function build_linklist_cell(table, cell) {
+  let values = cell.getValue();
+  let i = 0;
+  let links = [];
+  while (i < values.length) {
+    let pair = values[i];
+    links.push(get_html_link(pair[0], pair[1]));
+    i++;
+  }
+  let basic_html = get_html_list(links);
+  return make_cell_scrollable(table, cell, basic_html);
 }
