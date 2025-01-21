@@ -8,7 +8,12 @@
         <header>
             <div class="container-fluid">
                 <nav class="navbar navbar-expand-lg navbar-light bg-light" aria-label="Primary">
+                    <!-- Roter BETA-Button -->
+                            <span class="navbar-text" style="position: relative;">
+                                <button class="btn btn-danger disabled" type="button" style="color: white; background-color: red; font-size: 0.75rem; padding: 0.25rem 0.5rem; transform: rotate(-30deg); position: absolute; bottom: -10px; right: 10px;">BETA</button>
+                            </span>
                     <div class="container-fluid">
+                    
                         <a class="navbar-brand" href="index.html">Wiener Schnitzler</a>
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
@@ -75,6 +80,7 @@
                                     </ul>
                                 </li>
                             </ul>
+                            
                         </div>
                     </div>
                 </nav>

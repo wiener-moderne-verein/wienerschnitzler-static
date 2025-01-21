@@ -140,3 +140,29 @@ span.share-bluesky {
     vertical-align: middle;
 }
 
+.image-container {
+    position: relative;
+    width: 100%; /* Breite des Containers */
+    height: 100%; /* Höhe des Containers */
+    overflow: hidden;
+    border: none
+}
+
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Passt das Hintergrundbild an */
+    z-index: 1;
+}
+
+.foreground {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto; /* Die Figur wird proportional angepasst */
+    z-index: 2;
+}

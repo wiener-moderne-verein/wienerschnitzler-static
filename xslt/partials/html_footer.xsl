@@ -6,8 +6,8 @@
     exclude-result-prefixes="#all"
     version="2.0">
     <xsl:template match="/" name="html_footer">
-        <footer class="text-center py-4">
-            <div class="container">
+        <footer class="text-center py-4 mt-5">
+            <div class="container mt-5">
                 <div class="row justify-content-between">
                     <div class="col-md-5 text-start mb-4">
                         <p>Ein Projekt von:</p>
