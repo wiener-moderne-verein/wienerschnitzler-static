@@ -1,27 +1,35 @@
-// Das standardisiert die Punkte und Popups auf den Leaflet-Karten
-
+// Farbpalette für die Sichtbarkeit
 const visibilityPalette = [
-    '#4682B4', // Stahlblau
-    '#5F9EA0', // Cadet Blue
-    '#2E8B57', // Sea Green
-    '#3CB371', // Medium Sea Green
-    '#9ACD32', // Gelbgrün
-    '#ADFF2F', // Green Yellow
-    '#FFD700', // Gold
     '#FFA500', // Orange
+    '#FF7F50', // Coral
+    '#ff5a64', // Morgenrot
     '#FF4500', // Orangerot
     '#FF0000', // Rot
-    '#E60000', // Dunkleres Rot
-    '#CC0000', // Noch dunkleres Rot
-    '#B30000', // Tieferes Rot
-    '#990000', // Sehr dunkles Rot
-    '#800000', // Maroon
-    '#4D0000', // Fast Schwarzrot
-    '#330000' // Sehr dunkles Braunrot
+    '#FF1493', // Deep Pink
+    '#FF69B4', // Hot Pink
+    '#FF00FF', // Magenta
+    '#aaaafa', // Medium Orchid
+    '#8A2BE2', // Blue Violet
+    '#9400D3', // Dark Violet
+    '#49274b', // Dark Orchid
+    '#8B008B', // Dark Magenta
+    '#800080', // Purple
+    '#4B0082', // Indigo
+    '#73cee5', // Dark Slate Blue
+    '#0000FF', // Blau
+    '#0000CD', // Medium Blue
+    '#00008B', // Dark Blue
+    '#000080', // Navy
+    '#191970', // Midnight Blue
+    '#82d282', // Dark Green
+    '#228B22', // Forest Green
+    '#2E8B57', // Sea Green
+    '#006400', // Dark Green
+    '#556B2F'  // Dark Olive Green
 ];
 
 // Schwellenwerte für die Farbauswahl
-const thresholds = [1, 2, 5, 10, 15, 25, 35, 50, 75, 100, 150, 250, 400, 600, 1000, 1500, 2500, 4000, 5000];
+const thresholds = [1, 2, 3, 4, 5, 10, 15, 25, 35, 50, 75, 100, 150, 250, 400, 600, 1000, 1500, 2500, 4000, 5000, 6000];
 
 // Funktion zur Auswahl der Farbe basierend auf der Wichtigkeit (1 bis 5000)
 function getColorByImportance(importance) {
@@ -34,19 +42,69 @@ function getColorByImportance(importance) {
     return visibilityPalette[visibilityPalette.length - 1];
 }
 
+// Funktion zum Erhöhen der Sättigung einer Farbe
+function intensifyColor(color) {
+    const hsl = d3.hsl(color);
+    hsl.s = Math.min(1, hsl.s * 2.5); // Erhöhe die Sättigung um 50%
+    return hsl.toString();
+}
+
 function createCircleMarker(feature, latlng) {
     const importance = feature.properties.importance || 0;
     const color = getColorByImportance(importance);
+    const intensifiedColor = intensifyColor(color);
     const radius = 5 + (importance / 5000) * 10;
 
     return L.circleMarker(latlng, {
         radius: Math.min(13, Math.max(3, radius)), // Radius von 3 bis 13
-        color: '#FF0000', // Immer ein roter Rahmen
+        color: intensifiedColor, // Intensivere Randfarbe
         fillColor: color, // Füllfarbe basierend auf der Wichtigkeit
-        fillOpacity: 1.0, // Immer vollflächig
-        weight: 2 // Randbreite
+        fillOpacity: 1, // Füllungsdeckkraft
+        weight: 2
     });
 }
+
+// Funktion zum Erstellen der Legende
+function createLegend(maxImportance) {
+    const legend = document.getElementById('legend');
+    if (!legend) return;
+
+    // Leeren der Legende, bevor neue Elemente hinzugefügt werden
+    legend.innerHTML = '';
+
+    // Text "Aufenthaltstage:" hinzufügen
+    const legendTitle = document.createElement('span');
+    legendTitle.style.marginRight = '10px';
+    legendTitle.style.fontWeight = 'bold';
+    legendTitle.innerText = 'Aufenthaltstage:';
+    legend.appendChild(legendTitle);
+
+    // Erstellen der Legende basierend auf den Thresholds, die unter dem größten Wert von importance liegen
+    for (let i = 0; i < thresholds.length; i++) {
+        if (thresholds[i] > maxImportance) break;
+
+        const color = visibilityPalette[i];
+        const threshold = thresholds[i];
+        const legendItem = document.createElement('div');
+        legendItem.style.display = 'flex';
+        legendItem.style.alignItems = 'center';
+        legendItem.style.marginRight = '10px';
+
+        const colorBox = document.createElement('div');
+        colorBox.style.width = '20px';
+        colorBox.style.height = '20px';
+        colorBox.style.backgroundColor = color;
+        colorBox.style.marginRight = '5px';
+
+        const label = document.createElement('span');
+        label.innerText = threshold;
+
+        legendItem.appendChild(colorBox);
+        legendItem.appendChild(label);
+        legend.appendChild(legendItem);
+    }
+}
+
 
 function createPopupContent(feature) {
     const title = feature.properties.title || 'Kein Titel';
@@ -69,3 +127,4 @@ function createPopupContent(feature) {
 
     return `<b>${titleLink}</b><br>${links}${wikipediaContent}`;
 }
+

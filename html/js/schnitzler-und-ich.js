@@ -127,7 +127,7 @@ function plotOnMap(lat, lon, nearest) {
 
     // Benutzerstandort als blauer Punkt
     L.circleMarker([lat, lon], {
-        color: 'blue',
+        color: '#AAAAFA',
         radius: 10, // Größe des Kreises
         fillOpacity: 0.8,
     })
@@ -138,7 +138,7 @@ function plotOnMap(lat, lon, nearest) {
     // Nächsten Ort als roten Punkt
     if (nearest) {
         L.circleMarker([nearest.lat, nearest.lon], {
-            color: 'red',
+            color: '#FF0000',
             radius: 10,
             fillOpacity: 0.8,
         })

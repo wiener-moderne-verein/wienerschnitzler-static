@@ -43,6 +43,10 @@
                         </div>
                         <!-- Map -->
                         <div id="map"/>
+                         <div id="legend" class="mt-5"
+                            style="display: flex; flex-wrap: wrap; max-width: 90%;  margin-left: auto;  margin-right: auto; ">
+                            <span style="margin: 10px; font-weight: bold">Aufenthaltstage:</span>
+                        </div>
                         <div class="d-flex justify-content-center mt-5">
                             <div class="col-sm-6 mb-5">
                                 <div class="text-start mx-auto">

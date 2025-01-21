@@ -8,7 +8,6 @@
     <xsl:include href="./partials/html_navbar.xsl"/>
     <xsl:include href="./partials/html_head.xsl"/>
     <xsl:include href="./partials/html_footer.xsl"/>
-    
     <xsl:template match="/">
         <html class="h-100">
             <head>
@@ -28,19 +27,26 @@
                     <div class="container-fluid my-4">
                         <h1>Alle Orte</h1>
                         <div id="map-large"/>
+                        <div id="legend" class="mt-5"
+                            style="display: flex; flex-wrap: wrap; max-width: 90%;  margin-left: auto;  margin-right: auto; ">
+                            <span style="margin: 10px; font-weight: bold">Aufenthaltstage:</span>
+                        </div>
                         <div class="d-flex justify-content-center mt-5">
                             <div class="col-sm-6 mb-5">
                                 <div class="text-start mx-auto">
-                                    <p class="text-start">Auf dieser Seite werden alle Aufenthaltsorte in Schnitzlers Leben visualisiert. Durch die Auswahl eines
-                                        Punktes werden die jeweiligen Tage angezeigt.</p>
+                                    <p class="text-start">Auf dieser Seite werden alle
+                                        Aufenthaltsorte in Schnitzlers Leben visualisiert. Durch die
+                                        Auswahl eines Punktes werden genauere Informationen und
+                                        Links angezeigt.</p>
                                 </div>
                             </div>
+                        
                         </div>
                     </div>
                 </main>
                 <xsl:call-template name="html_footer"/>
                 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"/>
-                <script src="./js/mapUtils.js"></script>
+                <script src="./js/mapUtils.js"/>
                 <script src="./js/script_gesamt.js"/>
             </body>
         </html>

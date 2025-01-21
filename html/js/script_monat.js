@@ -39,6 +39,15 @@ function loadGeoJsonByMonth(month) {
         } else {
             console.warn('Keine gültigen Features gefunden.');
         }
+
+        // Maximalen Wert für die Wichtigkeit bestimmen
+        const maxImportance = Math.max(
+            ...data.features.map(feature => feature.properties.importance || 0)
+        );
+
+        // Legende erstellen
+        createLegend(maxImportance);
+        
     }). catch (error => {
         console.error('Error loading GeoJSON:', error);
         clearGeoJsonLayers();
