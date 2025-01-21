@@ -22,7 +22,7 @@
                 <main>
                     <div class="container col-12" style="max-width:800px">
                         <div id="map"/>
-                        <h1>Wann war Ihnen Schnitzler am nächsten?</h1>
+                        <h1>Wo stand Ihnen Schnitzler am nächsten?</h1>
                         
                             <div class="container mt-4">
                                 <div class="row align-items-start">
