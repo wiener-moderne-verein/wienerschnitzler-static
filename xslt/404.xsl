@@ -27,12 +27,12 @@
                 <main class="flex-shrink-0 flex-grow-1">
                     <div class="container schreibzeug-container">
                         <h1 class="schreibzeug-h1">404</h1>
-                        <p class="schreibzeug-p">
-                            Die gewünschte Seite existiert nicht. Stattdessen soll Ihnen die Gelegenheit
-                            gegeben werden, das Schreibzeug von Berthold Löffler und Michael Powolny zu 
-                            sehen, das Arthur Schnitzler gehörte.
+                        <p class="schreibzeug-p lead">
+                            Die gewünschte Seite existiert nicht. Sie sehen stattdessen das von Berthold Löffler und Michael Powolny 
+                            gestaltete Schreibzeug aus dem Besitz von Arthur Schnitzler.
                         </p>
-                        <small class="schreibzeug-small">Mit freundlicher Erlaubnis von Heinz Adamek</small>
+                        <p>Zur <a href="index.html">Startseite</a>.</p>
+                        <small class="schreibzeug-small"><hi rend="italics">Mit freundlicher Erlaubnis von Heinz Adamek</hi></small>
                     </div>
                 </main>
                 <xsl:call-template name="html_footer" />

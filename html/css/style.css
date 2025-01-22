@@ -231,35 +231,34 @@ span.share-bluesky {
 }
 
 .schreibzeug-body {
-    background-image: url('./images/schreibzeug.jpg'); /* Hintergrundbild */
-    background-size: cover; /* Bild skaliert, um die gesamte Fläche auszufüllen */
-    background-position: center; /* Bild zentrieren */
-    background-repeat: no-repeat; /* Kein Wiederholen des Bildes */
-    height: 100%; /* Gesamte Höhe ausfüllen */
+    background-image: url('../images/schreibzeug.jpg'); /* Hintergrundbild */
+    background-size: contain; /* Bild vollständig sichtbar */
+    background-position: center; /* Zentrieren */
+    background-repeat: no-repeat; /* Kein Wiederholen */
+    min-height: calc(100vh + 10px); /* Platz für Footer abziehen */
     display: flex;
     flex-direction: column;
-    margin: 0; /* Entfernt Ränder */
+    margin: 0;
 }
 
 .schreibzeug-container {
-    background-color: rgba(255, 255, 255, 0.8); /* Halbtransparenter Hintergrund */
     padding: 20px;
-    border-radius: 8px; /* Abgerundete Ecken */
     max-width: 800px; /* Optionale Breitenbegrenzung */
-    margin: 20px auto; /* Zentriere den Container */
+    margin: auto; /* Zentriere den Container */
 }
 
-.schreibzeug-h1 {
-    color: black; /* Textfarbe */
-    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.7); /* Optional: Leichter Schlagschatten */
-}
-
-.schreibzeug-p {
-    color: black; /* Textfarbe */
-    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.7); /* Optional: Schlagschatten */
-}
-
+.schreibzeug-h1,
+.schreibzeug-p,
 .schreibzeug-small {
-    color: gray; /* Kleinere Schriftfarbe */
-    text-shadow: none; /* Kein Schlagschatten */
+    color: black;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.7); /* Schlagschatten */
+}
+
+footer {
+    background-color: white; /* Hintergrundfarbe für den Footer */
+    padding: 10px;
+    text-align: center;
+    width: 100%;
+    height: 50px; /* Feste Höhe für den Footer */
+    position: relative; /* Footer bleibt außerhalb des Hauptinhalts */
 }
