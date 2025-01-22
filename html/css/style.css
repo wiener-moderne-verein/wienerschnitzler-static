@@ -205,3 +205,11 @@ span.share-bluesky {
         height: auto; /* Verhindert Verzerrungen */
     }
 }
+
+/* Gelber Hintergrund mit abgerundeten Ecken */
+.navbar {
+    background-color: #ECDA98; /* Hellgelber Hintergrund */
+    border-radius: 0 0 10px 10px; /* Abgerundete Ecken unten */
+    position: relative; /* Positionierung zur genauen Platzierung des roten Rahmens */
+    padding: 10px; /* Innenabstand für den roten Rahmen */
+}

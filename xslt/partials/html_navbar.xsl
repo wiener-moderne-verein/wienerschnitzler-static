@@ -7,10 +7,10 @@
         
         <header>
             <div class="container-fluid">
-                <nav class="navbar navbar-expand-lg navbar-light bg-light" aria-label="Primary">
+                <nav class="navbar navbar-expand-lg navbar-light" aria-label="Primary">
                     <!-- Roter BETA-Button -->
                             <span class="navbar-text" style="position: relative;">
-                                <button class="btn btn-danger disabled" type="button" style="color: white; background-color: red; font-size: 0.75rem; padding: 0.25rem 0.5rem; transform: rotate(-30deg); position: absolute; bottom: -10px; right: 10px;">BETA</button>
+                                <button class="btn btn-danger disabled" type="button" style="color: white; background-color: red; font-size: 0.75rem; padding: 0.25rem 0.5rem; transform: rotate(-30deg); position: absolute; bottom: -20px; right: -5px;">BETA</button>
                             </span>
                     <div class="container-fluid">
                     
@@ -68,7 +68,7 @@
                                         <li><a class="dropdown-item" href="https://www.geschichtewiki.wien.gv.at/Arthur_Schnitzler" target="_blank">Wien Geschichte Wiki</a></li>
                                         <li><a class="dropdown-item" href="https://schnitzler-tagebuch.acdh.oeaw.ac.at/" target="_blank">Tagebuch (1879–1931)</a></li>
                                         <li><a class="dropdown-item" href="https://schnitzler-briefe.acdh.oeaw.ac.at/" target="_blank">Briefe (1888–1931)</a></li>
-                                        <li><a class="dropdown-item" href="https://www.arthur-schnitzler.de" target="_blank">Digitale historisch-kritische Edition (1905–1931)</a></li>
+                                        <li><a class="dropdown-item" href="https://www.arthur-schnitzler.de" target="_blank">Werke digital (1905–1931)</a></li>
                                         <li><a class="dropdown-item" href="https://schnitzler-mikrofilme.acdh.oeaw.ac.at/" target="_blank">Mikrofilme</a></li>
                                         <li><a class="dropdown-item" href="https://schnitzler-zeitungen.acdh.oeaw.ac.at/" target="_blank">Archiv der Zeitungsausschnitte</a></li>
                                         <li><a class="dropdown-item" href="https://schnitzler-interviews.acdh.oeaw.ac.at/" target="_blank">Interviews, Meinungen, Proteste</a></li>
