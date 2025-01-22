@@ -21,16 +21,23 @@
                 <xsl:call-template name="html_head">
                     <xsl:with-param name="html_title" select="$doc_title"></xsl:with-param>
                 </xsl:call-template>
-            </head>            
-            <body class="d-flex flex-column h-100">
-                <xsl:call-template name="nav_bar"/>
+            </head>
+            <body class="schreibzeug-body">
+                <xsl:call-template name="nav_bar" />
                 <main class="flex-shrink-0 flex-grow-1">
-                    <div class="container">
-                        <h1>404</h1>
+                    <div class="container schreibzeug-container">
+                        <h1 class="schreibzeug-h1">404</h1>
+                        <p class="schreibzeug-p">
+                            Die gewünschte Seite existiert nicht. Stattdessen soll Ihnen die Gelegenheit
+                            gegeben werden, das Schreibzeug von Berthold Löffler und Michael Powolny zu 
+                            sehen, das Arthur Schnitzler gehörte.
+                        </p>
+                        <small class="schreibzeug-small">Mit freundlicher Erlaubnis von Heinz Adamek</small>
                     </div>
                 </main>
-                <xsl:call-template name="html_footer"/>
+                <xsl:call-template name="html_footer" />
             </body>
         </html>
+        
     </xsl:template>
 </xsl:stylesheet>
