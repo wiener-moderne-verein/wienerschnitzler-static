@@ -1,19 +1,20 @@
-// Funktion zum Aktualisieren des Textfelds mit den Titeln
 function updateMapInhaltText(titles, date, name) {
     const mapInhaltTextDiv = document.getElementById('map-inhalt-text');
     if (mapInhaltTextDiv) {
-        // Filtere leere Titel und "Kein Titel" heraus
+        const isValidDate = date && /^\d{4}-\d{2}-\d{2}$/.test(date); // Überprüft, ob das Datum im Format YYYY-MM-DD vorliegt
+        const displayedDate = isValidDate ? date : 'unbekanntes Datum';
+        const displayedName = name || displayedDate;
+
         const filteredTitles = titles.filter(title => title && title.trim() !== '' && title.trim() !== 'Kein Titel');
         
-        // Erstelle den Text mit Datum und Titeln
         const textContent = filteredTitles.length > 0 
-            ? `Am <a class="schnitzler-chronik-link" href="https://schnitzler-chronik.acdh.oeaw.ac.at/${date}.html" target="_blank">${name}</a> war Schnitzler an folgenden Orten: ${
+            ? `Am <a class="schnitzler-chronik-link" href="https://schnitzler-chronik.acdh.oeaw.ac.at/${displayedDate}.html" target="_blank">${displayedName}</a> war Schnitzler an folgenden Orten: ${
                 filteredTitles.length === 1
                     ? `<a href="https://de.wikipedia.org/wiki/${encodeURIComponent(filteredTitles[0])}" target="_blank">${filteredTitles[0]}</a>.`
                     : filteredTitles.slice(0, -1).map(title => `<a href="https://de.wikipedia.org/wiki/${encodeURIComponent(title)}" target="_blank">${title}</a>`).join(', ') +
                       ` und <a href="https://de.wikipedia.org/wiki/${encodeURIComponent(filteredTitles[filteredTitles.length - 1])}" target="_blank">${filteredTitles[filteredTitles.length - 1]}</a>.`
             }<br/><br/>`
-            : `Am ${date} sind keine Orte bekannt.<br/><br/>`;
+            : `Am ${displayedDate} sind keine Orte bekannt.<br/><br/>`;
 
         mapInhaltTextDiv.innerHTML = textContent;
     } else {
@@ -34,8 +35,13 @@ function clearGeoJsonLayers() {
 
 // Funktion zum Laden von GeoJSON basierend auf einem Datum
 function loadGeoJsonByDate(date) {
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) {
+        console.error(`Ungültiges Datum: ${date}`);
+        return;
+    }
     const url = `https://raw.githubusercontent.com/wiener-moderne-verein/wienerschnitzler-data/main/data//editions/geojson/${date}.geojson`;
 
+    
     // Entferne vorherige Layer
     clearGeoJsonLayers();
 
