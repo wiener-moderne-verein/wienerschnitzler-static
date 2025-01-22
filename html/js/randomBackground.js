@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Zufallszahl zwischen 1 und 14 generieren
+    // Zufallszahl zwischen 1 und 17 generieren
     const minNumber = 1;
-    const maxNumber = 14;
+    const maxNumber = 17;
     const randomNumber = Math.floor(Math.random() * (maxNumber - minNumber + 1)) + minNumber;
 
     // Pfad zum zufälligen Hintergrundbild
