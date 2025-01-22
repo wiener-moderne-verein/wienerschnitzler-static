@@ -24,48 +24,49 @@
             <body>
                 <!-- Navbar -->
                 <xsl:call-template name="nav_bar"/>
-               <div class="container mt-5">
-    <div class="row">
-        <!-- Linke Spalte für den Text -->
-        <div class="col-md-6">
-            <h2>Wiener Schnitzler – Schnitzlers Wien</h2>
-            <p class="lead">Arthur Schnitzler wurde 1862 in Wien in der Praterstraße
-                geboren und starb 1931 in der Sternwartestraße, nur zehn Kilometer
-                entfernt. Er verfasste erfolgreiche Dramen, Romane und Erzählungen,
-                die meist in Wien angesiedelt sind. Die Stadt verließ er nur für
-                Reisen und Sommeraufenthalte. Dank seines <a
-                    href="https://schnitzler-tagebuch.acdh.oeaw.ac.at/"
-                    target="_blank"
-                    style="color: #037A33; font-weight: bold; text-decoration: none;"
-                    >Tagebuchs</a>, seiner <a
-                    href="https://schnitzler-briefe.acdh.oeaw.ac.at/"
-                    target="_blank"
-                    style="color: #A63437; font-weight: bold; text-decoration: none;"
-                    >Korrespondenz</a> und weiterer Dokumente kennen wir derzeit
-                über 34.000 Aufenthalte an mehr als 3.200 Orten. Für keine andere
-                Person seiner Zeit gibt es gegenwärtig so viele frei verfügbare,
-                georeferenzierte Daten. Diese zeigen, wo Schnitzler sich
-                bewegte, welche Häuser, Straßen, Stadtteile, Städte und Länder er
-                kannte und die ihm wichtig waren. Zugleich wird auch sichtbar, wo er
-                sich nie aufgehalten hat. </p>
-                 <p>Die Detailtiefe der derzeit erfassten Daten schwankt. Die Jahre vor
-                1909 und 1928–1931 sind derzeit dichter erfasst.</p>
-            <p style="color: red;">BETA: Unter aktiver Entwicklung, weitere
-                Funktionen werden laufend eingebaut.</p>
-           
-        </div>
+                <div class="container mt-5">
+                    <div class="row">
+                                                <h1>Wiener Schnitzler – Schnitzlers Wien</h1>
 
-        <!-- Rechte Spalte für das Bild -->
-        <div class="col-md-6">
-            <div class="image-container">
-                <img id="background-image" class="background" src="./images/wienmuseum/AnsichtenVonWien00001.jpg" alt="Hintergrund" />
-                <img id="foreground-image" class="foreground" src="./images/schnitzler-index2.png" 
-                    alt="Arthur Schnitzler als digitalen Avatar" />
-            </div>
-        </div>
-    </div>
-</div>
-
+                        <!-- Rechte Spalte für das Bild (wird zuerst angezeigt auf kleinen Bildschirmen) -->
+                        <div class="col-md-6 order-2 order-md-1">
+                            <div class="image-container">
+                                <img id="background-image" class="background"
+                                    src="./images/wienmuseum/AnsichtenVonWien00001.jpg"
+                                    alt="Hintergrund"/>
+                                <img id="foreground-image" class="foreground"
+                                    src="./images/schnitzler-index2.png"
+                                    alt="Arthur Schnitzler als digitalen Avatar"/>
+                            </div>
+                        </div>
+                        <!-- Linke Spalte für den Text -->
+                        <div class="col-md-6 order-1 order-md-2">
+                            <p class="lead">Arthur Schnitzler wurde 1862 in Wien in der Praterstraße
+                                geboren und starb 1931 in der Sternwartestraße, nur zehn Kilometer
+                                entfernt. Er verfasste erfolgreiche Dramen, Romane und Erzählungen,
+                                die meist in Wien angesiedelt sind. Die Stadt verließ er nur für
+                                Reisen und Sommeraufenthalte. Dank seines <a
+                                    href="https://schnitzler-tagebuch.acdh.oeaw.ac.at/"
+                                    target="_blank"
+                                    style="color: #037A33; font-weight: bold; text-decoration: none;"
+                                    >Tagebuchs</a>, seiner <a
+                                    href="https://schnitzler-briefe.acdh.oeaw.ac.at/"
+                                    target="_blank"
+                                    style="color: #A63437; font-weight: bold; text-decoration: none;"
+                                    >Korrespondenz</a> und weiterer Dokumente kennen wir derzeit
+                                über 34.000 Aufenthalte an mehr als 3.200 Orten. Für keine andere
+                                Person seiner Zeit gibt es gegenwärtig so viele frei verfügbare,
+                                georeferenzierte Daten. Diese zeigen, wo Schnitzler sich bewegte,
+                                welche Häuser, Straßen, Stadtteile, Städte und Länder er kannte und
+                                die ihm wichtig waren. Zugleich wird auch sichtbar, wo er sich nie
+                                aufgehalten hat. </p>
+                            <p>Die Detailtiefe der derzeit erfassten Daten schwankt. Die Jahre vor
+                                1909 und 1928–1931 sind derzeit dichter erfasst.</p>
+                            <p style="color: red;">BETA: Unter aktiver Entwicklung, weitere
+                                Funktionen werden laufend eingebaut.</p>
+                        </div>
+                    </div>
+                </div>
                 <!-- Footer -->
                 <xsl:call-template name="html_footer"/>
                 <script src="./js/randomBackground.js"/>
