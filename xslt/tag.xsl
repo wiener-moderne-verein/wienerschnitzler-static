@@ -29,7 +29,7 @@
                         <div
                             class="controls d-flex justify-content-between align-items-center mb-3 gap-3">
                             <div class="d-flex justify-content-start">
-                                <button id="prev-day" class="btn btn-secondary bg-success">
+                                <button id="prev-day" class="btn btn-secondary  btn-navigation">
                                     <i class="bi bi-arrow-left-circle"/>
                                 </button>
                             </div>
@@ -37,7 +37,7 @@
                                 <input type="date" id="date-input" class="form-control w-auto"/>
                             </div>
                             <div class="d-flex justify-content-end">
-                                <button id="next-day" class="btn btn-secondary bg-success">
+                                <button id="next-day" class="btn btn-secondary  btn-navigation">
                                     <i class="bi bi-arrow-right-circle"/>
                                 </button>
                             </div>
@@ -55,8 +55,8 @@
                                         die einzelnen Tage in Schnitzlers Leben visualisiert. <span
                                             class="fw-bold text-danger">Achtung</span>: Die
                                         Verbindungslinie zwischen den Orten macht den geografischen
-                                        Raum besser sichtbar. Sie stellt nicht die Reihenfolge 
-                                        dar, in der die Orte aufgesucht wurden. </p>
+                                        Raum besser sichtbar. Sie stellt nicht die Reihenfolge dar,
+                                        in der die Orte aufgesucht wurden. </p>
                                 </div>
                             </div>
                         </div>
@@ -64,7 +64,7 @@
                 </main>
                 <xsl:call-template name="html_footer"/>
                 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"/>
-                <script src="./js/mapUtils.js"></script>
+                <script src="./js/mapUtils.js"/>
                 <script src="./js/script_tag.js"/>
             </body>
         </html>

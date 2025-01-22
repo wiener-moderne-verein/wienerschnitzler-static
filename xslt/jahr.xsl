@@ -26,32 +26,37 @@
                 <main class="w-100">
                     <div class="container-fluid my-4">
                         <h1>Jahre</h1>
-                        <div class="controls d-flex justify-content-between align-items-center mb-3 gap-3">
+                        <div
+                            class="controls d-flex justify-content-between align-items-center mb-3 gap-3">
                             <div class="d-flex justify-content-start">
-                                <button id="prev-year" class="btn btn-secondary bg-success">
-                                    <i class="bi bi-arrow-left-circle"></i>
+                                <button id="prev-year" class="btn btn-secondary  btn-navigation">
+                                    <i class="bi bi-arrow-left-circle"/>
                                 </button>
                             </div>
                             <div class="d-flex center-content-start">
-                                <input type="number" id="date-input" placeholder="Jahr eingeben" value="1890" min="1869" max="1931" step="1" class="form-control w-auto" />
+                                <input type="number" id="date-input" placeholder="Jahr eingeben"
+                                    value="1890" min="1869" max="1931" step="1"
+                                    class="form-control w-auto"/>
                             </div>
                             <div class="d-flex justify-content-end">
-                                <button id="next-year" class="btn btn-secondary bg-success">
-                                    <i class="bi bi-arrow-right-circle"></i>
+                                <button id="next-year" class="btn btn-secondary  btn-navigation">
+                                    <i class="bi bi-arrow-right-circle"/>
                                 </button>
                             </div>
                         </div>
                         <!-- Map -->
                         <div id="map"/>
-                         <div id="legend" class="mt-5"
+                        <div id="legend" class="mt-5"
                             style="display: flex; flex-wrap: wrap; max-width: 90%;  margin-left: auto;  margin-right: auto; ">
                             <span style="margin: 10px; font-weight: bold">Aufenthaltstage:</span>
                         </div>
                         <div class="d-flex justify-content-center mt-5">
                             <div class="col-sm-6 mb-5">
                                 <div class="text-start mx-auto">
-                                    <p class="text-start">Auf dieser Seite werden einzelne Jahre in Schnitzlers Leben visualisiert. Durch die Auswahl eines
-                                        Punktes werden die jeweiligen Aufenthaltstage innerhalb desselben angezeigt.</p>
+                                    <p class="text-start">Auf dieser Seite werden einzelne Jahre in
+                                        Schnitzlers Leben visualisiert. Durch die Auswahl eines
+                                        Punktes werden die jeweiligen Aufenthaltstage innerhalb
+                                        desselben angezeigt.</p>
                                 </div>
                             </div>
                         </div>
@@ -59,7 +64,7 @@
                 </main>
                 <xsl:call-template name="html_footer"/>
                 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"/>
-                <script src="./js/mapUtils.js"></script>
+                <script src="./js/mapUtils.js"/>
                 <script src="./js/script_jahr.js"/>
             </body>
         </html>

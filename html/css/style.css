@@ -11,6 +11,7 @@
     --danger: #4b4b82;
     --warning: #910000;
     --erfolg: #005738;
+    --projektfarbe: #ECDA98; /* Definiere die Projektfarbe */
 }
 
 /* needed for interactive map in listplace.xsl */
@@ -212,4 +213,19 @@ span.share-bluesky {
     border-radius: 0 0 10px 10px; /* Abgerundete Ecken unten */
     position: relative; /* Positionierung zur genauen Platzierung des roten Rahmens */
     padding: 10px; /* Innenabstand für den roten Rahmen */
+}
+
+
+.btn-navigation {
+    color: black; /* Schriftfarbe */
+    background-color: var(--projektfarbe); /* Hintergrund in Projektfarbe */
+    border: none; /* Entfernt Rahmen */
+    border-radius: 5px; /* Abgerundete Ecken */
+    padding: 10px; /* Innenabstand */
+    transition: background-color 0.3s ease; /* Weicher Übergang bei Hover */
+}
+
+.btn-navigation:hover {
+    background-color: #D4C088; /* Abgedunkelte Projektfarbe für Hover-Effekt */
+    cursor: pointer;
 }
