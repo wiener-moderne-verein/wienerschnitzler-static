@@ -36,6 +36,7 @@
                             <div class="d-flex center-content-start">
                                 <input type="date" id="date-input" class="form-control w-auto"/>
                             </div>
+                            
                             <div class="d-flex justify-content-end">
                                 <button id="next-day" class="btn btn-secondary  btn-navigation">
                                     <i class="bi bi-arrow-right-circle"/>

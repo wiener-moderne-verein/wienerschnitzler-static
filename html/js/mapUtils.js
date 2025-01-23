@@ -128,3 +128,41 @@ function createPopupContent(feature) {
     return `<b>${titleLink}</b><br>${links}${wikipediaContent}`;
 }
 
+function extractLocationsFromGeoJson(data) {
+    const locations = [];
+    data.features.forEach(feature => {
+        if (feature.properties && feature.properties.typ === 'ort') {
+            locations.push({
+                name: feature.properties.name || 'Unbekannter Ort',
+                coordinates: feature.geometry.coordinates.reverse(), // GeoJSON hat [lon, lat], wir brauchen [lat, lon]
+            });
+        }
+    });
+    return locations;
+}
+
+function populateLocationDropdown(features) {
+    const locationSelect = document.getElementById('location-select');
+    locationSelect.innerHTML = '<option value="" disabled selected>Wähle einen Ort</option>';
+
+    // Filtere und sortiere die Features alphabetisch nach Titel
+    const sortedFeatures = features
+        .filter(feature => feature.properties && feature.properties.title && feature.properties.abbr)
+        .filter(feature => {
+            const abbr = feature.properties.abbr;
+            return abbr.startsWith('BSO') || abbr.startsWith('P.') || abbr.startsWith('A.');
+        })
+        .sort((a, b) => {
+            const titleA = a.properties.title.toLowerCase();
+            const titleB = b.properties.title.toLowerCase();
+            return titleA.localeCompare(titleB);
+        });
+
+    // Füge die sortierten Optionen zum Dropdown hinzu
+    sortedFeatures.forEach(feature => {
+        const option = document.createElement('option');
+        option.value = feature.geometry.coordinates.reverse().join(','); // [lon, lat] -> [lat, lon]
+        option.textContent = feature.properties.title; // Titel als Dropdown-Text
+        locationSelect.appendChild(option);
+    });
+}

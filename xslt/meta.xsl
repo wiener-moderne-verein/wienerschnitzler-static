@@ -105,7 +105,7 @@
     </xsl:template>
     
     <xsl:template match="tei:p">
-        <p>
+        <p id="{generate-id()}">
             <xsl:if test="@rend='right'">
                 <xsl:attribute name="style">
                     <xsl:text>text-align: right</xsl:text>
@@ -115,11 +115,6 @@
         </p>
     </xsl:template>
     
-    <xsl:template match="tei:p">
-        <p id="{generate-id()}">
-            <xsl:apply-templates/>
-        </p>
-    </xsl:template>
     <xsl:template match="tei:div">
         <div id="{generate-id()}">
             <xsl:apply-templates/>

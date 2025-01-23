@@ -36,13 +36,18 @@ function loadGeoJson() {
             }
         }).addTo(map);
 
+        // Neue Layer zur Liste hinzufügen
         geoJsonLayers.push(newLayer);
 
+        // Karte auf die neuen Daten anpassen
         if (newLayer.getLayers().length > 0) {
             map.fitBounds(newLayer.getBounds());
         } else {
             console.warn('Keine gültigen Features gefunden.');
         }
+
+        // Titel im Dropdown anzeigen
+        populateLocationDropdown(data.features);
 
         // Maximalen Wert für die Wichtigkeit bestimmen
         const maxImportance = Math.max(
@@ -57,8 +62,15 @@ function loadGeoJson() {
     });
 }
 
+
 // Initialisierung der Karte beim Laden der Seite
 document.addEventListener('DOMContentLoaded', () => {
     initializeMap(); // Karte initialisieren
     loadGeoJson(); // GeoJSON laden und anzeigen
+});
+
+
+document.getElementById('location-select').addEventListener('change', function () {
+    const [lat, lon] = this.value.split(',').map(Number);
+    map.setView([lat, lon], 14); // Zoom auf den ausgewählten Ort
 });
