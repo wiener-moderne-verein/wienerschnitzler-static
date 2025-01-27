@@ -20,7 +20,7 @@
             <body class="d-flex flex-column h-100">
                 <xsl:call-template name="nav_bar"/>
                 <main>
-                    <div class="container col-12" style="max-width:800px">
+                    <div class="container col-12 mt-3" style="max-width:800px">
                         <div id="map"/>
                         <h1>Wo stand Ihnen Schnitzler am nächsten?</h1>
                         

@@ -124,6 +124,25 @@ function createPopupContent(feature) {
 
     // Füge das <br> nur hinzu, wenn der wikipediaLink einen Textinhalt hat
     const wikipediaContent = wikipediaLink ? `<br>${wikipediaLink}` : '';
+    
+    const wiengeschichtewikiLink = feature.properties.wiengeschichtewiki ? `<a href="${feature.properties.wiengeschichtewiki}" target="_blank">wiengeschichtewiki</a>` : '';
 
-    return `<b>${titleLink}</b><br>${links}${wikipediaContent}`;
+    // Füge das <br> nur hinzu, wenn der wiengeschichtewikiLink einen Textinhalt hat
+    const wiengeschichtewikiContent = wiengeschichtewikiLink ? `<br>${wiengeschichtewikiLink}` : '';
+
+    // Wohnort-Property verarbeiten
+    let wohnortContent = '';
+    if (feature.properties.wohnort && Array.isArray(feature.properties.wohnort)) {
+        const wohnortListItems = feature.properties.wohnort.map(ort => `<li>${ort}</li>`).join('');
+        wohnortContent = `<br>Wohnort:<ul>${wohnortListItems}</ul>`;
+    }
+    
+    // Arbeitsort-Property verarbeiten
+    let arbeitsortContent = '';
+    if (feature.properties.arbeitsort && Array.isArray(feature.properties.arbeitsort)) {
+        const arbeitsortListItems = feature.properties.arbeitsort.map(ort => `<li>${ort}</li>`).join('');
+        arbeitsortContent = `<br>arbeitsort:<ul>${arbeitsortListItems}</ul>`;
+    }
+
+    return `<b>${titleLink}</b><br>${links}${wikipediaContent}${wohnortContent}${arbeitsortContent}`;
 }
