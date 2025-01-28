@@ -38,62 +38,63 @@ function loadGeoJsonByDate(date) {
     
     const url = `https://raw.githubusercontent.com/wiener-moderne-verein/wienerschnitzler-data/main/data//editions/geojson/${date}.geojson`;
 
+    
     // Entferne vorherige Layer
     clearGeoJsonLayers();
 
     // GeoJSON laden und anzeigen
     fetch(url)
-    .then(response => {
-        if (!response.ok) {
-            throw new Error(`GeoJSON für ${date} nicht gefunden.`);
-        }
-        return response.json();
-    })
-    .then(data => {
-        const titles = [];
-        const name = data.features[0].properties.name || date;
-        
-        // Orte extrahieren und Dropdown füllen
-        const locations = extractLocationsFromGeoJson(data);
-        populateLocationDropdown(locations);
-
-        const newLayer = L.geoJSON(data, {
-            style: function (feature) {
-                return {
-                    color: '#FF0000',
-                    weight: 2,
-                    opacity: 1
-                };
-            },
-            pointToLayer: createCircleMarker,
-            onEachFeature: function (feature, layer) {
-                if (feature.properties) {
-                    const popupContent = createPopupContent(feature);
-                    layer.bindPopup(popupContent, { maxWidth: 300 });
-                    let title = feature.properties.title
-                        ? `<a href="${feature.properties.id}.html">${feature.properties.title}</a>`
-                        : 'Kein Titel';
-                    titles.push(feature.properties.id
-                        ? `<a href="${feature.properties.id}" target="_blank">${title}</a>`
-                        : title);
-                }
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`GeoJSON für ${date} nicht gefunden.`);
             }
-        }).addTo(map);
+            return response.json();
+        })
+        .then(data => {
+            const titles = [];
+            const name = data.features[0].properties.name || date; // Extrahiere den Namen aus dem ersten Feature
+            const newLayer = L.geoJSON(data, {
+                style: function (feature) {
+                    // Stil für Linien
+                    return {
+                        color: '#FF0000', // Linienfarbe
+                        weight: 2, // Dicke der Linie
+                        opacity: 1 // Deckkraft der Linie
+                    };
+                },
+                pointToLayer: createCircleMarker, // Verwende die ausgelagerte Funktion für Marker aus mapUtils.js
+                onEachFeature: function (feature, layer) {
+                    if (feature.properties) {
+                        const popupContent = createPopupContent(feature); // Verwende die ausgelagerte Funktion für Popups
+                        layer.bindPopup(popupContent, { maxWidth: 300 });
+                        // Füge den Titel zur Liste hinzu
+                        let title = feature.properties.title 
+                            ? `<a href="${feature.properties.id}.html">${feature.properties.title}</a>` 
+                            : 'Kein Titel';
+                        titles.push(feature.properties.id 
+                            ? `<a href="${feature.properties.id}" target="_blank">${title}</a>` 
+                            : title);
+                    }
+                }
+            }).addTo(map);
+            
+            // Hinzufügen der neuen Layer-Referenz zur Liste
+            geoJsonLayers.push(newLayer);
 
-        geoJsonLayers.push(newLayer);
+            // Karte an die neuen Daten anpassen
+            if (newLayer.getLayers().length > 0) {
+                map.fitBounds(newLayer.getBounds());
+            } else {
+                console.warn('Keine gültigen Features gefunden.');
+            }
 
-        if (newLayer.getLayers().length > 0) {
-            map.fitBounds(newLayer.getBounds());
-        } else {
-            console.warn('Keine gültigen Features gefunden.');
-        }
-
-        updateMapInhaltText(titles, date, name);
-    })
-    .catch(error => {
-        console.error('Error loading GeoJSON:', error);
-        clearGeoJsonLayers();
-    });
+            // Aktualisiere das Textfeld mit den gesammelten Titeln und dem Datum
+            updateMapInhaltText(titles, date, name);
+        })
+        .catch(error => {
+            console.error('Error loading GeoJSON:', error);
+            clearGeoJsonLayers(); // Entferne alte Layer auch bei Fehlern
+        });
 }
 
 // Funktion, um das Fragment in der URL zu aktualisieren
@@ -189,16 +190,6 @@ function extractLocationsFromGeoJson(data) {
     return locations;
 }
 
-function populateLocationDropdown(locations) {
-    const locationSelect = document.getElementById('location-select');
-    locationSelect.innerHTML = '<option value="" disabled selected>Wähle einen Ort</option>';
-    locations.forEach(location => {
-        const option = document.createElement('option');
-        option.value = location.coordinates.join(',');
-        option.textContent = location.name;
-        locationSelect.appendChild(option);
-    });
-}
 
 document.getElementById('location-select').addEventListener('change', function () {
     const [lat, lon] = this.value.split(',').map(Number);
