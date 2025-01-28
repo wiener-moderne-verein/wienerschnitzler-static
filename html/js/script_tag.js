@@ -38,7 +38,6 @@ function loadGeoJsonByDate(date) {
     
     const url = `https://raw.githubusercontent.com/wiener-moderne-verein/wienerschnitzler-data/main/data//editions/geojson/${date}.geojson`;
 
-    
     // Entferne vorherige Layer
     clearGeoJsonLayers();
 
@@ -67,10 +66,18 @@ function loadGeoJsonByDate(date) {
                     if (feature.properties) {
                         const popupContent = createPopupContent(feature); // Verwende die ausgelagerte Funktion für Popups
                         layer.bindPopup(popupContent, { maxWidth: 300 });
-                        // Füge den Titel zur Liste hinzu
+                        
+                        // Füge den Titel zur Liste hinzu und überprüfe das Datum
                         let title = feature.properties.title 
                             ? `<a href="${feature.properties.id}.html">${feature.properties.title}</a>` 
                             : 'Kein Titel';
+
+                        // Überprüfen, ob das Datum innerhalb des gültigen Zeitraums liegt
+                        const id = feature.properties.id;
+                        if (checkDateInRange(date, id)) {
+                            title = `${title} <span style="color: black;">(Wohnadresse)</span>`;
+                        }
+                        
                         titles.push(feature.properties.id 
                             ? `<a href="${feature.properties.id}" target="_blank">${title}</a>` 
                             : title);
@@ -96,6 +103,7 @@ function loadGeoJsonByDate(date) {
             clearGeoJsonLayers(); // Entferne alte Layer auch bei Fehlern
         });
 }
+
 
 // Funktion, um das Fragment in der URL zu aktualisieren
 function updateUrlFragment(date) {
@@ -191,3 +199,85 @@ function extractLocationsFromGeoJson(data) {
 }
 
 
+function checkDateInRange(date, id) {
+    // Umwandlung des übergebenen Datums in ein Date-Objekt
+    const inputDate = new Date(date);
+    
+    // Suche nach dem entsprechenden Eintrag in der `wohnsitze`-Konstanten
+    const wohnsitz = wohnsitze.find(entry => entry.target_id === id);
+    
+    // Falls keine Übereinstimmung gefunden wurde
+    if (!wohnsitz) {
+        return false;
+    }
+    
+    // Umwandlung der Start- und Enddaten in Date-Objekte
+    const startDate = new Date(wohnsitz.start_date);
+    const endDate = new Date(wohnsitz.end_date);
+    
+    // Überprüfung, ob das Datum innerhalb des Zeitraums liegt
+    return inputDate >= startDate && inputDate <= endDate;
+}
+
+const wohnsitze = [
+    {
+        target_label: "Sternwartestraße 71",
+        target_id: "pmb168815",
+        start_date: "1910-07-17",
+        end_date: "1931-10-21"
+    },
+    {
+        target_label: "Edmund-Weiß-Gasse 7",
+        target_id: "pmb168940",
+        start_date: "1903-09-12",
+        end_date: "1910-07-16"
+    },
+    {
+        target_label: "Frankgasse 1",
+        target_id: "pmb168934",
+        start_date: "1893-11-15",
+        end_date: "1903-09-11"
+    },
+    {
+        target_label: "Wohnung und Ordination Arthur Schnitzler Grillparzerstraße 7/3. Stock",
+        target_id: "pmb167782",
+        start_date: "1892-10-15",
+        end_date: "1893-11-14"
+    },
+    {
+        target_label: "Kärntnerring 12/Bösendorferstraße 11",
+        target_id: "pmb167805",
+        start_date: "1889-12-03",
+        end_date: "1892-10-14"
+    },
+    {
+        target_label: "Wohnung und Ordination Arthur Schnitzler Burgring 1",
+        target_id: "pmb168768",
+        start_date: "1888-10-19",
+        end_date: "1889-12-02"
+    },
+    {
+        target_label: "Wohnung und Ordination Johann Schnitzler Burgring 1",
+        target_id: "pmb168765",
+        start_date: "1870-05-12",
+        end_date: "1888-10-18"
+    },
+    {
+        target_label: "Kärntnerring 12/Bösendorferstraße 11",
+        target_id: "pmb167805",
+        start_date: "1870-01-01",
+        end_date: "1871-01-01"
+    },
+    {
+        target_label: "Schottenbastei 3",
+        target_id: "pmb51969",
+        start_date: "1864-01-22",
+        end_date: "1870-01-01"
+    },
+    {
+        target_label: "Praterstraße 16",
+        target_id: "pmb168783",
+        start_date: "1862-05-15",
+        end_date: "1864-01-01"
+    }
+];
