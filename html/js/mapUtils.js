@@ -109,7 +109,7 @@ function createLegend(maxImportance) {
 function createPopupContent(feature) {
     const title = feature.properties.title || 'Kein Titel';
     const id = feature.properties.id || '#';
-    const titleLink = `<a href="${id}.html" target="_blank" class="text-dark text-decoration-none">${title}</a>`;
+    const titleLink = `<a href="${id}.html" target="_blank" class="text-dark text-decoration-none">${title} →</a>`;
     const dates = feature.properties.timestamp || [];
 
     let links = dates.slice(0, 10).map(date =>
@@ -146,7 +146,7 @@ function createPopupContent(feature) {
     return `
     <div class="rounded" style="font-family: Arial, sans-serif;">
         <div class="p-3 mb-3">
-            <h5 class="m-0"><b>${titleLink}</b></h5>
+            <h5 class="m-0"><b>${titleLink}</b> </h5>
         </div>
         <p class="m-0">Aufenthaltstage:<br/>${links}</p>
         ${wohnortContent}
