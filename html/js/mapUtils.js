@@ -111,38 +111,53 @@ function createPopupContent(feature) {
     const id = feature.properties.id || '#';
     const titleLink = `<a href="${id}.html" target="_blank">${title}</a>`;
     const dates = feature.properties.timestamp || [];
+
     let links = dates.slice(0, 10).map(date =>
         `<a href="https://schnitzler-chronik.acdh.oeaw.ac.at/${date}.html" target="_blank">${date}</a>`
     ).join('<br>');
 
     if (dates.length > 10) {
         const remainingCount = dates.length - 10;
-        links += `<p style="text-align: right">… <a href="${id}.html">${remainingCount} weitere</a></p>`;
+        links += `<p class="text-end">… <a href="${id}.html">${remainingCount} weitere</a></p>`;
     }
 
-    const wikipediaLink = feature.properties.wikipedia ? `<a href="${feature.properties.wikipedia}" target="_blank">Wikipedia</a>` : '';
+    const wikipediaLink = feature.properties.wikipedia ? 
+        `<a href="${feature.properties.wikipedia}" target="_blank" class="btn btn-link">Wikipedia</a>` : '';
 
-    // Füge das <br> nur hinzu, wenn der wikipediaLink einen Textinhalt hat
-    const wikipediaContent = wikipediaLink ? `<br>${wikipediaLink}` : '';
-    
-    const wiengeschichtewikiLink = feature.properties.wiengeschichtewiki ? `<a href="${feature.properties.wiengeschichtewiki}" target="_blank">wiengeschichtewiki</a>` : '';
+    const wiengeschichtewikiLink = feature.properties.wiengeschichtewiki ? 
+        `<a href="${feature.properties.wiengeschichtewiki}" target="_blank" class="btn btn-link">wiengeschichtewiki</a>` : '';
 
-    // Füge das <br> nur hinzu, wenn der wiengeschichtewikiLink einen Textinhalt hat
-    const wiengeschichtewikiContent = wiengeschichtewikiLink ? `<br>${wiengeschichtewikiLink}` : '';
-
-    // Wohnort-Property verarbeiten
     let wohnortContent = '';
     if (feature.properties.wohnort && Array.isArray(feature.properties.wohnort)) {
         const wohnortListItems = feature.properties.wohnort.map(ort => `<li>${ort}</li>`).join('');
-        wohnortContent = `<br>Wohnort:<ul>${wohnortListItems}</ul>`;
+        wohnortContent = `<br>Wohnort von:<ul>${wohnortListItems}</ul>`;
     }
-    
-    // Arbeitsort-Property verarbeiten
+
     let arbeitsortContent = '';
     if (feature.properties.arbeitsort && Array.isArray(feature.properties.arbeitsort)) {
         const arbeitsortListItems = feature.properties.arbeitsort.map(ort => `<li>${ort}</li>`).join('');
-        arbeitsortContent = `<br>arbeitsort:<ul>${arbeitsortListItems}</ul>`;
+        arbeitsortContent = `<br>Arbeitsort von:<ul>${arbeitsortListItems}</ul>`;
     }
 
-    return `<b>${titleLink}</b><br>${links}${wikipediaContent}${wohnortContent}${arbeitsortContent}`;
+    return `
+    <div class="modal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">${titleLink}</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>${links}</p>
+            ${wohnortContent}
+            ${arbeitsortContent}
+          </div>
+          <div class="modal-footer">
+            ${wikipediaLink}
+            ${wiengeschichtewikiLink}
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Schließen</button>
+          </div>
+        </div>
+      </div>
+    </div>`;
 }
