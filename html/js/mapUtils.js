@@ -109,7 +109,7 @@ function createLegend(maxImportance) {
 function createPopupContent(feature) {
     const title = feature.properties.title || 'Kein Titel';
     const id = feature.properties.id || '#';
-    const titleLink = `<a href="${id}.html" target="_blank">${title}</a>`;
+    const titleLink = `<a href="${id}.html" target="_blank" class="text-dark text-decoration-none">${title}</a>`;
     const dates = feature.properties.timestamp || [];
 
     let links = dates.slice(0, 10).map(date =>
@@ -122,38 +122,42 @@ function createPopupContent(feature) {
     }
 
     const wikipediaLink = feature.properties.wikipedia ? 
-        `<a href="${feature.properties.wikipedia}" target="_blank" style="margin-right: 10px;">Wikipedia</a>` : '';
+        `<a href="${feature.properties.wikipedia}" target="_blank" class="text-dark me-2" title="Wikipedia">
+            <i class="bi bi-wikipedia"></i>
+        </a>` : '';
 
     const wiengeschichtewikiLink = feature.properties.wiengeschichtewiki ? 
-        `<a href="${feature.properties.wiengeschichtewiki}" target="_blank" style="margin-right: 10px;">wiengeschichtewiki</a>` : '';
+        `<a href="${feature.properties.wiengeschichtewiki}" target="_blank" class="me-2" title="Wien Geschichte Wiki">
+            <img src="../images/Wien_Geschichte_Wiki_Logo.png" alt="Wien Geschichte Wiki" style="height: 20px; width: auto;">
+        </a>` : '';
 
     let wohnortContent = '';
     if (feature.properties.wohnort && Array.isArray(feature.properties.wohnort)) {
         const wohnortListItems = feature.properties.wohnort.map(ort => `<li>${ort}</li>`).join('');
-        wohnortContent = `<br>Wohnort von:<ul style="padding-left: 20px;">${wohnortListItems}</ul>`;
+        wohnortContent = `<p class="m-0 mt-3">Wohnort von:<br/><ul style="padding-left: 20px;">${wohnortListItems}</ul></p>`;
     }
 
     let arbeitsortContent = '';
     if (feature.properties.arbeitsort && Array.isArray(feature.properties.arbeitsort)) {
         const arbeitsortListItems = feature.properties.arbeitsort.map(ort => `<li>${ort}</li>`).join('');
-        arbeitsortContent = `<br>Arbeitsort von:<ul style="padding-left: 20px;">${arbeitsortListItems}</ul>`;
+        arbeitsortContent = `<p class="m-0 mt-3">Arbeitsort von:<br/><ul style="padding-left: 20px;">${arbeitsortListItems}</ul></p>`;
     }
 
     return `
-    <div style="border-radius: 5px; padding: 15px; font-family: Arial, sans-serif;">
-      <div style="margin-bottom: 10px; padding-bottom: 10px;">
-        <h5 style="margin: 0; font-size: 18px;">${titleLink}</h5>
-      </div>
-      <div style="margin-bottom: 10px;">
-        <p style="margin: 0;">${links}</p>
+    <div class="rounded" style="font-family: Arial, sans-serif;">
+        <div class="p-3 mb-3">
+            <h5 class="m-0"><b>${titleLink}</b></h5>
+        </div>
+        <p class="m-0">Aufenthaltstage:<br/>${links}</p>
         ${wohnortContent}
         ${arbeitsortContent}
-      </div>
-      <div style="margin-top: 10px; padding-top: 10px; text-align: right;">
-        ${wikipediaLink}
-        ${wiengeschichtewikiLink}
-      </div>
+        <p class="m-0 mt-3 d-flex align-items-center">
+            ${wikipediaLink}
+            ${wiengeschichtewikiLink}
+        </p>
     </div>`;
 }
+
+
 
 
