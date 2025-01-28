@@ -118,46 +118,42 @@ function createPopupContent(feature) {
 
     if (dates.length > 10) {
         const remainingCount = dates.length - 10;
-        links += `<p class="text-end">… <a href="${id}.html">${remainingCount} weitere</a></p>`;
+        links += `<p style="text-align: right;">… <a href="${id}.html">${remainingCount} weitere</a></p>`;
     }
 
     const wikipediaLink = feature.properties.wikipedia ? 
-        `<a href="${feature.properties.wikipedia}" target="_blank" class="btn btn-link">Wikipedia</a>` : '';
+        `<a href="${feature.properties.wikipedia}" target="_blank" style="margin-right: 10px;">Wikipedia</a>` : '';
 
     const wiengeschichtewikiLink = feature.properties.wiengeschichtewiki ? 
-        `<a href="${feature.properties.wiengeschichtewiki}" target="_blank" class="btn btn-link">wiengeschichtewiki</a>` : '';
+        `<a href="${feature.properties.wiengeschichtewiki}" target="_blank" style="margin-right: 10px;">wiengeschichtewiki</a>` : '';
 
     let wohnortContent = '';
     if (feature.properties.wohnort && Array.isArray(feature.properties.wohnort)) {
         const wohnortListItems = feature.properties.wohnort.map(ort => `<li>${ort}</li>`).join('');
-        wohnortContent = `<br>Wohnort von:<ul>${wohnortListItems}</ul>`;
+        wohnortContent = `<br>Wohnort von:<ul style="padding-left: 20px;">${wohnortListItems}</ul>`;
     }
 
     let arbeitsortContent = '';
     if (feature.properties.arbeitsort && Array.isArray(feature.properties.arbeitsort)) {
         const arbeitsortListItems = feature.properties.arbeitsort.map(ort => `<li>${ort}</li>`).join('');
-        arbeitsortContent = `<br>Arbeitsort von:<ul>${arbeitsortListItems}</ul>`;
+        arbeitsortContent = `<br>Arbeitsort von:<ul style="padding-left: 20px;">${arbeitsortListItems}</ul>`;
     }
 
     return `
-    <div class="modal fade" tabindex="-1" role="dialog">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">${titleLink}</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <p>${links}</p>
-            ${wohnortContent}
-            ${arbeitsortContent}
-          </div>
-          <div class="modal-footer">
-            ${wikipediaLink}
-            ${wiengeschichtewikiLink}
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Schließen</button>
-          </div>
-        </div>
+    <div style="border-radius: 5px; padding: 15px; font-family: Arial, sans-serif;">
+      <div style="margin-bottom: 10px; padding-bottom: 10px;">
+        <h5 style="margin: 0; font-size: 18px;">${titleLink}</h5>
+      </div>
+      <div style="margin-bottom: 10px;">
+        <p style="margin: 0;">${links}</p>
+        ${wohnortContent}
+        ${arbeitsortContent}
+      </div>
+      <div style="margin-top: 10px; padding-top: 10px; text-align: right;">
+        ${wikipediaLink}
+        ${wiengeschichtewikiLink}
       </div>
     </div>`;
 }
+
+
