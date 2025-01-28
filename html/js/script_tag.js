@@ -191,10 +191,3 @@ function extractLocationsFromGeoJson(data) {
 }
 
 
-document.getElementById('location-select').addEventListener('change', function () {
-    const [lat, lon] = this.value.split(',').map(Number);
-    map.setView([lat, lon], 14); // Zoom auf den ausgewählten Ort
-});
-
-
-

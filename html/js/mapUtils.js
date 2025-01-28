@@ -140,7 +140,7 @@ function createPopupContent(feature) {
     }
 
     return `
-    <div class="modal" tabindex="-1" role="dialog">
+<div class="modal fade show" tabindex="-1" role="dialog" style="display: block;">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
