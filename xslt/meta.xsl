@@ -11,7 +11,7 @@
     <xsl:import href="./partials/biblStruct-output.xsl"/>
     <xsl:template match="/">
         <xsl:variable name="doc_title">
-            <xsl:value-of select="./tei:titleStmt/tei:title[@level = 'a'][1]/text()"/>
+            <xsl:value-of select="descendant::tei:titleStmt/tei:title[@level = 'a'][1]/text()"/>
         </xsl:variable>
         <html class="h-100">
             <head>
