@@ -2,26 +2,36 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:mam="whatever"
     xmlns:tei="http://www.tei-c.org/ns/1.0" exclude-result-prefixes="xs" version="3.0">
-    <xsl:function name="mam:bibliografische-angabe">
+    <xsl:template name="mam:bibliografische-angabe">
         <xsl:param name="biblStruct-input" as="node()"/>
         <xsl:choose>
             <!-- Zuerst Analytic -->
             <xsl:when test="$biblStruct-input/tei:analytic">
-                <xsl:value-of select="mam:analytic-angabe($biblStruct-input)"/>
+                <xsl:call-template name="mam:analytic-angabe">
+                    <xsl:with-param name="gedruckte-quellen" select="$biblStruct-input"/>
+                </xsl:call-template>
                 <xsl:text> </xsl:text>
                 <xsl:text>In: </xsl:text>
-                <xsl:value-of select="mam:monogr-angabe($biblStruct-input/tei:monogr[last()])"/>
+                <xsl:call-template name="mam:monogr-angabe">
+                    <xsl:with-param select="$biblStruct-input/tei:monogr[last()]" name="monogr"/>
+                </xsl:call-template>
             </xsl:when>
             <!-- Jetzt abfragen ob mehrere monogr -->
             <xsl:when test="count($biblStruct-input/tei:monogr) = 2">
-                <xsl:value-of select="mam:monogr-angabe($biblStruct-input/tei:monogr[last()])"/>
+                <xsl:call-template name="mam:monogr-angabe">
+                    <xsl:with-param select="$biblStruct-input/tei:monogr[last()]" name="monogr"/>
+                </xsl:call-template>
                 <xsl:text>. Band</xsl:text>
                 <xsl:text>: </xsl:text>
-                <xsl:value-of select="mam:monogr-angabe($biblStruct-input/tei:monogr[1])"/>
+                <xsl:call-template name="mam:monogr-angabe">
+                    <xsl:with-param select="$biblStruct-input/tei:monogr[1]" name="monogr"/>
+                </xsl:call-template>
             </xsl:when>
             <!-- Ansonsten ist es eine einzelne monogr -->
             <xsl:otherwise>
-                <xsl:value-of select="mam:monogr-angabe($biblStruct-input/tei:monogr[last()])"/>
+                <xsl:call-template name="mam:monogr-angabe">
+                    <xsl:with-param select="$biblStruct-input/tei:monogr[last()]" name="monogr"/>
+                </xsl:call-template>
             </xsl:otherwise>
         </xsl:choose>
         <xsl:if test="not(empty($biblStruct-input/tei:monogr//tei:biblScope[@unit = 'sec']))">
@@ -48,11 +58,20 @@
         <xsl:text>.</xsl:text>
         <xsl:if test="$biblStruct-input//tei:idno[@type = 'url' or @type = 'doi']">
             <xsl:for-each select="$biblStruct-input//tei:idno[@type = 'url' or @type = 'doi']">
-                <xsl:text> </xsl:text><xsl:value-of select="concat('[', . , ']')"/>
+                <xsl:text> </xsl:text>
+                <xsl:element name="a">
+                    <xsl:attribute name="href">
+                        <xsl:text>.</xsl:text>
+                    </xsl:attribute>
+                    <xsl:attribute name="target">
+                        <xsl:text>_blank</xsl:text>
+                    </xsl:attribute>
+                    <xsl:value-of select="."/>
+                </xsl:element>
             </xsl:for-each>
         </xsl:if>
-    </xsl:function>
-    <xsl:function name="mam:analytic-angabe">
+    </xsl:template>
+    <xsl:template name="mam:analytic-angabe">
         <xsl:param name="gedruckte-quellen" as="node()"/>
         <!--  <xsl:param name="vor-dem-at" as="xs:boolean"/><!-\- Der Parameter ist gesetzt, wenn auch der Sortierungsinhalt vor dem @ ausgegeben werden soll -\-><xsl:param name="quelle-oder-literaturliste" as="xs:boolean"/><!-\- Ists Quelle, kommt der Titel kursiv und der Autor Vorname Name -\->-->
         <xsl:variable name="analytic" as="node()" select="$gedruckte-quellen/tei:analytic"/>
@@ -69,7 +88,7 @@
         </xsl:choose>
         <xsl:choose>
             <xsl:when test="not($analytic/tei:title/@type = 'j')">
-                <span class="italic">
+                <i>
                     <xsl:value-of select="normalize-space($analytic/tei:title)"/>
                     <xsl:choose>
                         <xsl:when test="ends-with(normalize-space($analytic/tei:title), '!')"/>
@@ -78,17 +97,19 @@
                             <xsl:text>.</xsl:text>
                         </xsl:otherwise>
                     </xsl:choose>
-                </span>
+                </i>
             </xsl:when>
             <xsl:otherwise>
-                <xsl:value-of select="normalize-space($analytic/tei:title)"/>
-                <xsl:choose>
-                    <xsl:when test="ends-with(normalize-space($analytic/tei:title), '!')"/>
-                    <xsl:when test="ends-with(normalize-space($analytic/tei:title), '?')"/>
-                    <xsl:otherwise>
-                        <xsl:text>.</xsl:text>
-                    </xsl:otherwise>
-                </xsl:choose>
+               
+                    <xsl:value-of select="normalize-space($analytic/tei:title)"/>
+                    <xsl:choose>
+                        <xsl:when test="ends-with(normalize-space($analytic/tei:title), '!')"/>
+                        <xsl:when test="ends-with(normalize-space($analytic/tei:title), '?')"/>
+                        <xsl:otherwise>
+                            <xsl:text>.</xsl:text>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                
             </xsl:otherwise>
         </xsl:choose>
         <xsl:if test="$analytic/tei:editor[1]">
@@ -110,8 +131,8 @@
             </xsl:choose>
             <xsl:text>.</xsl:text>
         </xsl:if>
-    </xsl:function>
-    <xsl:function name="mam:monogr-angabe">
+    </xsl:template>
+    <xsl:template name="mam:monogr-angabe">
         <xsl:param name="monogr" as="node()"/>
         <xsl:choose>
             <xsl:when test="$monogr/tei:author[2]">
@@ -123,7 +144,9 @@
                 <xsl:text>: </xsl:text>
             </xsl:when>
         </xsl:choose>
-        <xsl:value-of select="$monogr/tei:title"/>
+        <i>
+            <xsl:value-of select="$monogr/tei:title"/>
+        </i>
         <xsl:if test="$monogr/tei:editor[1]">
             <xsl:text>. </xsl:text>
             <xsl:choose>
@@ -192,7 +215,7 @@
                 </xsl:if>
             </xsl:otherwise>
         </xsl:choose>
-    </xsl:function>
+    </xsl:template>
     <xsl:function name="mam:autor-rekursion">
         <xsl:param name="monogr" as="node()"/>
         <xsl:param name="autor-count"/>

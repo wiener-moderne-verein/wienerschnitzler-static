@@ -60,11 +60,12 @@
     </xsl:template>
     
     <xsl:template match="tei:listBibl">
-        <ul>
+        <ul class="mt-5">
             <xsl:for-each select="tei:biblStruct">
-                <li>
-                    <xsl:value-of select="mam:bibliografische-angabe(.)"/>
-                    
+                <li class="mt-2">
+                    <xsl:call-template name="mam:bibliografische-angabe">
+                        <xsl:with-param name="biblStruct-input" select="."/>
+                    </xsl:call-template>
                 </li>
                 
             </xsl:for-each>
