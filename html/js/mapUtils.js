@@ -105,7 +105,6 @@ function createLegend(maxImportance) {
     }
 }
 
-
 function createPopupContent(feature) {
     const title = feature.properties.title || 'Kein Titel';
     const id = feature.properties.id || '#';
@@ -132,16 +131,20 @@ function createPopupContent(feature) {
         </a>` : '';
 
     let wohnortContent = '';
-    if (feature.properties.wohnort && Array.isArray(feature.properties.wohnort)) {
-        const wohnortListItems = feature.properties.wohnort.map(ort => `<li>${ort}</li>`).join('');
-        wohnortContent = `<p class="m-0 mt-3">Wohnort von:<br/><ul style="padding-left: 20px;">${wohnortListItems}</ul></p>`;
-    }
+   if (feature.properties.wohnort && Array.isArray(feature.properties.wohnort)) {
+    const wohnortListItems = feature.properties.wohnort.map(person => 
+        `<li><a href="https://pmb.acdh.oeaw.ac.at/entity/${person.p_id.replace(/^#/, '')}/" target="_blank">${person.p_name}</a></li>`
+    ).join('');
+    wohnortContent = `<p class="m-0 mt-3">Wohnort von:<br/><ul style="padding-left: 20px;">${wohnortListItems}</ul></p>`;
+}
 
-    let arbeitsortContent = '';
-    if (feature.properties.arbeitsort && Array.isArray(feature.properties.arbeitsort)) {
-        const arbeitsortListItems = feature.properties.arbeitsort.map(ort => `<li>${ort}</li>`).join('');
-        arbeitsortContent = `<p class="m-0 mt-3">Arbeitsort von:<br/><ul style="padding-left: 20px;">${arbeitsortListItems}</ul></p>`;
-    }
+let arbeitsortContent = '';
+if (feature.properties.arbeitsort && Array.isArray(feature.properties.arbeitsort)) {
+    const arbeitsortListItems = feature.properties.arbeitsort.map(person => 
+        `<li><a href="https://pmb.acdh.oeaw.ac.at/entity/${person.p_id.replace(/^#/, '')}/" target="_blank">${person.p_name}</a></li>`
+    ).join('');
+    arbeitsortContent = `<p class="m-0 mt-3">Arbeitsort von:<br/><ul style="padding-left: 20px;">${arbeitsortListItems}</ul></p>`;
+}
 
     return `
     <div class="rounded" style="font-family: Arial, sans-serif;">
@@ -157,6 +160,8 @@ function createPopupContent(feature) {
         </p>
     </div>`;
 }
+
+
 
 
 
