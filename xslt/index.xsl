@@ -42,7 +42,7 @@
                         <!-- Linke Spalte für den Text -->
                         <div class="col-md-6 order-1 order-md-2">
                             <p class="lead">Arthur Schnitzler wurde 1862 in Wien in der Praterstraße
-                                geboren und starb 1931 in der Sternwartestraße, nur zehn Kilometer
+                                geboren und starb 1931 in der Sternwartestraße, kaum zehn Kilometer
                                 entfernt. Er verfasste erfolgreiche Dramen, Romane und Erzählungen,
                                 die meist in Wien angesiedelt sind. Die Stadt verließ er nur für
                                 Reisen und Sommeraufenthalte. Dank seines <a
@@ -54,8 +54,8 @@
                                     target="_blank"
                                     style="color: #A63437; font-weight: bold; text-decoration: none;"
                                     >Korrespondenz</a> und weiterer Dokumente kennen wir derzeit
-                                über 34.000 Aufenthalte an mehr als 3.200 Orten. Für keine andere
-                                Person seiner Zeit gibt es gegenwärtig so viele frei verfügbare,
+                                über 35.000 Aufenthalte an mehr als 3.500 Orten. Gegenwärtig gibt es für keine andere
+                                Person seiner Zeit so viele frei verfügbare und
                                 georeferenzierte Daten. Diese zeigen, wo Schnitzler sich bewegte,
                                 welche Häuser, Straßen, Stadtteile, Städte und Länder er kannte und
                                 die ihm wichtig waren. Zugleich wird auch sichtbar, wo er sich nie
