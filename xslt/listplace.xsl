@@ -47,6 +47,7 @@
                                     <th scope="col">Ortsname</th>
                                     <th scope="col">Zugehörigkeiten</th>
                                     <th scope="col">Erwähnungen</th>
+                                    <th scope="col">Typ</th>
                                     <th scope="col">lat</th>
                                     <th scope="col">lng</th>
                                     <th scope="col">linkToEntity</th>
@@ -73,6 +74,11 @@
                                         <td>
                                             <xsl:value-of
                                                 select="$distinctPlaces/tei:place[@xml:id = $id]/tei:listEvent/count(tei:event)"
+                                            />
+                                        </td>
+                                        <td>
+                                            <xsl:value-of
+                                                select="normalize-space(descendant::tei:desc[@type='entity_type'][1]/text())"/>
                                             />
                                         </td>
                                         <td>
