@@ -106,9 +106,6 @@ function createLegend(maxImportance) {
     }
 }
 
-
-
-
 function createPopupContent(feature) {
     const title = feature.properties.title || 'Kein Titel';
     const id = feature.properties.id || '#';
@@ -124,10 +121,10 @@ function createPopupContent(feature) {
     }
     
     const wikipediaLink = feature.properties.wikipedia ?
-    `<a href="${feature.properties.wikipedia}" target="_blank" class="text-dark me-2" title="Wikipedia"> < i class = "bi bi-wikipedia" > < / i > < / a > ` : '';
+    `<a href="${feature.properties.wikipedia}" target="_blank" class="text-dark me-2" title="Wikipedia"> <i class = "bi bi-wikipedia" > </i> </a > ` : '';
     
     const wiengeschichtewikiLink = feature.properties.wiengeschichtewiki ?
-    `<a href="${feature.properties.wiengeschichtewiki}" target="_blank" class="me-2" title="Wien Geschichte Wiki"> < img src = "../images/Wien_Geschichte_Wiki_Logo.png" alt = "Wien Geschichte Wiki" style = "height: 20px; width: auto;" > < / a > ` : '';
+    `<a href="${feature.properties.wiengeschichtewiki}" target="_blank" class="me-2" title="Wien Geschichte Wiki"> <img src = "../images/Wien_Geschichte_Wiki_Logo.png" alt = "Wien Geschichte Wiki" style = "height: 20px; width: auto;" > </a > ` : '';
     
     let wohnortContent = '';
     if (feature.properties.wohnort && Array.isArray(feature.properties.wohnort)) {
@@ -143,21 +140,9 @@ function createPopupContent(feature) {
         arbeitsortContent = `<p class="m-0 mt-3">Arbeitsort von:<br/><ul style="padding-left: 20px;">${arbeitsortListItems}</ul></p>`;
     }
     
-    return ` < div class = "rounded" style = "font-family: Arial, sans-serif;" > < div class = "p-3 mb-3" > < h5 class = "m-0" > < b > $ {
-        titleLink
-    } < /b> </ h5 > < / div > < p class = "m-0" > Aufenthaltstage: < br / > $ {
-        links
-    } < / p >
-    $ {
-        wohnortContent
-    }
-    $ {
-        arbeitsortContent
-    } < p class = "m-0 mt-3 d-flex align-items-center" >
-    $ {
-        wikipediaLink
-    }
-    $ {
-        wiengeschichtewikiLink
-    } < / p > < / div > `;
+    return ` <div class = "rounded" style = "font-family: Arial, sans-serif;"> <div class = "p-3 mb-3" > <h5 class = "m-0" > <b >${titleLink}</b></h5> </div> <p class = "m-0" > Aufenthaltstage: <br/ > ${links} </p >
+    ${wohnortContent}
+    ${arbeitsortContent} <p class = "m-0 mt-3 d-flex align-items-center" >
+    ${wikipediaLink}
+    ${wiengeschichtewikiLink} </p></div> `;
 }

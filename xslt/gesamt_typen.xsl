@@ -28,6 +28,10 @@
                         <h1>Alle Orte nach Typen</h1>
                         
                         <div id="map-large"/>
+                        <div id="legend-time" class="mt-5"
+                            style="display: flex; flex-wrap: wrap; max-width: 90%;  margin-left: auto;  margin-right: auto; ">
+                            <span style="margin: 10px; font-weight: bold">Zeitraum:</span>
+                        </div>
                         <div id="legend-type" class="mt-5"
                             style="display: flex; flex-wrap: wrap; max-width: 90%;  margin-left: auto;  margin-right: auto; ">
                             <span style="margin: 10px; font-weight: bold">Typen:</span>
