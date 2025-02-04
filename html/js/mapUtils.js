@@ -105,6 +105,99 @@ function createLegend(maxImportance) {
     }
 }
 
+// Funktion zum Erstellen der Typen-Legende
+function createLegendType(features) {
+    const legend = document.getElementById('legend-type');
+    if (!legend) {
+        console.error("Fehler: Element mit ID 'legend-type' nicht gefunden!");
+        return;
+    }
+
+    console.log("Features für Legende:", features); // Debugging
+
+    // Leeren der Legende
+    legend.innerHTML = '';
+
+    // Titel hinzufügen
+    const legendTitle = document.createElement('span');
+    legendTitle.style.fontWeight = 'bold';
+    legendTitle.innerText = 'Typen:';
+    legend.appendChild(legendTitle);
+
+    // Alle einzigartigen Typen extrahieren und Farben zuweisen
+    const types = features
+        .map(feature => feature.properties?.type)
+        .filter(type => type && typeof type === 'string');
+
+    console.log("Gefundene Typen:", types); // Debugging
+
+    if (types.length === 0) {
+        console.warn("Keine Typen für die Legende gefunden.");
+        legend.innerHTML += '<p style="color: red;">Keine Typen vorhanden!</p>';
+        return;
+    }
+
+    const uniqueTypes = [...new Set(types)].sort((a, b) => a.localeCompare(b));
+
+    uniqueTypes.forEach(type => {
+        const color = getColorByType(type);
+        console.log(`Typ: ${type}, Farbe: ${color}`); // Debugging
+
+        const legendItem = document.createElement('div');
+        legendItem.style.display = 'flex';
+        legendItem.style.alignItems = 'center';
+        legendItem.style.marginTop = '5px';
+
+        const spacer = document.createElement('div');
+        spacer.style.width = '10px'; // Abstand vor der Farbe
+
+        const colorBox = document.createElement('div');
+        colorBox.style.width = '20px';
+        colorBox.style.height = '20px';
+        colorBox.style.backgroundColor = color;
+        colorBox.style.marginRight = '5px';
+
+        const label = document.createElement('span');
+        label.innerText = type;
+
+        legendItem.appendChild(spacer);
+        legendItem.appendChild(colorBox);
+        legendItem.appendChild(label);
+        legend.appendChild(legendItem);
+    });
+}
+
+
+// Farbpalette für verschiedene Typen
+const typeColorMap = {};
+const typePalette = [
+    '#FFA500', '#FF7F50', '#ff5a64', '#FF4500', '#FF0000', '#FF1493',
+    '#FF69B4', '#FF00FF', '#aaaafa', '#8A2BE2', '#9400D3', '#49274b',
+    '#8B008B', '#800080', '#4B0082', '#73cee5', '#0000FF', '#0000CD',
+    '#00008B', '#000080', '#191970', '#82d282', '#228B22', '#2E8B57',
+    '#006400', '#556B2F'
+];
+
+function getColorByType(type) {
+    if (!typeColorMap[type]) {
+        typeColorMap[type] = typePalette[Object.keys(typeColorMap).length % typePalette.length];
+    }
+    return typeColorMap[type];
+}
+
+function createCircleMarkerType(feature, latlng) {
+    const type = feature.properties.type || 'default';
+    const color = getColorByType(type);
+    return L.circleMarker(latlng, {
+        radius: 6,
+        color: color,
+        fillColor: color,
+        fillOpacity: 0.8,
+        weight: 2
+    });
+}
+
+
 function createPopupContent(feature) {
     const title = feature.properties.title || 'Kein Titel';
     const id = feature.properties.id || '#';
