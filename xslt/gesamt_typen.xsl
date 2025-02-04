@@ -32,18 +32,13 @@
                             style="display: flex; flex-wrap: wrap; max-width: 90%;  margin-left: auto;  margin-right: auto; ">
                             <span style="margin: 10px; font-weight: bold">Typen:</span>
                         </div>
-                        <div class="d-flex justify-content-center mb-3 mt-5">
-                                <select id="type-select" class="form-select w-auto">
-                                    <option value="disabled selected">Wähle einen Ortstyp</option>
-                                </select>
-                            </div>
                         <div class="d-flex justify-content-center mt-5">
                             <div class="col-sm-6 mb-5">
                                 <div class="text-start mx-auto">
                                     <p class="text-start">Auf dieser Seite werden die Aufenthaltsorte nach
-                                    Ortstypen visualisiert. Mehrfachauswahl ist keine möglich, und das, obwohl
-                                    ein Ort natürlich mehrere Eigenschaften besitzen kann. Der Erkenntniswert
-                                    ist also geringer als auf anderen Seiten dieser Website.</p>
+                                    Arten von Orten visualisiert. Manche Orte lassen sich nicht ausreichend
+                                    sauber voneinander unterscheiden (»Café-Restaurant«), so dass in solchen
+                                    Fällen besser großzügig ähnliche Typen ausgewählt werden sollen.</p>
                                 </div>
                             </div>
                         
