@@ -79,7 +79,6 @@
                                         <td>
                                             <xsl:value-of
                                                 select="normalize-space(descendant::tei:desc[@type='entity_type_literal'][1]/text())"/>
-                                            />
                                         </td>
                                         <td>
                                             <xsl:choose>
