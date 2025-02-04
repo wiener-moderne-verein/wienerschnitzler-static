@@ -78,7 +78,7 @@
                                         </td>
                                         <td>
                                             <xsl:value-of
-                                                select="normalize-space(descendant::tei:desc[@type='entity_type'][1]/text())"/>
+                                                select="normalize-space(descendant::tei:desc[@type='entity_type_literal'][1]/text())"/>
                                             />
                                         </td>
                                         <td>

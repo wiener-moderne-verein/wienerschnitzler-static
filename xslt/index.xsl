@@ -60,8 +60,8 @@
                                 welche Häuser, Straßen, Stadtteile, Städte und Länder er kannte und
                                 die ihm wichtig waren. Zugleich wird auch sichtbar, wo er sich nie
                                 aufgehalten hat. </p>
-                            <p>Die Vollständigkeit der derzeit erfassten Daten schwankt. Für den Zeitraum 1910–1926 ist
-                                hat noch keine tägliche Durchsicht stattgefunden.</p>
+                            <p>Die Vollständigkeit der derzeit erfassten Daten schwankt. Für den Zeitraum 1910–1926
+                                ist die Durchsicht des Tagebuchs noch nicht abgeschlossen.</p>
                             <p style="color: red;">BETA: Unter aktiver Entwicklung, weitere
                                 Funktionen werden laufend eingebaut.</p>
                         </div>
