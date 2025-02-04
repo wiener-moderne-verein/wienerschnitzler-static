@@ -85,7 +85,7 @@ function changeDecadeByYears(currentDecade, years) {
 function populateDecadeDropdown() {
     const selectElement = document.getElementById('decade-input'); // Korrigierter ID
 
-    for (let year = 1861; year <= 1940; year += 10) {
+    for (let year = 1861; year <= 1930; year += 10) {
         const option = document.createElement('option');
         option.value = year;
         option.textContent = `${year}-${year + 9}`;
