@@ -8,7 +8,6 @@
     <xsl:import href="./partials/html_head.xsl"/>
     <xsl:import href="./partials/html_navbar.xsl"/>
     <xsl:import href="./partials/html_footer.xsl"/>
-    <!--<xsl:import href="./partials/one_time_alert.xsl"/>-->
     <xsl:template match="/">
         <html class="h-100">
             <head>
@@ -69,7 +68,7 @@
                 </div>
                 <!-- Footer -->
                 <xsl:call-template name="html_footer"/>
-                <script src="./js/randomBackground.js"/>
+                <script src="./js/index_randomBackground.js"/>
             </body>
         </html>
     </xsl:template>

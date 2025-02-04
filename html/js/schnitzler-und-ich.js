@@ -67,7 +67,7 @@ function displayResult(link, distance, timestamps) {
     const resultElement = document.getElementById('result');
     
     if (distance < 0.01) {
-        resultElement.innerHTML = `Genau an diesem Ort war Schnitzler am ${formatDate(timestamps)}`;
+        resultElement.innerHTML = `Genau an diesem Ort – ${link} – war Schnitzler am ${formatDate(timestamps)}.`;
     } else {
         resultElement.innerHTML = `Nächster Ort: ${link}, Entfernung: ${distance.toFixed(2)} km.<br>
         Wann hielt Schnitzler sich hier auf: ${formatDate(timestamps) || "Keine Daten vorhanden"}`;
