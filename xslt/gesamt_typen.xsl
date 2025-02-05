@@ -25,7 +25,7 @@
                 <xsl:call-template name="nav_bar"/>
                 <main class="w-100">
                     <div class="container-fluid my-4">
-                        <h1>Alle Orte nach Typen</h1>
+                        <h1>Ortstypen</h1>
                         
                         <div id="map-large"/>
                         <div id="filter-time" class="mt-5"
@@ -34,15 +34,15 @@
                         </div>
                         <div id="filter-type" class="mt-5"
                             style="display: flex; flex-wrap: wrap; max-width: 90%;  margin-left: auto;  margin-right: auto; ">
-                            <span style="margin: 10px; font-weight: bold">Typen:</span>
+                            <span style="margin: 10px; font-weight: bold">Typen</span>
                         </div>
                         <div class="d-flex justify-content-center mt-5">
                             <div class="col-sm-6 mb-5">
                                 <div class="text-start mx-auto">
                                     <p class="text-start">Auf dieser Seite werden die Aufenthaltsorte nach
                                     Arten von Orten visualisiert. Manche Orte lassen sich nicht ausreichend
-                                    sauber voneinander unterscheiden (»Café-Restaurant«), so dass in solchen
-                                    Fällen besser großzügig ähnliche Typen ausgewählt werden sollen.</p>
+                                    sauber voneinander unterscheiden (»Café-Restaurant«). Im Zweifel empfiehlt
+                                    sich, besser großzügig ähnliche Typen auszuwählen.</p>
                                 </div>
                             </div>
                         
