@@ -14,7 +14,7 @@ function createFilterType(features) {
     // Titel hinzufügen
     const filterTitle = document.createElement('span');
     filterTitle.style.fontWeight = 'bold';
-    filterTitle.innerText = 'Filter:';
+    filterTitle.innerText = 'Typen';
     filter.appendChild(filterTitle);
     
     // Zunächst prüfen, ob in der URL ein "years"-Parameter vorhanden ist.
