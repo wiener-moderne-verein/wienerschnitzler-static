@@ -10,105 +10,133 @@ function clearGeoJsonLayers() {
 // Funktion zum Initialisieren der Karte
 function initializeMap() {
     window.map = L.map('map-large').setView([48.2082, 16.3738], 5);
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18 }).addTo(map);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 18
+    }).addTo(map);
 }
 
 function loadGeoJson() {
     const url = `https://raw.githubusercontent.com/wiener-moderne-verein/wienerschnitzler-data/main/data/editions/geojson/wienerschnitzler_distinctPlaces.geojson`;
-
+    
     // Entferne vorherige Layer
     clearGeoJsonLayers();
-
+    
     // GeoJSON laden und anzeigen
-    fetch(url).then(response => {
-        if (!response.ok) {
-            throw new Error('GeoJSON konnte nicht geladen werden.');
-        }
-        return response.json();
-    }).then(data => {
-        const newLayer = L.geoJSON(data, {
-            pointToLayer: createCircleMarker, // Verwende die ausgelagerte Funktion für Marker
-            onEachFeature: function (feature, layer) {
-                if (feature.properties) {
-                    const popupContent = createPopupContent(feature); // Verwende die ausgelagerte Funktion für Popups
-                    layer.bindPopup(popupContent, { maxWidth: 300 });
-                }
+    fetch(url)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('GeoJSON konnte nicht geladen werden.');
             }
-        }).addTo(map);
-
-        // Neue Layer zur Liste hinzufügen
-        geoJsonLayers.push(newLayer);
-
-        // Karte auf die neuen Daten anpassen
-        if (newLayer.getLayers().length > 0) {
-            map.fitBounds(newLayer.getBounds());
-        } else {
-            console.warn('Keine gültigen Features gefunden.');
-        }
-
-        // Titel im Dropdown anzeigen
-        populateLocationDropdown(data.features);
-
-        // Maximalen Wert für die Wichtigkeit bestimmen
-        const maxImportance = Math.max(
-            ...data.features.map(feature => feature.properties.importance || 0)
-        );
-
-        // Legende erstellen
-        createLegend(maxImportance);
-    }).catch(error => {
-        console.error('Error loading GeoJSON:', error);
-        clearGeoJsonLayers();
-    });
-}
-
-
-// Initialisierung der Karte beim Laden der Seite
-document.addEventListener('DOMContentLoaded', () => {
-    initializeMap(); // Karte initialisieren
-    loadGeoJson(); // GeoJSON laden und anzeigen
-});
-
-function extractLocationsFromGeoJson(data) {
-    const locations = [];
-    data.features.forEach(feature => {
-        if (feature.properties && feature.properties.typ === 'ort') {
-            locations.push({
-                name: feature.properties.name || 'Unbekannter Ort',
-                coordinates: feature.geometry.coordinates.reverse(), // GeoJSON hat [lon, lat], wir brauchen [lat, lon]
-            });
-        }
-    });
-    return locations;
-}
-
-function populateLocationDropdown(features) {
-    const locationSelect = document.getElementById('location-select');
-    locationSelect.innerHTML = '<option value="" disabled selected>Wähle einen Ort</option>';
-
-    // Filtere und sortiere die Features alphabetisch nach Titel
-    const sortedFeatures = features
-        .filter(feature => feature.properties && feature.properties.title && feature.properties.abbr)
-        .filter(feature => {
-            const abbr = feature.properties.abbr;
-            return abbr.startsWith('BSO') || abbr.startsWith('P.') || abbr.startsWith('A.');
+            return response.json();
         })
-        .sort((a, b) => {
-            const titleA = a.properties.title.toLowerCase();
-            const titleB = b.properties.title.toLowerCase();
-            return titleA.localeCompare(titleB);
+        .then(data => {
+            window.geoJsonData = data; // Speichert das GeoJSON global für spätere Filterung
+            displayFilteredGeoJson();
+        })
+        .catch(error => {
+            console.error('Error loading GeoJSON:', error);
+            clearGeoJsonLayers();
         });
-
-    // Füge die sortierten Optionen zum Dropdown hinzu
-    sortedFeatures.forEach(feature => {
-        const option = document.createElement('option');
-        option.value = feature.geometry.coordinates.reverse().join(','); // [lon, lat] -> [lat, lon]
-        option.textContent = feature.properties.title; // Titel als Dropdown-Text
-        locationSelect.appendChild(option);
-    });
 }
 
-document.getElementById('location-select').addEventListener('change', function () {
-    const [lat, lon] = this.value.split(',').map(Number);
-    map.setView([lat, lon], 14); // Zoom auf den ausgewählten Ort
+// Initialisierung der Karte und Laden der GeoJSON-Daten beim Laden der Seite
+document.addEventListener('DOMContentLoaded', () => {
+    initializeMap();
+
+    // GeoJSON-Daten laden und anzeigen
+    fetch('https://raw.githubusercontent.com/wiener-moderne-verein/wienerschnitzler-data/main/data/editions/geojson/wienerschnitzler_distinctPlaces.geojson')
+        .then(response => response.json())
+        .then(data => {
+            window.geoJsonData = data;
+            displayFilteredGeoJson();
+        })
+        .catch(error => console.error('Fehler beim Laden der GeoJSON-Daten:', error));
 });
+
+function displayFilteredGeoJson() {
+    if (!window.geoJsonData || !window.geoJsonData.features) {
+        console.warn("GeoJSON-Daten nicht geladen.");
+        return;
+    }
+
+    const params = new URLSearchParams(window.location.search);
+    let filteredFeatures = window.geoJsonData.features;
+
+    // ============================
+    // Jahre-Filter
+    // ============================
+    let selectedYears;
+    if (!params.has("years")) {
+        // Kein "years"-Parameter → alle Jahre auswählen:
+        selectedYears = new Set();
+        window.geoJsonData.features.forEach(feature => {
+            if (Array.isArray(feature.properties.timestamp)) {
+                feature.properties.timestamp.forEach(date => {
+                    selectedYears.add(date.substring(0, 4));
+                });
+            }
+        });
+    } else {
+        const yearsParam = params.get("years");
+        if (yearsParam === "0") {
+            // Explizit "(keinen)" gedrückt → keine Jahre ausgewählt
+            selectedYears = new Set();
+        } else {
+            selectedYears = new Set(yearsParam.split("_"));
+        }
+    }
+
+    // Filterung nach Jahren – analog zum Typen-Filter:
+    if (params.has("years")) {
+        if (selectedYears.size > 0) {
+            filteredFeatures = filteredFeatures.filter(feature =>
+                feature.properties.timestamp.some(date => selectedYears.has(date.substring(0, 4)))
+            );
+        } else {
+            filteredFeatures = [];
+        }
+    }
+    
+    // ============================
+    // Karte aktualisieren
+    // ============================
+    clearGeoJsonLayers();
+    createFilterTime(window.geoJsonData.features);
+
+    if (filteredFeatures.length === 0) {
+        console.warn('Keine passenden Features gefunden.');
+        return;
+    }
+
+    // GeoJSON-Layer erstellen, dabei wird createCircleMarker als pointToLayer verwendet
+    const newLayer = L.geoJSON(filteredFeatures, {
+        pointToLayer: createCircleMarker,
+        onEachFeature: function (feature, layer) {
+            if (feature.properties) {
+                const popupContent = createPopupContent(feature);
+                layer.bindPopup(popupContent, {
+                    maxWidth: 300
+                });
+            }
+        }
+    }).addTo(map);
+
+    geoJsonLayers.push(newLayer);
+
+    // ----------------------------
+    // Dropdown mit allen Orten auffüllen
+    // ----------------------------
+    // Hier wird die Funktion aufgerufen – analog zur Verwendung in loadGeoJson:
+    populateLocationDropdown(filteredFeatures);
+
+    // Berechne das maximale "importance", um die Legende anzupassen
+    const maxImportance = filteredFeatures.reduce((max, feature) => {
+        const imp = feature.properties.importance || 0;
+        return imp > max ? imp : max;
+    }, 0);
+    createLegend(maxImportance);
+
+    map.fitBounds(newLayer.getBounds());
+}
+
+

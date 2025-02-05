@@ -25,14 +25,18 @@
                 <xsl:call-template name="nav_bar"/>
                 <main class="w-100">
                     <div class="container-fluid my-4">
-                        <h1>Alle Orte</h1>
+                        <h1>Orte nach Anzahl der Aufenthalte</h1>
                         
                         <div id="map-large"/>
                         <div id="legend" class="mt-5"
                             style="display: flex; flex-wrap: wrap; max-width: 90%;  margin-left: auto;  margin-right: auto; ">
-                            <span style="margin: 10px; font-weight: bold">Aufenthaltstage:</span>
+                            <span style="margin: 10px; font-weight: bold">Aufenthaltstage</span>
                         </div>
-                        <div class="d-flex justify-content-center mb-3">
+                        <div id="filter-time" class="mt-5"
+                            style="display: flex; flex-wrap: wrap; max-width: 90%;  margin-left: auto;  margin-right: auto; ">
+                            <span style="margin: 10px; font-weight: bold">Zeitraum</span>
+                        </div>
+                        <div class="d-flex justify-content-center mb-3 mt-5">
                                 <select id="location-select" class="form-select w-auto">
                                     <option value="disabled selected">Wähle einen Ort</option>
                                 </select>
@@ -53,6 +57,7 @@
                 <xsl:call-template name="html_footer"/>
                 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"/>
                 <script src="./js/mapUtils.js"/>
+                <script src="./js/filter_jahre.js"/>
                 <script src="./js/script_gesamt.js"/>
             </body>
         </html>
