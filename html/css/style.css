@@ -262,3 +262,22 @@ footer {
     height: 50px; /* Feste Höhe für den Footer */
     position: relative; /* Footer bleibt außerhalb des Hauptinhalts */
 }
+
+/* Standard-Button-Stil */
+.btn {
+  display: inline-block;
+  padding: 2px 6px;      /* Wenig Innenabstand für einen schmalen Rahmen */
+  margin: 0;
+  border: 1px solid #ccc; /* Schmaler Rahmen */
+  border-radius: 3px;     /* Optional: leicht abgerundete Ecken */
+  background-color: #fff;
+  font-size: 14px;
+  text-decoration: none;  /* Entfernt unterstreichen bei Links */
+  line-height: 1.2;       /* Engere Zeilenhöhe */
+}
+
+/* Optional: Hover-Effekt */
+.btn:hover {
+  background-color: #f0f0f0;
+  border-color: #bbb;
+}

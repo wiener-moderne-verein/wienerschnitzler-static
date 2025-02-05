@@ -104,7 +104,7 @@ function createFilterTime(features) {
   
   // Beispielhafte Farbpalette (hier wie gehabt; diese kann natürlich erweitert werden)
   const colorPalette = [
-    "#462346", "#776d5a", "#987d7c", "#82D282", "#a09cb0", "#83d0f5", "#a3b9c9", "#8DB1AB", "#587792", "#FF5A64",
+    "#462346", "#a3b9c9", "#776d5a", "#987d7c", "#82D282", "#a09cb0", "#83d0f5", "#8DB1AB", "#587792", "#FF5A64",
     "#AAAAFA"
   ];
   let colorIndex = 0;
@@ -115,7 +115,7 @@ function createFilterTime(features) {
   allButton.classList.add('btn', 'btn-sm', 'm-1');
   allButton.style.backgroundColor = "#ddd";
   allButton.style.color = "black";
-  allButton.style.borderRadius = "5px";
+  allButton.style.borderRadius = "1px";
   
   allButton.addEventListener('click', function () {
     updateURLWithYears(new Set(allYears));
@@ -129,7 +129,7 @@ function createFilterTime(features) {
   noneButton.classList.add('btn', 'btn-sm', 'm-1');
   noneButton.style.backgroundColor = "#ddd";
   noneButton.style.color = "black";
-  noneButton.style.borderRadius = "5px";
+  noneButton.style.borderRadius = "1px";
   
   noneButton.addEventListener('click', function () {
     updateURLWithYears(new Set());
@@ -149,7 +149,7 @@ function createFilterTime(features) {
       ? lightenColor(color, 0.3)
       : "#ddd";
     yearButton.style.color = "black";
-    yearButton.style.borderRadius = "5px";
+    yearButton.style.borderRadius = "1px";
     yearButton.dataset.year = year;
     
     // Beim Klick wird das jeweilige Jahr umgeschaltet.
