@@ -175,31 +175,68 @@ function populateLocationDropdown(features) {
     allOption.textContent = '(alle)';
     locationSelect.appendChild(allOption);
 
-    // Optional: Füge einen Platzhalter hinzu, falls gewünscht
-    // const placeholderOption = document.createElement('option');
-    // placeholderOption.value = '';
-    // placeholderOption.textContent = 'Wähle einen Ort';
-    // placeholderOption.disabled = true;
-    // placeholderOption.selected = true;
-    // locationSelect.appendChild(placeholderOption);
+    // Definiere die gewünschte Reihenfolge für alle 23 Wiener Bezirke
+    const forcedOrder = {
+        "wien": 0,
+        "i., innere stadt": 1,
+        "ii., leopoldstadt": 2,
+        "iii., landstraße": 3,
+        "iv., wieden": 4,
+        "v., margareten": 5,
+        "vi., mariahilf": 6,
+        "vii., neubau": 7,
+        "viii., josefstadt": 8,
+        "ix., alsergrund": 9,
+        "x., favoriten": 10,
+        "xi., simmering": 11,
+        "xii., meidling": 12,
+        "xiii., hietzing": 13,
+        "xiv., penzing": 14,
+        "xv., rudolfsheim-fünfhaus": 15,
+        "xvi., ottakring": 16,
+        "xvii., hernals": 17,
+        "xviii., währing": 18,
+        "xix., döbling": 19,
+        "xx., brigittenau": 20,
+        "xxi., floridsdorf": 21,
+        "xxii., donaustadt": 22,
+        "xxiii., liesing": 23
+    };
 
-    // Filtere und sortiere die Features alphabetisch nach Titel
-    const sortedFeatures = features
-        .filter(feature => feature.properties && feature.properties.title && feature.properties.abbr)
-        .filter(feature => {
-            const abbr = feature.properties.abbr;
-            return abbr.startsWith('BSO') || abbr.startsWith('P.') || abbr.startsWith('A.');
-        })
-        .sort((a, b) => {
-            const titleA = a.properties.title.toLowerCase();
-            const titleB = b.properties.title.toLowerCase();
-            return titleA.localeCompare(titleB);
-        });
+    // Filtere die Features anhand vorhandener Eigenschaften und Abkürzungen
+    const filteredFeatures = features.filter(feature => {
+        return feature.properties &&
+               feature.properties.title &&
+               feature.properties.abbr &&
+               (feature.properties.abbr.startsWith('BSO') ||
+                feature.properties.abbr.startsWith('P.') ||
+                feature.properties.abbr.startsWith('A.'));
+    });
+
+    // Sortiere die Features:
+    // - Zuerst nach forcedOrder, falls der Titel (in Kleinbuchstaben) einem der Bezirke entspricht.
+    // - Alle anderen erhalten einen Standardwert (z. B. 100) und werden alphabetisch sortiert.
+    const sortedFeatures = filteredFeatures.sort((a, b) => {
+        const titleA = a.properties.title;
+        const titleB = b.properties.title;
+        const lowerA = titleA.toLowerCase();
+        const lowerB = titleB.toLowerCase();
+
+        const orderA = forcedOrder.hasOwnProperty(lowerA) ? forcedOrder[lowerA] : 100;
+        const orderB = forcedOrder.hasOwnProperty(lowerB) ? forcedOrder[lowerB] : 100;
+
+        if (orderA !== orderB) {
+            return orderA - orderB;
+        } else {
+            return lowerA.localeCompare(lowerB);
+        }
+    });
 
     // Füge die sortierten Optionen zum Dropdown hinzu
     sortedFeatures.forEach(feature => {
         const option = document.createElement('option');
-        // Erzeuge eine Kopie des Koordinaten-Arrays, bevor du reverse aufrufst
+        // Erzeuge eine Kopie des Koordinaten-Arrays, bevor du reverse aufrufst,
+        // damit das Original nicht verändert wird.
         const coords = feature.geometry.coordinates.slice().reverse(); // [lon, lat] -> [lat, lon]
         option.value = coords.join(',');
         option.textContent = feature.properties.title;
@@ -208,15 +245,14 @@ function populateLocationDropdown(features) {
 }
 
 document.getElementById('location-select').addEventListener('change', function () {
-    // Prüfen, ob der ausgewählte Wert "europe" ist – dann die Karte auf ganz Europa zentrieren
+    // Wenn der "(alle)"-Eintrag gewählt wurde, zentriere die Karte auf ganz Europa.
     if (this.value === 'europe') {
-        // Beispielhafte Bounds für ganz Europa – passe die Werte nach Bedarf an
+        // Beispielhafte Bounds für ganz Europa – passe diese Werte nach Bedarf an.
         const europeBounds = L.latLngBounds([34.5, -25.0], [71.0, 40.0]);
         map.fitBounds(europeBounds);
     } else {
-        // Andernfalls den ausgewählten Ort fokussieren:
+        // Andernfalls: extrahiere die Koordinaten und zoome auf den ausgewählten Ort.
         const [lat, lon] = this.value.split(',').map(Number);
-        map.setView([lat, lon], 14); // Zoom auf den ausgewählten Ort
+        map.setView([lat, lon], 14);
     }
 });
-
