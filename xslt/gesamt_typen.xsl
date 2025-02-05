@@ -32,7 +32,7 @@
                             style="display: flex; flex-wrap: wrap; max-width: 90%;  margin-left: auto;  margin-right: auto; ">
                             <span style="margin: 10px; font-weight: bold">Zeitraum</span>
                         </div>
-                        <div id="legend-type" class="mt-5"
+                        <div id="filter-type" class="mt-5"
                             style="display: flex; flex-wrap: wrap; max-width: 90%;  margin-left: auto;  margin-right: auto; ">
                             <span style="margin: 10px; font-weight: bold">Typen:</span>
                         </div>
@@ -53,6 +53,7 @@
                 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"/>
                 <script src="./js/mapUtils.js"/>
                 <script src="./js/filter_jahre.js"/>
+                <script src="./js/filter_typ.js"/>
                 <script src="./js/script_gesamt_typen.js"/>
             </body>
         </html>
