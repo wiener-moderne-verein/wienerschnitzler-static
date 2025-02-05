@@ -28,9 +28,9 @@
                         <h1>Alle Orte nach Typen</h1>
                         
                         <div id="map-large"/>
-                        <div id="legend-time" class="mt-5"
+                        <div id="filter-time" class="mt-5"
                             style="display: flex; flex-wrap: wrap; max-width: 90%;  margin-left: auto;  margin-right: auto; ">
-                            <span style="margin: 10px; font-weight: bold">Zeitraum:</span>
+                            <span style="margin: 10px; font-weight: bold">Zeitraum</span>
                         </div>
                         <div id="legend-type" class="mt-5"
                             style="display: flex; flex-wrap: wrap; max-width: 90%;  margin-left: auto;  margin-right: auto; ">
@@ -52,6 +52,7 @@
                 <xsl:call-template name="html_footer"/>
                 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"/>
                 <script src="./js/mapUtils.js"/>
+                <script src="./js/filter_jahre.js"/>
                 <script src="./js/script_gesamt_typen.js"/>
             </body>
         </html>
