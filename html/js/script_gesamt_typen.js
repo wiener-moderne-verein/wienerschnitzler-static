@@ -192,50 +192,85 @@ function createCircleMarkerType(feature, latlng) {
 
 
 function displayFilteredGeoJson() {
-    if (! window.geoJsonData || ! window.geoJsonData.features) {
-        console.warn("GeoJSON-Daten nicht geladen.");
-        return;
+  if (!window.geoJsonData || !window.geoJsonData.features) {
+    console.warn("GeoJSON-Daten nicht geladen.");
+    return;
+  }
+
+  // Zuerst den Filter für die Typen ermitteln (unverändert)
+  const selectedTypes = new Set(getSelectedTypesFromURL());
+
+  // Filter für die Jahre: Hier wird direkt die URL ausgewertet.
+  const params = new URLSearchParams(window.location.search);
+  let selectedYears;
+  if (!params.has("years")) {
+    // Kein "years"-Parameter in der URL → alle Jahre ausgewählt.
+    // Ermittele dazu alle in den Daten vorkommenden Jahre:
+    selectedYears = new Set();
+    window.geoJsonData.features.forEach(feature => {
+      if (Array.isArray(feature.properties.timestamp)) {
+        feature.properties.timestamp.forEach(date => {
+          selectedYears.add(date.substring(0, 4));
+        });
+      }
+    });
+  } else {
+    const yearsParam = params.get("years");
+    if (yearsParam === "0") {
+      // Explizit "keinen" ausgewählt → leeres Set
+      selectedYears = new Set();
+    } else {
+      // Andernfalls: Die Jahre werden durch "_" getrennt übergeben.
+      selectedYears = new Set(yearsParam.split("_"));
     }
-    
-    const selectedTypes = new Set (getSelectedTypesFromURL());
-    const selectedYears = new Set (getSelectedYearsFromURL());
-    
-    let filteredFeatures = window.geoJsonData.features;
-    
-    if (selectedTypes.size > 0) {
-        filteredFeatures = filteredFeatures.filter(feature => selectedTypes.has(feature.properties.type));
+  }
+
+  let filteredFeatures = window.geoJsonData.features;
+
+  // Filterung nach Typen (falls gesetzt)
+  if (selectedTypes.size > 0) {
+    filteredFeatures = filteredFeatures.filter(feature =>
+      selectedTypes.has(feature.properties.type)
+    );
+  }
+
+  // Filterung nach Jahren:
+  if (selectedYears.size > 0) {
+    filteredFeatures = filteredFeatures.filter(feature =>
+      feature.properties.timestamp.some(date => selectedYears.has(date.substring(0, 4)))
+    );
+  } else {
+    // Wenn explizit keine Jahre ausgewählt sind, dann:
+    filteredFeatures = [];
+  }
+
+  // Bestehende GeoJSON-Layer löschen, Legenden und Filter neu erstellen
+  clearGeoJsonLayers();
+  createLegendType(window.geoJsonData.features);
+  createFilterTime(window.geoJsonData.features);
+
+  if (filteredFeatures.length === 0) {
+    console.warn('Keine passenden Features gefunden.');
+    return;
+  }
+
+  // Anzeige der gefilterten Features auf der Karte (z.B. mit Leaflet)
+  const newLayer = L.geoJSON(filteredFeatures, {
+    pointToLayer: createCircleMarkerType,
+    onEachFeature: function (feature, layer) {
+      if (feature.properties) {
+        const popupContent = createPopupContent(feature);
+        layer.bindPopup(popupContent, {
+          maxWidth: 300
+        });
+      }
     }
-    
-    if (selectedYears.size > 0) {
-        filteredFeatures = filteredFeatures.filter(feature =>
-        feature.properties.timestamp.some(date => selectedYears.has(date.substring(0, 4))));
-    }
-    
-    clearGeoJsonLayers();
-    createLegendType(window.geoJsonData.features);
-    // Hier wird die Typen-Legende neu generiert
-    createFilterTime(window.geoJsonData.features);
-    
-    if (filteredFeatures.length === 0) {
-        console.warn('Keine passenden Features gefunden.');
-        return;
-    }
-    
-    const newLayer = L.geoJSON(filteredFeatures, {
-        pointToLayer: createCircleMarkerType,
-        onEachFeature: function (feature, layer) {
-            if (feature.properties) {
-                const popupContent = createPopupContent(feature);
-                layer.bindPopup(popupContent, {
-                    maxWidth: 300
-                });
-            }
-        }
-    }).addTo(map);
-    
-    geoJsonLayers.push(newLayer);
-    map.fitBounds(newLayer.getBounds());
+  }).addTo(map);
+
+  geoJsonLayers.push(newLayer);
+  map.fitBounds(newLayer.getBounds());
 }
+
 
 
 
