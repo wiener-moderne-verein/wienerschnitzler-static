@@ -98,6 +98,19 @@ function displayFilteredGeoJson() {
     }
     
     // ============================
+    // Importance-Filter
+    // ============================
+    // Lies die Filtergrenzen aus den URL-Parametern "min" und "max":
+    const minImportance = params.has("min") ? Number(params.get("min")) : 0;
+    const maxImportance = params.has("max") ? Number(params.get("max")) : Infinity;
+    
+    // Es werden nur Features beibehalten, deren importance im gewünschten Bereich liegt.
+    filteredFeatures = filteredFeatures.filter(feature => {
+        const imp = feature.properties.importance || 0;
+        return imp >= minImportance && imp <= maxImportance;
+    });
+
+    // ============================
     // Karte aktualisieren
     // ============================
     clearGeoJsonLayers();
@@ -108,7 +121,7 @@ function displayFilteredGeoJson() {
         return;
     }
 
-    // GeoJSON-Layer erstellen, dabei wird createCircleMarker als pointToLayer verwendet
+    // GeoJSON-Layer erstellen – mit der Marker-Funktion createCircleMarker
     const newLayer = L.geoJSON(filteredFeatures, {
         pointToLayer: createCircleMarker,
         onEachFeature: function (feature, layer) {
@@ -122,19 +135,15 @@ function displayFilteredGeoJson() {
     }).addTo(map);
 
     geoJsonLayers.push(newLayer);
-
-    // ----------------------------
-    // Dropdown mit allen Orten auffüllen
-    // ----------------------------
-    // Hier wird die Funktion aufgerufen – analog zur Verwendung in loadGeoJson:
-    populateLocationDropdown(filteredFeatures);
-
-    // Berechne das maximale "importance", um die Legende anzupassen
-    const maxImportance = filteredFeatures.reduce((max, feature) => {
+    
+    // Berechne das maximale "importance" der gefilterten Features
+    const maxImportanceFeature = filteredFeatures.reduce((max, feature) => {
         const imp = feature.properties.importance || 0;
         return imp > max ? imp : max;
     }, 0);
-    createLegend(maxImportance);
+    
+    // Legende anhand des maximalen Importance-Werts erstellen
+    createLegend(maxImportanceFeature);
 
     map.fitBounds(newLayer.getBounds());
 }

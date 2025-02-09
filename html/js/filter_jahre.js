@@ -112,7 +112,7 @@ function createFilterTime(features) {
   // Button "(alle)" – setzt den Filter so, dass alle Jahre ausgewählt sind (Parameter entfernen)
   const allButton = document.createElement('button');
   allButton.innerText = "(alle)";
-  allButton.classList.add('btn', 'btn-sm', 'm-1');
+  allButton.classList.add('btn-filter', 'btn-filter-sm', 'm-1');
   allButton.style.backgroundColor = "#ddd";
   allButton.style.color = "black";
   allButton.style.borderRadius = "1px";
@@ -126,7 +126,7 @@ function createFilterTime(features) {
   // Button "(keines)" – setzt den Filter so, dass keine Jahre ausgewählt sind (years=0)
   const noneButton = document.createElement('button');
   noneButton.innerText = "(keinen)";
-  noneButton.classList.add('btn', 'btn-sm', 'm-1');
+  noneButton.classList.add('btn-filter', 'btn-filter-sm', 'm-1');
   noneButton.style.backgroundColor = "#ddd";
   noneButton.style.color = "black";
   noneButton.style.borderRadius = "1px";
@@ -144,7 +144,7 @@ function createFilterTime(features) {
     
     const yearButton = document.createElement('button');
     yearButton.innerText = year;
-    yearButton.classList.add('btn', 'btn-sm', 'm-1');
+    yearButton.classList.add('btn-filter', 'btn-filter-sm', 'm-1');
     yearButton.style.backgroundColor = selectedYears.has(String(year))
       ? lightenColor(color, 0.3)
       : "#ddd";

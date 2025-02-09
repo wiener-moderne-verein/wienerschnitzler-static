@@ -1,54 +1,4 @@
-// Farbpalette für die Sichtbarkeit
-const visibilityPalette = [
-    '#FFA500', // Orange
-    '#FF7F50', // Coral
-    '#ff5a64', // Morgenrot
-    '#FF4500', // Orangerot
-    '#FF0000', // Rot
-    '#FF1493', // Deep Pink
-    '#FF69B4', // Hot Pink
-    '#FF00FF', // Magenta
-    '#aaaafa', // Medium Orchid
-    '#8A2BE2', // Blue Violet
-    '#9400D3', // Dark Violet
-    '#49274b', // Dark Orchid
-    '#8B008B', // Dark Magenta
-    '#800080', // Purple
-    '#4B0082', // Indigo
-    '#73cee5', // Dark Slate Blue
-    '#0000FF', // Blau
-    '#0000CD', // Medium Blue
-    '#00008B', // Dark Blue
-    '#000080', // Navy
-    '#191970', // Midnight Blue
-    '#82d282', // Dark Green
-    '#228B22', // Forest Green
-    '#2E8B57', // Sea Green
-    '#006400', // Dark Green
-    '#556B2F'  // Dark Olive Green
-];
 
-// Schwellenwerte für die Farbauswahl
-const thresholds = [1, 2, 3, 4, 5, 10, 15, 25, 35, 50, 75, 100, 150, 250, 400, 600, 1000, 1500, 2500, 4000, 5000, 6000];
-
-// Funktion zur Auswahl der Farbe basierend auf der Wichtigkeit (1 bis 5000)
-function getColorByImportance(importance) {
-    for (let i = 0; i < thresholds.length; i++) {
-        if (importance <= thresholds[i]) {
-            return visibilityPalette[i];
-        }
-    }
-    // Fallback: die dunkelste Farbe für sehr hohe Werte
-    return visibilityPalette[visibilityPalette.length - 1];
-}
-
-// Funktion zum Erhöhen der Sättigung einer Farbe
-function intensifyColor(color) {
-    const hsl = d3.hsl(color);
-    hsl.s = Math.min(1, hsl.s * 2.5);
-    // Erhöhe die Sättigung um 50%
-    return hsl.toString();
-}
 
 function createCircleMarker(feature, latlng) {
     const importance = feature.properties.importance || 0;
@@ -65,46 +15,6 @@ function createCircleMarker(feature, latlng) {
     });
 }
 
-// Funktion zum Erstellen der Legende
-function createLegend(maxImportance) {
-    const legend = document.getElementById('legend');
-    if (!legend) return;
-    
-    // Leeren der Legende, bevor neue Elemente hinzugefügt werden
-    legend.innerHTML = '';
-    
-    // Text "Aufenthaltstage:" hinzufügen
-    const legendTitle = document.createElement('span');
-    legendTitle.style.marginRight = '10px';
-    legendTitle.style.fontWeight = 'bold';
-    legendTitle.innerText = 'Aufenthaltstage:';
-    legend.appendChild(legendTitle);
-    
-    // Erstellen der Legende basierend auf den Thresholds, die unter dem größten Wert von importance liegen
-    for (let i = 0; i < thresholds.length; i++) {
-        if (thresholds[i] > maxImportance) break;
-        
-        const color = visibilityPalette[i];
-        const threshold = thresholds[i];
-        const legendItem = document.createElement('div');
-        legendItem.style.display = 'flex';
-        legendItem.style.alignItems = 'center';
-        legendItem.style.marginRight = '10px';
-        
-        const colorBox = document.createElement('div');
-        colorBox.style.width = '20px';
-        colorBox.style.height = '20px';
-        colorBox.style.backgroundColor = color;
-        colorBox.style.marginRight = '5px';
-        
-        const label = document.createElement('span');
-        label.innerText = threshold;
-        
-        legendItem.appendChild(colorBox);
-        legendItem.appendChild(label);
-        legend.appendChild(legendItem);
-    }
-}
 
 function createPopupContent(feature) {
     const title = feature.properties.title || 'Kein Titel';
@@ -165,6 +75,11 @@ function createPopupContent(feature) {
 }
 
 function populateLocationDropdown(features) {
+    const params = new URLSearchParams(window.location.search);
+    // Lese auch hier die Filtergrenzen für importance aus der URL
+    const minImp = params.has("min") ? Number(params.get("min")) : 0;
+    const maxImp = params.has("max") ? Number(params.get("max")) : Infinity;
+
     const locationSelect = document.getElementById('location-select');
     // Dropdown leeren
     locationSelect.innerHTML = '';
@@ -175,7 +90,7 @@ function populateLocationDropdown(features) {
     allOption.textContent = '(alle)';
     locationSelect.appendChild(allOption);
 
-    // Definiere die gewünschte Reihenfolge für alle 23 Wiener Bezirke
+    // Definiere die gewünschte Reihenfolge für bestimmte Bezirke (Beispiele: Wien, I., II. usw.)
     const forcedOrder = {
         "wien": 0,
         "i., innere stadt": 1,
@@ -203,40 +118,36 @@ function populateLocationDropdown(features) {
         "xxiii., liesing": 23
     };
 
-    // Filtere die Features anhand vorhandener Eigenschaften und Abkürzungen
-    const filteredFeatures = features.filter(feature => {
-        return feature.properties &&
-               feature.properties.title &&
-               feature.properties.abbr &&
-               (feature.properties.abbr.startsWith('BSO') ||
-                feature.properties.abbr.startsWith('P.') ||
-                feature.properties.abbr.startsWith('A.'));
-    });
+    // Filtere die Features anhand vorhandener Eigenschaften, passender Abkürzungen
+    // und des importance-Werts (nur Features im gewünschten Bereich werden übernommen)
+    const sortedFeatures = features
+        .filter(feature => {
+            return feature.properties &&
+                   feature.properties.title &&
+                   feature.properties.abbr &&
+                   (feature.properties.abbr.startsWith('BSO') ||
+                    feature.properties.abbr.startsWith('P.') ||
+                    feature.properties.abbr.startsWith('A.')) &&
+                   ((feature.properties.importance || 0) >= minImp && (feature.properties.importance || 0) <= maxImp);
+        })
+        .sort((a, b) => {
+            const titleA = a.properties.title.toLowerCase();
+            const titleB = b.properties.title.toLowerCase();
 
-    // Sortiere die Features:
-    // - Zuerst nach forcedOrder, falls der Titel (in Kleinbuchstaben) einem der Bezirke entspricht.
-    // - Alle anderen erhalten einen Standardwert (z. B. 100) und werden alphabetisch sortiert.
-    const sortedFeatures = filteredFeatures.sort((a, b) => {
-        const titleA = a.properties.title;
-        const titleB = b.properties.title;
-        const lowerA = titleA.toLowerCase();
-        const lowerB = titleB.toLowerCase();
+            const orderA = forcedOrder.hasOwnProperty(titleA) ? forcedOrder[titleA] : 100;
+            const orderB = forcedOrder.hasOwnProperty(titleB) ? forcedOrder[titleB] : 100;
 
-        const orderA = forcedOrder.hasOwnProperty(lowerA) ? forcedOrder[lowerA] : 100;
-        const orderB = forcedOrder.hasOwnProperty(lowerB) ? forcedOrder[lowerB] : 100;
-
-        if (orderA !== orderB) {
-            return orderA - orderB;
-        } else {
-            return lowerA.localeCompare(lowerB);
-        }
-    });
+            if (orderA !== orderB) {
+                return orderA - orderB;
+            } else {
+                return titleA.localeCompare(titleB);
+            }
+        });
 
     // Füge die sortierten Optionen zum Dropdown hinzu
     sortedFeatures.forEach(feature => {
         const option = document.createElement('option');
-        // Erzeuge eine Kopie des Koordinaten-Arrays, bevor du reverse aufrufst,
-        // damit das Original nicht verändert wird.
+        // Kopie des Koordinaten-Arrays erstellen, bevor reverse aufgerufen wird
         const coords = feature.geometry.coordinates.slice().reverse(); // [lon, lat] -> [lat, lon]
         option.value = coords.join(',');
         option.textContent = feature.properties.title;
@@ -245,13 +156,11 @@ function populateLocationDropdown(features) {
 }
 
 document.getElementById('location-select').addEventListener('change', function () {
-    // Wenn der "(alle)"-Eintrag gewählt wurde, zentriere die Karte auf ganz Europa.
     if (this.value === 'europe') {
-        // Beispielhafte Bounds für ganz Europa – passe diese Werte nach Bedarf an.
+        // Beispielhafte Bounds für ganz Europa – passe diese Werte bei Bedarf an
         const europeBounds = L.latLngBounds([34.5, -25.0], [71.0, 40.0]);
         map.fitBounds(europeBounds);
     } else {
-        // Andernfalls: extrahiere die Koordinaten und zoome auf den ausgewählten Ort.
         const [lat, lon] = this.value.split(',').map(Number);
         map.setView([lat, lon], 14);
     }

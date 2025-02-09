@@ -68,7 +68,7 @@ function createFilterType(features) {
     // "(alle)"-Button erstellen
     const allButton = document.createElement('button');
     allButton.innerText = "(alle)";
-    allButton.classList.add('btn', 'btn-sm', 'm-1');
+    allButton.classList.add('btn-filter', 'btn-filter-sm', 'm-1');
     allButton.style.backgroundColor = "#ddd";
     allButton.style.color = "black";
     allButton.style.borderRadius = "2px";
@@ -83,7 +83,7 @@ function createFilterType(features) {
     // "(keine)"-Button erstellen
     const noneButton = document.createElement('button');
     noneButton.innerText = "(keine)";
-    noneButton.classList.add('btn', 'btn-sm', 'm-1');
+    noneButton.classList.add('btn-filter', 'btn-filter-sm', 'm-1');
     noneButton.style.backgroundColor = "#ddd";
     noneButton.style.color = "black";
     noneButton.style.borderRadius = "2px";
@@ -102,8 +102,8 @@ function createFilterType(features) {
         
         const button = document.createElement('button');
         button.innerText = `${type} (${count})`;
-        // Hier werden die btn-Klassen hinzugefügt
-        button.classList.add('btn', 'btn-sm', 'm-1');
+        // Hier werden die btn-filter-Klassen hinzugefügt
+        button.classList.add('btn-filter', 'btn-filter-sm', 'm-1');
         // Falls der Typ in selectedTypes enthalten ist, wird er farbig dargestellt,
         // andernfalls in Grau
         button.style.backgroundColor = selectedTypes.has(type) ? color : "#ccc";

@@ -32,6 +32,16 @@
                             style="display: flex; flex-wrap: wrap; max-width: 90%;  margin-left: auto;  margin-right: auto; ">
                             <span style="margin: 10px; font-weight: bold">Aufenthaltstage</span>
                         </div>
+                        <div id="importance-filters" style="mt-2">
+                            <label for="min-input">Minimal:</label>
+                            <input type="number" id="min-input" placeholder="Min Wert" style="margin-right:10px;">
+                            </input>
+                                <label for="max-input">Maximal:</label>
+                                <input type="number" id="max-input" placeholder="Max Wert" style="margin-right:10px;">
+                                    
+                                    <button id="update-filter">anwenden</button>
+                                </input>
+                        </div>
                         <div id="filter-time" class="mt-5"
                             style="display: flex; flex-wrap: wrap; max-width: 90%;  margin-left: auto;  margin-right: auto; ">
                             <span style="margin: 10px; font-weight: bold">Zeitraum</span>
@@ -58,7 +68,8 @@
                 </main>
                 <xsl:call-template name="html_footer"/>
                 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"/>
-                <script src="./js/mapUtils.js"/>
+                <script src="./js/fuer-alle-karten.js"/>
+                <script src="./js/filter_dauer.js"/>
                 <script src="./js/filter_jahre.js"/>
                 <script src="./js/script_gesamt.js"/>
             </body>
