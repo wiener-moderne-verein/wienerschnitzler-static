@@ -158,9 +158,9 @@ function updateURLWithFilters(selectedTypes) {
 
 function toggleTypeFilter(type) {
     let urlTypes = getSelectedTypesFromURL();
-    // Wenn in der URL kein Parameter vorhanden ist oder explizit "0" gesetzt ist,
-    // gehen wir davon aus, dass alle Typen aktiv sind.
-    let selectedTypes = new Set((window.location.search.includes("types") && urlTypes.length > 0) ? urlTypes : allTypes);
+    // Falls in der URL ein "types"-Parameter vorhanden ist (auch wenn er leer ist),
+    // verwenden wir dessen Inhalt – andernfalls defaulten wir zu allen Typen.
+    let selectedTypes = window.location.search.includes("types") ? new Set(urlTypes) : new Set(allTypes);
     
     if (selectedTypes.has(type)) {
         selectedTypes.delete(type);
@@ -171,6 +171,7 @@ function toggleTypeFilter(type) {
     updateURLWithFilters(selectedTypes);
     displayFilteredGeoJson();
 }
+
 
 // Farbpalette für verschiedene Typen
 const typeColorMap = {};
