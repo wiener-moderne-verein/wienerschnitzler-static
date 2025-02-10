@@ -25,7 +25,7 @@
                 <xsl:call-template name="nav_bar"/>
                 <main class="w-100">
                     <div class="container-fluid my-4">
-                        <h1>Ortstypen</h1>
+                        <h1>Aufenthalte Schnitzlers nach Arten von Orten</h1>
                         
                         <div id="map-large"/>
                         <div id="filter-time" class="mt-5"
