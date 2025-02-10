@@ -177,6 +177,42 @@
                                     </td>
                                 </tr>
                             </xsl:if>
+                            <xsl:if test="./tei:noteGrp">
+                                <tr>
+                                    <th> Wohn- und Arbeitsort von: </th>
+                                    <td>
+                                        <ul>
+                                            <xsl:for-each select="descendant::tei:noteGrp/tei:note">
+                                                <xsl:element name="a"><xsl:attribute name="target">
+                                                        <xsl:text>_blank</xsl:text>
+                                                </xsl:attribute>
+                                                    <xsl:attribute name="href">
+                                                        <xsl:value-of select="concat('https://pmb.acdh.oeaw.ac.at/entity/', replace(replace(descendant::tei:persName/@ref, '#', ''), '#', ''), '/')"/>
+                                                    </xsl:attribute>
+                                                <xsl:choose>
+                                                    <xsl:when test="descendant::tei:persName/tei:surname and descendant::tei:persName/tei:forename">
+                                                        <xsl:value-of select="concat( descendant::tei:persName/tei:forename, ' ', descendant::tei:persName/tei:surname)"/>
+                                                    </xsl:when>
+                                                    <xsl:when test="descendant::tei:persName/tei:surname">
+                                                        <xsl:value-of select="descendant::tei:persName/tei:surname"/>
+                                                    </xsl:when>
+                                                    <xsl:when test="descendant::tei:persName/tei:forename">
+                                                        <xsl:value-of select="descendant::tei:persName/tei:forename"/>
+                                                    </xsl:when>
+                                                    <xsl:otherwise>
+                                                        <xsl:value-of select="descendant::tei:persName"/>
+                                                    </xsl:otherwise>
+                                                </xsl:choose>
+                                                </xsl:element>
+                                                <xsl:if test="not(position()=last())">
+                                                    <xsl:text>, </xsl:text>
+                                                </xsl:if>
+                                                
+                                            </xsl:for-each>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </xsl:if>
                         </table>
                     </div>
                 </div>

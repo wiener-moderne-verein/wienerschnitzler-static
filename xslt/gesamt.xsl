@@ -58,6 +58,8 @@
                                         sich Schnitzler in seinem Leben an einem bestimmten Ort aufhielt. Durch die
                                         Auswahl eines Punktes werden genauere Informationen und
                                         Links angezeigt.</p>
+                                    <p>Die Farbe der Punkte auf der Karte bezieht sich auf die insgesamt nachgewiesene Zahl der Aufenthalte. Filterungen
+                                    werden nicht berücksichtigt.</p>
                                     <p>Das Auswahlfeld mit den Ortsnamen löst nur Verschiebungen des Mittelpunkts und Auswahlbereichs der Karte aus. Eine Filterung findet mit ihm
                                         nicht statt.</p>
                                 </div>

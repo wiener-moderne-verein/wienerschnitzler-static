@@ -47,6 +47,7 @@
                                     <th scope="col">Ortsname</th>
                                     <th scope="col">Zugehörigkeiten</th>
                                     <th scope="col">Erwähnungen</th>
+                                    <th scope="col">Wohn- und Arbeitsort</th>
                                     <th scope="col">Typ</th>
                                     <th scope="col">lat</th>
                                     <th scope="col">lng</th>
@@ -79,6 +80,28 @@
                                         <td>
                                             <xsl:value-of
                                                 select="normalize-space(descendant::tei:desc[@type='entity_type_literal'][1]/text())"/>
+                                        </td>
+                                        <td>
+                                            <xsl:for-each select="descendant::tei:noteGrp/tei:note">
+                                                <xsl:choose>
+                                                    <xsl:when test="descendant::tei:persName/tei:surname and descendant::tei:persName/tei:forename">
+                                                        <xsl:value-of select="concat( descendant::tei:persName/tei:forename, ' ', descendant::tei:persName/tei:surname)"/>
+                                                    </xsl:when>
+                                                    <xsl:when test="descendant::tei:persName/tei:surname">
+                                                        <xsl:value-of select="descendant::tei:persName/tei:surname"/>
+                                                    </xsl:when>
+                                                    <xsl:when test="descendant::tei:persName/tei:forename">
+                                                        <xsl:value-of select="descendant::tei:persName/tei:forename"/>
+                                                    </xsl:when>
+                                                    <xsl:otherwise>
+                                                        <xsl:value-of select="descendant::tei:persName"/>
+                                                    </xsl:otherwise>
+                                                </xsl:choose>
+                                                <xsl:if test="not(position()=last())">
+                                                    <xsl:text>, </xsl:text>
+                                                </xsl:if>
+                                                
+                                            </xsl:for-each>
                                         </td>
                                         <td>
                                             <xsl:choose>

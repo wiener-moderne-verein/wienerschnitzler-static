@@ -56,6 +56,13 @@ const columns = [
     formatter: "plaintext",
     resizable: true,
   },
+  {
+    headerFilter: "input",
+    title: "Wohn- und Arbeitsort",
+    field: "Wohn- und Arbeitsort",
+    formatter: "plaintext",
+    resizable: true,
+  },
   /* the following fields are necessary, 
     provide a string val each in your html-table,
     (longitude and latitude)*/
