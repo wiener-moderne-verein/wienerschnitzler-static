@@ -49,7 +49,15 @@ function createFilterType(features) {
         }
     });
     
-    const uniqueTypes = Object.keys(typeCountMap).sort((a, b) => a.localeCompare(b));
+    // Die Typen werden jetzt nicht mehr alphabetisch, sondern nach ihrer Häufigkeit (absteigend) sortiert.
+    const uniqueTypes = Object.keys(typeCountMap).sort((a, b) => {
+        // Zuerst nach absteigender Anzahl sortieren:
+        if (typeCountMap[b] !== typeCountMap[a]) {
+            return typeCountMap[b] - typeCountMap[a];
+        }
+        // Bei gleicher Anzahl alphabetisch:
+        return a.localeCompare(b);
+    });
     
     if (uniqueTypes.length === 0) {
         console.warn("Keine Typen für die Legende gefunden.");
