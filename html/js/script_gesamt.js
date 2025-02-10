@@ -117,6 +117,8 @@ function displayFilteredGeoJson() {
         }
     }
     
+    populateLocationDropdown(filteredFeatures);
+
     // ============================
     // Importance-Filter
     // ============================

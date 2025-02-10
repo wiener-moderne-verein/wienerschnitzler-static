@@ -53,14 +53,6 @@ function loadGeoJsonByDate(date) {
             const titles = [];
             const name = data.features[0].properties.name || date; // Extrahiere den Namen aus dem ersten Feature
             const newLayer = L.geoJSON(data, {
-                style: function (feature) {
-                    // Stil für Linien
-                    return {
-                        color: '#FF0000', // Linienfarbe
-                        weight: 2, // Dicke der Linie
-                        opacity: 1 // Deckkraft der Linie
-                    };
-                },
                 pointToLayer: createCircleMarker, // Verwende die ausgelagerte Funktion für Marker aus mapUtils.js
                 onEachFeature: function (feature, layer) {
                     if (feature.properties) {

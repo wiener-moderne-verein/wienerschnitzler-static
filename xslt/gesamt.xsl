@@ -32,12 +32,12 @@
                             style="display: flex; flex-wrap: wrap; max-width: 90%;  margin-left: auto;  margin-right: auto; ">
                             <span style="margin: 10px; font-weight: bold">Aufenthaltstage</span>
                         </div>
-                        <div id="importance-filters" style="mt-2; display: flex; flex-wrap: wrap; max-width: 90%; margin-left: auto; margin-right: auto; ">
+                        <div id="importance-filters" class="mt-2" style="display: flex; flex-wrap: wrap; max-width: 90%; margin-left: auto; margin-right: auto; ">
                             <label for="min-input">Mindestaufenthalt:</label>
-                            <input type="number" id="min-input" placeholder="Minimalwert" style="margin-right:10px;">
+                            <input type="number" id="min-input" placeholder="min." style="margin-right:10px;">
                             </input>
                                 <label for="max-input">Höchstaufenthalt:</label>
-                                <input type="number" id="max-input" placeholder="Maximalwert" style="margin-right:10px;">
+                                <input type="number" id="max-input" placeholder="max." style="margin-right:10px;">
                                     
                                     <button id="update-filter">anwenden</button>
                                 </input>

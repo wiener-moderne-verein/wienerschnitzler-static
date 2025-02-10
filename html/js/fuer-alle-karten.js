@@ -209,13 +209,89 @@ function populateLocationDropdown(features) {
     });
 }
 
-document.getElementById('location-select').addEventListener('change', function () {
-    if (this.value === 'europe') {
-        // Beispielhafte Bounds für ganz Europa – passe diese Werte bei Bedarf an
-        const europeBounds = L.latLngBounds([34.5, -25.0], [71.0, 40.0]);
-        map.fitBounds(europeBounds);
-    } else {
-        const [lat, lon] = this.value.split(',').map(Number);
-        map.setView([lat, lon], 14);
+document.addEventListener('DOMContentLoaded', function () {
+    const locationSelect = document.getElementById('location-select');
+    if (!locationSelect) {
+        console.error("Element mit der ID 'location-select' wurde nicht gefunden.");
+        return;
     }
+
+    locationSelect.addEventListener('change', function () {
+        // Prüfen, ob überhaupt ein Wert vorhanden ist
+        if (!this.value) {
+            // Keine Angabe vorhanden – hier kannst Du ein Standardverhalten definieren,
+            // z. B. die Karte auf einen Standardbereich zentrieren:
+            const defaultBounds = L.latLngBounds([34.5, -25.0], [71.0, 40.0]);
+            map.fitBounds(defaultBounds);
+            return;
+        }
+
+        if (this.value === 'europe') {
+            // Beispielhafte Bounds für ganz Europa – passe diese Werte bei Bedarf an
+            const europeBounds = L.latLngBounds([34.5, -25.0], [71.0, 40.0]);
+            map.fitBounds(europeBounds);
+        } else {
+            // Erwartet wird ein Wert im Format "lat,lon"
+            const [lat, lon] = this.value.split(',').map(Number);
+            map.setView([lat, lon], 14);
+        }
+    });
 });
+
+
+// Farbpalette für die Sichtbarkeit
+const visibilityPalette = [
+    '#FFA500', // Orange
+    '#FF7F50', // Coral
+    '#ff5a64', // Morgenrot
+    '#FF4500', // Orangerot
+    '#FF0000', // Rot
+    '#FF1493', // Deep Pink
+    '#FF69B4', // Hot Pink
+    '#FF00FF', // Magenta
+    '#aaaafa', // Medium Orchid
+    '#8A2BE2', // Blue Violet
+    '#9400D3', // Dark Violet
+    '#49274b', // Dark Orchid
+    '#8B008B', // Dark Magenta
+    '#800080', // Purple
+    '#4B0082', // Indigo
+    '#73cee5', // Dark Slate Blue
+    '#0000FF', // Blau
+    '#0000CD', // Medium Blue
+    '#00008B', // Dark Blue
+    '#000080', // Navy
+    '#191970', // Midnight Blue
+    '#82d282', // Dark Green
+    '#228B22', // Forest Green
+    '#2E8B57', // Sea Green
+    '#006400', // Dark Green
+    '#556B2F'  // Dark Olive Green
+];
+
+// Schwellenwerte für die Farbauswahl
+const thresholds = [1, 2, 3, 4, 5, 10, 15, 25, 35, 50, 75, 100, 150, 250, 400, 600, 1000, 1500, 2500, 4000, 5000, 6000];
+
+// Funktion zur Auswahl der Farbe basierend auf der Wichtigkeit (1 bis 5000)
+function getColorByImportance(importance) {
+    // Wenn kein Wert übergeben wurde, gib Rot zurück
+    if (importance === undefined) {
+        return '#FF0000';
+    }
+    for (let i = 0; i < thresholds.length; i++) {
+        if (importance <= thresholds[i]) {
+            return visibilityPalette[i];
+        }
+    }
+    // Fallback: die dunkelste Farbe für sehr hohe Werte
+    return visibilityPalette[visibilityPalette.length - 1];
+}
+
+
+// Funktion zum Erhöhen der Sättigung einer Farbe
+function intensifyColor(color) {
+    const hsl = d3.hsl(color);
+    hsl.s = Math.min(1, hsl.s * 2.5);
+    // Erhöhe die Sättigung um 50%
+    return hsl.toString();
+}

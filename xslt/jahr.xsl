@@ -65,6 +65,7 @@
                 <xsl:call-template name="html_footer"/>
                 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"/>
                 <script src="./js/fuer-alle-karten.js"/>
+                <script src="./js/filter_dauer.js"/>
                 <script src="./js/script_jahr.js"/>
             </body>
         </html>
