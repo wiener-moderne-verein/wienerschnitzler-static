@@ -65,34 +65,54 @@ function displayFilteredGeoJson() {
     // ============================
     // Jahre-Filter
     // ============================
-    let selectedYears;
-    if (!params.has("years")) {
-        // Kein "years"-Parameter → alle Jahre auswählen:
-        selectedYears = new Set();
+    let selectedYears = new Set();
+
+    // Prüfe, ob ein gültiger "years"-Parameter vorhanden ist:
+    if (!params.has("years") || params.get("years") === "") {
+        // Kein "years"-Parameter → alle Jahre auswählen
+        // (Dabei wird auch berücksichtigt, ob timestamp als Array oder String vorliegt)
         window.geoJsonData.features.forEach(feature => {
-            if (Array.isArray(feature.properties.timestamp)) {
-                feature.properties.timestamp.forEach(date => {
+            const ts = feature.properties.timestamp;
+            if (Array.isArray(ts)) {
+                ts.forEach(date => {
+                    // Extrahiere die ersten 4 Zeichen (das Jahr) und füge es hinzu
                     selectedYears.add(date.substring(0, 4));
                 });
+            } else if (typeof ts === 'string') {
+                selectedYears.add(ts.substring(0, 4));
             }
         });
+        // Da alle Jahre berücksichtigt werden sollen, wird hier nicht weiter gefiltert.
     } else {
+        // Es liegt ein "years"-Parameter vor
         const yearsParam = params.get("years");
         if (yearsParam === "0") {
-            // Explizit "(keinen)" gedrückt → keine Jahre ausgewählt
+            // Falls explizit "(keinen)" gewählt wurde, also keine Jahre selektiert sind,
+            // wird ein leeres Set benutzt → Ergebnis: Keine Features
             selectedYears = new Set();
         } else {
-            selectedYears = new Set(yearsParam.split("_"));
+            // Aufteilen des Parameters (z. B. "2018_2019_2020") in einzelne Jahrwerte
+            yearsParam.split("_").forEach(year => {
+                if (year.trim() !== "") {
+                    selectedYears.add(year.trim());
+                }
+            });
         }
-    }
 
-    // Filterung nach Jahren – analog zum Typen-Filter:
-    if (params.has("years")) {
+        // Wende den Jahrfilter an – nur Features übernehmen, die mindestens einen
+        // Timestamp mit einem Jahr aus dem ausgewählten Set haben
         if (selectedYears.size > 0) {
-            filteredFeatures = filteredFeatures.filter(feature =>
-                feature.properties.timestamp.some(date => selectedYears.has(date.substring(0, 4)))
-            );
+            filteredFeatures = filteredFeatures.filter(feature => {
+                const ts = feature.properties.timestamp;
+                // Falls timestamp nicht als Array vorliegt, in ein Array packen:
+                let dates = Array.isArray(ts) ? ts : [ts];
+                return dates.some(date => {
+                    // Sicherstellen, dass date ein String ist und das Jahr ermittelt werden kann
+                    return typeof date === "string" && selectedYears.has(date.substring(0, 4));
+                });
+            });
         } else {
+            // Leeres Set → keine Features
             filteredFeatures = [];
         }
     }
@@ -100,11 +120,10 @@ function displayFilteredGeoJson() {
     // ============================
     // Importance-Filter
     // ============================
-    // Lies die Filtergrenzen aus den URL-Parametern "min" und "max":
+    // Lese die Filtergrenzen aus den URL-Parametern "min" und "max"
     const minImportance = params.has("min") ? Number(params.get("min")) : 0;
     const maxImportance = params.has("max") ? Number(params.get("max")) : Infinity;
     
-    // Es werden nur Features beibehalten, deren importance im gewünschten Bereich liegt.
     filteredFeatures = filteredFeatures.filter(feature => {
         const imp = feature.properties.importance || 0;
         return imp >= minImportance && imp <= maxImportance;
@@ -127,16 +146,14 @@ function displayFilteredGeoJson() {
         onEachFeature: function (feature, layer) {
             if (feature.properties) {
                 const popupContent = createPopupContent(feature);
-                layer.bindPopup(popupContent, {
-                    maxWidth: 300
-                });
+                layer.bindPopup(popupContent, { maxWidth: 300 });
             }
         }
     }).addTo(map);
 
     geoJsonLayers.push(newLayer);
     
-    // Berechne das maximale "importance" der gefilterten Features
+    // Bestimme den maximalen Importance-Wert der gefilterten Features
     const maxImportanceFeature = filteredFeatures.reduce((max, feature) => {
         const imp = feature.properties.importance || 0;
         return imp > max ? imp : max;
@@ -147,5 +164,4 @@ function displayFilteredGeoJson() {
 
     map.fitBounds(newLayer.getBounds());
 }
-
 

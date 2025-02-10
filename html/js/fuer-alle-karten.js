@@ -20,25 +20,82 @@ function createPopupContent(feature) {
     const title = feature.properties.title || 'Kein Titel';
     const id = feature.properties.id || '#';
     const titleLink = `<a href="${id}.html" target="_blank" class="text-dark text-decoration-none">${title} →</a>`;
-    const dates = feature.properties.timestamp || [];
-    
-    let links = dates.slice(0, 10)
-        .map(date => `<a href="https://schnitzler-chronik.acdh.oeaw.ac.at/${date}.html" target="_blank">${date}</a>`)
-        .join('<br>');
-    
-    if (dates.length > 10) {
-        const remainingCount = dates.length - 10;
+
+    // Hole die rohen Timestamps (können als Array oder als String vorliegen)
+    const datesRaw = feature.properties.timestamp || [];
+    let allDates = [];
+    if (Array.isArray(datesRaw)) {
+        allDates = datesRaw;
+    } else if (typeof datesRaw === 'string') {
+        allDates = [datesRaw];
+    }
+
+    // Lese den URL-Parameter "years" aus
+    const params = new URLSearchParams(window.location.search);
+    let yearFilterPresent = false;
+    let selectedYears = [];
+    let filteredDates = allDates; // Standard: alle Tage werden genutzt
+    if (params.has("years") && params.get("years") !== "") {
+        yearFilterPresent = true;
+        const yearsParam = params.get("years");
+        if (yearsParam === "0") {
+            // "0" signalisiert, dass keine Jahre ausgewählt wurden
+            selectedYears = [];
+        } else {
+            // Erwartet wird z. B. "2018_2019_2020"
+            selectedYears = yearsParam.split("_").map(s => s.trim()).filter(s => s !== "");
+        }
+        // Filtere die Tage, sodass nur jene übrigbleiben, deren Jahr im Set der ausgewählten Jahre enthalten ist.
+        filteredDates = allDates.filter(date => selectedYears.includes(date.substring(0, 4)));
+    }
+
+    // Anzahl der relevanten Aufenthaltstage (je nach Filter)
+    const count = filteredDates.length;
+
+    // Erstelle Links für die ersten 10 relevanten Tage
+    let links = "";
+    if (filteredDates.length > 0) {
+        links = filteredDates.slice(0, 10)
+            .map(date => `<a href="https://schnitzler-chronik.acdh.oeaw.ac.at/${date}.html" target="_blank">${date}</a>`)
+            .join('<br>');
+    }
+    if (filteredDates.length > 10) {
+        const remainingCount = filteredDates.length - 10;
         links += `<p style="text-align: right;">… <a href="${id}.html">${remainingCount} weitere</a></p>`;
     }
-    
+
+    // Erstelle den anzuzeigenden Text (stayInfo)
+    let stayInfo = "";
+    if (yearFilterPresent) {
+        if (selectedYears.length === 0) {
+            // Es wurde ein Jahresfilter gesetzt, aber keine Jahre ausgewählt
+            stayInfo = "Keine Aufenthalte ausgewählt.";
+        } else if (selectedYears.length === 1) {
+            // Ein Jahr ausgewählt: "Ein Aufenthaltstag im Jahr 2019" oder "5 Aufenthaltstage im Jahr 2019"
+            stayInfo = (count === 1 ? "Ein Aufenthaltstag" : `${count} Aufenthaltstage`) +
+                       " im Jahr " + selectedYears[0] +":";
+        } else {
+            // Mehrere Jahre ausgewählt: "Ein Aufenthaltstag in den Jahren 2018, 2019" oder "5 Aufenthaltstage in den Jahren 2018, 2019"
+            stayInfo = (count === 1 ? "Ein Aufenthaltstag" : `${count} Aufenthaltstage`) +
+                       " in den Jahren " + selectedYears.join(", ") +":";
+        }
+        // Anschließend die (gefilterten) Tages-Links anhängen, sofern vorhanden:
+        if (links) {
+            stayInfo += "<br/>" + links;
+        }
+    } else {
+        // Kein Jahresfilter → alle Tage berücksichtigen, wie bisher
+        stayInfo = (count === 1 ? "Ein Aufenthaltstag" : `${count} Aufenthaltstage`) + ":<br/>" + links;
+    }
+
     const wikipediaLink = feature.properties.wikipedia
         ? `<a href="${feature.properties.wikipedia}" target="_blank" class="text-dark me-2" title="Wikipedia"><i class="bi bi-wikipedia"></i></a>`
         : '';
-    
+
     const wiengeschichtewikiLink = feature.properties.wiengeschichtewiki
         ? `<a href="${feature.properties.wiengeschichtewiki}" target="_blank" class="me-2" title="Wien Geschichte Wiki"><img src="../images/Wien_Geschichte_Wiki_Logo.png" alt="Wien Geschichte Wiki" style="height: 20px; width: auto;"></a>`
         : '';
-    
+
     let wohnortContent = '';
     if (feature.properties.wohnort && Array.isArray(feature.properties.wohnort)) {
         const wohnortListItems = feature.properties.wohnort
@@ -46,7 +103,7 @@ function createPopupContent(feature) {
             .join('');
         wohnortContent = `<p class="m-0 mt-3">Wohnort von:<br/><ul style="padding-left: 20px;">${wohnortListItems}</ul></p>`;
     }
-    
+
     let arbeitsortContent = '';
     if (feature.properties.arbeitsort && Array.isArray(feature.properties.arbeitsort)) {
         const arbeitsortListItems = feature.properties.arbeitsort
@@ -54,17 +111,13 @@ function createPopupContent(feature) {
             .join('');
         arbeitsortContent = `<p class="m-0 mt-3">Arbeitsort von:<br/><ul style="padding-left: 20px;">${arbeitsortListItems}</ul></p>`;
     }
-    
-    // Ermitteln des Wertes von "importance" und dynamisches Erzeugen des Texts
-    const importance = feature.properties.importance || 0;
-    const daysText = importance === 1 ? "Ein Aufenthaltstag" : `${importance} Aufenthaltstage:`;
-    
+
     return `
     <div class="rounded" style="font-family: Arial, sans-serif;">
         <div class="p-3 mb-3">
             <h5 class="m-0"><b>${titleLink}</b></h5>
         </div>
-        <p class="m-0">${daysText}<br/>${links}</p>
+        <p class="m-0">${stayInfo}</p>
         ${wohnortContent}
         ${arbeitsortContent}
         <p class="m-0 mt-3 d-flex align-items-center">
@@ -73,6 +126,7 @@ function createPopupContent(feature) {
         </p>
     </div>`;
 }
+
 
 function populateLocationDropdown(features) {
     const params = new URLSearchParams(window.location.search);

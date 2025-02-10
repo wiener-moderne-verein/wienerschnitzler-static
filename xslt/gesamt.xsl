@@ -25,19 +25,19 @@
                 <xsl:call-template name="nav_bar"/>
                 <main class="w-100">
                     <div class="container-fluid my-4">
-                        <h1>Orte nach Anzahl der Aufenthalte</h1>
+                        <h1>Anzahl der Aufenthalte Schnitzlers</h1>
                         
                         <div id="map-large"/>
                         <div id="legend" class="mt-5"
                             style="display: flex; flex-wrap: wrap; max-width: 90%;  margin-left: auto;  margin-right: auto; ">
                             <span style="margin: 10px; font-weight: bold">Aufenthaltstage</span>
                         </div>
-                        <div id="importance-filters" style="mt-2">
-                            <label for="min-input">Minimal:</label>
-                            <input type="number" id="min-input" placeholder="Min Wert" style="margin-right:10px;">
+                        <div id="importance-filters" style="mt-2; display: flex; flex-wrap: wrap; max-width: 90%; margin-left: auto; margin-right: auto; ">
+                            <label for="min-input">Mindestaufenthalt:</label>
+                            <input type="number" id="min-input" placeholder="Minimalwert" style="margin-right:10px;">
                             </input>
-                                <label for="max-input">Maximal:</label>
-                                <input type="number" id="max-input" placeholder="Max Wert" style="margin-right:10px;">
+                                <label for="max-input">Höchstaufenthalt:</label>
+                                <input type="number" id="max-input" placeholder="Maximalwert" style="margin-right:10px;">
                                     
                                     <button id="update-filter">anwenden</button>
                                 </input>
