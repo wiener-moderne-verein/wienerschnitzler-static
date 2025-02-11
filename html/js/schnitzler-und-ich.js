@@ -111,11 +111,7 @@ fetch(geojsonUrl)
     });
 
 // Karte erstellen und auf der Seite anzeigen
-let map = L.map('map').setView([48.2, 16.3], 12); // Zentrales Wien als Startpunkt
-
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-}).addTo(map);
+initializeMap();
 
 function plotOnMap(lat, lon, nearest) {
     // Bestehende Marker und Popup-Ebenen entfernen, aber Tile-Layer behalten

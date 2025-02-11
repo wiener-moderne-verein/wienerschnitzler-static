@@ -71,6 +71,7 @@
             </body>
             
             <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"/>
+            <script src="./js/fuer-alle-karten.js"/>
             <script type="text/javascript" src="js/schnitzler-und-ich.js"/>
 
         </html>

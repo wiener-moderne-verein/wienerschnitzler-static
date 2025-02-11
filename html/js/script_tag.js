@@ -129,11 +129,7 @@ function changeDateByDays(currentDate, days) {
     return formatDateToISO(date);
 }
 
-// Initialisierung der Karte
-const map = L.map('map').setView([48.2082, 16.3738], 5);
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 18
-}).addTo(map);
+initializeMap();
 
 // Eventlistener für das Datumseingabefeld
 document.getElementById('date-input').addEventListener('change', function () {

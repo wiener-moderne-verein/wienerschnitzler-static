@@ -15,6 +15,28 @@ function createCircleMarker(feature, latlng) {
     });
 }
 
+// Funktion zum Initialisieren der Karte
+function initializeMapLarge() {
+    window.map = L.map('map-large').setView([48.2082, 16.3738], 5);
+    
+    // Carto Positron Tile-Layer hinzufügen
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> contributors &copy; <a href="https://carto.com/">CARTO</a>',
+        subdomains: 'abcd',
+        maxZoom: 18
+    }).addTo(map);
+  }
+  
+  function initializeMap() {
+    window.map = L.map('map').setView([48.2082, 16.3738], 5);
+    
+    // Carto Positron Tile-Layer hinzufügen
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> contributors &copy; <a href="https://carto.com/">CARTO</a>',
+        subdomains: 'abcd',
+        maxZoom: 18
+    }).addTo(map);
+  }
 
 function createPopupContent(feature) {
     const title = feature.properties.title || 'Kein Titel';

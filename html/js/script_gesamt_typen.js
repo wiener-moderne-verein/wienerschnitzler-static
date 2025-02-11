@@ -7,13 +7,8 @@ function clearGeoJsonLayers() {
     geoJsonLayers.length = 0;
 }
 
-// Funktion zum Initialisieren der Karte
-function initializeMap() {
-    window.map = L.map('map-large').setView([48.2082, 16.3738], 5);
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 18
-    }).addTo(map);
-}
+
+
 
 function loadGeoJson() {
     const url = `https://raw.githubusercontent.com/wiener-moderne-verein/wienerschnitzler-data/main/data/editions/geojson/wienerschnitzler_distinctPlaces.geojson`;
@@ -39,7 +34,7 @@ function loadGeoJson() {
 
 // Initialisierung der Karte und Laden der GeoJSON-Daten beim Laden der Seite
 document.addEventListener('DOMContentLoaded', () => {
-    initializeMap();
+    initializeMapLarge();
     // Karte initialisieren
     
     // GeoJSON-Daten laden und anzeigen
