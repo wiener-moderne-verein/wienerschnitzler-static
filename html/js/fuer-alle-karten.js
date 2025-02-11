@@ -288,10 +288,10 @@ function getColorByImportance(importance) {
 }
 
 
-// Funktion zum Erhöhen der Sättigung einer Farbe
+// Funktion zum Erhöhen der Sättigung einer Farbe resp. Komplementärfarbe
 function intensifyColor(color) {
     const hsl = d3.hsl(color);
-    hsl.s = Math.min(1, hsl.s * 2.5);
-    // Erhöhe die Sättigung um 50%
-    return hsl.toString();
+  hsl.h = (hsl.h + 180) % 360; // Schiebe den Farbton um 180 Grad
+  //hsl.s = Math.min(1, hsl.s * 2.5);
+  return hsl.toString();
 }
