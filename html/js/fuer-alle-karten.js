@@ -291,7 +291,7 @@ function getColorByImportance(importance) {
 // Funktion zum Erhöhen der Sättigung einer Farbe resp. Komplementärfarbe
 function intensifyColor(color) {
     const hsl = d3.hsl(color);
-  hsl.h = (hsl.h + 45) % 360; // Schiebe den Farbton um 45 Grad
+  hsl.h = (hsl.h + 15) % 360; // Schiebe den Farbton um 45 Grad
   //hsl.s = Math.min(1, hsl.s * 2.5);
   return hsl.toString();
 }
