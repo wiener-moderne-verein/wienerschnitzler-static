@@ -1,7 +1,12 @@
+let lineLayer; // globale Variable für den Linien-Layer
+
 function updateMapInhaltText(titles, date, name) {
     const mapInhaltTextDiv = document.getElementById('map-inhalt-text');
+    if (lineLayer && map.hasLayer(lineLayer)) {
+    map.removeLayer(lineLayer);
+}
     if (mapInhaltTextDiv) {
-        const isValidDate = date && /^\d{4}-\d{2}-\d{2}$/.test(date); // Überprüft, ob das Datum im Format YYYY-MM-DD vorliegt
+        const isValidDate = date && /^\d{4}-\d{2}-\d{2}$/.test(date);
         const displayedDate = isValidDate ? date : 'unbekanntes Datum';
         const displayedName = name || displayedDate;
 
@@ -22,26 +27,26 @@ function updateMapInhaltText(titles, date, name) {
     }
 }
 
-
 // Array zur Verwaltung der GeoJSON-Layer
 const geoJsonLayers = [];
 
 // Funktion zum Entfernen aller GeoJSON-Layer
 function clearGeoJsonLayers() {
     geoJsonLayers.forEach(layer => map.removeLayer(layer));
-    geoJsonLayers.length = 0; // Array leeren
-    updateMapInhaltText([], ''); // Leere das Textfeld, wenn die Layer entfernt werden
+    geoJsonLayers.length = 0;
+    updateMapInhaltText([], ''); // Textfeld leeren
 }
 
-// Funktion zum Laden von GeoJSON basierend auf einem Datum
+// Angepasste Funktion zum Laden von GeoJSON nach Datum
 function loadGeoJsonByDate(date) {
-    
     const url = `https://raw.githubusercontent.com/wiener-moderne-verein/wienerschnitzler-data/main/data//editions/geojson/${date}.geojson`;
 
     // Entferne vorherige Layer
     clearGeoJsonLayers();
+    if (lineLayer && map.hasLayer(lineLayer)) {
+        map.removeLayer(lineLayer);
+    }
 
-    // GeoJSON laden und anzeigen
     fetch(url)
         .then(response => {
             if (!response.ok) {
@@ -51,78 +56,108 @@ function loadGeoJsonByDate(date) {
         })
         .then(data => {
             const titles = [];
-            const name = data.features[0].properties.name || date; // Extrahiere den Namen aus dem ersten Feature
-            const newLayer = L.geoJSON(data, {
-                pointToLayer: createCircleMarker, // Verwende die ausgelagerte Funktion für Marker aus mapUtils.js
+            const name = data.features[0].properties.name || date;
+            
+            // Trenne Punkt- und Linien-Features
+            const pointFeatures = data.features.filter(feature => feature.geometry.type === 'Point');
+            const lineFeatures = data.features.filter(feature => feature.geometry.type === 'LineString');
+
+            // Erstelle zuerst den Linien-Layer
+           // Erstelle den Linien-Layer
+lineLayer = L.geoJSON(lineFeatures, {
+    style: {
+        color: '#462346',
+        weight: 2
+    }
+});
+
+// Prüfe den URL-Parameter l: Wenn l=off, dann Linie ausblenden; Standard ist sichtbar.
+const params = new URLSearchParams(window.location.search);
+const lineParam = params.get('l');
+const lineVisible = (lineParam === 'on');
+// Setze den Zustand der Checkbox
+document.getElementById('lineToggle').checked = lineVisible;
+
+// Setze das Icon abhängig vom Zustand
+const lineToggleIcon = document.getElementById('lineToggleIcon');
+if (lineVisible) {
+    lineToggleIcon.innerHTML = '';
+    lineLayer.addTo(map);
+    lineLayer.bringToBack();
+} else {
+    lineToggleIcon.innerHTML = '';
+    map.removeLayer(lineLayer);
+}
+
+// Falls Linien vorhanden sind, richte das Toggle-Control ein (der Button wird per HTML bereitgestellt)
+if (lineFeatures.length > 0) {
+    setupLineToggleControl(lineLayer, lineVisible);
+}
+
+            // Erstelle anschließend den Punkte-Layer und füge ihn der Karte hinzu (sodass die Punkte darüber liegen)
+            const pointsLayer = L.geoJSON(pointFeatures, {
+                pointToLayer: createCircleMarker, // Verwendet Deine Funktion
                 onEachFeature: function (feature, layer) {
                     if (feature.properties) {
-                        const popupContent = createPopupContent(feature); // Verwende die ausgelagerte Funktion für Popups
+                        const popupContent = createPopupContent(feature);
                         layer.bindPopup(popupContent, { maxWidth: 300 });
                         
-                        // Füge den Titel zur Liste hinzu und überprüfe das Datum
                         let title = feature.properties.title 
                             ? `<a href="${feature.properties.id}.html">${feature.properties.title}</a>` 
                             : 'Kein Titel';
 
-                        // Überprüfen, ob das Datum innerhalb des gültigen Zeitraums liegt
                         const id = feature.properties.id;
                         if (checkDateInRange(date, id)) {
                             title = `${title} <span style="color: black;">(Wohnadresse)</span>`;
                         }
-                        
                         titles.push(feature.properties.id 
                             ? `<a href="${feature.properties.id}" target="_blank">${title}</a>` 
                             : title);
                     }
                 }
             }).addTo(map);
-            
-            // Hinzufügen der neuen Layer-Referenz zur Liste
-            geoJsonLayers.push(newLayer);
+            geoJsonLayers.push(pointsLayer);
 
-            // Karte an die neuen Daten anpassen
-            if (newLayer.getLayers().length > 0) {
-                map.fitBounds(newLayer.getBounds());
-            } else {
-                console.warn('Keine gültigen Features gefunden.');
+            // Passe die Karte an die vorhandenen Layer an
+            if (pointsLayer.getLayers().length > 0) {
+                map.fitBounds(pointsLayer.getBounds());
+            } else if (lineVisible && lineLayer.getLayers().length > 0) {
+                map.fitBounds(lineLayer.getBounds());
             }
 
-            // Aktualisiere das Textfeld mit den gesammelten Titeln und dem Datum
             updateMapInhaltText(titles, date, name);
         })
         .catch(error => {
             console.error('Error loading GeoJSON:', error);
-            clearGeoJsonLayers(); // Entferne alte Layer auch bei Fehlern
+            clearGeoJsonLayers();
         });
 }
 
 
-// Funktion, um das Fragment in der URL zu aktualisieren
-function updateUrlFragment(date) {
-    if (window.location.hash.substring(1) !== date) {
-        window.location.hash = date;
-    }
-}
 
-// Funktion, um das Datum aus der URL zu lesen
+// Restlicher Code (Datumsauswahl, Eventlistener etc.) bleibt unverändert:
+
 function getDateFromUrl() {
     const hash = window.location.hash;
     return hash ? hash.substring(1) : null;
 }
 
-// Funktion zum Ändern des Datums in der Eingabe und URL
 function setDateAndLoad(date) {
     document.getElementById('date-input').value = date;
     updateUrlFragment(date);
     loadGeoJsonByDate(date);
 }
 
-// Funktion zum Formatieren von Datum in ISO-String (YYYY-MM-DD)
+function updateUrlFragment(date) {
+    if (window.location.hash.substring(1) !== date) {
+        window.location.hash = date;
+    }
+}
+
 function formatDateToISO(date) {
     return date.toISOString().split('T')[0];
 }
 
-// Funktion, um das aktuelle Datum um eine Anzahl Tage zu ändern
 function changeDateByDays(currentDate, days) {
     const date = new Date(currentDate);
     date.setDate(date.getDate() + days);
@@ -131,7 +166,6 @@ function changeDateByDays(currentDate, days) {
 
 initializeMap();
 
-// Eventlistener für das Datumseingabefeld
 document.getElementById('date-input').addEventListener('change', function () {
     const date = this.value;
     if (date) {
@@ -139,7 +173,6 @@ document.getElementById('date-input').addEventListener('change', function () {
     }
 });
 
-// Eventlistener für den "Vorheriger Tag"-Button
 document.getElementById('prev-day').addEventListener('click', function () {
     const dateInput = document.getElementById('date-input');
     const currentDate = dateInput.value;
@@ -147,7 +180,6 @@ document.getElementById('prev-day').addEventListener('click', function () {
     setDateAndLoad(newDate);
 });
 
-// Eventlistener für den "Nächster Tag"-Button
 document.getElementById('next-day').addEventListener('click', function () {
     const dateInput = document.getElementById('date-input');
     const currentDate = dateInput.value;
@@ -155,7 +187,6 @@ document.getElementById('next-day').addEventListener('click', function () {
     setDateAndLoad(newDate);
 });
 
-// Überwache Änderungen am URL-Fragment
 window.addEventListener('hashchange', function () {
     const date = getDateFromUrl();
     if (date) {
@@ -163,47 +194,18 @@ window.addEventListener('hashchange', function () {
     }
 });
 
-// Initialisiere die Karte mit dem Datum aus der URL oder einem Standardwert
 const initialDate = getDateFromUrl() || '1895-01-23';
 setDateAndLoad(initialDate);
 
-// Funktion zum Holen des Datums aus der URL nach "#"
-function getDateFromUrl() {
-    const hash = window.location.hash;
-    return hash ? hash.substring(1) : null; // Gibt das Datum zurück, oder null, wenn kein Datum vorhanden ist
-}
-
-function extractLocationsFromGeoJson(data) {
-    const locations = [];
-    data.features.forEach(feature => {
-        if (feature.properties && feature.properties.typ === 'ort') {
-            locations.push({
-                name: feature.properties.name || 'Unbekannter Ort',
-                coordinates: feature.geometry.coordinates.reverse(), // GeoJSON hat [lon, lat], wir brauchen [lat, lon]
-            });
-        }
-    });
-    return locations;
-}
-
-
+// Funktion checkDateInRange und das wohnsitze-Array bleiben unverändert:
 function checkDateInRange(date, id) {
-    // Umwandlung des übergebenen Datums in ein Date-Objekt
     const inputDate = new Date(date);
-    
-    // Suche nach dem entsprechenden Eintrag in der `wohnsitze`-Konstanten
     const wohnsitz = wohnsitze.find(entry => entry.target_id === id);
-    
-    // Falls keine Übereinstimmung gefunden wurde
     if (!wohnsitz) {
         return false;
     }
-    
-    // Umwandlung der Start- und Enddaten in Date-Objekte
     const startDate = new Date(wohnsitz.start_date);
     const endDate = new Date(wohnsitz.end_date);
-    
-    // Überprüfung, ob das Datum innerhalb des Zeitraums liegt
     return inputDate >= startDate && inputDate <= endDate;
 }
 

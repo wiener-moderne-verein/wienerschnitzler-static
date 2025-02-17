@@ -1,5 +1,3 @@
-
-
 function createCircleMarker(feature, latlng) {
     const importance = feature.properties.importance || 0;
     const color = getColorByImportance(importance);
@@ -15,7 +13,7 @@ function createCircleMarker(feature, latlng) {
     });
 }
 
-// Funktion zum Initialisieren der Karte
+// Funktion zum Initialisieren der Karte (für das große Karten-Element)
 function initializeMapLarge() {
     window.map = L.map('map-large').setView([48.2082, 16.3738], 5);
     
@@ -25,9 +23,10 @@ function initializeMapLarge() {
         subdomains: 'abcd',
         maxZoom: 18
     }).addTo(map);
-  }
+}
   
-  function initializeMap() {
+// Funktion zum Initialisieren der Karte (für das normale Karten-Element)
+function initializeMap() {
     window.map = L.map('map').setView([48.2082, 16.3738], 5);
     
     // Carto Positron Tile-Layer hinzufügen
@@ -36,8 +35,8 @@ function initializeMapLarge() {
         subdomains: 'abcd',
         maxZoom: 18
     }).addTo(map);
-  }
-
+}
+  
 function createPopupContent(feature) {
     const title = feature.properties.title || 'Kein Titel';
     const id = feature.properties.id || '#';
@@ -149,7 +148,6 @@ function createPopupContent(feature) {
     </div>`;
 }
 
-
 function populateLocationDropdown(features) {
     const params = new URLSearchParams(window.location.search);
     // Lese auch hier die Filtergrenzen für importance aus der URL
@@ -157,6 +155,10 @@ function populateLocationDropdown(features) {
     const maxImp = params.has("max") ? Number(params.get("max")) : Infinity;
 
     const locationSelect = document.getElementById('location-select');
+    if (!locationSelect) {
+        console.warn("Kein Element mit der ID 'location-select' vorhanden. Überspringe Dropdown-Befüllung.");
+        return;
+    }
     // Dropdown leeren
     locationSelect.innerHTML = '';
 
@@ -194,7 +196,7 @@ function populateLocationDropdown(features) {
         "xxiii., liesing": 23
     };
 
-    // Filtere die Features anhand vorhandener Eigenschaften, passender Abkürzungen
+    // Filtere und sortiere die Features anhand vorhandener Eigenschaften, passender Abkürzungen
     // und des importance-Werts (nur Features im gewünschten Bereich werden übernommen)
     const sortedFeatures = features
         .filter(feature => {
@@ -223,26 +225,27 @@ function populateLocationDropdown(features) {
     // Füge die sortierten Optionen zum Dropdown hinzu
     sortedFeatures.forEach(feature => {
         const option = document.createElement('option');
-        // Kopie des Koordinaten-Arrays erstellen, bevor reverse aufgerufen wird
-        const coords = feature.geometry.coordinates.slice().reverse(); // [lon, lat] -> [lat, lon]
+        // Kopie des Koordinaten-Arrays erstellen, bevor reverse aufgerufen wird ([lon, lat] -> [lat, lon])
+        const coords = feature.geometry.coordinates.slice().reverse();
         option.value = coords.join(',');
         option.textContent = feature.properties.title;
         locationSelect.appendChild(option);
     });
 }
 
+// Falls ein Dropdown-Element mit der ID "location-select" existiert,
+// füge den Event-Listener für die Änderung des Dropdowns hinzu.
 document.addEventListener('DOMContentLoaded', function () {
     const locationSelect = document.getElementById('location-select');
     if (!locationSelect) {
-        console.error("Element mit der ID 'location-select' wurde nicht gefunden.");
+        console.warn("Kein Element mit der ID 'location-select' vorhanden. Kein Event-Listener für das Dropdown wird hinzugefügt.");
         return;
     }
 
     locationSelect.addEventListener('change', function () {
         // Prüfen, ob überhaupt ein Wert vorhanden ist
         if (!this.value) {
-            // Keine Angabe vorhanden – hier kannst Du ein Standardverhalten definieren,
-            // z. B. die Karte auf einen Standardbereich zentrieren:
+            // Keine Angabe vorhanden – Standardverhalten: Karte auf einen Standardbereich zentrieren
             const defaultBounds = L.latLngBounds([34.5, -25.0], [71.0, 40.0]);
             map.fitBounds(defaultBounds);
             return;
@@ -260,8 +263,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-
-// Farbpalette für die Sichtbarkeit
+// Farbpalette und Hilfsfunktionen zur Farbauswahl
 const visibilityPalette = [
     '#FFA500', // Orange
     '#FF7F50', // Coral
@@ -296,7 +298,6 @@ const thresholds = [1, 2, 3, 4, 5, 10, 15, 25, 35, 50, 75, 100, 150, 250, 400, 6
 
 // Funktion zur Auswahl der Farbe basierend auf der Wichtigkeit (1 bis 5000)
 function getColorByImportance(importance) {
-    // Wenn kein Wert übergeben wurde, gib Rot zurück
     if (importance === undefined) {
         return '#FF0000';
     }
@@ -305,15 +306,15 @@ function getColorByImportance(importance) {
             return visibilityPalette[i];
         }
     }
-    // Fallback: die dunkelste Farbe für sehr hohe Werte
     return visibilityPalette[visibilityPalette.length - 1];
 }
 
-
-// Funktion zum Erhöhen der Sättigung einer Farbe resp. Komplementärfarbe
+// Funktion zum Erhöhen der Sättigung einer Farbe (bzw. zur Erzeugung einer intensiveren Variante)
 function intensifyColor(color) {
     const hsl = d3.hsl(color);
-  hsl.h = (hsl.h + 10) % 360; // Schiebe den Farbton um 45 Grad
-  //hsl.s = Math.min(1, hsl.s * 2.5);
-  return hsl.toString();
+    hsl.h = (hsl.h + 10) % 360;
+    return hsl.toString();
 }
+
+
+

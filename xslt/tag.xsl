@@ -36,7 +36,6 @@
                             <div class="d-flex center-content-start">
                                 <input type="date" id="date-input" class="form-control w-auto"/>
                             </div>
-                            
                             <div class="d-flex justify-content-end">
                                 <button id="next-day" class="btn btn-secondary  btn-navigation">
                                     <i class="bi bi-arrow-right-circle"/>
@@ -53,11 +52,23 @@
                                 <div class="text-start mx-auto">
                                     <!-- Oberer Text -->
                                     <p class="text-start text-muted small"> Auf dieser Seite werden
-                                        die einzelnen Tage in Schnitzlers Leben visualisiert. <span
-                                            class="fw-bold text-danger">Achtung</span>: Die
-                                        Verbindungslinie zwischen den Orten macht den geografischen
-                                        Raum besser sichtbar. Sie stellt nicht die Reihenfolge dar,
-                                        in der die Orte aufgesucht wurden. </p>
+                                        die einzelnen Tage in Schnitzlers Leben visualisiert.</p>
+                                    <p>
+                                        <!-- In Deinem HTML -->
+                                        <div class="form-check form-switch">
+                                            <!-- Ohne checked-Attribut ist der Schalter standardmäßig ausgeschaltet -->
+                                            <input class="form-check-input" type="checkbox"
+                                                id="lineToggle"/>
+                                            <label class="form-check-label" for="lineToggle">
+                                                <span id="lineToggleIcon" class="fs-5"
+                                                  title="Schaltet die Linie ein oder aus"/>
+                                                <!-- Standard: Linie ausgeschaltet, also X anzeigen -->
+                                                 <b>Verbindungslinie</b> ein-/ausschalten. Sie macht den geografischen Raum
+                                                 besser sichtbar. Sie stellt <span class="fw-bold text-danger"
+                                                     >nicht</span> die Reihenfolge
+                                                dar, in der die Orte aufgesucht wurden. </label>
+                                        </div>
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -65,6 +76,7 @@
                 </main>
                 <xsl:call-template name="html_footer"/>
                 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"/>
+                <script src="./js/linie-anzeigen.js"/>
                 <script src="./js/fuer-alle-karten.js"/>
                 <script src="./js/script_tag.js"/>
             </body>
