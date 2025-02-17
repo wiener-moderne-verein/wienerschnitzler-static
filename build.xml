@@ -14,10 +14,10 @@
         <factory name="net.sf.saxon.TransformerFactoryImpl"/>
         <classpath location="${basedir}/saxon/saxon9he.jar"/>
     </xslt>
-    <xslt in="${index}" out="${target}/gesamt_linien.html" style="./xslt/gesamt_linien.xsl">
+    <!--<xslt in="${index}" out="${target}/gesamt_linien.html" style="./xslt/gesamt_linien.xsl">
         <factory name="net.sf.saxon.TransformerFactoryImpl"/>
         <classpath location="${basedir}/saxon/saxon9he.jar"/>
-    </xslt>
+    </xslt>-->
     <xslt in="${index}" out="${target}/tag.html" style="./xslt/tag.xsl">
         <factory name="net.sf.saxon.TransformerFactoryImpl"/>
         <classpath location="${basedir}/saxon/saxon9he.jar"/>

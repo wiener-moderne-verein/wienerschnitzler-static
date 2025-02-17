@@ -27,7 +27,7 @@
 }
 
 #map-large {
-    height: 80vh;
+    height: 50vh;
     width: 90%; /* Maximale Breite */
     max-width: 90%; /* Sicherstellen, dass es nicht überschreitet */
     margin: 0; /* Kein Abstand nach außen */
