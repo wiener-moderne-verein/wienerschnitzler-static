@@ -1,8 +1,9 @@
 // Hilfsfunktion zum Aktualisieren der Button-Beschriftung inklusive Info-Icon
 function updateLineToggleButtonLabel(button, visible) {
-    const labelText = visible ? 'Linie ausblenden' : 'Linie';
-    button.innerHTML = labelText;
+  const labelText = visible ? 'Linie ausblenden' : 'Linie';
+  button.innerHTML = labelText;
 }
+
 
 // Beispiel: Annahme, dass "lineLayer" Deinen Linien-Layer darstellt und "map" Deine Leaflet-Karte ist.
 const lineToggle = document.getElementById('lineToggle');
@@ -38,30 +39,28 @@ function updateLineUrlParam(state) {
   window.history.replaceState({}, '', newUrl);
 }
 
-// Diese Datei enthält die Definition der Funktion
+// Funktion zum Setup des Toggle-Controls für einen Linien-Layer
 function setupLineToggleControl(layer, initialVisibility) {
-    let button = document.querySelector('button.linetoggle');
-    if (!button) {
-        console.warn('Kein Button mit Klasse "linetoggle" gefunden. Ein Button wird erstellt.');
-        button = document.createElement('button');
-        button.className = 'linetoggle';
-        document.body.appendChild(button);
-    }
-    
-    // Setze den Ausgangszustand
-    updateLineToggleButtonLabel(button, false);
+  // Hole den Toggle-Button und das Icon
+  let button = document.getElementById('lineToggle');
+  const icon = document.getElementById('lineToggleIcon');
 
-    // Klick-Handler setzen (verwende onclick, um Mehrfachevents zu vermeiden)
-    button.onclick = function() {
-        if (map.hasLayer(layer)) {
-            map.removeLayer(layer);
-            updateLineToggleButtonLabel(button, false);
-            updateLineUrlParam('off');
-        } else {
-            map.addLayer(layer);
-            layer.bringToBack();
-            updateLineToggleButtonLabel(button, true);
-            updateLineUrlParam('on');
-        }
-    };
+  // Setze initial den Zustand (Button-Beschriftung)
+  updateLineToggleButtonLabel(button, initialVisibility);
+
+  // Um alte Listener zu entfernen, ersetzen wir den Button durch eine Kopie:
+  const newButton = button.cloneNode(true);
+  button.parentNode.replaceChild(newButton, button);
+
+  newButton.addEventListener('change', function () {
+    if (this.checked) {
+      map.addLayer(layer);
+      layer.bringToBack();
+      updateLineUrlParam('on');
+    } else {
+      map.removeLayer(layer);
+      updateLineUrlParam('off');
+    }
+    updateLineToggleButtonLabel(newButton, this.checked);
+  });
 }

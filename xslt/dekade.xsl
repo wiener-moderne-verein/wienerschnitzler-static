@@ -55,6 +55,21 @@
                                         Punktes werden die jeweiligen Aufenthaltstage innerhalb
                                         desselben angezeigt.</p>
                                 </div>
+                                <p>
+                                    <!-- In Deinem HTML -->
+                                    <div class="form-check form-switch">
+                                        <!-- Ohne checked-Attribut ist der Schalter standardmäßig ausgeschaltet -->
+                                        <input class="form-check-input" type="checkbox"
+                                            id="lineToggle"/>
+                                        <label class="form-check-label" form="lineToggle">
+                                            <span id="lineToggleIcon" class="fs-5"
+                                                title="Schaltet die Linie ein oder aus"/>
+                                            <!-- Standard: Linie ausgeschaltet, also X anzeigen -->
+                                            <b>Verbindungslinie</b> ein-/ausschalten. Sie folgt den einzelnen Tagen, ist aber innerhalb eines
+                                            Tages <span class="fw-bold text-danger"
+                                                >nicht</span> chronologisch geordnet. </label>
+                                    </div>
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -62,6 +77,7 @@
                 <xsl:call-template name="html_footer"/>
                 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"/>
                 <script src="./js/fuer-alle-karten.js"/>
+                <script src="./js/linie-anzeigen.js"/>
                 <script src="./js/filter_dauer.js"/>
                 <script src="./js/script_dekade.js"/>
             </body>

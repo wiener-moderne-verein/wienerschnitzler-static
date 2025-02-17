@@ -57,14 +57,32 @@
                                         Schnitzlers Leben visualisiert. Durch die Auswahl eines
                                         Punktes werden die jeweiligen Aufenthaltstage innerhalb des
                                         Monats angezeigt.</p>
+                                    <p>
+                                        <!-- In Deinem HTML -->
+                                        <div class="form-check form-switch">
+                                            <!-- Ohne checked-Attribut ist der Schalter standardmäßig ausgeschaltet -->
+                                            <input class="form-check-input" type="checkbox"
+                                                id="lineToggle"/>
+                                            <label class="form-check-label" for="lineToggle">
+                                                <span id="lineToggleIcon" class="fs-5"
+                                                    title="Schaltet die Linie ein oder aus"/>
+                                                <!-- Standard: Linie ausgeschaltet, also X anzeigen -->
+                                                <b>Verbindungslinie</b> ein-/ausschalten. Sie folgt den einzelnen Tagen, ist aber innerhalb eines
+                                                Tages <span class="fw-bold text-danger"
+                                                    >nicht</span> chronologisch geordnet. </label>
+                                        </div>
+                                    </p>
                                 </div>
                             </div>
+                            
                         </div>
+                        
                     </div>
                 </main>
                 <xsl:call-template name="html_footer"/>
                 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"/>
                 <script src="./js/fuer-alle-karten.js"/>
+                <script src="./js/linie-anzeigen.js"/>
                 <script src="./js/filter_dauer.js"/>
                 <script src="./js/script_monat.js"/>
             </body>

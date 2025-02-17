@@ -6,15 +6,23 @@
     <delete>
         <fileset dir="${target}" includes="*.html"/>
     </delete>
-    <!--<xslt in="${index}" out="${target}/gesamt_linien.html" style="./xslt/gesamt_linien.xsl">
+    <xslt in="${index}" out="${target}/monat.html" style="./xslt/monat.xsl">
         <factory name="net.sf.saxon.TransformerFactoryImpl"/>
         <classpath location="${basedir}/saxon/saxon9he.jar"/>
-    </xslt>-->
+    </xslt>
+    <xslt in="${index}" out="${target}/dekade.html" style="./xslt/dekade.xsl">
+        <factory name="net.sf.saxon.TransformerFactoryImpl"/>
+        <classpath location="${basedir}/saxon/saxon9he.jar"/>
+    </xslt>
+    <xslt in="${index}" out="${target}/gesamt_linien.html" style="./xslt/gesamt_linien.xsl">
+        <factory name="net.sf.saxon.TransformerFactoryImpl"/>
+        <classpath location="${basedir}/saxon/saxon9he.jar"/>
+    </xslt>
     <xslt in="${index}" out="${target}/tag.html" style="./xslt/tag.xsl">
         <factory name="net.sf.saxon.TransformerFactoryImpl"/>
         <classpath location="${basedir}/saxon/saxon9he.jar"/>
     </xslt>
- <xslt in="${index}" out="${target}/404.html" style="./xslt/404.xsl">
+    <xslt in="${index}" out="${target}/404.html" style="./xslt/404.xsl">
         <factory name="net.sf.saxon.TransformerFactoryImpl"/>
         <classpath location="${basedir}/saxon/saxon9he.jar"/>
     </xslt>
@@ -22,20 +30,11 @@
         <factory name="net.sf.saxon.TransformerFactoryImpl"/>
         <classpath location="${basedir}/saxon/saxon9he.jar"/>
     </xslt>
-   <xslt in="${index}" out="${target}/gesamt.html" style="./xslt/gesamt.xsl">
-        <factory name="net.sf.saxon.TransformerFactoryImpl"/>
-        <classpath location="${basedir}/saxon/saxon9he.jar"/>
-   </xslt>
-  <xslt in="${index}" out="${target}/gesamt_typen.html" style="./xslt/gesamt_typen.xsl">
+    <xslt in="${index}" out="${target}/gesamt.html" style="./xslt/gesamt.xsl">
         <factory name="net.sf.saxon.TransformerFactoryImpl"/>
         <classpath location="${basedir}/saxon/saxon9he.jar"/>
     </xslt>
- <xslt in="${index}" out="${target}/dekade.html" style="./xslt/dekade.xsl">
-        <factory name="net.sf.saxon.TransformerFactoryImpl"/>
-        <classpath location="${basedir}/saxon/saxon9he.jar"/>
-    </xslt>
-    
-    <xslt in="${index}" out="${target}/monat.html" style="./xslt/monat.xsl">
+    <xslt in="${index}" out="${target}/gesamt_typen.html" style="./xslt/gesamt_typen.xsl">
         <factory name="net.sf.saxon.TransformerFactoryImpl"/>
         <classpath location="${basedir}/saxon/saxon9he.jar"/>
     </xslt>
@@ -43,13 +42,12 @@
         <factory name="net.sf.saxon.TransformerFactoryImpl"/>
         <classpath location="${basedir}/saxon/saxon9he.jar"/>
     </xslt>
-    
-    <xslt in="${index}" out="${target}/schnitzler-und-ich.html" style="./xslt/schnitzler-und-ich.xsl">
+    <xslt in="${index}" out="${target}/schnitzler-und-ich.html"
+        style="./xslt/schnitzler-und-ich.xsl">
         <factory name="net.sf.saxon.TransformerFactoryImpl"/>
         <classpath location="${basedir}/saxon/saxon9he.jar"/>
     </xslt>
-
-   <xslt in="./data/indices/listplace.xml" out="${target}/listplace.html"
+    <xslt in="./data/indices/listplace.xml" out="${target}/listplace.html"
         style="./xslt/listplace.xsl">
         <factory name="net.sf.saxon.TransformerFactoryImpl"/>
         <classpath location="${basedir}/saxon/saxon9he.jar"/>
