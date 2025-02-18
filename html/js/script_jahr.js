@@ -158,15 +158,6 @@ function setYearAndLoad(year) {
     loadLineGeoJsonByYear(year);
 }
 
-
-// Initialisierung der Karte
-function initializeMap() {
-    map = L.map('map').setView([48.2082, 16.3738], 5);
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 18,
-    }).addTo(map);
-}
-
 // Event-Listener und Initialisierung
 document.addEventListener('DOMContentLoaded', () => {
     // Karte initialisieren

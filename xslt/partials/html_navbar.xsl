@@ -57,7 +57,7 @@
                                     <ul class="dropdown-menu" aria-labelledby="zeitraeumeDropdown">
                                         <li><a class="dropdown-item" href="tag.html">Einzelner Tag</a></li>
                                         <li><a class="dropdown-item" href="monat.html">Monat</a></li>
-                                        <li><a class="dropdown-item" href="gesamt.html">Jahr</a></li>
+                                        <li><a class="dropdown-item" href="jahr.html">Jahr</a></li>
                                         <li><a class="dropdown-item" href="dekade.html">Dekade</a></li>
                                     </ul>
                                 </li>
