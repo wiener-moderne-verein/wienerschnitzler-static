@@ -125,7 +125,7 @@ function createFilterTime(features) {
   
   // Button "(keines)" – setzt den Filter so, dass keine Jahre ausgewählt sind (years=0)
   const noneButton = document.createElement('button');
-  noneButton.innerText = "(keinen)";
+  noneButton.innerText = "(keines)";
   noneButton.classList.add('btn-filter', 'btn-filter-sm', 'm-1');
   noneButton.style.backgroundColor = "#ddd";
   noneButton.style.color = "black";
