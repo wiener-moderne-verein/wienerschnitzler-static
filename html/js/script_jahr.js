@@ -1,5 +1,4 @@
 // Globale Variablen und Funktionen
-let map;
 const geoJsonLayers = [];
 let lineLayer; // Für den Linien-Layer
 
