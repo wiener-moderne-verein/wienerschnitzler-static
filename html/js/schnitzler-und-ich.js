@@ -33,6 +33,7 @@ function findNearest(lat, lon) {
         if (distance < minDistance) {
             minDistance = distance;
             nearest = {
+                id: feature.properties.id, // Hier wird die ID aus den GeoJSON-Daten übernommen
                 name: feature.properties.title || "Unbekannt",
                 timestamps: feature.properties.timestamp || [],
                 distance,
