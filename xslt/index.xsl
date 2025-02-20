@@ -60,8 +60,7 @@
                                 die ihm wichtig waren. Zugleich wird auch sichtbar, wo er sich nie
                                 aufgehalten hat. </p>
                             <p>Die Vollständigkeit der derzeit erfassten Daten schwankt. Die Durchsicht des Tagebuchs für
-                                den Zeitraum 1912–1925
-                                ist noch nicht abgeschlossen.</p>
+                                den Zeitraum 1913–1925 ist im Gange.</p>
                             <p style="color: red;">BETA: Unter aktiver Entwicklung, weitere
                                 Funktionen werden laufend eingebaut.</p>
                         </div>
