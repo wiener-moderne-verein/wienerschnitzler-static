@@ -81,7 +81,7 @@ function loadLineGeoJsonByDecade(decade) {
       lineLayer = L.geoJSON(filteredFeatures, {
         style: {
           color: '#82D282',
-          weight: 1
+          weight: 2
         },
         onEachFeature: function (feature, layer) {
           if (feature.properties) {

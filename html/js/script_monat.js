@@ -79,7 +79,7 @@ function loadLineGeoJsonByMonth(month) {
             
             // Erstelle den neuen Linien-Layer
             const newLineLayer = L.geoJSON(filteredFeatures, {
-                style: { color: '#AAAAFA', weight: 1 },
+                style: { color: '#AAAAFA', weight: 2 },
                 onEachFeature: function(feature, layer) {
                     if (feature.properties) {
                         layer.bindPopup(`Monat: ${feature.properties.month}`);
