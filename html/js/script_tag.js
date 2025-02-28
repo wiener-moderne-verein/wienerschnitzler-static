@@ -55,62 +55,48 @@ function loadGeoJsonByDate(date) {
             return response.json();
         })
         .then(data => {
-            const titles = [];
+            const titles = [];  // Array zum Sammeln der Titel
             const name = data.features[0].properties.name || date;
             
             // Trenne Punkt- und Linien-Features
             const pointFeatures = data.features.filter(feature => feature.geometry.type === 'Point');
             const lineFeatures = data.features.filter(feature => feature.geometry.type === 'LineString');
 
-            // Erstelle zuerst den Linien-Layer
-           // Erstelle den Linien-Layer
-lineLayer = L.geoJSON(lineFeatures, {
-    style: {
-        color: '#462346',
-        weight: 2
-    }
-});
+            // Erstelle den Linien-Layer
+            lineLayer = L.geoJSON(lineFeatures, {
+                style: {
+                    color: '#462346',
+                    weight: 2
+                }
+            });
+            
+            // Prüfe den URL-Parameter l: Wenn l=off, dann Linie ausblenden; Standard ist sichtbar.
+            const params = new URLSearchParams(window.location.search);
+            const lineParam = params.get('l');
+            const lineVisible = (lineParam === 'on');
+            document.getElementById('lineToggle').checked = lineVisible;
+            const lineToggleIcon = document.getElementById('lineToggleIcon');
+            if (lineVisible) {
+                lineToggleIcon.innerHTML = '';
+                lineLayer.addTo(map);
+                lineLayer.bringToBack();
+            } else {
+                lineToggleIcon.innerHTML = '';
+                map.removeLayer(lineLayer);
+            }
+            if (lineFeatures.length > 0) {
+                setupLineToggleControl(lineLayer, lineVisible);
+            }
 
-// Prüfe den URL-Parameter l: Wenn l=off, dann Linie ausblenden; Standard ist sichtbar.
-const params = new URLSearchParams(window.location.search);
-const lineParam = params.get('l');
-const lineVisible = (lineParam === 'on');
-// Setze den Zustand der Checkbox
-document.getElementById('lineToggle').checked = lineVisible;
-
-// Setze das Icon abhängig vom Zustand
-const lineToggleIcon = document.getElementById('lineToggleIcon');
-if (lineVisible) {
-    lineToggleIcon.innerHTML = '';
-    lineLayer.addTo(map);
-    lineLayer.bringToBack();
-} else {
-    lineToggleIcon.innerHTML = '';
-    map.removeLayer(lineLayer);
-}
-
-// Falls Linien vorhanden sind, richte das Toggle-Control ein (der Button wird per HTML bereitgestellt)
-if (lineFeatures.length > 0) {
-    setupLineToggleControl(lineLayer, lineVisible);
-}
-
-            // Erstelle anschließend den Punkte-Layer und füge ihn der Karte hinzu (sodass die Punkte darüber liegen)
+            // Erstelle den Punkte-Layer, sammle dabei die Titel und binde die Popups
             const pointsLayer = L.geoJSON(pointFeatures, {
-                pointToLayer: createCircleMarker, // Verwendet Deine Funktion
+                pointToLayer: createCircleMarker,
                 onEachFeature: function (feature, layer) {
-                     if (feature.properties) {
-                      const popupContent = createPopupContent(feature); // Deine Pop-up-Funktion
-                      layer.bindPopup(popupContent, { maxWidth: 300 });
-                      
-                      // Popup beim Mouseover öffnen
-                      layer.on('mouseover', function(e) {
-                        this.openPopup();
-                      });
-                      // Popup beim Mouseout schließen
-                      layer.on('mouseout', function(e) {
-                        this.closePopup();
-                      });
-                  }
+                    // Titel in das Array aufnehmen, falls vorhanden
+                    if (feature.properties && feature.properties.title) {
+                        titles.push(feature.properties.title);
+                    }
+                    bindPopupEvents(feature, layer);
                 }
             }).addTo(map);
             geoJsonLayers.push(pointsLayer);
@@ -122,6 +108,7 @@ if (lineFeatures.length > 0) {
                 map.fitBounds(lineLayer.getBounds());
             }
 
+            // Update den Text unterhalb der Karte mit den gesammelten Titeln
             updateMapInhaltText(titles, date, name);
         })
         .catch(error => {

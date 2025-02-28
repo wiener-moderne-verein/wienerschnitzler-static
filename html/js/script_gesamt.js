@@ -139,20 +139,9 @@ function displayFilteredGeoJson() {
     const newLayer = L.geoJSON(filteredFeatures, {
         pointToLayer: createCircleMarker,
         onEachFeature: function (feature, layer) {
-             if (feature.properties) {
-                      const popupContent = createPopupContent(feature); // Deine Pop-up-Funktion
-                      layer.bindPopup(popupContent, { maxWidth: 300 });
-                      
-                      // Popup beim Mouseover öffnen
-                      layer.on('mouseover', function(e) {
-                        this.openPopup();
-                      });
-                      // Popup beim Mouseout schließen
-                      layer.on('mouseout', function(e) {
-                        this.closePopup();
-                      });
-                  }
+          bindPopupEvents(feature, layer);
         }
+        
     }).addTo(map);
 
     geoJsonLayers.push(newLayer);

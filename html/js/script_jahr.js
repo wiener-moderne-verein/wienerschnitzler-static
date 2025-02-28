@@ -38,19 +38,9 @@ function loadGeoJsonByYear(year) {
         .then(data => {
             const newLayer = L.geoJSON(data, {
                 pointToLayer: createCircleMarker, // Verwende die ausgelagerte Funktion für Marker
-                 if (feature.properties) {
-                      const popupContent = createPopupContent(feature); // Deine Pop-up-Funktion
-                      layer.bindPopup(popupContent, { maxWidth: 300 });
-                      
-                      // Popup beim Mouseover öffnen
-                      layer.on('mouseover', function(e) {
-                        this.openPopup();
-                      });
-                      // Popup beim Mouseout schließen
-                      layer.on('mouseout', function(e) {
-                        this.closePopup();
-                      });
-                  }
+                onEachFeature: function (feature, layer) {
+          bindPopupEvents(feature, layer);
+        }
             }).addTo(map);
 
             geoJsonLayers.push(newLayer);

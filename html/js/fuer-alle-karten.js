@@ -36,6 +36,31 @@ function initializeMap() {
         maxZoom: 18
     }).addTo(map);
 }
+
+function bindPopupEvents(feature, layer) {
+  if (feature.properties) {
+    const popupContent = createPopupContent(feature);
+    layer.bindPopup(popupContent, { maxWidth: 300 });
+    
+    // Popup beim Mouseover öffnen
+    layer.on('mouseover', function() {
+      this.openPopup();
+    });
+    
+    // Es wird bewusst kein mouseout-Handler gesetzt, damit das Popup offen bleibt.
+    
+    // Falls noch nicht geschehen, einen globalen Klick-Handler an die Karte anhängen,
+    // der alle offenen Popups schließt, wenn auf einen leeren Bereich geklickt wird.
+    if (typeof map !== 'undefined' && !map.hasCustomPopupClickHandler) {
+      map.on('click', function() {
+        map.closePopup();
+      });
+      // Flag setzen, damit der Handler nur einmal registriert wird
+      map.hasCustomPopupClickHandler = true;
+    }
+  }
+}
+
   
 function createPopupContent(feature) {
     const title = feature.properties.title || 'Kein Titel';
