@@ -61,11 +61,10 @@ function bindPopupEvents(feature, layer) {
   }
 }
 
-  
 function createPopupContent(feature) {
     const title = feature.properties.title || 'Kein Titel';
     const id = feature.properties.id || '#';
-    const titleLink = `<a href="${id}.html" target="_blank" class="text-dark text-decoration-none">${title} →</a>`;
+    const titleLink = `<a href="${id}.html" target="_blank" class="text-decoration-none">${title}</a>`;
 
     // Hole die rohen Timestamps (können als Array oder als String vorliegen)
     const datesRaw = feature.properties.timestamp || [];
@@ -110,28 +109,36 @@ function createPopupContent(feature) {
         links += `<p style="text-align: right;">… <a href="${id}.html">${remainingCount} weitere</a></p>`;
     }
 
+    // Prüfe, ob "tag.html" in der URL enthalten ist
+    const isTagPage = window.location.href.indexOf("tag.html") > -1;
+
     // Erstelle den anzuzeigenden Text (stayInfo)
     let stayInfo = "";
-    if (yearFilterPresent) {
-        if (selectedYears.length === 0) {
-            // Es wurde ein Jahresfilter gesetzt, aber keine Jahre ausgewählt
-            stayInfo = "Keine Aufenthalte ausgewählt.";
-        } else if (selectedYears.length === 1) {
-            // Ein Jahr ausgewählt: "Ein Aufenthaltstag im Jahr 2019" oder "5 Aufenthaltstage im Jahr 2019"
-            stayInfo = (count === 1 ? "Ein Aufenthaltstag" : `${count} Aufenthaltstage`) +
-                       " im Jahr " + selectedYears[0] +":";
-        } else {
-            // Mehrere Jahre ausgewählt: "Ein Aufenthaltstag in den Jahren 2018, 2019" oder "5 Aufenthaltstage in den Jahren 2018, 2019"
-            stayInfo = (count === 1 ? "Ein Aufenthaltstag" : `${count} Aufenthaltstage`) +
-                       " in den Jahren " + selectedYears.join(", ") +":";
-        }
-        // Anschließend die (gefilterten) Tages-Links anhängen, sofern vorhanden:
-        if (links) {
-            stayInfo += "<br/>" + links;
-        }
+    if (isTagPage) {
+        // Wenn "tag.html" in der URL steht, soll weder "Aufenthaltstag" noch Datum angezeigt werden.
+        stayInfo = "";
     } else {
-        // Kein Jahresfilter → alle Tage berücksichtigen, wie bisher
-        stayInfo = (count === 1 ? "Ein Aufenthaltstag" : `${count} Aufenthaltstage`) + ":<br/>" + links;
+        if (yearFilterPresent) {
+            if (selectedYears.length === 0) {
+                // Es wurde ein Jahresfilter gesetzt, aber keine Jahre ausgewählt
+                stayInfo = "Keine Aufenthalte ausgewählt.";
+            } else if (selectedYears.length === 1) {
+                // Ein Jahr ausgewählt: "Ein Aufenthaltstag im Jahr 2019" oder "5 Aufenthaltstage im Jahr 2019"
+                stayInfo = (count === 1 ? "Ein Aufenthaltstag" : `${count} Aufenthaltstage`) +
+                           " im Jahr " + selectedYears[0] +":";
+            } else {
+                // Mehrere Jahre ausgewählt: "Ein Aufenthaltstag in den Jahren 2018, 2019" oder "5 Aufenthaltstage in den Jahren 2018, 2019"
+                stayInfo = (count === 1 ? "Ein Aufenthaltstag" : `${count} Aufenthaltstage`) +
+                           " in den Jahren " + selectedYears.join(", ") +":";
+            }
+            // Anschließend die (gefilterten) Tages-Links anhängen, sofern vorhanden:
+            if (links) {
+                stayInfo += "<br/>" + links;
+            }
+        } else {
+            // Kein Jahresfilter → alle Tage berücksichtigen, wie bisher
+            stayInfo = (count === 1 ? "Ein Aufenthaltstag" : `${count} Aufenthaltstage`) + ":<br/>" + links;
+        }
     }
 
     const wikipediaLink = feature.properties.wikipedia
@@ -160,18 +167,19 @@ function createPopupContent(feature) {
 
     return `
     <div class="rounded" style="font-family: Arial, sans-serif;">
-        <div class="p-3 mb-3">
-            <h5 class="m-0"><b>${titleLink}</b></h5>
-        </div>
-        <p class="m-0">${stayInfo}</p>
-        ${wohnortContent}
-        ${arbeitsortContent}
-        <p class="m-0 mt-3 d-flex align-items-center">
-            ${wikipediaLink}
-            ${wiengeschichtewikiLink}
-        </p>
-    </div>`;
+    <div class="p-3 mb-2" style="background: var(--projektfarbe);">
+        <h5 class="m-0">${titleLink}</h5>
+    </div>
+    <p class="m-0">${stayInfo}</p>
+    ${wohnortContent}
+    ${arbeitsortContent}
+    <p class="m-0 mt-3 d-flex align-items-center">
+        ${wikipediaLink}
+        ${wiengeschichtewikiLink}
+    </p>
+</div>`;
 }
+
 
 function populateLocationDropdown(features) {
     const params = new URLSearchParams(window.location.search);

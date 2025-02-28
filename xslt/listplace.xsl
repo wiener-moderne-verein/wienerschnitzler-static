@@ -172,12 +172,13 @@
                                 var long = <xsl:value-of select="replace(tokenize(./tei:location[1]/tei:geo[1]/text(), ' ')[2], ',', '.')"/>;
                                 $("#map_detail").css("height", "500px");
                                 var map = L.map('map_detail').setView([Number(lat), Number(long)], 13);
-                                L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                                L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
                                 maxZoom: 19,
-                                attribution: '&amp;copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+                                attribution: '&amp;copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &amp;copy; <a href="https://carto.com/attributions">CARTO</a>'
                                 }).addTo(map);
                                 var marker = L.marker([Number(lat), Number(long)]).addTo(map);
                             </script>
+                            
                         </xsl:if>
                     </body>
                 </html>
