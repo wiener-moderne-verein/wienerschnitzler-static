@@ -1,6 +1,7 @@
 // Globaler Variablen-Container für GeoJSON-Layer
-const geoJsonLayers = [];
-let lineLayer; // Für den Linien-Layer
+const geoJsonLayers =[];
+let lineLayer;
+// Für den Linien-Layer
 
 // Funktion zum Entfernen aller bisher hinzugefügten GeoJSON-Layer (Punkte)
 function clearGeoJsonLayers() {
@@ -15,50 +16,53 @@ function loadGeoJsonByMonth(month) {
     // Entferne vorherige Punkt-Layer
     clearGeoJsonLayers();
     
-    fetch(url)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`GeoJSON für ${month} nicht gefunden.`);
-            }
-            return response.json();
-        })
-        .then(data => {
-            const newLayer = L.geoJSON(data, {
-                pointToLayer: createCircleMarker, // Deine Funktion für Marker
-                onEachFeature: function (feature, layer) {
-          bindPopupEvents(feature, layer);
+    fetch(url).then(response => {
+        if (! response.ok) {
+            throw new Error(`GeoJSON für ${month} nicht gefunden.`);
         }
-            }).addTo(map);
-            
-            geoJsonLayers.push(newLayer);
-            
-            if (newLayer.getLayers().length > 0) {
-                map.fitBounds(newLayer.getBounds());
-            } else {
-                console.warn('Keine gültigen Features gefunden.');
+        return response.json();
+    }).then(data => {
+        const newLayer = L.geoJSON(data, {
+            pointToLayer: createCircleMarker, // Deine Funktion für Marker
+            onEachFeature: function (feature, layer) {
+                bindPopupEvents(feature, layer);
             }
-            
-            // Optional: Legende etc. erstellen
-            const maxImportance = Math.max(
-                ...data.features.map(feature => feature.properties.importance || 0)
-            );
-            createLegend(maxImportance);
-        })
-        .catch(error => {
-            console.error('Error loading GeoJSON:', error);
-            clearGeoJsonLayers();
-        });
+        }).addTo(map);
+        
+        geoJsonLayers.push(newLayer);
+        
+        if (newLayer.getLayers().length > 0) {
+            map.fitBounds(newLayer.getBounds());
+        } else {
+            console.warn('Keine gültigen Features gefunden.');
+        }
+        
+        // Optional: Legende etc. erstellen
+        const maxImportance = Math.max(...data.features.map(feature => feature.properties.importance || 0));
+        createLegend(maxImportance);
+    }). catch (error => {
+        console.error('Error loading GeoJSON:', error);
+        clearGeoJsonLayers();
+    });
 }
 
-// Neue Funktion: Laden des Linien-Layers für den ausgewählten Monat
+const namedLineLayers = {};
+
 function loadLineGeoJsonByMonth(month) {
     const url = "https://raw.githubusercontent.com/wiener-moderne-verein/wienerschnitzler-data/refs/heads/main/data/editions/geojson/l_months.geojson";
+    const layerName = "lineLayer_" + month;
     
-    // Falls bereits ein Linien-Layer vorhanden ist, entferne ihn
-    if (lineLayer && map.hasLayer(lineLayer)) {
-        map.removeLayer(lineLayer);
-        lineLayer = null; // Optional: Setze die Variable zurück
-    }
+    // Entferne alle vorhandenen Linien-Layer aus namedLineLayers
+    Object.keys(namedLineLayers).forEach(key => {
+        map.removeLayer(namedLineLayers[key]);
+        delete namedLineLayers[key];
+    });
+    
+    // Setze den Toggle zurück
+    const lineToggle = document.getElementById('lineToggle');
+    lineToggle.checked = false;
+    const lineToggleIcon = document.getElementById('lineToggleIcon');
+    lineToggleIcon.innerHTML = '';
     
     fetch(url)
         .then(response => {
@@ -68,63 +72,50 @@ function loadLineGeoJsonByMonth(month) {
             return response.json();
         })
         .then(data => {
-            // Filtere die Features nach dem Property "month"
+            // Filtere Features für den gewünschten Monat
             const filteredFeatures = data.features.filter(feature =>
                 feature.properties && feature.properties.month === month
             );
             
-            // Erstelle den Linien-Layer (mit einfachem Stil)
-            lineLayer = L.geoJSON(filteredFeatures, {
-                style: {
-                   color: '#AAAAFA',
-                    weight: 1
-                },
+            // Erstelle den neuen Linien-Layer
+            const newLineLayer = L.geoJSON(filteredFeatures, {
+                style: { color: '#AAAAFA', weight: 1 },
                 onEachFeature: function(feature, layer) {
                     if (feature.properties) {
-                        const popupContent = `Monat: ${feature.properties.month}`;
-                        layer.bindPopup(popupContent);
+                        layer.bindPopup(`Monat: ${feature.properties.month}`);
                     }
                 }
             });
             
-            // Prüfe den aktuellen Zustand des Toggle‑Controls
-            const lineToggle = document.getElementById('lineToggle');
-            // Falls das Kontrollkästchen angehakt ist, soll die Linie sichtbar sein
-            if (lineToggle.checked) {
-                lineLayer.addTo(map);
-                lineLayer.bringToBack();
-            }
+            newLineLayer.layerName = layerName;
+            namedLineLayers[layerName] = newLineLayer;
             
-            // Richte den Toggle-Listener ein (falls noch nicht geschehen)
-            setupLineToggleControl(lineLayer);
+            // Setze den globalen aktiven Layer auf den neuen Layer
+            activeLineLayer = newLineLayer;
+            
+            // Falls der Toggle aktiv ist, füge den neuen Layer hinzu
+            if (lineToggle.checked) {
+                activeLineLayer.addTo(map);
+                activeLineLayer.bringToBack();
+            }
         })
         .catch(error => {
             console.error("Error loading line GeoJSON:", error);
-            if (lineLayer && map.hasLayer(lineLayer)) {
-                map.removeLayer(lineLayer);
-            }
         });
 }
 
-// Funktion zum Einrichten des Toggle-Controls für den Linien-Layer
+
+// Toggle‑Listener für den Linien-Layer einrichten
 function setupLineToggleControl(layer) {
     const lineToggle = document.getElementById('lineToggle');
-    const toggleIcon = document.getElementById('toggleIcon');
-    
-    // Aktualisiere das Icon basierend auf dem aktuellen Zustand
-    function updateIcon() {
-        if (lineToggle.checked) {
-            toggleIcon.innerHTML = '<i class="bi bi-circle-fill"></i>';
-        } else {
-            toggleIcon.innerHTML = '<i class="bi bi-x-lg"></i>';
-        }
-    }
-    
-    // Setze initial das Icon
-    updateIcon();
-    
-    // Eventlistener für den Toggle-Schalter
-    lineToggle.addEventListener('change', function() {
+    const lineToggleIcon = document.getElementById('lineToggleIcon');
+
+    // Um alte Listener zu entfernen, klonen wir den Button und binden den Listener neu
+    const newToggle = lineToggle.cloneNode(true);
+    lineToggle.parentNode.replaceChild(newToggle, lineToggle);
+
+    // Binde den Eventlistener an den neuen Toggle
+    newToggle.addEventListener('change', function () {
         if (this.checked) {
             map.addLayer(layer);
             layer.bringToBack();
@@ -141,12 +132,14 @@ function setupLineToggleControl(layer) {
 function updateLineUrlParam(state) {
     const params = new URLSearchParams(window.location.search);
     if (state === 'off') {
-        params.set('l', 'off');
+        params. set ('l', 'off');
     } else {
-        params.delete('l');
+        params. delete ('l');
     }
     const newUrl = window.location.pathname + '?' + params.toString() + window.location.hash;
-    window.history.replaceState({}, '', newUrl);
+    window.history.replaceState({
+    },
+    '', newUrl);
 }
 
 // Funktionen zum Aktualisieren des URL-Fragments und zum Ändern des Monats bleiben unverändert:
@@ -158,7 +151,7 @@ function updateUrlFragment(month) {
 
 function getMonthFromUrl() {
     const hash = window.location.hash;
-    return hash ? hash.substring(1) : null;
+    return hash ? hash.substring(1): null;
 }
 
 function setMonthAndLoad(month) {
@@ -173,7 +166,7 @@ function formatMonthToISO(date) {
 }
 
 function changeMonthByMonths(currentMonth, months) {
-    const [year, month] = currentMonth.split('-').map(Number);
+    const[year, month] = currentMonth.split('-').map(Number);
     const newDate = new Date(year, month - 1 + months, 1);
     return formatMonthToISO(newDate);
 }
@@ -219,3 +212,39 @@ window.addEventListener('hashchange', function () {
 
 const initialMonth = getMonthFromUrl() || '1895-01';
 setMonthAndLoad(initialMonth);
+
+// Globale Variable für den aktuell aktiven Linien-Layer
+let activeLineLayer = null;
+
+// Einmaliger Setup des Toggle-Listeners (z. B. beim Initialisieren der Seite)
+function initLineToggleControl() {
+    const lineToggle = document.getElementById('lineToggle');
+    const lineToggleIcon = document.getElementById('lineToggleIcon');
+
+    // Entferne vorherige Eventlistener, falls vorhanden (optional, falls du initLineToggleControl mehrfach aufrufst)
+    lineToggle.replaceWith(lineToggle.cloneNode(true));
+    
+    // Hole das Toggle-Element erneut, da cloneNode ein neues Element erzeugt
+    const newToggle = document.getElementById('lineToggle');
+    newToggle.addEventListener('change', function() {
+        if (this.checked) {
+            // Füge immer den aktuell aktiven Layer hinzu (falls vorhanden)
+            if (activeLineLayer) {
+                map.addLayer(activeLineLayer);
+                activeLineLayer.bringToBack();
+            }
+            lineToggleIcon.innerHTML = '';
+            updateLineUrlParam('on');
+        } else {
+            if (activeLineLayer) {
+                map.removeLayer(activeLineLayer);
+            }
+            lineToggleIcon.innerHTML = '';
+            updateLineUrlParam('off');
+        }
+    });
+}
+
+// Rufe initLineToggleControl einmal beim Start auf
+initLineToggleControl();
+

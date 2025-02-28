@@ -143,9 +143,9 @@ function setYearAndLoad(year) {
     const lineToggle = document.getElementById('lineToggle');
     if (lineToggle) {
         lineToggle.checked = false;
-        const toggleIcon = document.getElementById('toggleIcon');
-        if (toggleIcon) {
-            toggleIcon.innerHTML = '<i class="bi bi-x-lg"></i>';
+        const lineToggleIcon = document.getElementById('lineToggleIcon');
+        if (lineToggleIcon) {
+            lineToggleIcon.innerHTML = '';
         }
     }
     
