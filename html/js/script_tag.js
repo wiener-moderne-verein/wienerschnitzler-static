@@ -98,22 +98,19 @@ if (lineFeatures.length > 0) {
             const pointsLayer = L.geoJSON(pointFeatures, {
                 pointToLayer: createCircleMarker, // Verwendet Deine Funktion
                 onEachFeature: function (feature, layer) {
-                    if (feature.properties) {
-                        const popupContent = createPopupContent(feature);
-                        layer.bindPopup(popupContent, { maxWidth: 300 });
-                        
-                        let title = feature.properties.title 
-                            ? `<a href="${feature.properties.id}.html">${feature.properties.title}</a>` 
-                            : 'Kein Titel';
-
-                        const id = feature.properties.id;
-                        if (checkDateInRange(date, id)) {
-                            title = `${title} <span style="color: black;">(Wohnadresse)</span>`;
-                        }
-                        titles.push(feature.properties.id 
-                            ? `<a href="${feature.properties.id}" target="_blank">${title}</a>` 
-                            : title);
-                    }
+                     if (feature.properties) {
+                      const popupContent = createPopupContent(feature); // Deine Pop-up-Funktion
+                      layer.bindPopup(popupContent, { maxWidth: 300 });
+                      
+                      // Popup beim Mouseover öffnen
+                      layer.on('mouseover', function(e) {
+                        this.openPopup();
+                      });
+                      // Popup beim Mouseout schließen
+                      layer.on('mouseout', function(e) {
+                        this.closePopup();
+                      });
+                  }
                 }
             }).addTo(map);
             geoJsonLayers.push(pointsLayer);
