@@ -13,6 +13,7 @@
                         <p>Ein Projekt von:</p>
                         <img src="./images/wmv-logo-white.jpg" alt="Logo Wiener Moderne Verein" class="img-fluid my-2" width="200px"/>
                         <p>Wiener Moderne Verein</p>
+                        <p class="mt-2"><i>Zitiervorschlag</i>: Martin Anton Müller, Laura Untner: Wiener Schnitzler – Schnitzlers Wien. Eine geografische Verortung von Arthur Schnitzler. Wien, Berlin 2025.</p>
                     </div>
                     <div class="col-md-5 text-end mb-4">
                         <img src="./images/Stadt_Wien_Kultur_pos_rgb.jpg" alt="Logo Stadt Wien Kultur" class="img-fluid my-2" width="200px"/>

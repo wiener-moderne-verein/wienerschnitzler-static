@@ -26,6 +26,7 @@
                 <div class="container mt-5">
                     <div class="row">
                                                 <h1>Wiener Schnitzler – Schnitzlers Wien</h1>
+                        <h2>Eine geografische Verortung von Arthur Schnitzler durch Martin Anton Müller und Laura Untner</h2>
 
                         <!-- Rechte Spalte für das Bild (wird zuerst angezeigt auf kleinen Bildschirmen) -->
                         <div class="col-md-6 order-2 order-md-1">
@@ -61,8 +62,6 @@
                                 aufgehalten hat. </p>
                             <p>Die Detailtiefe der derzeit erfassten Daten variiert. Die Durchsicht des Tagebuchs für
                                 den Zeitraum 1915–1924 ist im Gange.</p>
-                            <p style="color: red;">BETA: Unter aktiver Entwicklung, weitere
-                                Funktionen werden laufend eingebaut.</p>
                         </div>
                     </div>
                 </div>
