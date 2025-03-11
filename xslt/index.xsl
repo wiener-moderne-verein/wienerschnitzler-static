@@ -60,7 +60,7 @@
                                 die ihm wichtig waren. Zugleich wird auch sichtbar, wo er sich nie
                                 aufgehalten hat. </p>
                             <p>Die Detailtiefe der derzeit erfassten Daten variiert. Die Durchsicht des Tagebuchs für
-                                den Zeitraum 1914–1924 ist im Gange.</p>
+                                den Zeitraum 1915–1924 ist im Gange.</p>
                             <p style="color: red;">BETA: Unter aktiver Entwicklung, weitere
                                 Funktionen werden laufend eingebaut.</p>
                         </div>
