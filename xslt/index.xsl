@@ -25,9 +25,9 @@
                 <xsl:call-template name="nav_bar"/>
                 <div class="container mt-5">
                     <div class="row">
-                                                <h1>Wiener Schnitzler – Schnitzlers Wien</h1>
-                        <h4 class="mb-4 text-center">Eine geografische Verortung durch Martin Anton Müller und Laura Untner</h4>
-
+                        <h1>Wiener Schnitzler – Schnitzlers Wien</h1>
+                        <h4 class="mb-4 text-center">Eine geografische Verortung durch Martin Anton
+                            Müller und Laura Untner</h4>
                         <!-- Rechte Spalte für das Bild (wird zuerst angezeigt auf kleinen Bildschirmen) -->
                         <div class="col-md-6 order-2 order-md-1">
                             <div class="image-container">
@@ -53,15 +53,15 @@
                                     href="https://schnitzler-briefe.acdh.oeaw.ac.at/"
                                     target="_blank"
                                     style="color: #A63437; font-weight: bold; text-decoration: none;"
-                                    >Korrespondenz</a> und weiterer Dokumente verzeichnen wir derzeit
-                                über 43.000 Aufenthalte an über 4.100 Orten. Gegenwärtig gibt es für keine andere
-                                Person seiner Zeit so viele frei verfügbare und
-                                georeferenzierte Daten. Diese zeigen, wo Schnitzler sich bewegte,
-                                welche Häuser, Straßen, Stadtteile, Städte und Länder er kannte und
-                                die ihm wichtig waren. Zugleich wird auch sichtbar, wo er sich nie
-                                aufgehalten hat. </p>
-                            <p>Die Detailtiefe der derzeit erfassten Daten variiert. Die Durchsicht des Tagebuchs für
-                                den Zeitraum 1915–1924 ist im Gange.</p>
+                                    >Korrespondenz</a> und weiterer Dokumente verzeichnen wir
+                                derzeit über 43.000 Aufenthalte an über 4.100 Orten. Gegenwärtig
+                                gibt es für keine andere Person seiner Zeit so viele frei verfügbare
+                                und georeferenzierte Daten. Diese zeigen, wo Schnitzler sich
+                                bewegte, welche Häuser, Straßen, Stadtteile, Städte und Länder er
+                                kannte und welche ihm wichtig waren. Zugleich wird auch sichtbar, wo
+                                er sich nie aufhielt.</p>
+                            <p>Die Detailtiefe der derzeit erfassten Daten variiert. Die Durchsicht
+                                des Tagebuchs für den Zeitraum 1915–1924 ist im Gange.</p>
                         </div>
                     </div>
                 </div>
