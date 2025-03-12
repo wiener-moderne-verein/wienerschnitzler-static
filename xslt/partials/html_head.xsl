@@ -25,6 +25,7 @@
         <link rel="stylesheet"
             href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"/>
         <link rel="stylesheet" href="css/style.css" type="text/css"/>
+        <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'/>
         <!-- Favicon -->
         <link rel="icon" type="image/png" href="/images/favicon-96x96.png" sizes="96x96" />
         <link rel="icon" type="image/svg+xml" href="/images/favicon.svg" />
