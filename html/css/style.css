@@ -53,18 +53,10 @@ body {
 }
 
 h1 {
-    margin: 40px 0 5px 0;
+    margin: 40px 0 20px 0;
     text-align: center;
     letter-spacing: 0.02em;
 }
-
-h1 {
-    margin: 0 0 20px 0;
-    text-align: center;
-    letter-spacing: 0.02em;
-}
-
-
 .lead {
   font-size: 1.1rem;
   font-weight: 400;
@@ -433,9 +425,6 @@ footer {
             
 ul {
   list-style-type: "– ";
-}
-.mb-4 {
-  margin-bottom: 0rem !important;
 }
 .mt-2 {
   margin-top: .5rem !important;
