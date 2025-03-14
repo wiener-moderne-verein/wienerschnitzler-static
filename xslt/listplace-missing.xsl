@@ -39,8 +39,9 @@
                         <h1>
                             <xsl:value-of select="$doc_title"/>
                         </h1>
-                        <p>Die folgenden Orte konnten wir bislang nicht auf der Landkarte verorten. Wir freuen 
+                        <p>Die folgenden Orte konnten wir bislang nur ungenau auf der Landkarte verorten. Wir freuen 
                         uns über entsprechende Hinweise, die zur Lösung beitragen können.</p>
+                        <div id="map"/>
                         <table id="placesTable"
                             style="width:100%; margin: auto;">
                             <thead>

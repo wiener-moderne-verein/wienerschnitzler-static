@@ -41,9 +41,10 @@
                                         Orte
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="OrteDropdown">
-                                        <li><a class="dropdown-item" href="listplace.html">Verzeichnis der Orte</a></li>
-                                        <li><a class="dropdown-item" href="gesamt.html">Orte nach Aufenthaltstagen</a></li>
-                                        <li><a class="dropdown-item" href="gesamt_typen.html">Orte nach Arten</a></li>
+                                        <li><a class="dropdown-item" href="gesamt.html">Aufenthaltstage</a></li>
+                                        <li><a class="dropdown-item" href="gesamt_typen.html">Arten</a></li>
+                                        <li><a class="dropdown-item" href="listplace.html">Verzeichnis</a></li>
+                                        <li><a class="dropdown-item" href="listplace-missing.html">Fehlende Orte</a></li>
                                         <li><a class="dropdown-item" href="schnitzler-und-ich.html">Schnitzler und ich</a></li>
                                         <li><a class="dropdown-item" href="https://kepler.gl/demo/map?mapUrl=https://raw.githubusercontent.com/wiener-moderne-verein/wienerschnitzler-data/refs/heads/main/data/editions/geojson/wienerschnitzler_distinctPlaces.geojson" target="_blank">Kepler.gl</a></li>
                                     </ul>

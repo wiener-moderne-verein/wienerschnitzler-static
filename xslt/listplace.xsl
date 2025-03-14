@@ -55,7 +55,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <xsl:for-each select=".//tei:place">
+                                <xsl:for-each select=".//tei:place[(child::tei:location[@type='coords']/tei:geo)]">
                                     <xsl:variable name="id">
                                         <xsl:value-of select="data(@xml:id)"/>
                                     </xsl:variable>
