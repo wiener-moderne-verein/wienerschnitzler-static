@@ -13,7 +13,7 @@
         as="node()"/>
     <xsl:template match="/">
         <xsl:variable name="doc_title">
-            <xsl:text>Verzeichnis der Aufenthaltsorte Schnitzlers</xsl:text>
+            <xsl:text>Nicht identifizierte Aufenthaltsorte</xsl:text>
         </xsl:variable>
         <html class="h-100">
             <head>
@@ -39,7 +39,8 @@
                         <h1>
                             <xsl:value-of select="$doc_title"/>
                         </h1>
-                        <div id="map"/>
+                        <p>Die folgenden Orte konnten wir bislang nicht auf der Landkarte verorten. Wir freuen 
+                        uns über entsprechende Hinweise, die zur Lösung beitragen können.</p>
                         <table id="placesTable"
                             style="width:100%; margin: auto;">
                             <thead>
@@ -55,7 +56,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <xsl:for-each select=".//tei:place">
+                                <xsl:for-each select=".//tei:place[not(child::tei:location[@type='coords']/tei:geo)]">
                                     <xsl:variable name="id">
                                         <xsl:value-of select="data(@xml:id)"/>
                                     </xsl:variable>
@@ -105,18 +106,18 @@
                                         </td>
                                         <td>
                                             <xsl:choose>
-                                                <xsl:when test="child::tei:location[@type='coords']/tei:geo">
+                                                <xsl:when test="child::tei:location/tei:geo">
                                                     <xsl:value-of
-                                                        select="replace(tokenize(child::tei:location[@type='coords'][1]/tei:geo/text(), ' ')[1], ',', '.')"
+                                                        select="replace(tokenize(child::tei:location[1]/tei:geo/text(), ' ')[1], ',', '.')"
                                                     />
                                                 </xsl:when>
                                             </xsl:choose>
                                         </td>
                                         <td>
                                             <xsl:choose>
-                                                <xsl:when test="child::tei:location[@type='coords']/tei:geo">
+                                                <xsl:when test="child::tei:location/tei:geo">
                                                     <xsl:value-of
-                                                        select="replace(tokenize(child::tei:location[@type='coords'][1]/tei:geo/text(), ' ')[last()], ',', '.')"
+                                                        select="replace(tokenize(child::tei:location[1]/tei:geo/text(), ' ')[last()], ',', '.')"
                                                     />
                                                 </xsl:when>
                                             </xsl:choose>
