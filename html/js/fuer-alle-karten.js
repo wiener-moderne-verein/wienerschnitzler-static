@@ -167,9 +167,7 @@ function createPopupContent(feature) {
 
     return `
     <div class="rounded" style="font-family: Arial, sans-serif;">
-    <div class="p-3 mb-2" style="background: var(--projektfarbe);">
-        <h5 class="m-0">${titleLink}</h5>
-    </div>
+    <h5 class="m-0 mb-2">${titleLink}</h5>
     <p class="m-0">${stayInfo}</p>
     ${wohnortContent}
     ${arbeitsortContent}
