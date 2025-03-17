@@ -74,8 +74,23 @@ function displayResult(link, distance, timestamps) {
         Wann hielt Schnitzler sich hier auf: ${formatDate(timestamps) || "Keine Daten vorhanden"}`;
     }
 
-    const shareBlueskyLink = document.getElementById('shareBluesky');
+    // Blende den Abfrage-Container aus (falls noch nicht geschehen)
+    const queryControls = document.getElementById('queryControls');
+    if (queryControls) {
+        queryControls.style.display = 'none';
+    }
+    
+    // Mache den "Neuen Ort abfragen"-Button sichtbar
+    const newQueryContainer = document.getElementById('newQueryContainer');
+if (newQueryContainer) {
+    newQueryContainer.classList.remove('d-none');
+    console.log('newQueryContainer eingeblendet'); // Debug-Ausgabe
+} else {
+    console.error('Element newQueryContainer nicht gefunden');
+}
 
+    // Update des Bluesky-Links (wie gehabt)
+    const shareBlueskyLink = document.getElementById('shareBluesky');
     if (shareBlueskyLink) {
         const blueskyUrl = `https://bsky.app/intent/compose?text=Arthur%20Schnitzler%20stand%20mir%20schon%20ganz%20nah%2C%20er%20war%20nur%20${distance.toFixed(2)}%20km%20entfernt.%0A%0Ahttps%3A%2F%2Fwienerschnitzler.org%2Fschnitzler-und-ich.html`;
         shareBlueskyLink.href = blueskyUrl;
@@ -126,7 +141,7 @@ function plotOnMap(lat, lon, nearest) {
     L.circleMarker([lat, lon], {
         color: '#AAAAFA',
         radius: 10, // Größe des Kreises
-        fillOpacity: 0.8,
+        fillOpacity: 0.8
     })
     .addTo(map)
     .bindPopup('Ihr Standort')
@@ -137,7 +152,7 @@ function plotOnMap(lat, lon, nearest) {
         L.circleMarker([nearest.lat, nearest.lon], {
             color: '#FF0000',
             radius: 10,
-            fillOpacity: 0.8,
+            fillOpacity: 0.8
         })
         .addTo(map)
         .bindPopup(`Nächster Ort: ${nearest.name}`);
@@ -183,3 +198,17 @@ document.getElementById('locationForm').addEventListener('submit', (event) => {
     const longitude = parseFloat(document.getElementById('longitude').value);
     displayNearestLocation(latitude, longitude);
 });
+
+
+// Funktion zum erneuten Anzeigen der Abfrage
+function showQueryControls() {
+    const queryControls = document.getElementById('queryControls');
+    if (queryControls) {
+        queryControls.style.display = 'block';
+    }
+    // Optional: Setzen Sie das Ergebnis zurück
+    document.getElementById('result').innerHTML = 'Bitte Standort teilen auswählen oder Koordinaten eingeben. (Nein, wir interessieren uns nicht dafür, wo Sie sich herumtreiben.)';
+}
+
+// Event-Listener für den "Neuen Ort abfragen"-Button
+document.getElementById('newQuery').addEventListener('click', showQueryControls);

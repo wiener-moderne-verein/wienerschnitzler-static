@@ -261,7 +261,8 @@ h4 {
 span.share-bluesky {
     display: block;
     height: 1.6em;
-    width: 1.6em;
+    width: 6em;
+    color: white;
     text-align: center;
     border-radius: 0.2em;
     background: #1185fe;
