@@ -61,7 +61,7 @@
                                 kannte und welche ihm wichtig waren. Zugleich wird auch sichtbar, wo
                                 er sich nie aufhielt.</p>
                             <p>Die Detailtiefe der derzeit erfassten Daten variiert. Die Durchsicht
-                                des Tagebuchs für den Zeitraum 1915–1924 ist im Gange.</p>
+                                des Tagebuchs für den Zeitraum 1916–1924 ist im Gange.</p>
                         </div>
                     </div>
                 </div>
