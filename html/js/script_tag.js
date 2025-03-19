@@ -1,31 +1,34 @@
 let lineLayer; // globale Variable für den Linien-Layer
 
-function updateMapInhaltText(titles, date, name) {
+function updateMapInhaltText(features, date, name) {
     const mapInhaltTextDiv = document.getElementById('map-inhalt-text');
     if (lineLayer && map.hasLayer(lineLayer)) {
-    map.removeLayer(lineLayer);
-}
+        map.removeLayer(lineLayer);
+    }
     if (mapInhaltTextDiv) {
         const isValidDate = date && /^\d{4}-\d{2}-\d{2}$/.test(date);
         const displayedDate = isValidDate ? date : 'unbekanntes Datum';
         const displayedName = name || displayedDate;
 
-        const filteredTitles = titles.filter(title => title && title.trim() !== '' && title.trim() !== 'Kein Titel');
+        // Filtere Features, die ein gültiges "id"-Property besitzen
+        const filteredFeatures = features.filter(feature => feature && feature.properties && feature.properties.id);
         
-        const textContent = filteredTitles.length > 0 
+        const textContent = filteredFeatures.length > 0 
             ? `Am <a class="schnitzler-chronik-link" href="https://schnitzler-chronik.acdh.oeaw.ac.at/${displayedDate}.html" target="_blank">${displayedName}</a> war Schnitzler an folgenden Orten: ${
-                filteredTitles.length === 1
-                    ? `<a href="https://de.wikipedia.org/wiki/${encodeURIComponent(filteredTitles[0])}" target="_blank">${filteredTitles[0]}</a>.`
-                    : filteredTitles.slice(0, -1).map(title => `<a href="https://de.wikipedia.org/wiki/${encodeURIComponent(title)}" target="_blank">${title}</a>`).join(', ') +
-                      ` und <a href="https://de.wikipedia.org/wiki/${encodeURIComponent(filteredTitles[filteredTitles.length - 1])}" target="_blank">${filteredTitles[filteredTitles.length - 1]}</a>.`
+                filteredFeatures.length === 1
+                    ? `<a href="${encodeURIComponent(filteredFeatures[0].properties.id)}.html" target="_blank">${filteredFeatures[0].properties.title || filteredFeatures[0].properties.id}</a>.`
+                    : filteredFeatures.slice(0, -1).map(feature => `<a href="${encodeURIComponent(feature.properties.id)}.html" target="_blank">${feature.properties.title || feature.properties.id}</a>`).join(', ') +
+                      ` und <a href="${encodeURIComponent(filteredFeatures[filteredFeatures.length - 1].properties.id)}.html" target="_blank">${filteredFeatures[filteredFeatures.length - 1].properties.title || filteredFeatures[filteredFeatures.length - 1].properties.id}</a>.`
             }<br/><br/>`
             : `Am ${displayedDate} sind keine Orte bekannt.<br/><br/>`;
-
+        
         mapInhaltTextDiv.innerHTML = textContent;
     } else {
         console.error('Element mit ID "map-inhalt-text" nicht gefunden.');
     }
 }
+
+
 
 // Array zur Verwaltung der GeoJSON-Layer
 const geoJsonLayers = [];
@@ -55,7 +58,7 @@ function loadGeoJsonByDate(date) {
             return response.json();
         })
         .then(data => {
-            const titles = [];  // Array zum Sammeln der Titel
+            const featuresWithID = [];  // Array zum Sammeln der Features, die ein "id"-Property besitzen
             const name = data.features[0].properties.name || date;
             
             // Trenne Punkt- und Linien-Features
@@ -88,13 +91,12 @@ function loadGeoJsonByDate(date) {
                 setupLineToggleControl(lineLayer, lineVisible);
             }
 
-            // Erstelle den Punkte-Layer, sammle dabei die Titel und binde die Popups
+            // Erstelle den Punkte-Layer, sammle dabei die Features mit einem "id"-Property und binde die Popups
             const pointsLayer = L.geoJSON(pointFeatures, {
                 pointToLayer: createCircleMarker,
                 onEachFeature: function (feature, layer) {
-                    // Titel in das Array aufnehmen, falls vorhanden
-                    if (feature.properties && feature.properties.title) {
-                        titles.push(feature.properties.title);
+                    if (feature.properties && feature.properties.id) {
+                        featuresWithID.push(feature);
                     }
                     bindPopupEvents(feature, layer);
                 }
@@ -108,14 +110,15 @@ function loadGeoJsonByDate(date) {
                 map.fitBounds(lineLayer.getBounds());
             }
 
-            // Update den Text unterhalb der Karte mit den gesammelten Titeln
-            updateMapInhaltText(titles, date, name);
+            // Update den Text unterhalb der Karte mit den gesammelten Features
+            updateMapInhaltText(featuresWithID, date, name);
         })
         .catch(error => {
             console.error('Error loading GeoJSON:', error);
             clearGeoJsonLayers();
         });
 }
+
 
 
 
