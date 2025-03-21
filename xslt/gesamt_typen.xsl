@@ -36,6 +36,11 @@
                             style="display: flex; flex-wrap: wrap; max-width: 90%;  margin-left: auto;  margin-right: auto; ">
                             <span style="margin: 10px; font-weight: bold">Typen</span>
                         </div>
+                        <div class="d-flex justify-content-center mb-3 mt-5">
+                            <select id="location-select" class="form-select w-auto">
+                                <option value="disabled selected">Wähle einen Ort</option>
+                            </select>
+                        </div>
                         <div class="d-flex justify-content-center mt-5">
                             <div class="col-sm-6 mb-5">
                                 <div class="text-start mx-auto">
