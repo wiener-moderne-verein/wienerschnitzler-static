@@ -88,6 +88,9 @@ function displayFilteredGeoJson() {
       selectedTypes = new Set(typesParam.split(","));
     }
   }
+  
+  populateLocationDropdown(filteredFeatures);
+
 
   // Filterung nach Typen, aber nur wenn der Parameter in der URL gesetzt wurde.
   // Ist er gesetzt und das Set ist leer, sollen keine Features angezeigt werden.
