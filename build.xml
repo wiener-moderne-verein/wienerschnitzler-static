@@ -6,7 +6,11 @@
     <delete>
         <fileset dir="${target}" includes="*.html"/>
     </delete>
-    <xslt in="${index}" out="${target}/jahr.html" style="./xslt/jahr.xsl">
+    <xslt in="${index}" out="${target}/uebersicht.html" style="./xslt/uebersicht.xsl">
+        <factory name="net.sf.saxon.TransformerFactoryImpl"/>
+        <classpath location="${basedir}/saxon/saxon9he.jar"/>
+    </xslt>
+  <!--  <xslt in="${index}" out="${target}/jahr.html" style="./xslt/jahr.xsl">
         <factory name="net.sf.saxon.TransformerFactoryImpl"/>
         <classpath location="${basedir}/saxon/saxon9he.jar"/>
     </xslt>
@@ -68,7 +72,7 @@
     <replace dir="${target}" value="">
         <include name="*.html"/>
         <replacetoken>xmlns="http://www.w3.org/1999/xhtml"</replacetoken>
-    </replace>
+    </replace>-->
     <copy todir="${target}" flatten="true">
         <fileset dir="./data/">
             <include name="**/*.xml"/>

@@ -438,3 +438,21 @@ ul {
   margin-top: .5rem !important;
   text-align: left;
 }
+
+ #cal-heatmap {
+      max-height: 90vh;
+      overflow-y: auto;
+      border: 1px solid #ccc;
+      padding: 10px;
+    }
+    .decade-buttons {
+      margin: 1rem 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .decade-buttons .btn.active {
+      background-color: #0d6efd;
+      color: white;
+    }
+
