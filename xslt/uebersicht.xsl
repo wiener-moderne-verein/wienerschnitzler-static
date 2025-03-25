@@ -27,6 +27,9 @@
                     <xsl:with-param name="html_title" select="$doc_title"/>
                 </xsl:call-template>
                 <link rel="stylesheet" href="https://unpkg.com/cal-heatmap/dist/cal-heatmap.css"/>
+                <style>
+                    .ch-domain-text {font-size: 20px;}
+                </style>
             </head>
             <body class="h-100">
                 <div class="hfeed site" id="page">
@@ -36,6 +39,7 @@
         
                                 <h1>Übersicht</h1>
                             <div class="card-body containingloader">
+                                
                                 <div class="d-flex flex-column align-items-center">
                                     <!-- Zentrierte Decade-Buttons -->
                                     <div id="decade-buttons" class="mb-3"></div>

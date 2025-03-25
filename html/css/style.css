@@ -439,6 +439,9 @@ ul {
   text-align: left;
 }
 
+ .ch-domain-text {font-size: 20px;}
+
+
  #cal-heatmap {
       overflow-y: auto;
       border: 1px solid #ccc;
@@ -455,5 +458,4 @@ ul {
       color: white;
     }
     
-    .ch-domain-text {font-size: 15px;}
-
+   

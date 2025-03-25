@@ -84,6 +84,7 @@ function generateDecadeButtons(minYear, maxYear) {
     const label = `${y}–${y + DECADE_LENGTH - 1}`;
     const btn = document.createElement('button');
     btn.className = 'btn btn-outline-primary btn-sm';
+    btn.styleName = 'margin: 10px;';
     btn.textContent = label;
     btn.dataset.start = y;
     btn.addEventListener('click', () => drawDecade(y));
