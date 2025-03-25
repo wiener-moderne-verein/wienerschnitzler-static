@@ -26,6 +26,7 @@
                 </xsl:call-template>
                 <style>
                     .ch-domain-text {font-size: 20px;}
+                    .btn {margin: 10px;}
                 </style>
             </head>
             <body class="h-100">
