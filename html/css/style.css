@@ -440,7 +440,6 @@ ul {
 }
 
  #cal-heatmap {
-      max-height: 90vh;
       overflow-y: auto;
       border: 1px solid #ccc;
       padding: 10px;
