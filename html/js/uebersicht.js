@@ -34,13 +34,13 @@ function drawDecade(startYear) {
         x: 'date',
         y: d => d.weight,
         groupY: 'sum',
-        customData: true, // 👈 das ist entscheidend!
+        customData: true, 
       },
       scale: {
         color: {
             domain: [0, 15],
-            type: 'cyclical',
-            range: ['#f7f7f7', '#d73027'],
+            type: 'linear',
+           range: ['#ffffcc', '#d73027']
           }
       },
     },
