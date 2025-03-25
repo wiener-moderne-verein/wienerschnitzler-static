@@ -12,32 +12,28 @@
     
     
     <xsl:template match="/">
-        <xsl:variable name="doc_title">
-            <xsl:text>wienerschnitzler</xsl:text>
-        </xsl:variable>
-        <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
-        <html class="h-100"  lang="de">
+        <html class="h-100">
             <head>
                 <meta charset="UTF-8"/>
                 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+                <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+                <link rel="stylesheet" href="https://unpkg.com/cal-heatmap/dist/cal-heatmap.css"/>
                 <xsl:variable name="doc_title">
                     <xsl:text>Wiener Schnitzler</xsl:text>
                 </xsl:variable>
                 <xsl:call-template name="html_head">
                     <xsl:with-param name="html_title" select="$doc_title"/>
                 </xsl:call-template>
-                <link rel="stylesheet" href="https://unpkg.com/cal-heatmap/dist/cal-heatmap.css"/>
                 <style>
                     .ch-domain-text {font-size: 20px;}
                 </style>
             </head>
             <body class="h-100">
-                <div class="hfeed site" id="page">
                 <xsl:call-template name="nav_bar"/>
                     <main class="w-100">
                         <div class="container-fluid my-4">
         
-                                <h1>Übersicht</h1>
+                                <h1>Übersicht nach Anzahl der Aufenthaltsorte</h1>
                             <div class="card-body containingloader">
                                 
                                 <div class="d-flex flex-column align-items-center">
@@ -50,7 +46,6 @@
                         </div>
                     </main>
                     
-                    </div>
          
                     <script src="https://d3js.org/d3.v7.min.js"></script>
                     <script src="https://unpkg.com/@popperjs/core@2"></script>
