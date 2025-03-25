@@ -1,5 +1,5 @@
 const cal = new CalHeatmap();
-const DECADE_LENGTH = 9;
+const DECADE_LENGTH = 10;
 const formatDate = date => window.dayjs(date).format('YYYY-MM-DD');
 
 let events = [];
@@ -67,12 +67,6 @@ function drawDecade(startYear) {
   updateActiveButton(startYear);
 }
 
-function updateActiveButton(startYear) {
-  document.querySelectorAll('#decade-buttons button').forEach(btn => {
-    btn.classList.toggle('active', parseInt(btn.dataset.start) === startYear);
-  });
-}
-
 function generateDecadeButtons(minYear, maxYear) {
   const container = document.getElementById('decade-buttons');
   container.innerHTML = '';
@@ -84,7 +78,7 @@ function generateDecadeButtons(minYear, maxYear) {
     const label = `${y}–${y + DECADE_LENGTH - 1}`;
     const btn = document.createElement('button');
     btn.className = 'btn btn-outline-primary btn-sm';
-    btn.styleName = 'margin: 10px;';
+    btn.style.margin = '10px';  // So wird der Margin korrekt gesetzt
     btn.textContent = label;
     btn.dataset.start = y;
     btn.addEventListener('click', () => drawDecade(y));
