@@ -40,7 +40,7 @@ function drawDecade(startYear) {
         color: {
             domain: [0, 15],
             type: 'linear',
-           range: ['#ffffcc', '#d73027']
+           scheme: 'YlGnBu'
           }
       },
     },
