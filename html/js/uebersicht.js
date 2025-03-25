@@ -38,7 +38,7 @@ function drawDecade(startYear) {
       },
       scale: {
         color: {
-            domain: [1, 15],
+            domain: [0, 15],
             type: 'cyclical',
             range: ['#f7f7f7', '#d73027'],
           }

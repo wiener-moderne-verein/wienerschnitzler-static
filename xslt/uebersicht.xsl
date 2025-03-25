@@ -27,30 +27,16 @@
                     <xsl:call-template name="nav_bar"/>
 
                     <div class="container-fluid">
-                        <div class="card">
-                            <div class="card-header" style="text-align:center">
-                                <h1 style="display:inline-block;margin-bottom:0;padding-right:5px;">Übersicht</h1>
+                        <div class="card border-0">
+                            <div class="card-header text-center">
+                                <h1 class="d-inline-block mb-0 pe-2">Übersicht</h1>
                             </div>
                             <div class="card-body containingloader">
-                                <div class="row">
-                                    <div id="decade-buttons" class="decade-buttons"></div>
-                                    <div id="cal-heatmap"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal" tabindex="-1" role="dialog" id="exampleModal">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title">Die Texte in Kalenderansicht</h5>
-                                </div>
-                                <div class="modal-body">
-                                    <p>Texte eines bestimmten Tages suchen. </p>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary"
-                                        data-dismiss="modal">Schließen</button>
+                                <div class="d-flex flex-column align-items-center">
+                                    <!-- Zentrierte Decade-Buttons -->
+                                    <div id="decade-buttons" class="mb-3"></div>
+                                    <!-- Zentrierte Heatmap ohne eigenen Rahmen -->
+                                    <div id="cal-heatmap" class="border-0"></div>
                                 </div>
                             </div>
                         </div>
