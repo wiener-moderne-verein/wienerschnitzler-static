@@ -13,6 +13,7 @@
                                 <button class="btn btn-danger disabled" type="button" style="color: white; background-color: red; font-size: 0.75rem; padding: 0.25rem 0.5rem; transform: rotate(-10deg); position: absolute; bottom: -27px; right: -185px; z-index:2000;">BETA</button>
                             </span>
                     <div class="container">
+                        <img src="images/wienerschnitzler.jpg" height="30px"/>
                     
                         <a class="navbar-brand" href="index.html">Wiener Schnitzler</a>
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
