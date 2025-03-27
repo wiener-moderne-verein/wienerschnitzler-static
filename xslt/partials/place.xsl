@@ -259,6 +259,7 @@
                                 <xsl:variable name="max-count" as="xs:int">
                                     <xsl:value-of select="max(for $year in $years return count($distinctPlaces/tei:place[@xml:id = $current-xml-id]/tei:listEvent/tei:event[year-from-date(@when) = $year]))" />
                                 </xsl:variable>
+                                <xsl:if test="$max-count &gt; 0">
                                 
                                 <!-- Schrittweite für die Y-Achse berechnen -->
                                 <xsl:variable name="y-step" select="if ($max-count > 100) then 25 else 10" />
@@ -350,6 +351,7 @@
                                             fill="#045344" />
                                     </xsl:for-each>
                                 </svg>
+                                </xsl:if>
                             </div>
                             <div class="accordion-body">
                                 <xsl:choose>
