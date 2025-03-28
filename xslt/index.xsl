@@ -54,7 +54,7 @@
                                     target="_blank"
                                     style="color: #A63437; font-weight: bold; text-decoration: none;"
                                     >Korrespondenz</a> und weiterer Dokumente verzeichnen wir
-                                derzeit über 43.000 Aufenthalte an über 4.100 Orten. Gegenwärtig
+                                derzeit über 44.000 Aufenthalte an über 4.200 Orten. Gegenwärtig
                                 gibt es für keine andere Person seiner Zeit so viele frei verfügbare
                                 und georeferenzierte Daten. Diese zeigen, wo Schnitzler sich
                                 bewegte, welche Häuser, Straßen, Stadtteile, Städte und Länder er
