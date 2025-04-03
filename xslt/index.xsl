@@ -69,68 +69,119 @@
             <section class="container my-5">
                <div class="row g-3">
                   <div class="col-12 col-md-6 col-lg-3">
-                     <div class="card content-item"><img src="images/index/aufenthaltstage.png" class="card-img-top" alt="Aufenthaltstage"/><div class="card-body">
-                              <p class="card-text">Die Anzahl der Tage, die Arthur Schnitzler an einem
-                                 bestimmten Ort verbrachte, findet sich <a href="gesamt.html">hier</a>.</p>
-                     </div>
-                     </div>
-                  </div>
-                  <div class="col-12 col-md-6 col-lg-3">
-                     <div class="card content-item"><img src="images/index/aufenthaltsarten.png" class="card-img-top" alt="Aufenthaltsarten"/><div class="card-body">
-                              <p class="card-text">In welchen Museen war Schnitzler? Eine schnelle Antwort steht <a href="gesamt_typen.html">hier</a>.</p>
-                     </div>
-                     </div>
-                  </div>
-                  <div class="col-12 col-md-6 col-lg-3">
-                     <div class="card content-item"><img src="images/index/aufenthaltsorte.png" class="card-img-top" alt="Aufenthaltsorte"/><div class="card-body">
-                              <p class="card-text">Bestimmte Orte und ihre Bewohner lassen sich <a href="listplace.html">hier</a> nachschlagen.</p>
-                     </div>
+                     <div class="card content-item">
+                        <a href="gesamt.html">
+                           <img src="images/index/aufenthaltstage.png" class="card-img-top" alt="Aufenthaltstage"/>
+                        </a>
+                        <div class="card-body">
+                           <p class="card-text">Welches sind die Orte, an denen sich Schnitzler am häufigsten aufhielt? Eine Karte nach
+                               <a href="gesamt.html">Aufenthaltstagen</a>.
+                           </p>
+                        </div>
                      </div>
                   </div>
                   <div class="col-12 col-md-6 col-lg-3">
-                     <div class="card content-item"><img src="images/index/fehlend.png" class="card-img-top" alt="Nicht indentifizierte Orte"/><div class="card-body">
-                              <p class="card-text">Nicht immer wurden wir fündig. Die nicht exakt nachgewiesenen Orte sind <a href="listplace-missing.html">hier</a> ausgewiesen.</p>
-                     </div>
-                     </div>
-                  </div>
-                  <div class="col-12 col-md-6 col-lg-3">
-                     <div class="card content-item"><img src="images/index/schnitzlerundich.png" class="card-img-top" alt="Schnitzler und ich"/><div class="card-body">
-                              <p class="card-text">Wo Ihnen Schnitzler am nächsten stand, lässt sich <a href="schnitzler-und-ich.html">hier</a> abfragen.</p>
-                     </div>
-                     </div>
-                  </div>
-                  <div class="col-12 col-md-6 col-lg-3">
-                     <div class="card content-item"><img src="images/index/aufenthaltstag.png" class="card-img-top" alt="Aufenthaltstag"/><div class="card-body">
-                              <p class="card-text">Einzelne Tage sind  <a href="tag.html">hier</a> vermerkt.</p>
-                     </div>
+                     <div class="card content-item">
+                        <a href="gesamt_typen.html">
+                           <img src="images/index/aufenthaltstypen.png" class="card-img-top" alt="Aufenthaltstypen"/>
+                        </a>
+                        <div class="card-body">
+                           <p class="card-text">In welchen Museen war Schnitzler? Eine schnelle Antwort steht bei den <a href="gesamt_typen.html">Aufenthaltstypen</a>.
+                           </p>
+                        </div>
                      </div>
                   </div>
                   <div class="col-12 col-md-6 col-lg-3">
-                     <div class="card content-item"><img src="images/index/aufenthaltsmonat.png" class="card-img-top" alt="Aufenthaltsmonate"/><div class="card-body">
-                              <p class="card-text">Kalendermonate können  <a href="monat.html">hier</a> visualisiert werden.</p>
-                     </div>
-                     </div>
-                  </div>
-                  <div class="col-12 col-md-6 col-lg-3">
-                     <div class="card content-item"><img src="images/index/aufenthaltsjahr.png" class="card-img-top" alt="Aufenthalstjahre"/><div class="card-body">
-                              <p class="card-text">Wo war Schnitzler in einem bestimmten Jahr? Die Antwort steht <a href="jahr.html">hier</a>.</p>
-                     </div>
-                     </div>
-                  </div>
-                  <div class="col-12 col-md-6 col-lg-3">
-                     <div class="card content-item"><img src="images/index/aufenthaltsdekade.png" class="card-img-top" alt="Aufenthalsdekade"/><div class="card-body">
-                              <p class="card-text">1901 bis 1910 und weitere Dekaden sind <a href="dekade.html">hier</a> einsehbar.</p>
-                     </div>
+                     <div class="card content-item">
+                        <a href="listplace.html">
+                           <img src="images/index/aufenthaltsorte.png" class="card-img-top" alt="Aufenthaltsorte"/>
+                        </a>
+                        <div class="card-body">
+                           <p class="card-text">Schlagen sie <a href="listplace.html">Aufenthaltsorte</a> und ihre Bewohner nach.
+                           </p>
+                        </div>
                      </div>
                   </div>
                   <div class="col-12 col-md-6 col-lg-3">
-                     <div class="card content-item"><img src="images/index/uebersicht.png" class="card-img-top" alt="Übersicht"/><div class="card-body">
-                              <p class="card-text">Wie viele Standorte an bestimmten Tagen kennen wir? Ein Überblick steht  <a href="ueberblick.html">hier</a>.</p>
+                     <div class="card content-item">
+                        <a href="listplace-missing.html">
+                           <img src="images/index/fehlend.png" class="card-img-top" alt="Nicht indentifizierte Orte"/>
+                        </a>
+                        <div class="card-body">
+                           <p class="card-text">Nicht immer wurden wir fündig. Hier die <a href="listplace-missing.html">nicht indentifizierten Orte</a>.
+                           </p>
+                        </div>
                      </div>
+                  </div>
+                  <div class="col-12 col-md-6 col-lg-3">
+                     <div class="card content-item">
+                        <a href="schnitzler-und-ich.html">
+                           <img src="images/index/schnitzlerundich.png" class="card-img-top" alt="Schnitzler und ich"/>
+                        </a>
+                        <div class="card-body">
+                           <p class="card-text">Wo Ihnen Schnitzler am nächsten stand, lässt sich über <a href="schnitzler-und-ich.html">Schnitzler und ich</a> abfragen.
+                           </p>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-12 col-md-6 col-lg-3">
+                     <div class="card content-item">
+                        <a href="tag.html">
+                           <img src="images/index/aufenthaltstag.png" class="card-img-top" alt="Aufenthaltstag"/>
+                        </a>
+                        <div class="card-body">
+                           <p class="card-text">Für jeden einzelnen <a href="tag.html">Tag</a> gibt es eine eigene Karte.
+                           </p>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-12 col-md-6 col-lg-3">
+                     <div class="card content-item">
+                        <a href="monat.html">
+                           <img src="images/index/aufenthaltsmonat.png" class="card-img-top" alt="Aufenthaltsmonate"/>
+                        </a>
+                        <div class="card-body">
+                           <p class="card-text">Auch <a href="monat.html">Kalendermonate</a> können visualisiert werden.
+                           </p>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-12 col-md-6 col-lg-3">
+                     <div class="card content-item">
+                        <a href="jahr.html">
+                           <img src="images/index/aufenthaltsjahr.png" class="card-img-top" alt="Aufenthalstjahre"/>
+                        </a>
+                        <div class="card-body">
+                           <p class="card-text">Wo war Schnitzler in einem bestimmten <a href="jahr.html">Jahr</a>?</p>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-12 col-md-6 col-lg-3">
+                     <div class="card content-item">
+                        <a href="dekade.html">
+                           <img src="images/index/aufenthaltsdekade.png" class="card-img-top" alt="Aufenthalsdekade"/>
+                        </a>
+                        <div class="card-body">
+                           <p class="card-text">1901 bis 1910 und weitere <a href="dekade.html">Dekaden</a> zeigen, wo in welchem
+                              Jahrzehnt war.
+                           </p>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-12 col-md-6 col-lg-3">
+                     <div class="card content-item">
+                        <a href="ueberblick.html">
+                           <img src="images/index/uebersicht.png" class="card-img-top" alt="Übersicht"/>
+                        </a>
+                        <div class="card-body">
+                           <p class="card-text">Wie viele Standorte an bestimmten Tagen kennen wir? Eine <a href="ueberblick.html">Übersicht</a>.
+                           </p>
+                        </div>
                      </div>
                   </div>
                </div>
             </section>
+            
             
             
             <!-- Footer -->
