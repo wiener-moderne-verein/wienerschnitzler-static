@@ -65,6 +65,86 @@
                         </div>
                     </div>
                 </div>
+                
+                        <section class="container my-5">
+                            <div class="row g-4">
+                                <!-- Punkt 1 -->
+                                <div class="col-12 col-md-6 col-lg-3">
+                                    <div class="card content-item">
+                                        <img src="images/index/aufenthaltstage.png" class="card-img-top" alt="Aufenthaltstage"/>
+                                            <div class="card-body">
+                                                <p class="card-text">Die Anzahl der Tage, die Arthur Schnitzler an einem
+                                                    bestimmten Ort verbrachte, findet sich <a href="gesamt.html">hier</a>.</p>
+                                            </div>
+                                    </div>
+                                </div>
+                                <!-- Punkt 2 -->
+                                <div class="col-12 col-md-6 col-lg-3">
+                                    <div class="card content-item">
+                                        <img src="images/index/aufenthalt2.jpg" class="card-img-top" alt="Bild 2"/>
+                                            <div class="card-body">
+                                                <p class="card-text">Hier finden Sie das und das. Zum Inhalt.</p>
+                                            </div>
+                                    </div>
+                                </div>
+                                <!-- Punkt 3 -->
+                                <div class="col-12 col-md-6 col-lg-3">
+                                    <div class="card content-item">
+                                        <img src="images/index/aufenthalt3.jpg" class="card-img-top" alt="Bild 3"/>
+                                            <div class="card-body">
+                                                <p class="card-text">Hier finden Sie das und das. Zum Inhalt.</p>
+                                            </div>
+                                    </div>
+                                </div>
+                                <!-- Punkt 4 -->
+                                <div class="col-12 col-md-6 col-lg-3">
+                                    <div class="card content-item">
+                                        <img src="images/index/aufenthalt4.jpg" class="card-img-top" alt="Bild 4"/>
+                                            <div class="card-body">
+                                                <p class="card-text">Hier finden Sie das und das. Zum Inhalt.</p>
+                                            </div>
+                                    </div>
+                                </div>
+                                <!-- Punkt 5 -->
+                                <div class="col-12 col-md-6 col-lg-3">
+                                    <div class="card content-item">
+                                        <img src="images/index/aufenthalt5.jpg" class="card-img-top" alt="Bild 5"/>
+                                            <div class="card-body">
+                                                <p class="card-text">Hier finden Sie das und das. Zum Inhalt.</p>
+                                            </div>
+                                    </div>
+                                </div>
+                                <!-- Punkt 6 -->
+                                <div class="col-12 col-md-6 col-lg-3">
+                                    <div class="card content-item">
+                                        <img src="images/index/aufenthalt6.jpg" class="card-img-top" alt="Bild 6"/>
+                                            <div class="card-body">
+                                                <p class="card-text">Hier finden Sie das und das. Zum Inhalt.</p>
+                                            </div>
+                                    </div>
+                                </div>
+                                <!-- Punkt 7 -->
+                                <div class="col-12 col-md-6 col-lg-3">
+                                    <div class="card content-item">
+                                        <img src="images/index/aufenthalt7.jpg" class="card-img-top" alt="Bild 7"/>
+                                            <div class="card-body">
+                                                <p class="card-text">Hier finden Sie das und das. Zum Inhalt.</p>
+                                            </div>
+                                    </div>
+                                </div>
+                                <!-- Punkt 8 -->
+                                <div class="col-12 col-md-6 col-lg-3">
+                                    <div class="card content-item">
+                                        <img src="images/index/aufenthalt8.jpg" class="card-img-top" alt="Bild 8"/>
+                                            <div class="card-body">
+                                                <p class="card-text">Hier finden Sie das und das. Zum Inhalt.</p>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                
+                
                 <!-- Footer -->
                 <xsl:call-template name="html_footer"/>
                 <script src="./js/index_randomBackground.js"/>
