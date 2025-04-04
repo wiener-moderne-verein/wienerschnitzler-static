@@ -54,9 +54,10 @@
                         Person seiner Zeit so viele frei verfügbare und georeferenzierte Daten.
                         Diese zeigen, wo Schnitzler sich bewegte, welche Häuser, Straßen,
                         Stadtteile, Städte und Länder er kannte und welche ihm wichtig waren.
-                        Zugleich wird auch sichtbar, wo er sich nie aufhielt.</p>
-                     <p>Die Detailtiefe der derzeit erfassten Daten variiert. Die Durchsicht des
-                        Tagebuchs für den Zeitraum 1918–1923 ist im Gange.</p>
+                      Zugleich sieht man, wo
+                        er sich nie aufhielt.</p>
+                     <p>Die Detailtiefe der derzeit erfassten Daten variiert. Die Durchsicht
+                        des Tagebuchs für den Zeitraum 1918–1923 ist im Gange.</p>
                   </div>
                </div>
             </div>
@@ -107,7 +108,7 @@
                               alt="Nicht indentifizierte Orte"/>
                         </a>
                         <div class="card-body">
-                           <p class="card-text">Nicht immer wurden wir fündig. Hier die <a
+                           <p class="card-text">Nicht immer wurden wir fündig. Hier derzeit <a
                                  href="listplace-missing.html">nicht indentifizierten Orte</a>. </p>
                         </div>
                      </div>
@@ -168,8 +169,8 @@
                               alt="Aufenthalsdekade"/>
                         </a>
                         <div class="card-body">
-                           <p class="card-text">1901 bis 1910 und weitere <a href="dekade.html"
-                                 >Dekaden</a> zeigen, wo Schnitzler in welchem Jahrzehnt war.</p>
+                           <p class="card-text">Schnitzlers Verweilorte in den einzelnen <a href="dekade.html">Dekaden</a>.
+                           </p>
                         </div>
                      </div>
                   </div>
