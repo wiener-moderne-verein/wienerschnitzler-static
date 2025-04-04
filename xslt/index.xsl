@@ -186,6 +186,20 @@
                         </div>
                      </div>
                   </div>
+                  <div class="col-12 col-md-6 col-lg-3">
+                     <div class="card content-item">
+                        <a href="https://github.com/wiener-moderne-verein/wienerschnitzler-data" target="_blank">
+                           <img src="images/index/uebersicht.png" class="card-img-top"
+                              alt="Übersicht"/>
+                        </a>
+                        <div class="card-body">
+                           <p class="card-text">Alle Quelldaten stehen auf
+                               <a href="https://github.com/wiener-moderne-verein/wienerschnitzler-data" target="_blank">gitHub</a> zur freien 
+                              Verfügung. </p>
+                        </div>
+                     </div>
+                  </div>
+                  
                </div>
             </section>
 

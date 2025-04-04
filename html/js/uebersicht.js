@@ -88,7 +88,7 @@ function generateDecadeButtons(minYear, maxYear) {
 }
 
 // Initialisieren
-fetch('https://raw.githubusercontent.com/wiener-moderne-verein/wienerschnitzler-data/refs/heads/main/data/editions/uebersicht.json')
+fetch('https://raw.githubusercontent.com/wiener-moderne-verein/wienerschnitzler-data/refs/heads/main/data/editions/json/uebersicht.json')
   .then(res => res.json())
   .then(data => {
     events = data;
