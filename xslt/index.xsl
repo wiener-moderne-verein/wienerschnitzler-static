@@ -109,7 +109,7 @@
                         </a>
                         <div class="card-body">
                            <p class="card-text">Nicht immer wurden wir fündig. Hier derzeit <a
-                                 href="listplace-missing.html">nicht indentifizierten Orte</a>. </p>
+                                 href="listplace-missing.html">nicht indentifizierte Orte</a>. </p>
                         </div>
                      </div>
                   </div>
