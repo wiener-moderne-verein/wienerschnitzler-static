@@ -188,6 +188,18 @@
                   </div>
                   <div class="col-12 col-md-6 col-lg-3">
                      <div class="card content-item">
+                        <a href="zeitleiste.html">
+                           <img src="images/index/zeitleiste.png" class="card-img-top"
+                              alt="Übersicht"/>
+                        </a>
+                        <div class="card-body">
+                           <p class="card-text">Die <a href="zeitleiste.html">Zeitleiste</a> zeigt
+                              die besuchten Orte chronologisch. </p>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-12 col-md-6 col-lg-3">
+                     <div class="card content-item">
                         <a href="https://github.com/wiener-moderne-verein/wienerschnitzler-data" target="_blank">
                            <img src="images/index/github.png" class="card-img-top"
                               alt="Übersicht"/>

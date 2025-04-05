@@ -468,7 +468,16 @@ ul {
     }
     
 /*  Zeitleiste */
- .vis-labelset .vis-label .vis-inner, .vis-item .vis-item-content {
+ .vis-labelset .vis-label .vis-inner {
     font-size: 12px;
     padding: 0 5px;
 }
+
+.vis-item .vis-item-content {
+      font-size: 9px;
+      white-space: nowrap;
+    }
+    /* Geringere Mindesthöhe für die Balken */
+    .vis-item {
+      min-height: 10px;
+    }
