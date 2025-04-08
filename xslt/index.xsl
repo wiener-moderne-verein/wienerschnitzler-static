@@ -50,7 +50,7 @@
                            href="https://schnitzler-briefe.acdh.oeaw.ac.at/" target="_blank"
                            style="color: #A63437; font-weight: bold; text-decoration: none;"
                            >Korrespondenz</a> und weiterer Dokumente verzeichnen wir derzeit über
-                        44.500 Aufenthalte an über 4.200 Orten. Gegenwärtig gibt es für keine andere
+                        44.500 Aufenthalte an über 4.350 Orten. Gegenwärtig gibt es für keine andere
                         Person seiner Zeit so viele frei verfügbare und georeferenzierte Daten.
                         Diese zeigen, wo Schnitzler sich bewegte, welche Häuser, Straßen,
                         Stadtteile, Städte und Länder er kannte und welche ihm wichtig waren.
