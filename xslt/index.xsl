@@ -57,7 +57,7 @@
                       Zugleich sieht man, wo
                         er sich nie aufhielt.</p>
                      <p>Die Detailtiefe der derzeit erfassten Daten variiert. Die Durchsicht
-                        des Tagebuchs für den Zeitraum 1919–1923 ist im Gange.</p>
+                        des Tagebuchs für den Zeitraum 1919–1922 ist im Gange.</p>
                   </div>
                </div>
             </div>
