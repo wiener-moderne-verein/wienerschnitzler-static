@@ -96,7 +96,7 @@
                               alt="Aufenthaltsorte"/>
                         </a>
                         <div class="card-body">
-                           <p class="card-text">Schlagen sie <a href="listplace.html"
+                           <p class="card-text">Schlagen Sie <a href="listplace.html"
                                  >Aufenthaltsorte</a> und ihre Bewohner_innen nach. </p>
                         </div>
                      </div>
@@ -108,7 +108,7 @@
                               alt="Nicht indentifizierte Orte"/>
                         </a>
                         <div class="card-body">
-                           <p class="card-text">Nicht immer wurden wir fündig. Hier derzeit <a
+                           <p class="card-text">Nicht immer wurden wir fündig. Hier sind derzeit <a
                                  href="listplace-missing.html">nicht indentifizierte Orte</a>. </p>
                         </div>
                      </div>
@@ -206,7 +206,7 @@
                         </a>
                         <div class="card-body">
                            <p class="card-text">Alle Quelldaten stehen auf
-                               <a href="https://github.com/wiener-moderne-verein/wienerschnitzler-data" target="_blank">gitHub</a> zur freien 
+                               <a href="https://github.com/wiener-moderne-verein/wienerschnitzler-data" target="_blank">GitHub</a> zur freien 
                               Verfügung. </p>
                         </div>
                      </div>
