@@ -13,8 +13,7 @@ function createFilterType(features) {
     
     // Titel hinzufügen
     const filterTitle = document.createElement('span');
-    filterTitle.style.fontWeight = 'bold';
-    filterTitle.innerText = 'Typen';
+    filterTitle.innerText = '';
     filter.appendChild(filterTitle);
     
     // Zunächst prüfen, ob in der URL ein "years"-Parameter vorhanden ist.
@@ -117,8 +116,8 @@ function createFilterType(features) {
         button.style.backgroundColor = selectedTypes.has(type) ? color : "#ccc";
         button.style.color = "white";
         button.style.border = "none";
-        button.style.padding = "5px 10px";
-        button.style.margin = "3px";
+        button.style.padding = "3px 5px";
+        button.style.margin = "1px";
         button.style.cursor = "pointer";
         button.style.borderRadius = "2px";
         

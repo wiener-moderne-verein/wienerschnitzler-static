@@ -26,31 +26,89 @@
                 <main class="w-100">
                     <div class="container-fluid my-4">
                         <h1>Aufenthalte Schnitzlers nach Arten von Orten</h1>
-                        
-                        <div id="map-large"/>
-                        <div id="filter-time" class="mt-5"
-                            style="display: flex; flex-wrap: wrap; max-width: 90%;  margin-left: auto;  margin-right: auto; ">
-                            <span style="margin: 10px; font-weight: bold">Zeitraum</span>
-                        </div>
-                        <div id="filter-type" class="mt-5"
-                            style="display: flex; flex-wrap: wrap; max-width: 90%;  margin-left: auto;  margin-right: auto; ">
-                            <span style="margin: 10px; font-weight: bold">Typen</span>
-                        </div>
-                        <div class="d-flex justify-content-center mb-3 mt-5">
-                            <select id="location-select" class="form-select w-auto">
-                                <option value="disabled selected">Wähle einen Ort</option>
-                            </select>
-                        </div>
-                        <div class="d-flex justify-content-center mt-5">
-                            <div class="col-sm-6 mb-5">
-                                <div class="text-start mx-auto">
-                                    <p class="text-start">Auf dieser Seite werden die Aufenthaltsorte nach
-                                    Arten von Orten visualisiert. Manche Orte lassen sich nicht ausreichend
-                                    sauber voneinander unterscheiden (»Café-Restaurant«). Im Zweifel empfiehlt
-                                    sich, besser großzügig ähnliche Typen auszuwählen.</p>
+                        <div class="map-container-wrapper">
+                            <div id="map-large"> </div>
+                            <div class="filter-column">
+                                <div class="accordion" id="filterAccordion">
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="headingTimeFilter">
+                                            <button class="accordion-button collapsed" type="button"
+                                                data-bs-toggle="collapse"
+                                                data-bs-target="#collapseTimeFilter"
+                                                aria-expanded="false"
+                                                aria-controls="collapseTimeFilter"> Zeitraum (Jahre)
+                                            </button>
+                                        </h2>
+                                        <div id="collapseTimeFilter"
+                                            class="accordion-collapse collapse"
+                                            aria-labelledby="headingTimeFilter"
+                                            data-bs-parent="#filterAccordion">
+                                            <div class="accordion-body">
+                                                <div id="filter-time-content-placeholder">
+                                                  <div id="filter-time"> </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="headingTypeFilter">
+                                            <button class="accordion-button collapsed" type="button"
+                                                data-bs-toggle="collapse"
+                                                data-bs-target="#collapseTypeFilter"
+                                                aria-expanded="false"
+                                                aria-controls="collapseTypeFilter"> Typen </button>
+                                        </h2>
+                                        <div id="collapseTypeFilter"
+                                            class="accordion-collapse collapse"
+                                            aria-labelledby="headingTypeFilter"
+                                            data-bs-parent="#filterAccordion">
+                                            <div class="accordion-body">
+                                                <div id="filter-type-content-placeholder">
+                                                  <div id="filter-type"> </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="headingLocationInfo">
+                                            <button class="accordion-button collapsed" type="button"
+                                                data-bs-toggle="collapse"
+                                                data-bs-target="#collapseLocationInfo"
+                                                aria-expanded="false"
+                                                aria-controls="collapseLocationInfo"> Ortsauswahl
+                                            </button>
+                                        </h2>
+                                        <div id="collapseLocationInfo"
+                                            class="accordion-collapse collapse"
+                                            aria-labelledby="headingLocationInfo"
+                                            data-bs-parent="#filterAccordion">
+                                            <div class="accordion-body">
+                                                <div class="mb-3">
+                                                  <label for="location-select" class="form-label"
+                                                  >Ort auswählen:</label>
+                                                  <select id="location-select"
+                                                  class="form-select form-select-sm">
+                                                  <option value="" disabled="true">Wähle einen
+                                                  Ort</option>
+                                                  </select>
+                                                  <div class="info-text small">
+                                                  <p>Das Auswahlfeld mit den Ortsnamen löst
+                                                  Verschiebungen des Mittelpunkts und
+                                                  Auswahlbereichs der Karte aus.</p>
+                                                  </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="info-text small mt-3">
+                                    <p class="text-start">Auf dieser Seite werden die
+                                        Aufenthaltsorte nach Arten von Orten visualisiert. Manche
+                                        Orte lassen sich nicht ausreichend sauber voneinander
+                                        unterscheiden (»Café-Restaurant«). Im Zweifel empfiehlt
+                                        sich, besser großzügig ähnliche Typen auszuwählen.</p>
                                 </div>
                             </div>
-                        
                         </div>
                     </div>
                 </main>
