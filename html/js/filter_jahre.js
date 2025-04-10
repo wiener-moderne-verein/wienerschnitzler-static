@@ -76,7 +76,7 @@ function createFilterTime(features) {
     console.error("Fehler: Element mit ID 'filter-time' nicht gefunden!");
     return;
   }
-  filter.innerHTML = '<span style="font-weight: bold; display: block;">Jahre</span>';
+  filter.innerHTML = '';
   
   // Alle Jahre aus den Features ermitteln
   const yearSet = new Set();
@@ -123,9 +123,9 @@ function createFilterTime(features) {
   });
   filter.appendChild(allButton);
   
-  // Button "(keines)" – setzt den Filter so, dass keine Jahre ausgewählt sind (years=0)
+  // Button "(keins)" – setzt den Filter so, dass keine Jahre ausgewählt sind (years=0)
   const noneButton = document.createElement('button');
-  noneButton.innerText = "(keines)";
+  noneButton.innerText = "(keins)";
   noneButton.classList.add('btn-filter', 'btn-filter-sm', 'm-1');
   noneButton.style.backgroundColor = "#ddd";
   noneButton.style.color = "black";

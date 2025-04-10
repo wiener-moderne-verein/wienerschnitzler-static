@@ -1,5 +1,3 @@
-
-
 // Funktion zum Erstellen der Legende
 function createLegend(maxImportance) {
     const legend = document.getElementById('legend');
@@ -10,9 +8,7 @@ function createLegend(maxImportance) {
     
     // Text "Aufenthaltstage:" hinzufügen
     const legendTitle = document.createElement('span');
-    legendTitle.style.marginRight = '10px';
-    legendTitle.style.fontWeight = 'bold';
-    legendTitle.innerText = 'Aufenthaltstage:';
+    legendTitle.innerText = '';
     legend.appendChild(legendTitle);
     
     // Erstellen der Legende basierend auf den Thresholds, die unter dem größten Wert von importance liegen
@@ -21,12 +17,11 @@ function createLegend(maxImportance) {
         
         const color = visibilityPalette[i];
         const threshold = thresholds[i];
-        const legendItem = document.createElement('div');
-        legendItem.style.display = 'flex';
-        legendItem.style.alignItems = 'center';
+        const legendItem = document.createElement('span');
+        legendItem.style.display = 'inline-flex';
         legendItem.style.marginRight = '10px';
         
-        const colorBox = document.createElement('div');
+        const colorBox = document.createElement('span');
         colorBox.style.width = '20px';
         colorBox.style.height = '20px';
         colorBox.style.backgroundColor = color;
@@ -40,6 +35,7 @@ function createLegend(maxImportance) {
         legend.appendChild(legendItem);
     }
 }
+
 
 
 // Funktion, um das Max-Eingabefeld mit dem höchsten Importance-Wert aus den GeoJSON-Daten vorzubelegen

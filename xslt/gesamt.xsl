@@ -27,47 +27,94 @@
                     <div class="container-fluid my-4">
                         <h1>Anzahl der Aufenthalte Schnitzlers</h1>
                         
-                        <div id="map-large"/>
-                        <div id="legend" class="mt-5"
-                            style="display: flex; flex-wrap: wrap; max-width: 90%;  margin-left: auto;  margin-right: auto; ">
-                            <span style="margin: 10px; font-weight: bold">Aufenthaltstage</span>
-                        </div>
-                        <div id="importance-filters" class="mt-2" style="display: flex; flex-wrap: wrap; max-width: 90%; margin-left: auto; margin-right: auto; ">
-                            <label for="min-input">Mindestaufenthalt:</label>
-                            <input type="number" id="min-input" placeholder="min." style="margin-right:10px;">
-                            </input>
-                                <label for="max-input">Höchstaufenthalt:</label>
-                                <input type="number" id="max-input" placeholder="max." style="margin-right:10px;">
+                        <div class="map-container-wrapper">
+                            <div id="map-large">
+                            </div>
+                            
+                            <div class="filter-column">
+                                 <div class="accordion" id="filterAccordion">
                                     
-                                    <button id="update-filter">anwenden</button>
-                                </input>
-                        </div>
-                        <div id="filter-time" class="mt-5"
-                            style="display: flex; flex-wrap: wrap; max-width: 90%;  margin-left: auto;  margin-right: auto; ">
-                            <span style="margin: 10px; font-weight: bold">Zeitraum</span>
-                        </div>
-                        <div class="d-flex justify-content-center mb-3 mt-5">
-                                <select id="location-select" class="form-select w-auto">
-                                    <option value="disabled selected">Wähle einen Ort</option>
-                                </select>
-                            </div>
-                        <div class="d-flex justify-content-center mt-5">
-                            <div class="col-sm-6 mb-5">
-                                <div class="text-start mx-auto">
-                                    <p class="text-start">Auf dieser Seite werden alle Tage visualisiert, an denen
-                                        sich Schnitzler in seinem Leben an einem bestimmten Ort aufhielt. Durch die
-                                        Auswahl eines Punktes werden genauere Informationen und
-                                        Links angezeigt.</p>
-                                    <p>Die Farbe der Punkte auf der Karte bezieht sich auf die insgesamt nachgewiesene Zahl der Aufenthalte. Filterungen
-                                    werden nicht berücksichtigt.</p>
-                                    <p>Das Auswahlfeld mit den Ortsnamen löst nur Verschiebungen des Mittelpunkts und Auswahlbereichs der Karte aus. Eine Filterung findet mit ihm
-                                        nicht statt.</p>
-                                </div>
-                            </div>
-                        
-                        </div>
-                    </div>
-                </main>
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="headingLegend">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseLegend" aria-expanded="false" aria-controls="collapseLegend">
+                                                Legende
+                                            </button>
+                                        </h2>
+                                        <div id="collapseLegend" class="accordion-collapse collapse" aria-labelledby="headingLegend" data-bs-parent="#filterAccordion">
+                                            <div class="accordion-body">
+                                                <div id="legend-content-placeholder">
+                                                    <div id="legend"/>
+                                                    <div class="info-text small"><p>Die Farbe des Punkts zeigt die Zahl der insgesamt nachgewiesenen Aufenthaltstage an diesem Ort.</p></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="headingStayDuration">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseStayDuration" aria-expanded="false" aria-controls="collapseStayDuration">
+                                                Aufenthaltsdauer
+                                            </button>
+                                        </h2>
+                                        <div id="collapseStayDuration" class="accordion-collapse collapse" aria-labelledby="headingStayDuration" data-bs-parent="#filterAccordion">
+                                            <div class="accordion-body">
+                                                <div class="mb-2">
+                                                    <label for="min-input" class="form-label">Mindestaufenthalt (in Tagen):</label>
+                                                    <input type="number" class="form-control form-control-sm" id="min-input" placeholder="min."/>
+                                                </div>
+                                                <div class="mb-2">
+                                                    <label for="max-input" class="form-label">Höchstaufenthalt (in Tagen):</label>
+                                                    <input type="number" class="form-control form-control-sm" id="max-input" placeholder="max."/>
+                                                </div>
+                                                <button id="update-filter" class="btn btn-primary btn-sm mt-2">Anwenden</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="headingTimeFilter">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTimeFilter" aria-expanded="false" aria-controls="collapseTimeFilter">
+                                                Zeitraum (Jahre)
+                                            </button>
+
+                                        </h2>
+                                        <div id="collapseTimeFilter" class="accordion-collapse collapse" aria-labelledby="headingTimeFilter" data-bs-parent="#filterAccordion">
+                                            <div class="accordion-body">
+                                                <div id="filter-time-content-placeholder">
+                                                    <div id="filter-time">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="headingLocationInfo">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseLocationInfo" aria-expanded="false" aria-controls="collapseLocationInfo">
+                                                Ortsauswahl
+                                            </button>
+                                        </h2>
+                                        <div id="collapseLocationInfo" class="accordion-collapse collapse" aria-labelledby="headingLocationInfo" data-bs-parent="#filterAccordion">
+                                            <div class="accordion-body">
+                                                <div class="mb-3">
+                                                    <label for="location-select" class="form-label">Ort auswählen:</label>
+                                                    <select id="location-select" class="form-select form-select-sm">
+                                                        <option value="" disabled="true">Wähle einen Ort</option>
+                                                        
+                                                    </select>
+                                                    <div class="info-text small"><p>Das Auswahlfeld mit den Ortsnamen löst Verschiebungen des Mittelpunkts und Auswahlbereichs der Karte aus.</p></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                                
+                                                <div class="info-text small mt-3"> <p>Auf dieser Seite werden alle Tage visualisiert, an denen sich Schnitzler an einem bestimmten Ort aufhielt. Durch die Auswahl eines Punktes werden genauere Informationen und Links angezeigt.</p>
+                                                        
+                                                        
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </div> </div> </div> </main>
                 <xsl:call-template name="html_footer"/>
                 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"/>
                 <script src="./js/fuer-alle-karten.js"/>

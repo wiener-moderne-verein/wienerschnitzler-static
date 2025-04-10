@@ -16,26 +16,89 @@
 
 /* needed for interactive map in listplace.xsl */
 
-#map {
-    height: 50vh;
-    width: 90%; /* Maximale Breite */
-    max-width: 90%; /* Sicherstellen, dass es nicht überschreitet */
-    margin: 0; /* Kein Abstand nach außen */
-    padding: 0; /* Kein Innenabstand */
-    margin-left: auto;
-    margin-right: auto;
-}
-
-#map-large {
-    height: 50vh;
-    width: 90%; /* Maximale Breite */
-    max-width: 90%; /* Sicherstellen, dass es nicht überschreitet */
-    margin: 0; /* Kein Abstand nach außen */
-    padding: 0; /* Kein Innenabstand */
-    margin-left: auto;
-    margin-right: auto;
-}
-
+/* Grundlegende Styles für das Layout */
+                    .map-container-wrapper {
+                    display: flex; /* Aktiviert Flexbox */
+                    gap: 20px; /* Abstand zwischen Karte und Filterspalte */
+                    height: 80vh; /* Höhe des gesamten Bereichs (anpassbar) */
+                    /* Oder eine feste Höhe, z.B. height: 700px; */
+                    }
+                    
+                    #map-large {
+                    flex-grow: 1; /* Lässt die Karte den verfügbaren Platz einnehmen */
+                    height: 100%; /* Füllt die Höhe des Wrappers aus */
+                    border: 1px solid #ccc; /* Optional: Rahmen um die Karte */
+                    }
+                    
+                    .filter-column {
+                    width: 300px; /* Feste Breite für die Filterspalte (anpassbar) */
+                    flex-shrink: 0; /* Verhindert, dass die Spalte schrumpft */
+                    overflow-y: auto; /* Scrollbar, falls Inhalt zu lang wird */
+                    padding: 15px;
+                    border: 1px solid #eee; /* Optional: Rahmen um die Spalte */
+                    display: flex;
+                    flex-direction: column; /* Ordnet Elemente in der Spalte untereinander an */
+                    gap: 15px; /* Abstand zwischen den Filterelementen */
+                    }
+                    
+                    /* Entferne alte Zentrierungs- und Breiten-Styles von den Filter-Divs */
+                    #legend, #importance-filters, .location-select-wrapper, .info-text-wrapper {
+                    max-width: 100%;
+                    margin-left: 0;
+                    margin-right: 0;
+                    margin-top: 0; /* Entferne alte Abstände, da wir 'gap' verwenden */
+                    margin-bottom: 0; /* Entferne alte Abstände */
+                    }
+                    
+                    #importance-filters {
+                    display: flex;
+                    flex-direction: column; /* Labels und Inputs untereinander */
+                    gap: 5px; /* Kleiner Abstand innerhalb der Filtergruppen */
+                    }
+                    #importance-filters div { /* Container für Label/Input Paare */
+                    display: flex;
+                    align-items: center;
+                    gap: 5px;
+                    }
+                    #importance-filters input[type="number"] {
+                    width: 80px; /* Schmalere Input-Felder */
+                    }
+                    
+                    #legend span, #filter-time span {
+                    font-weight: bold;
+                    margin-bottom: 5px; /* Kleiner Abstand nach Überschriften */
+                    }
+                    
+                    /* Styles für das Select-Feld */
+                    .location-select-wrapper {
+                    margin-top: 10px; /* Etwas Abstand nach oben */
+                    }
+                    #location-select {
+                    width: 100%; /* Volle Breite der Spalte */
+                    }
+                    
+                    /* Styles für den Infotext */
+                    .info-text-wrapper {
+                    margin-top: auto; /* Schiebt den Infotext nach unten, wenn Platz ist */
+                    font-size: 0.9em;
+                    color: #555;
+                    }
+                    
+                    /* Optional: Responsive Anpassung für kleine Bildschirme */
+                    @media (max-width: 768px) {
+                    .map-container-wrapper {
+                    flex-direction: column; /* Untereinander auf kleinen Screens */
+                    height: auto; /* Höhe automatisch anpassen */
+                    }
+                    .filter-column {
+                    width: 100%; /* Volle Breite auf kleinen Screens */
+                    max-height: 40vh; /* Begrenzte Höhe mit Scrollen */
+                    }
+                    #map-large {
+                    height: 50vh; /* Feste Höhe für die Karte auf kleinen Screens */
+                    }
+                    }
+                    
 
 /** Match bootstrap navlink focus outline color. */
 :focus-visible {
@@ -481,3 +544,17 @@ ul {
     .vis-item {
       min-height: 10px;
     }
+    
+    
+    #filter-time {
+  display: flex; /* Aktiviert Flexbox für den Container */
+  flex-wrap: wrap; /* Erlaubt den Buttons, in die nächste Zeile umzubrechen, wenn nicht genug Platz ist */
+  align-items: center; /* Zentriert die Elemente vertikal (nützlich, falls sie leicht unterschiedliche Höhen haben) */
+  gap: 0.5rem; /* Fügt einen Abstand zwischen den Flex-Items (Span + Buttons) hinzu (alternativ zu oder zusätzlich zu m-1) */
+}
+
+/* Optional: Wenn du möchtest, dass das "Jahre"-Label etwas Abstand hat */
+#filter-time > span {
+  margin-right: 0.5rem; /* Fügt rechts vom "Jahre"-Label etwas Platz hinzu */
+  /* Das inline 'display: block;' im JS ist durch Flexbox nicht mehr nötig, schadet aber meist nicht */
+}
