@@ -17,6 +17,17 @@
 /* needed for interactive map in listplace.xsl */
 
 /* Grundlegende Styles für das Layout */
+
+#map {
+    height: 50vh;
+    width: 90%; /* Maximale Breite */
+    max-width: 90%; /* Sicherstellen, dass es nicht überschreitet */
+    margin: 0; /* Kein Abstand nach außen */
+    padding: 0; /* Kein Innenabstand */
+    margin-left: auto;
+    margin-right: auto;
+}
+
                     .map-container-wrapper {
                     display: flex; /* Aktiviert Flexbox */
                     gap: 20px; /* Abstand zwischen Karte und Filterspalte */
