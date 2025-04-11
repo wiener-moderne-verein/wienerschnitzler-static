@@ -26,33 +26,30 @@
                 <main class="w-100">
                     <div class="container-fluid my-4">
                         <h1>Tag für Tag</h1>
-                        <div
-                            class="controls d-flex justify-content-between align-items-center mb-3 gap-3">
-                            <div class="d-flex justify-content-start">
-                                <button id="prev-day" class="btn btn-secondary  btn-navigation">
-                                    <i class="bi bi-arrow-left-circle"/>
-                                </button>
-                            </div>
-                            <div class="d-flex center-content-start">
-                                <input type="date" id="date-input" class="form-control w-auto"/>
-                            </div>
-                            <div class="d-flex justify-content-end">
-                                <button id="next-day" class="btn btn-secondary  btn-navigation">
-                                    <i class="bi bi-arrow-right-circle"/>
-                                </button>
-                            </div>
-                        </div>
-                        <!-- Map -->
-                        <div id="map"/>
-                        <div class="d-flex justify-content-center mt-5">
-                            <div class="col-sm-6 mb-5">
-                                <div class="text-start mx-auto">
-                                    <div id="map-inhalt-text"/>
+                        <div class="map-container-wrapper">
+                            <div id="map-large"> </div>
+                            <div class="filter-column">
+                                <div
+                                    class="controls d-flex justify-content-between align-items-center mb-3 gap-3">
+                                    <div class="d-flex justify-content-start">
+                                        <button id="prev-day"
+                                            class="btn btn-secondary  btn-navigation">
+                                            <i class="bi bi-arrow-left-circle"/>
+                                        </button>
+                                    </div>
+                                    <div class="d-flex center-content-start">
+                                        <input type="date" id="date-input"
+                                            class="form-control w-auto"/>
+                                    </div>
+                                    <div class="d-flex justify-content-end">
+                                        <button id="next-day"
+                                            class="btn btn-secondary  btn-navigation">
+                                            <i class="bi bi-arrow-right-circle"/>
+                                        </button>
+                                    </div>
                                 </div>
+                                <div id="map-inhalt-text" class="mb-5"/>
                                 <div class="text-start mx-auto">
-                                    <!-- Oberer Text -->
-                                    <p class="text-start text-muted small"> Auf dieser Seite werden
-                                        die einzelnen Tage in Schnitzlers Leben visualisiert.</p>
                                     <p>
                                         <!-- In Deinem HTML -->
                                         <div class="form-check form-switch">
@@ -61,14 +58,18 @@
                                                 id="lineToggle"/>
                                             <label class="form-check-label" for="lineToggle">
                                                 <span id="lineToggleIcon" class="fs-5"
-                                                  title="Schaltet die Linie ein oder aus"/>
+                                                    title="Schaltet die Linie ein oder aus"/>
                                                 <!-- Standard: Linie ausgeschaltet, also X anzeigen -->
-                                                 <b>Verbindungslinie</b> ein-/ausschalten. Sie macht den geografischen Raum
-                                                 besser sichtbar. Sie stellt <span class="fw-bold text-danger"
-                                                     >nicht</span> die Reihenfolge
-                                                dar, in der die Orte aufgesucht wurden. </label>
+                                                <b>Verbindungslinie</b> ein-/ausschalten. Sie macht
+                                                den geografischen Raum besser sichtbar. Sie stellt
+                                                <span class="fw-bold text-danger">nicht</span> die
+                                                Reihenfolge dar, in der die Orte aufgesucht wurden.
+                                            </label>
                                         </div>
                                     </p>
+                                    <p class="text-start text-muted small"> Auf dieser Seite werden
+                                        die einzelnen Tage in Schnitzlers Leben visualisiert.</p>
+                                    
                                 </div>
                             </div>
                         </div>

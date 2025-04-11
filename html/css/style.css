@@ -46,7 +46,7 @@
                     flex-shrink: 0; /* Verhindert, dass die Spalte schrumpft */
                     overflow-y: auto; /* Scrollbar, falls Inhalt zu lang wird */
                     padding: 15px;
-                    border: 1px solid #eee; /* Optional: Rahmen um die Spalte */
+                    border: 0px solid #eee; /* Optional: Rahmen um die Spalte */
                     display: flex;
                     flex-direction: column; /* Ordnet Elemente in der Spalte untereinander an */
                     gap: 15px; /* Abstand zwischen den Filterelementen */
@@ -559,4 +559,55 @@ ul {
 #filter-time > span {
   margin-right: 0.5rem; /* Fügt rechts vom "Jahre"-Label etwas Platz hinzu */
   /* Das inline 'display: block;' im JS ist durch Flexbox nicht mehr nötig, schadet aber meist nicht */
+}
+
+
+/*  Navigationsbuttons */
+/* Grundstil für die Navigationsbuttons */
+.btn-navigation {
+  color: black !important; /* Schriftfarbe/Iconfarbe schwarz */
+  background-color: var(--projektfarbe); /* Hintergrundfarbe aus Variable */
+  border-color: var(--projektfarbe); /* Randfarbe an Hintergrund anpassen */
+  /* Optional: Entferne den standardmäßigen Fokus-Schatten, wenn gewünscht */
+  /* box-shadow: none; */
+}
+
+/* Style für Hover-Effekt (wenn Maus darüber ist) */
+.btn-navigation:hover {
+  color: black !important;
+  background-color: var(--projektfarbe);
+  border-color: var(--projektfarbe);
+  /* Optional: Leichte Helligkeitsänderung für Feedback */
+  filter: brightness(110%);
+}
+
+/* Style für Fokus-Effekt (wenn Button ausgewählt ist, z.B. via Tab) */
+.btn-navigation:focus,
+.btn-navigation.focus { /* .focus für JS-getriggerten Fokus */
+  color: black !important;
+  background-color: var(--projektfarbe);
+  border-color: var(--projektfarbe);
+  /* Wichtig: Einen Fokus-Indikator beibehalten oder anpassen für Barrierefreiheit! */
+  /* Standard Bootstrap Fokus-Schatten mit Projektfarbe (benötigt --projektfarbe-rgb)*/
+   box-shadow: 0 0 0 0.25rem rgba(var(--projektfarbe-rgb, 0, 0, 0), 0.5);
+  /* Alternativ einfacher Umriss: */
+  /* box-shadow: none; */
+  /* outline: 2px solid black; */
+}
+
+/* Style für Active-Effekt (während des Klickens) */
+.btn-navigation:active,
+.btn-navigation.active { /* .active für JS-getriggerten aktiven Zustand */
+  color: black !important;
+  background-color: var(--projektfarbe);
+  border-color: var(--projektfarbe);
+  /* Optional: Leichte Verdunklung für Klick-Feedback */
+  filter: brightness(90%);
+  /* Behalte oder passe den inset-Schatten von Bootstrap an */
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125), 0 0 0 0.25rem rgba(var(--projektfarbe-rgb, 0, 0, 0), 0.5);
+}
+
+/* Stelle sicher, dass das Icon innerhalb des Buttons auch die Farbe erbt */
+.btn-navigation i {
+    color: inherit; /* Erbt die Farbe vom Button (also schwarz) */
 }

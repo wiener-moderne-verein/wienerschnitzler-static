@@ -26,50 +26,47 @@
                 <main class="w-100">
                     <div class="container-fluid my-4">
                         <h1>Jahre</h1>
-                        <div
-                            class="controls d-flex justify-content-between align-items-center mb-3 gap-3">
-                            <div class="d-flex justify-content-start">
-                                <button id="prev-year" class="btn btn-secondary  btn-navigation">
-                                    <i class="bi bi-arrow-left-circle"/>
-                                </button>
-                            </div>
-                            <div class="d-flex center-content-start">
-                                <input type="number" id="date-input" placeholder="Jahr eingeben"
-                                    value="1890" min="1869" max="1931" step="1"
-                                    class="form-control w-auto"/>
-                            </div>
-                            <div class="d-flex justify-content-end">
-                                <button id="next-year" class="btn btn-secondary  btn-navigation">
-                                    <i class="bi bi-arrow-right-circle"/>
-                                </button>
-                            </div>
-                        </div>
-                        <!-- Map -->
-                        <div id="map"/>
-                        <div id="legend" class="mt-5"
-                            style="display: flex; flex-wrap: wrap; max-width: 90%;  margin-left: auto;  margin-right: auto; ">
-                            <span style="margin: 10px; font-weight: bold">Aufenthaltstage:</span>
-                        </div>
-                        <div class="d-flex justify-content-center mt-5">
-                            <div class="col-sm-6 mb-5">
-                                <div class="text-start mx-auto">
-                                    <p class="text-start">Auf dieser Seite werden einzelne Jahre in
+                        <div class="map-container-wrapper">
+                            <div id="map-large"> </div>
+                            <div class="filter-column">
+                                <div class="controls d-flex justify-content-between align-items-center mb-3">
+                                    
+                                    <button id="prev-year" class="btn btn-secondary btn-navigation">
+                                        <i class="bi bi-arrow-left-circle"></i>
+                                    </button>
+                                    
+                                    <select id="date-input" class="form-select w-auto" aria-label="Jahr auswählen">
+                                        <option value="">Lädt...</option> </select>
+                                    
+                                    <button id="next-year" class="btn btn-secondary btn-navigation">
+                                        <i class="bi bi-arrow-right-circle"></i>
+                                    </button>
+                                    
+                                </div>
+                                <p>
+                                    <b>Zahl der Aufenthaltstage (Legende):</b>
+                                </p>
+                                <div id="legend"
+                                    style="display: flex; flex-wrap: wrap; max-width: 90%;  margin-left: auto;  margin-right: auto; ">
+                                    <span style="margin: 10px; font-weight: bold"
+                                        >Aufenthaltstage:</span>
+                                </div>
+                                <div class="form-check form-switch mb-3">
+                                    <!-- Ohne checked-Attribut ist der Schalter standardmäßig ausgeschaltet -->
+                                    <input class="form-check-input" type="checkbox" id="lineToggle"/>
+                                    <label class="form-check-label" for="lineToggle">
+                                        <span id="lineToggleIcon" class="fs-5"
+                                            title="Schaltet die Linie ein oder aus"/>
+                                        <!-- Standard: Linie ausgeschaltet, also X anzeigen -->
+                                        <b>Verbindungslinie</b> ein-/ausschalten. Sie folgt den
+                                        einzelnen Tagen, ist aber innerhalb eines Tages <span
+                                            class="fw-bold text-danger">nicht</span> chronologisch
+                                        geordnet. </label>
+                                </div>
+                                <p class="text-start text-muted small">Auf dieser Seite werden einzelne Jahre in
                                         Schnitzlers Leben visualisiert. Durch die Auswahl eines
                                         Punktes werden die jeweiligen Aufenthaltstage innerhalb
                                         desselben angezeigt.</p>
-                                    <div class="form-check form-switch">
-                                        <!-- Ohne checked-Attribut ist der Schalter standardmäßig ausgeschaltet -->
-                                        <input class="form-check-input" type="checkbox"
-                                            id="lineToggle"/>
-                                        <label class="form-check-label" for="lineToggle">
-                                            <span id="lineToggleIcon" class="fs-5"
-                                                title="Schaltet die Linie ein oder aus"/>
-                                            <!-- Standard: Linie ausgeschaltet, also X anzeigen -->
-                                            <b>Verbindungslinie</b> ein-/ausschalten. Sie folgt den einzelnen Tagen, ist aber innerhalb eines
-                                            Tages <span class="fw-bold text-danger"
-                                                >nicht</span> chronologisch geordnet. </label>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -84,4 +81,3 @@
         </html>
     </xsl:template>
 </xsl:stylesheet>
-                               

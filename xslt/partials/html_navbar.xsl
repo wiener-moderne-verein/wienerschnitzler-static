@@ -9,9 +9,9 @@
             <div class="container">
                 <nav class="navbar navbar-expand-lg navbar-light" aria-label="Primary">
                     <!-- Roter BETA-Button -->
-                            <span class="navbar-text" style="position: relative;">
+                            <!--<span class="navbar-text" style="position: relative;">
                                 <button class="btn btn-danger disabled" type="button" style="color: white; background-color: red; font-size: 0.75rem; padding: 0.25rem 0.5rem; transform: rotate(-10deg); position: absolute; bottom: -27px; right: -155px; z-index:2000;">BETA</button>
-                            </span>
+                            </span>-->
                     <div class="container">
                         <img src="images/wienerschnitzler.jpg" height="30px"/>
                     

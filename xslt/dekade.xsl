@@ -26,36 +26,33 @@
                 <main class="w-100">
                     <div class="container-fluid my-4">
                         <h1>Dekade</h1>
-                        <div
-                            class="controls d-flex justify-content-between align-items-center mb-3 gap-3">
-                            <div class="d-flex justify-content-start">
+                        <div class="map-container-wrapper">
+                            <div id="map-large"> </div>
+                            <div class="filter-column">
+                                <div class="controls d-flex justify-content-between align-items-center mb-3">
                                 <button id="prev-decade" class="btn btn-secondary  btn-navigation">
                                     <i class="bi bi-arrow-left-circle"/>
                                 </button>
-                            </div>
-                            <div class="d-flex center-content-start">
+                            
                                 <select id="decade-input"> </select>
-                            </div>
-                            <div class="d-flex justify-content-end">
+                            
+                            
                                 <button id="next-decade" class="btn btn-secondary  btn-navigation">
                                     <i class="bi bi-arrow-right-circle"/>
                                 </button>
-                            </div>
-                        </div>
-                        <div id="map"/>
-                        <div id="legend" class="mt-5"
+                                </div>
+                                <p>
+                                    <b>Zahl der Aufenthaltstage (Legende):</b>
+                                </p>
+                        <div id="legend" 
                             style="display: flex; flex-wrap: wrap; max-width: 90%;  margin-left: auto;  margin-right: auto; ">
                             <span style="margin: 10px; font-weight: bold">Aufenthaltstage:</span>
                         </div>
-                        <div class="d-flex justify-content-center mt-5">
-                            <div class="col-sm-6 mb-5">
-                                <div class="text-start mx-auto">
-                                    <p class="text-start">Auf dieser Seite werden Dekaden in
-                                        Schnitzlers Leben visualisiert. Durch die Auswahl eines
-                                        Punktes werden die jeweiligen Aufenthaltstage innerhalb
-                                        desselben angezeigt.</p>
-                                </div>
-                                <p>
+                        
+                            
+                                
+                                
+                                <p class="mb-3">
                                     <!-- In Deinem HTML -->
                                     <div class="form-check form-switch">
                                         <!-- Ohne checked-Attribut ist der Schalter standardmäßig ausgeschaltet -->
@@ -70,8 +67,13 @@
                                                 >nicht</span> chronologisch geordnet. </label>
                                     </div>
                                 </p>
+                                <p class="text-start text-muted small">Auf dieser Seite werden Dekaden in
+                                    Schnitzlers Leben visualisiert. Durch die Auswahl eines
+                                    Punktes werden die jeweiligen Aufenthaltstage innerhalb
+                                    desselben angezeigt.</p>
                             </div>
                         </div>
+                        
                     </div>
                 </main>
                 <xsl:call-template name="html_footer"/>

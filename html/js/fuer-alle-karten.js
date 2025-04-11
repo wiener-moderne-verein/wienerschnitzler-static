@@ -27,7 +27,7 @@ function initializeMapLarge() {
   
 // Funktion zum Initialisieren der Karte (für das normale Karten-Element)
 function initializeMap() {
-    window.map = L.map('map').setView([48.2082, 16.3738], 5);
+    window.map = L.map('map-large').setView([48.2082, 16.3738], 5);
     
     // Carto Positron Tile-Layer hinzufügen
     L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
