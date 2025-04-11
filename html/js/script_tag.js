@@ -96,9 +96,9 @@ function updateMapInhaltText(features, date, name) {
             // Generiere die Links mit der neuen Hilfsfunktion
             textContent = `Am <a class="schnitzler-chronik-link" href="https://schnitzler-chronik.acdh.oeaw.ac.at/${date}.html" target="_blank">${displayedName}</a> war Schnitzler an folgenden Orten: ${
                 filteredFeatures.length === 1
-                    ? `<a href="${encodeURIComponent(filteredFeatures[0].properties.id)}.html" target="_blank">${createLinkText(filteredFeatures[0])}</a>.`
-                    : filteredFeatures.slice(0, -1).map(feature => `<a href="${encodeURIComponent(feature.properties.id)}.html" target="_blank">${createLinkText(feature)}</a>`).join(', ') +
-                      ` und <a href="${encodeURIComponent(filteredFeatures[filteredFeatures.length - 1].properties.id)}.html" target="_blank">${createLinkText(filteredFeatures[filteredFeatures.length - 1])}</a>.`
+                    ? `<a href="${encodeURIComponent(filteredFeatures[0].properties.id)}.html">${createLinkText(filteredFeatures[0])}</a>.`
+                    : filteredFeatures.slice(0, -1).map(feature => `<a href="${encodeURIComponent(feature.properties.id)}.html">${createLinkText(feature)}</a>`).join(', ') +
+                      ` und <a href="${encodeURIComponent(filteredFeatures[filteredFeatures.length - 1].properties.id)}.html" >${createLinkText(filteredFeatures[filteredFeatures.length - 1])}</a>.`
             }`;
         } else {
             const wohnsitz = getWohnsitzForDate(date);
