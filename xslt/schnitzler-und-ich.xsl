@@ -21,7 +21,7 @@
                 <xsl:call-template name="nav_bar"/>
                 <main>
                     <div class="container col-12 mt-3" style="max-width:800px">
-                        <div id="map"/>
+                        <div id="map-large"/>
                         <h1>Wo stand Ihnen Schnitzler am nächsten?</h1>
                         
                         <div id="queryControls" class="container mt-4">
