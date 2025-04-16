@@ -19,9 +19,8 @@
             </head>
             <body class="d-flex flex-column h-100">
                 <xsl:call-template name="nav_bar"/>
-                <main>
-                    <div class="container col-12 mt-3" style="max-width:800px">
-                        <div id="map-large"/>
+                <main class="w-100">
+                    <div class="container-fluid my-4">
                         <h1>Wo stand Ihnen Schnitzler am nächsten?</h1>
                         <div class="map-container-wrapper">
                             <div id="map-large"> </div>
