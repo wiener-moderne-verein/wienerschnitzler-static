@@ -49,15 +49,15 @@
                            >Tagebuchs</a>, seiner <a
                            href="https://schnitzler-briefe.acdh.oeaw.ac.at/" target="_blank"
                            style="color: #A63437; font-weight: bold; text-decoration: none;"
-                           >Korrespondenz</a> und weiterer Dokumente verzeichnen wir derzeit über
-                        44.500 Aufenthalte an über 4.350 Orten. Gegenwärtig gibt es für keine andere
+                           >Korrespondenz</a> und weiterer Dokumente verzeichnen wir derzeit knapp
+                        45.000 Aufenthalte an über 4.400 Orten. Gegenwärtig gibt es für keine andere
                         Person seiner Zeit so viele frei verfügbare und georeferenzierte Daten.
                         Diese zeigen, wo Schnitzler sich bewegte, welche Häuser, Straßen,
                         Stadtteile, Städte und Länder er kannte und welche ihm wichtig waren.
                       Zugleich sieht man, wo
                         er sich nie aufhielt.</p>
                      <p>Die Detailtiefe der derzeit erfassten Daten variiert. Die Durchsicht
-                        des Tagebuchs für den Zeitraum 1919–1922 ist im Gange.</p>
+                        des Tagebuchs für den Zeitraum 1920–1922 ist im Gange.</p>
                   </div>
                </div>
             </div>
