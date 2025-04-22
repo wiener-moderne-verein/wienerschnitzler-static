@@ -8,6 +8,7 @@
     <xsl:param name="distinctPlaces"
         select="document('../data/editions/xml/wienerschnitzler_distinctPlaces.xml')/tei:TEI/tei:text/tei:body/tei:listPlace"
         as="node()"/>
+    <xsl:param select="document('../utils/index_days.xml')" name="tb-days"/>
     <xsl:template match="tei:place" name="place_detail">
         <div style="margin-bottom:35px; margin-top:50px;">
             <!--<div class="d-flex justify-content-around">
@@ -36,7 +37,6 @@
                                 data-bs-toggle="collapse" data-bs-target="#collapseMap"
                                 aria-expanded="true" aria-controls="collapseMap"> Karte </button>
                         </h2>
-                        
                         <!-- Karte im Collapse -->
                         <div id="collapseMap" class="accordion-collapse collapse show"
                             aria-labelledby="headingMap" data-bs-parent="#accordionMap">
@@ -47,7 +47,7 @@
                                         <xsl:variable name="idnos-of-current" as="node()">
                                             <xsl:element name="nodeset_place">
                                                 <xsl:for-each select="tei:idno">
-                                                    <xsl:copy-of select="."/>
+                                                  <xsl:copy-of select="."/>
                                                 </xsl:for-each>
                                             </xsl:element>
                                         </xsl:variable>
@@ -179,35 +179,44 @@
                             </xsl:if>
                             <xsl:if test="./tei:noteGrp">
                                 <tr>
-                                    <th> Wohn- und Arbeitsort von: </th>
+                                    <th> Wohnort oder Arbeitsort von: </th>
                                     <td>
                                         <ul>
                                             <xsl:for-each select="descendant::tei:noteGrp/tei:note">
-                                                <xsl:element name="a"><xsl:attribute name="target">
-                                                        <xsl:text>_blank</xsl:text>
-                                                </xsl:attribute>
-                                                    <xsl:attribute name="href">
-                                                        <xsl:value-of select="concat('https://pmb.acdh.oeaw.ac.at/entity/', replace(replace(descendant::tei:persName/@ref, '#', ''), '#', ''), '/')"/>
-                                                    </xsl:attribute>
-                                                <xsl:choose>
-                                                    <xsl:when test="descendant::tei:persName/tei:surname and descendant::tei:persName/tei:forename">
-                                                        <xsl:value-of select="concat( descendant::tei:persName/tei:forename, ' ', descendant::tei:persName/tei:surname)"/>
-                                                    </xsl:when>
-                                                    <xsl:when test="descendant::tei:persName/tei:surname">
-                                                        <xsl:value-of select="descendant::tei:persName/tei:surname"/>
-                                                    </xsl:when>
-                                                    <xsl:when test="descendant::tei:persName/tei:forename">
-                                                        <xsl:value-of select="descendant::tei:persName/tei:forename"/>
-                                                    </xsl:when>
-                                                    <xsl:otherwise>
-                                                        <xsl:value-of select="descendant::tei:persName"/>
-                                                    </xsl:otherwise>
-                                                </xsl:choose>
+                                                <xsl:element name="a">
+                                                  <xsl:attribute name="target">
+                                                  <xsl:text>_blank</xsl:text>
+                                                  </xsl:attribute>
+                                                  <xsl:attribute name="href">
+                                                  <xsl:value-of
+                                                  select="concat('https://pmb.acdh.oeaw.ac.at/entity/', replace(replace(descendant::tei:persName/@ref, '#', ''), '#', ''), '/')"
+                                                  />
+                                                  </xsl:attribute>
+                                                  <xsl:choose>
+                                                  <xsl:when
+                                                  test="descendant::tei:persName/tei:surname and descendant::tei:persName/tei:forename">
+                                                  <xsl:value-of
+                                                  select="concat(descendant::tei:persName/tei:forename, ' ', descendant::tei:persName/tei:surname)"
+                                                  />
+                                                  </xsl:when>
+                                                  <xsl:when
+                                                  test="descendant::tei:persName/tei:surname">
+                                                  <xsl:value-of
+                                                  select="descendant::tei:persName/tei:surname"/>
+                                                  </xsl:when>
+                                                  <xsl:when
+                                                  test="descendant::tei:persName/tei:forename">
+                                                  <xsl:value-of
+                                                  select="descendant::tei:persName/tei:forename"/>
+                                                  </xsl:when>
+                                                  <xsl:otherwise>
+                                                  <xsl:value-of select="descendant::tei:persName"/>
+                                                  </xsl:otherwise>
+                                                  </xsl:choose>
                                                 </xsl:element>
-                                                <xsl:if test="not(position()=last())">
-                                                    <xsl:text>, </xsl:text>
+                                                <xsl:if test="not(position() = last())">
+                                                  <xsl:text>, </xsl:text>
                                                 </xsl:if>
-                                                
                                             </xsl:for-each>
                                         </ul>
                                     </td>
@@ -244,113 +253,106 @@
                                 </xsl:choose>
                             </button>
                         </h2>
-                        
-                        
                         <!-- Tabelle im Collapse -->
                         <div id="mentions" class="accordion-collapse show"
                             aria-labelledby="mentions" data-bs-parent="#accordionMentions">
                             <div>
                                 <!-- Balkendiagramm -->
-                                <xsl:variable name="start-year" select="1869" />
-                                <xsl:variable name="end-year" select="1931" />
-                                <xsl:variable name="years" select="$start-year to $end-year" />
-                                
+                                <xsl:variable name="start-year" select="1869"/>
+                                <xsl:variable name="end-year" select="1931"/>
+                                <xsl:variable name="years" select="$start-year to $end-year"/>
                                 <!-- Höchste Ereignisanzahl berechnen -->
                                 <xsl:variable name="max-count" as="xs:int">
-                                    <xsl:value-of select="max(for $year in $years return count($distinctPlaces/tei:place[@xml:id = $current-xml-id]/tei:listEvent/tei:event[year-from-date(@when) = $year]))" />
+                                    <xsl:value-of select="
+                                            max(for $year in $years
+                                            return
+                                                count($distinctPlaces/tei:place[@xml:id = $current-xml-id]/tei:listEvent/tei:event[year-from-date(@when) = $year]))"
+                                    />
                                 </xsl:variable>
                                 <xsl:if test="$max-count &gt; 0">
-                                
-                                <!-- Schrittweite für die Y-Achse berechnen -->
-                                <xsl:variable name="y-step" select="if ($max-count > 100) then 25 else 10" />
-                                
-                                <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="300" viewBox="0 0 1000 300">
-                                    <!-- Achsen -->
-                                    <line x1="50" y1="10" x2="50" y2="250" stroke="black" />
-                                    <line x1="50" y1="250" x2="950" y2="250" stroke="black" />
-                                    
-                                    <!-- Dynamische Y-Achsen-Beschriftungen mit Zwischenstrichen -->
-                                    <xsl:variable name="y-step" select="if ($max-count > 100) then 25 else 10" />
-                                    <xsl:variable name="max-steps" select="xs:integer(floor($max-count div $y-step))" />
-                                    
-                                    <!-- Haupt- und Zwischenstriche auf der Y-Achse -->
-                                    <xsl:for-each select="for $i in 0 to $max-steps return $i * $y-step">
-                                        <xsl:variable name="count" select="." />
-                                        <!-- Hauptstrich -->
-                                        <line 
-                                            x1="45" 
-                                            y1="{250 - $count * (240 div $max-count)}" 
-                                            x2="50" 
-                                            y2="{250 - $count * (240 div $max-count)}" 
-                                            stroke="black" />
-                                        <text 
-                                            x="40" 
-                                            y="{255 - $count * (240 div $max-count)}" 
-                                            font-size="10" 
-                                            text-anchor="end">
-                                            <xsl:value-of select="$count" />
-                                        </text>
-                                        
-                                        <!-- Zwischenstriche -->
-                                        <xsl:for-each select="1 to 4">
-                                            <xsl:variable name="sub-step" select="$count + (. * $y-step div 5)" />
-                                            <line 
-                                                x1="47" 
-                                                y1="{250 - $sub-step * (240 div $max-count)}" 
-                                                x2="50" 
-                                                y2="{250 - $sub-step * (240 div $max-count)}" 
-                                                stroke="gray" />
-                                        </xsl:for-each>
-                                    </xsl:for-each>
-                                    
-                                    <!-- Jahrzehnte-Beschriftungen und Hauptstriche auf der X-Achse -->
-                                    <xsl:for-each select="$years[position() mod 10 = 2]">
-                                        <xsl:variable name="year" select="." />
-                                        <xsl:if test="$year mod 10 = 0">
+                                    <!-- Schrittweite für die Y-Achse berechnen -->
+                                    <xsl:variable name="y-step" select="
+                                            if ($max-count > 100) then
+                                                25
+                                            else
+                                                10"/>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="100%"
+                                        height="300" viewBox="0 0 1000 300">
+                                        <!-- Achsen -->
+                                        <line x1="50" y1="10" x2="50" y2="250" stroke="black"/>
+                                        <line x1="50" y1="250" x2="950" y2="250" stroke="black"/>
+                                        <!-- Dynamische Y-Achsen-Beschriftungen mit Zwischenstrichen -->
+                                        <xsl:variable name="y-step" select="
+                                                if ($max-count > 100) then
+                                                    25
+                                                else
+                                                    10"/>
+                                        <xsl:variable name="max-steps"
+                                            select="xs:integer(floor($max-count div $y-step))"/>
+                                        <!-- Haupt- und Zwischenstriche auf der Y-Achse -->
+                                        <xsl:for-each select="
+                                                for $i in 0 to $max-steps
+                                                return
+                                                    $i * $y-step">
+                                            <xsl:variable name="count" select="."/>
                                             <!-- Hauptstrich -->
-                                            <line 
-                                                x1="{50 + ($year - $start-year) * 10}" 
-                                                y1="250" 
-                                                x2="{50 + ($year - $start-year) * 10}" 
-                                                y2="255" 
-                                                stroke="black" />
-                                            <!-- Beschriftung -->
-                                            <text 
-                                                x="{50 + ($year - $start-year) * 10}" 
-                                                y="270" 
-                                                font-size="10" 
-                                                text-anchor="middle">
-                                                <xsl:value-of select="$year" />
+                                            <line x1="45" y1="{250 - $count * (240 div $max-count)}"
+                                                x2="50" y2="{250 - $count * (240 div $max-count)}"
+                                                stroke="black"/>
+                                            <text x="40" y="{255 - $count * (240 div $max-count)}"
+                                                font-size="10" text-anchor="end">
+                                                <xsl:value-of select="$count"/>
                                             </text>
-                                        </xsl:if>
-                                        
-                                        <!-- Zwischenstriche -->
-                                        <xsl:for-each select="1 to 9">
-                                            <xsl:variable name="sub-step-x" select="$year + . * 1" />
-                                            <line 
-                                                x1="{50 + ($sub-step-x - $start-year) * 10}" 
-                                                y1="250" 
-                                                x2="{50 + ($sub-step-x - $start-year) * 10}" 
-                                                y2="253" 
-                                                stroke="gray" />
+                                            <!-- Zwischenstriche -->
+                                            <xsl:for-each select="1 to 4">
+                                                <xsl:variable name="sub-step"
+                                                  select="$count + (. * $y-step div 5)"/>
+                                                <line x1="47"
+                                                  y1="{250 - $sub-step * (240 div $max-count)}"
+                                                  x2="50"
+                                                  y2="{250 - $sub-step * (240 div $max-count)}"
+                                                  stroke="gray"/>
+                                            </xsl:for-each>
                                         </xsl:for-each>
-                                    </xsl:for-each>
-                                    
-                                    
-                                    <!-- Balken -->
-                                    <xsl:for-each select="$years">
-                                        <xsl:variable name="year" select="." />
-                                        <xsl:variable name="count-year-events" as="xs:int">
-                                            <xsl:value-of select="count($distinctPlaces/tei:place[@xml:id = $current-xml-id]/tei:listEvent/tei:event[year-from-date(@when) = $year])" />
-                                        </xsl:variable>
-                                        <rect
-                                            x="{50 + ($year - $start-year) * 10 - 4}"
-                                            y="{250 - $count-year-events * (240 div $max-count)}"
-                                            width="8"
-                                            height="{$count-year-events * (240 div $max-count)}"
-                                            fill="#045344" />
-                                    </xsl:for-each>
-                                </svg>
+                                        <!-- Jahrzehnte-Beschriftungen und Hauptstriche auf der X-Achse -->
+                                        <xsl:for-each select="$years[position() mod 10 = 2]">
+                                            <xsl:variable name="year" select="."/>
+                                            <xsl:if test="$year mod 10 = 0">
+                                                <!-- Hauptstrich -->
+                                                <line x1="{50 + ($year - $start-year) * 10}"
+                                                  y1="250" x2="{50 + ($year - $start-year) * 10}"
+                                                  y2="255" stroke="black"/>
+                                                <!-- Beschriftung -->
+                                                <text x="{50 + ($year - $start-year) * 10}" y="270"
+                                                  font-size="10" text-anchor="middle">
+                                                  <xsl:value-of select="$year"/>
+                                                </text>
+                                            </xsl:if>
+                                            <!-- Zwischenstriche -->
+                                            <xsl:for-each select="1 to 9">
+                                                <xsl:variable name="sub-step-x"
+                                                  select="$year + . * 1"/>
+                                                <line x1="{50 + ($sub-step-x - $start-year) * 10}"
+                                                  y1="250"
+                                                  x2="{50 + ($sub-step-x - $start-year) * 10}"
+                                                  y2="253" stroke="gray"/>
+                                            </xsl:for-each>
+                                        </xsl:for-each>
+                                        <!-- Balken -->
+                                        <xsl:for-each select="$years">
+                                            <xsl:variable name="year" select="."/>
+                                            <xsl:variable name="count-year-events" as="xs:int">
+                                                <xsl:value-of
+                                                  select="count($distinctPlaces/tei:place[@xml:id = $current-xml-id]/tei:listEvent/tei:event[year-from-date(@when) = $year])"
+                                                />
+                                            </xsl:variable>
+                                            <rect x="{50 + ($year - $start-year) * 10 - 4}"
+                                                y="{250 - $count-year-events * (240 div $max-count)}"
+                                                width="8"
+                                                height="{$count-year-events * (240 div $max-count)}"
+                                                fill="#045344"/>
+                                        </xsl:for-each>
+                                    </svg>
                                 </xsl:if>
                             </div>
                             <div class="accordion-body">
@@ -360,13 +362,22 @@
                                             <xsl:for-each
                                                 select="$distinctPlaces/tei:place[@xml:id = $current-xml-id]/tei:listEvent/tei:event">
                                                 <li>
-                                                  <a
-                                                  href="{concat('tag.html#', @when)}"
-                                                  target="_blank">
+                                                  <a href="{concat('tag.html#', @when)}">
                                                   <xsl:value-of select="tei:eventName"/>
-                                                  </a> (<a class="schnitzler-chronik-link"
-                                                      href="{concat('https://schnitzler-chronik.acdh.oeaw.ac.at/', @when, '.html')}"
-                                                      target="_blank">Schnitzler Chronik</a>)
+                                                  </a>
+                                                  <a class="btn schnitzler-chronik-link"
+                                                  role="button>"
+                                                  href="{concat('https://schnitzler-chronik.acdh.oeaw.ac.at/', @when, '.html')}"
+                                                  target="_blank">Schnitzler Chronik</a>
+                                                  <xsl:variable name="when" select="@when"/>
+                                                  <xsl:if
+                                                  test="$tb-days/descendant::*:date[. = $when][1]">
+                                                  <button type="button" class="btn">
+                                                  <a class="schnitzler-tagebuch-link"
+                                                  href="{concat('https://schnitzler-tagebuch.acdh.oeaw.ac.at/entry__', @when, '.html')}"
+                                                  target="_blank">Schnitzler Tagebuch</a>
+                                                  </button>
+                                                  </xsl:if>
                                                 </li>
                                             </xsl:for-each>
                                         </ul>
@@ -400,15 +411,25 @@
                                                   <ul>
                                                   <!-- Ereignisse innerhalb des Jahres -->
                                                   <xsl:for-each select="current-group()">
-                                                      <li>
-                                                          <a
-                                                              href="{concat('tag.html#', @when)}"
-                                                              target="_blank">
-                                                              <xsl:value-of select="tei:eventName"/>
-                                                          </a> (<a class="schnitzler-chronik-link"
-                                                              href="{concat('https://schnitzler-chronik.acdh.oeaw.ac.at/', @when, '.html')}"
-                                                              target="_blank">Schnitzler Chronik</a>)
-                                                      </li>
+                                                  <li>
+                                                  <a href="{concat('tag.html#', @when)}"
+                                                  >
+                                                  <xsl:value-of select="tei:eventName"/>
+                                                  </a>
+                                                  <a class="btn schnitzler-chronik-link"
+                                                  role="button>"
+                                                  href="{concat('https://schnitzler-chronik.acdh.oeaw.ac.at/', @when, '.html')}"
+                                                  target="_blank">Schnitzler Chronik</a>
+                                                  <xsl:variable name="when" select="@when"/>
+                                                  <xsl:if
+                                                  test="$tb-days/descendant::*:date[. = $when][1]">
+                                                  <button type="button" class="btn">
+                                                  <a class="schnitzler-tagebuch-link"
+                                                  href="{concat('https://schnitzler-tagebuch.acdh.oeaw.ac.at/entry__', @when, '.html')}"
+                                                  target="_blank">Schnitzler Tagebuch</a>
+                                                  </button>
+                                                  </xsl:if>
+                                                  </li>
                                                   </xsl:for-each>
                                                   </ul>
                                                   </div>
@@ -425,9 +446,6 @@
                 </div>
             </xsl:if>
         </div>
-        
-        
-        
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
             integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
         <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""/>
