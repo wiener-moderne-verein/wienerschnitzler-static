@@ -318,19 +318,22 @@ h4 {
 }
 
 
-.schnitzler-chronik-link {
+.schnitzler-chronik-link,
+.schnitzler-chronik-link:visited{
     color: #C67F53;
     font-weight: bold;
     text-decoration: none;
 }
 
-.schnitzler-tagebuch-link {
+.schnitzler-tagebuch-link,
+.schnitzler-tagebuch-link:visited { 
     color: #037A33;
     font-weight: bold;
     text-decoration: none;
 }
 
-.schnitzler-briefe-link {
+.schnitzler-briefe-link,
+.schnitzler-briefe-link:visited { 
     color: #A63437;
     font-weight: bold;
     text-decoration: none;
