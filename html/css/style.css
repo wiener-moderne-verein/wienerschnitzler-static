@@ -330,6 +330,12 @@ h4 {
     text-decoration: none;
 }
 
+.schnitzler-briefe-link {
+    color: #A63437;
+    font-weight: bold;
+    text-decoration: none;
+}
+
 span.share-bluesky {
     display: block;
     height: 1.6em;

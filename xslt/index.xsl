@@ -44,13 +44,12 @@
                         entfernt. Er verfasste erfolgreiche Dramen, Romane und Erzählungen, die
                         meist in Wien angesiedelt sind. Die Stadt verließ er nur für Reisen und
                         Sommeraufenthalte. Dank seines <a
-                           href="https://schnitzler-tagebuch.acdh.oeaw.ac.at/" target="_blank"
-                           style="color: #037A33; font-weight: bold; text-decoration: none;"
+                           href="https://schnitzler-tagebuch.acdh.oeaw.ac.at/" target="_blank" class="schnitzler-tagebuch-link"
                            >Tagebuchs</a>, seiner <a
                            href="https://schnitzler-briefe.acdh.oeaw.ac.at/" target="_blank"
-                           style="color: #A63437; font-weight: bold; text-decoration: none;"
-                           >Korrespondenz</a> und weiterer Dokumente verzeichnen wir derzeit knapp
-                        45.000 Aufenthalte an über 4.400 Orten. Gegenwärtig gibt es für keine andere
+                           class="schnitzler-briefe-link"
+                           >Korrespondenz</a> und weiterer Dokumente verzeichnen wir derzeit über
+                        45.200 Aufenthalte an über 4600 Orten. Gegenwärtig gibt es für keine andere
                         Person seiner Zeit so viele frei verfügbare und georeferenzierte Daten.
                         Diese zeigen, wo Schnitzler sich bewegte, welche Häuser, Straßen,
                         Stadtteile, Städte und Länder er kannte und welche ihm wichtig waren.
