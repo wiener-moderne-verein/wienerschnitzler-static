@@ -199,12 +199,24 @@
                   </div>
                   <div class="col-12 col-md-6 col-lg-3">
                      <div class="card content-item">
+                        <a href="https://kepler.gl/demo/map?mapUrl=https://raw.githubusercontent.com/wiener-moderne-verein/wienerschnitzler-data/refs/heads/main/data/editions/geojson/wienerschnitzler_distinctPlaces.geojson" target="_blank">
+                           <img src="images/index/keplergl.png" class="card-img-top"
+                              alt="Übersicht"/>
+                        </a>
+                        <div class="card-body">
+                           <p class="card-text">Eigene Ansichten der Daten können schnell mit  
+                              <a href="https://kepler.gl/demo/map?mapUrl=https://raw.githubusercontent.com/wiener-moderne-verein/wienerschnitzler-data/refs/heads/main/data/editions/geojson/wienerschnitzler_distinctPlaces.geojson" target="_blank">kepler.gl</a> erzeugt werden.</p>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-12 col-md-6 col-lg-3">
+                     <div class="card content-item">
                         <a href="https://github.com/wiener-moderne-verein/wienerschnitzler-data" target="_blank">
                            <img src="images/index/github.png" class="card-img-top"
                               alt="Übersicht"/>
                         </a>
                         <div class="card-body">
-                           <p class="card-text">Alle Quelldaten stehen auf
+                           <p class="card-text">Für Menschen mit ausgeprägtem Spielbedürfnis: Alle Quelldaten stehen auf
                                <a href="https://github.com/wiener-moderne-verein/wienerschnitzler-data" target="_blank">GitHub</a> zur freien 
                               Verfügung. </p>
                         </div>
