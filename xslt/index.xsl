@@ -104,11 +104,11 @@
                      <div class="card content-item">
                         <a href="listplace-missing.html">
                            <img src="images/index/fehlend.png" class="card-img-top"
-                              alt="Nicht indentifizierte Orte"/>
+                              alt="Nicht identifizierte Orte"/>
                         </a>
                         <div class="card-body">
                            <p class="card-text">Nicht immer wurden wir fündig. Hier sind derzeit <a
-                                 href="listplace-missing.html">nicht indentifizierte Orte</a>. </p>
+                                 href="listplace-missing.html">nicht identifizierte Orte</a>. </p>
                         </div>
                      </div>
                   </div>
