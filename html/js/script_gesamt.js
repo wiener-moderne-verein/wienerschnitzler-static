@@ -134,6 +134,13 @@ function displayFilteredGeoJson() {
         console.warn('Keine passenden Features gefunden.');
         return;
     }
+    
+    // Sortiere Features nach importance, aufsteigend – weniger wichtige zuerst
+    filteredFeatures.sort((a, b) => {
+        const impA = a.properties.importance || 0;
+        const impB = b.properties.importance || 0;
+        return impA - impB; // Kleinere importance zuerst → größere werden zuletzt gezeichnet
+    });
 
     // GeoJSON-Layer erstellen – mit der Marker-Funktion createCircleMarker
     const newLayer = L.geoJSON(filteredFeatures, {
