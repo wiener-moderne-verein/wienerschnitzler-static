@@ -100,30 +100,29 @@
                 </i>
             </xsl:when>
             <xsl:otherwise>
-               
-                    <xsl:value-of select="normalize-space($analytic/tei:title)"/>
-                    <xsl:choose>
-                        <xsl:when test="ends-with(normalize-space($analytic/tei:title), '!')"/>
-                        <xsl:when test="ends-with(normalize-space($analytic/tei:title), '?')"/>
-                        <xsl:otherwise>
-                            <xsl:text>.</xsl:text>
-                        </xsl:otherwise>
-                    </xsl:choose>
-                
+                <xsl:value-of select="normalize-space($analytic/tei:title)"/>
+                <xsl:choose>
+                    <xsl:when test="ends-with(normalize-space($analytic/tei:title), '!')"/>
+                    <xsl:when test="ends-with(normalize-space($analytic/tei:title), '?')"/>
+                    <xsl:otherwise>
+                        <xsl:text>.</xsl:text>
+                    </xsl:otherwise>
+                </xsl:choose>
             </xsl:otherwise>
         </xsl:choose>
         <xsl:if test="$analytic/tei:editor[1]">
             <xsl:text>. </xsl:text>
             <xsl:choose>
-                <xsl:when test="$analytic/tei:editor/@role='translator' and $analytic/tei:editor[2]">
+                <xsl:when
+                    test="$analytic/tei:editor/@role = 'translator' and $analytic/tei:editor[2]">
                     <xsl:text>Übersetzt von </xsl:text>
                     <xsl:value-of
                         select="mam:editor-rekursion($analytic, 1, count($analytic/tei:editor))"/>
                 </xsl:when>
-                <xsl:when test="$analytic/tei:editor/@role='translator'">
+                <xsl:when test="$analytic/tei:editor/@role = 'translator'">
                     <xsl:text>Übersetzt von </xsl:text>
+                    <xsl:value-of select="$analytic/tei:editor"/>
                 </xsl:when>
-                
                 <xsl:when test="$analytic/tei:editor[2]">
                     <xsl:text>Hg. </xsl:text>
                     <xsl:value-of
@@ -159,13 +158,14 @@
         <xsl:if test="$monogr/tei:editor[1]">
             <xsl:text>. </xsl:text>
             <xsl:choose>
-                <xsl:when test="$monogr/tei:editor/@role='translator' and $analytic/tei:editor[2]">
+                <xsl:when test="$monogr/tei:editor/@role = 'translator' and $monogr/tei:editor[2]">
                     <xsl:text>Übersetzt von </xsl:text>
                     <xsl:value-of
-                        select="mam:editor-rekursion($analytic, 1, count($analytic/tei:editor))"/>
+                        select="mam:editor-rekursion($monogr, 1, count($monogr/tei:editor))"/>
                 </xsl:when>
-                <xsl:when test="$monogr/tei:editor/@role='translator'">
+                <xsl:when test="$monogr/tei:editor/@role = 'translator'">
                     <xsl:text>Übersetzt von </xsl:text>
+                    <xsl:value-of select="$monogr/tei:editor"/>
                 </xsl:when>
                 <xsl:when test="$monogr/tei:editor[2]">
                     <!-- es gibt mehr als einen Herausgeber -->

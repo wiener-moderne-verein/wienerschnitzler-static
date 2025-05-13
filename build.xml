@@ -6,11 +6,12 @@
     <delete>
         <fileset dir="${target}" includes="*.html"/>
     </delete>
-    <xslt in="./data/meta/literatur.xml" style="./xslt/zeitleiste.xsl" out="${target}/zeitleiste.html" destdir="${target}">
+    <xslt in="./data/meta/literatur.xml" style="./xslt/zeitleiste.xsl"
+        out="${target}/zeitleiste.html" destdir="${target}">
         <factory name="net.sf.saxon.TransformerFactoryImpl"/>
         <classpath location="${basedir}/saxon/saxon9he.jar"/>
     </xslt>
-        <xslt style="./xslt/meta.xsl"  basedir="./data/meta" destdir="${target}" includes="*.xml">
+    <xslt style="./xslt/meta.xsl" basedir="./data/meta" destdir="${target}" includes="*.xml">
         <factory name="net.sf.saxon.TransformerFactoryImpl"/>
         <classpath location="${basedir}/saxon/saxon9he.jar"/>
     </xslt>
@@ -18,7 +19,7 @@
         <factory name="net.sf.saxon.TransformerFactoryImpl"/>
         <classpath location="${basedir}/saxon/saxon9he.jar"/>
     </xslt>
-<xslt in="${index}" out="${target}/jahr.html" style="./xslt/jahr.xsl">
+    <xslt in="${index}" out="${target}/jahr.html" style="./xslt/jahr.xsl">
         <factory name="net.sf.saxon.TransformerFactoryImpl"/>
         <classpath location="${basedir}/saxon/saxon9he.jar"/>
     </xslt>
@@ -38,7 +39,6 @@
         <factory name="net.sf.saxon.TransformerFactoryImpl"/>
         <classpath location="${basedir}/saxon/saxon9he.jar"/>
     </xslt>
-    
     <xslt in="${index}" out="${target}/gesamt.html" style="./xslt/gesamt.xsl">
         <factory name="net.sf.saxon.TransformerFactoryImpl"/>
         <classpath location="${basedir}/saxon/saxon9he.jar"/>
