@@ -39,14 +39,15 @@ function loadGeoJsonByMonth(month) { // Erwartet "YYYY-MM"
              return; // Frühzeitig beenden, wenn keine Features da sind
         }
 
+        data.features.sort((a, b) => (a.properties?.importance || 0) - (b.properties?.importance || 0));
+
         const newLayer = L.geoJSON(data, {
-            pointToLayer: createCircleMarker, // Deine Funktion für Marker
+             pointToLayer: createCircleMarker,
             onEachFeature: function (feature, layer) {
-                 // Stelle sicher, dass bindPopupEvents definiert ist
-                 if (typeof bindPopupEvents === 'function') {
-                    bindPopupEvents(feature, layer);
+              if (typeof bindPopupEvents === 'function') {
+                   bindPopupEvents(feature, layer);
                  }
-            }
+              }
         }).addTo(map);
 
         geoJsonLayers.push(newLayer);

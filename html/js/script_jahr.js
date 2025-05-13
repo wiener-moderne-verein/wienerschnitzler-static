@@ -46,34 +46,38 @@ function loadGeoJsonByYear(year) {
     fetch(url)
         .then(response => {
             if (!response.ok) {
-                 // Benutzerfreundlichere Meldung
-                 console.error(`GeoJSON für ${year} nicht gefunden.`);
-                 alert(`Keine Punktdaten für das Jahr ${year} gefunden.`);
-                 throw new Error(`GeoJSON für ${year} nicht gefunden.`);
+                console.error(`GeoJSON für ${year} nicht gefunden.`);
+                alert(`Keine Punktdaten für das Jahr ${year} gefunden.`);
+                throw new Error(`GeoJSON für ${year} nicht gefunden.`);
             }
             return response.json();
         })
         .then(data => {
-             if (!data.features || data.features.length === 0) {
-                 console.warn(`Keine gültigen Features für ${year} gefunden.`);
-                 alert(`Keine Punktdaten für das Jahr ${year} vorhanden.`);
-                 return; // Beenden, wenn keine Features vorhanden sind
-             }
+            if (!data.features || data.features.length === 0) {
+                console.warn(`Keine gültigen Features für ${year} gefunden.`);
+                alert(`Keine Punktdaten für das Jahr ${year} vorhanden.`);
+                return;
+            }
 
+            // --- 🔁 NEU: Features nach importance sortieren (niedrig -> hoch) ---
+            data.features.sort((a, b) => {
+                const impA = a.properties?.importance || 0;
+                const impB = b.properties?.importance || 0;
+                return impA - impB; // zuerst weniger wichtige
+            });
+
+            // --- NEU: Layer mit sortierten Features erstellen ---
             const newLayer = L.geoJSON(data, {
                 pointToLayer: (feature, latlng) => {
-                     // Stelle sicher, dass createCircleMarker existiert
-                     if (typeof createCircleMarker === 'function') {
-                         return createCircleMarker(feature, latlng);
-                     }
-                     // Fallback-Marker
-                     console.warn("createCircleMarker Funktion nicht definiert, verwende Standardmarker.");
-                     return L.marker(latlng);
+                    if (typeof createCircleMarker === 'function') {
+                        return createCircleMarker(feature, latlng);
+                    }
+                    console.warn("createCircleMarker Funktion nicht definiert, verwende Standardmarker.");
+                    return L.marker(latlng);
                 },
                 onEachFeature: function (feature, layer) {
-                     // Stelle sicher, dass bindPopupEvents existiert
                     if (typeof bindPopupEvents === 'function') {
-                         bindPopupEvents(feature, layer);
+                        bindPopupEvents(feature, layer);
                     }
                 }
             }).addTo(map);
@@ -86,21 +90,20 @@ function loadGeoJsonByYear(year) {
 
             // Maximalen Wert für die Wichtigkeit bestimmen
             const maxImportance = Math.max(
-                0, // Sicherstellen, dass das Ergebnis nie negativ ist
-                ...data.features.map(feature => feature.properties?.importance || 0) // Optional Chaining für Sicherheit
+                0,
+                ...data.features.map(f => f.properties?.importance || 0)
             );
 
-             // Legende erstellen (sicherstellen, dass Funktion existiert)
-             if (typeof createLegend === 'function') {
+            if (typeof createLegend === 'function') {
                 createLegend(maxImportance);
-             }
+            }
         })
         .catch(error => {
-            // Fehler wurde meist schon vorher behandelt, dies fängt Netzwerkfehler etc. ab
             console.error('Fehler beim Laden oder Verarbeiten von GeoJSON:', error);
             clearGeoJsonLayers(); // Aufräumen
         });
 }
+
 
 // Laden des Linien-Layers für das ausgewählte Jahr
 function loadLineGeoJsonByYear(year) {

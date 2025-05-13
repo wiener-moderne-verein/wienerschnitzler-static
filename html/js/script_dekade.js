@@ -11,46 +11,54 @@ function clearGeoJsonLayers() {
 // Funktion zum Laden der Punktdaten basierend auf einer Dekade
 function loadGeoJsonByDecade(decade) {
     const startYear = decade;
-    const endYear = parseInt(decade, 10) + 9; // z. B. 1891–1900
+    const endYear = parseInt(decade, 10) + 9;
     const url = `https://raw.githubusercontent.com/wiener-moderne-verein/wienerschnitzler-data/main/data/editions/geojson/${encodeURIComponent(startYear)}-${encodeURIComponent(endYear)}.geojson`;
 
-    // Entferne vorherige Punkt-Layer
     clearGeoJsonLayers();
 
     fetch(url)
-      .then(response => {
-          if (!response.ok) {
-              throw new Error(`GeoJSON für die Dekade ${startYear}-${endYear} nicht gefunden.`);
-          }
-          return response.json();
-      })
-      .then(data => {
-          const newLayer = L.geoJSON(data, {
-              pointToLayer: createCircleMarker, // Deine ausgelagerte Funktion für Marker
-              onEachFeature: function (feature, layer) {
-                        bindPopupEvents(feature, layer);
-              }
-          }).addTo(map);
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`GeoJSON für die Dekade ${startYear}-${endYear} nicht gefunden.`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            // 🔁 Features nach importance aufsteigend sortieren (weniger wichtig zuerst)
+            data.features.sort((a, b) => {
+                const impA = a.properties?.importance ?? 0;
+                const impB = b.properties?.importance ?? 0;
+                return impA - impB;
+            });
 
-          geoJsonLayers.push(newLayer);
+            const newLayer = L.geoJSON(data, {
+                pointToLayer: createCircleMarker,
+                onEachFeature: function (feature, layer) {
+                    bindPopupEvents(feature, layer);
+                }
+            }).addTo(map);
 
-          if (newLayer.getLayers().length > 0) {
-              map.fitBounds(newLayer.getBounds());
-          } else {
-              console.warn('Keine gültigen Features gefunden.');
-          }
+            geoJsonLayers.push(newLayer);
 
-          // Maximalen Wert für die Wichtigkeit bestimmen (optional)
-          const maxImportance = Math.max(
-              ...data.features.map(feature => feature.properties.importance || 0)
-          );
-          createLegend(maxImportance);
-      })
-      .catch(error => {
-          console.error('Error loading GeoJSON:', error);
-          clearGeoJsonLayers();
-      });
+            if (newLayer.getLayers().length > 0) {
+                map.fitBounds(newLayer.getBounds());
+            } else {
+                console.warn('Keine gültigen Features gefunden.');
+            }
+
+            // Maximalwert der Wichtigkeit ermitteln
+            const maxImportance = Math.max(
+                0,
+                ...data.features.map(feature => feature.properties.importance || 0)
+            );
+            createLegend(maxImportance);
+        })
+        .catch(error => {
+            console.error('Fehler beim Laden des GeoJSON:', error);
+            clearGeoJsonLayers();
+        });
 }
+
 
 // Neue Funktion: Laden des Linien-Layers für die Dekade
 function loadLineGeoJsonByDecade(decade) {
