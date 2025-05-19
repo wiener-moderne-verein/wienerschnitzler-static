@@ -3,20 +3,16 @@ function createLegend(maxImportance) {
     const legend = document.getElementById('legend');
     if (!legend) return;
     
-    // Leeren der Legende, bevor neue Elemente hinzugefügt werden
     legend.innerHTML = '';
     
-    // Text "Aufenthaltstage:" hinzufügen
     const legendTitle = document.createElement('span');
     legendTitle.innerText = '';
     legend.appendChild(legendTitle);
     
-    // Erstellen der Legende basierend auf den Thresholds, die unter dem größten Wert von importance liegen
     for (let i = 0; i < thresholds.length; i++) {
-        if (thresholds[i] > maxImportance) break;
-        
-        const color = visibilityPalette[i];
         const threshold = thresholds[i];
+        const color = visibilityPalette[i];
+        
         const legendItem = document.createElement('span');
         legendItem.style.display = 'inline-flex';
         legendItem.style.marginRight = '10px';
@@ -33,8 +29,12 @@ function createLegend(maxImportance) {
         legendItem.appendChild(colorBox);
         legendItem.appendChild(label);
         legend.appendChild(legendItem);
+
+        // Wenn der aktuelle Threshold größer als maxImportance ist, abbrechen
+        if (threshold > maxImportance) break;
     }
 }
+
 
 
 
