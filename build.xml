@@ -48,8 +48,6 @@
         <factory name="net.sf.saxon.TransformerFactoryImpl"/>
         <classpath location="${basedir}/saxon/saxon9he.jar"/>
     </xslt> 
-    
-    <!--
     <xslt in="${index}" out="${target}/404.html" style="./xslt/404.xsl">
         <factory name="net.sf.saxon.TransformerFactoryImpl"/>
         <classpath location="${basedir}/saxon/saxon9he.jar"/>
@@ -67,7 +65,7 @@
         style="./xslt/listplace-missing.xsl">
         <factory name="net.sf.saxon.TransformerFactoryImpl"/>
         <classpath location="${basedir}/saxon/saxon9he.jar"/>
-    </xslt>-->
+    </xslt>
     <replace dir="${target}" value="">
         <include name="*.html"/>
         <replacetoken> xmlns=""</replacetoken>
