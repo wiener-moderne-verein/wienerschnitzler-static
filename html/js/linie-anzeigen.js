@@ -1,11 +1,11 @@
+import {map, lineLayer} from './fuer-alle-karten.js';
+
 // Hilfsfunktion zum Aktualisieren der Button-Beschriftung inklusive Info-Icon
 function updateLineToggleButtonLabel(button, visible) {
   const labelText = visible ? 'Linie ausblenden' : 'Linie';
   button.innerHTML = labelText;
 }
 
-
-// Beispiel: Annahme, dass "lineLayer" Deinen Linien-Layer darstellt und "map" Deine Leaflet-Karte ist.
 const lineToggle = document.getElementById('lineToggle');
 const lineToggleIcon = document.getElementById('lineToggleIcon');
 
@@ -28,7 +28,7 @@ lineToggle.addEventListener('change', function() {
 });
 
 // Funktion zur Aktualisierung des URL-Parameters "l" (optional)
-function updateLineUrlParam(state) {
+export function updateLineUrlParam(state) {
   const params = new URLSearchParams(window.location.search);
   if (state === 'off') {
     params.set('l', 'off');
@@ -40,7 +40,7 @@ function updateLineUrlParam(state) {
 }
 
 // Funktion zum Setup des Toggle-Controls für einen Linien-Layer
-function setupLineToggleControl(layer, initialVisibility) {
+export function setupLineToggleControl(layer, initialVisibility) {
   // Hole den Toggle-Button und das Icon
   let button = document.getElementById('lineToggle');
   const icon = document.getElementById('lineToggleIcon');

@@ -80,8 +80,7 @@
                 <xsl:call-template name="html_footer"/>
             </body>
             <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"/>
-            <script src="./js/fuer-alle-karten.js"/>
-            <script type="text/javascript" src="js/schnitzler-und-ich.js"/>
+            <script type="module" src="js/schnitzler-und-ich.js"/>
         </html>
     </xsl:template>
 </xsl:stylesheet>

@@ -1,3 +1,13 @@
+import { displayFilteredGeoJsonImportance } from './script_gesamt.js';
+import { displayFilteredGeoJsonType } from './script_gesamt_typen.js';
+import { map } from './fuer-alle-karten.js';
+
+
+
+function isTypenView() {
+  return window.location.href.includes("_typen");
+}
+
 // Funktion zum Einfärben der Jahre (unverändert)
 function lightenColor(color, percent) {
   const num = parseInt(color.slice(1), 16),
@@ -66,11 +76,11 @@ function toggleYearFilter(year) {
   }
   
   updateURLWithYears(selectedYears);
-  displayFilteredGeoJson(); // Annahme: Diese Funktion aktualisiert die Anzeige
+  isTypenView() ? displayFilteredGeoJsonType() : displayFilteredGeoJsonImportance(map);
 }
 
 // Erzeugt den Zeit-Filter (Jahr-Buttons) inklusive der Buttons "(alle)" und "(keinen)"
-function createFilterTime(features) {
+export function createFilterTime(features) {
   const filter = document.getElementById('filter-time');
   if (!filter) {
     console.error("Fehler: Element mit ID 'filter-time' nicht gefunden!");
@@ -119,7 +129,7 @@ function createFilterTime(features) {
   
   allButton.addEventListener('click', function () {
     updateURLWithYears(new Set(allYears));
-    displayFilteredGeoJson();
+    isTypenView() ? displayFilteredGeoJsonType() : displayFilteredGeoJsonImportance(map);
   });
   filter.appendChild(allButton);
   
@@ -133,7 +143,7 @@ function createFilterTime(features) {
   
   noneButton.addEventListener('click', function () {
     updateURLWithYears(new Set());
-    displayFilteredGeoJson();
+    isTypenView() ? displayFilteredGeoJsonType() : displayFilteredGeoJsonImportance(map);
   });
   filter.appendChild(noneButton);
   

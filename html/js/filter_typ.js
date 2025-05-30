@@ -1,7 +1,10 @@
+import { getColorByType } from './fuer-alle-karten.js';
+import { displayFilteredGeoJsonType } from './script_gesamt_typen.js';
+
 // Globale Variable, in der alle existierenden Typen (als Strings) gespeichert werden.
 let allTypes = new Set();
 
-function createFilterType(features) {
+export function createFilterType(features) {
     const filter = document.getElementById('filter-type');
     if (!filter) {
         console.error("Fehler: Element mit ID 'filter-type' nicht gefunden!");
@@ -83,7 +86,7 @@ function createFilterType(features) {
     allButton.addEventListener('click', function () {
         // Setzt den Filter so, dass alle Typen aktiv sind (d.h. URL-Parameter entfernen)
         updateURLWithFilters(new Set(uniqueTypes));
-        displayFilteredGeoJson();
+        displayFilteredGeoJsonType();
     });
     filter.appendChild(allButton);
     
@@ -98,7 +101,7 @@ function createFilterType(features) {
     noneButton.addEventListener('click', function () {
         // Setzt den Filter auf keine Typen – in der URL wird "types=0" vermerkt.
         updateURLWithFilters(new Set());
-        displayFilteredGeoJson();
+        displayFilteredGeoJsonType();
     });
     filter.appendChild(noneButton);
     
@@ -155,7 +158,7 @@ function updateURLWithFilters(selectedTypes) {
     window.history.replaceState({}, "", `${window.location.pathname}?${params.toString()}`);
 }
 
-function toggleTypeFilter(type) {
+export function toggleTypeFilter(type) {
     let urlTypes = getSelectedTypesFromURL();
     // Falls in der URL ein "types"-Parameter vorhanden ist (auch wenn er leer ist),
     // verwenden wir dessen Inhalt – andernfalls defaulten wir zu allen Typen.
@@ -168,23 +171,8 @@ function toggleTypeFilter(type) {
     }
     
     updateURLWithFilters(selectedTypes);
-    displayFilteredGeoJson();
+    displayFilteredGeoJsonType();
 }
 
 
-// Farbpalette für verschiedene Typen
-const typeColorMap = {};
-const typePalette = [
-    '#FFA500', '#FF7F50', '#ff5a64', '#FF4500', '#FF0000', '#FF1493',
-    '#FF69B4', '#FF00FF', '#aaaafa', '#8A2BE2', '#9400D3', '#49274b',
-    '#8B008B', '#800080', '#4B0082', '#73cee5', '#0000FF', '#0000CD',
-    '#00008B', '#000080', '#191970', '#82d282', '#228B22', '#2E8B57',
-    '#006400', '#556B2F'
-];
 
-function getColorByType(type) {
-    if (!typeColorMap[type]) {
-        typeColorMap[type] = typePalette[Object.keys(typeColorMap).length % typePalette.length];
-    }
-    return typeColorMap[type];
-}

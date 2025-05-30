@@ -1,12 +1,9 @@
-// Array zur Verwaltung der Punkt-Layer
-const geoJsonLayers = [];
-let lineLayer; 
+import { initView, map, createCircleMarkerDynamic, bindPopupEvents, clearGeoJsonLayers, geoJsonLayers } from './fuer-alle-karten.js';
+import { setupLineToggleControl } from './linie-anzeigen.js';
+import { createLegend } from './filter_dauer.js';
 
-// Funktion zum Entfernen aller bisher hinzugefügten GeoJSON-Punkt-Layer
-function clearGeoJsonLayers() {
-    geoJsonLayers.forEach(layer => map.removeLayer(layer));
-    geoJsonLayers.length = 0;
-}
+// Array zur Verwaltung der Punkt-Layer
+let lineLayer; 
 
 // Funktion zum Laden der Punktdaten basierend auf einer Dekade
 function loadGeoJsonByDecade(decade) {
@@ -32,7 +29,7 @@ function loadGeoJsonByDecade(decade) {
             });
 
             const newLayer = L.geoJSON(data, {
-                pointToLayer: createCircleMarker,
+                pointToLayer: createCircleMarkerDynamic("importance"),
                 onEachFeature: function (feature, layer) {
                     bindPopupEvents(feature, layer);
                 }
@@ -135,31 +132,6 @@ function updateLineUrlParam(state) {
   window.history.replaceState({}, '', newUrl);
 }
 
-// Funktion zum Setup des Toggle-Controls für einen Linien-Layer
-function setupLineToggleControl(layer, initialVisibility) {
-    let button = document.getElementById('lineToggle');
-    const icon = document.getElementById('lineToggleIcon');
-    
-    // Setze initial den Zustand (Button-Beschriftung)
-    updateLineToggleButtonLabel(button, initialVisibility);
-    
-    // Um alte Listener zu entfernen, ersetzen wir den Button durch eine Kopie:
-    const newButton = button.cloneNode(true);
-    button.parentNode.replaceChild(newButton, button);
-    
-    newButton.addEventListener('change', function() {
-        if (this.checked) {
-            map.addLayer(layer);
-            layer.bringToBack();
-            updateLineUrlParam('on');
-        } else {
-            map.removeLayer(layer);
-            updateLineUrlParam('off');
-        }
-        updateLineToggleButtonLabel(newButton, this.checked);
-    });
-}
-
 // --- Funktionen zum Aktualisieren des URL-Fragments, Lesen und Ändern der Dekade ---
 
 function updateUrlFragment(decade) {
@@ -177,20 +149,24 @@ function getDecadeFromUrl() {
 // entfernt den vorhandenen Linien-Layer und setzt den Switch (lineToggle) auf "aus",
 // bevor die neuen GeoJSON-Daten geladen werden.
 function setDecadeAndLoad(decade) {
-    // Setze den Dropdown-Wert
+    const decadeNum = parseInt(decade, 10);
+    if (isNaN(decadeNum) || decadeNum < 1861 || decadeNum > 1921) {
+        console.warn(`Ungültige Dekade: ${decade}`);
+        return;
+    }
+
     document.getElementById('decade-input').value = decade;
     updateUrlFragment(decade);
 
-    // Entferne vorhandenen Linien-Layer und setze den Toggle zurück
     if (lineLayer && map.hasLayer(lineLayer)) {
         map.removeLayer(lineLayer);
         lineLayer = null;
     }
+
     const lineToggle = document.getElementById('lineToggle');
     lineToggle.checked = false;
     updateLineToggleButtonLabel(lineToggle, false);
 
-    // Lade die neuen GeoJSON-Daten (Punkte und Linie)
     loadGeoJsonByDecade(decade);
     loadLineGeoJsonByDecade(decade);
 }
@@ -198,6 +174,12 @@ function setDecadeAndLoad(decade) {
 function changeDecadeByYears(currentDecade, years) {
     const startYear = parseInt(currentDecade, 10);
     const newStartYear = startYear + (years * 10);
+
+    // Nur Dekaden zwischen 1861 und 1921 erlauben
+    if (newStartYear < 1861 || newStartYear > 1921) {
+        return currentDecade; // Keine Änderung
+    }
+
     return newStartYear.toString();
 }
 
@@ -213,10 +195,7 @@ function populateDecadeDropdown() {
     }
 }
 
-// --- Initialisierung und Eventlistener ---
-
-// Initialisiere die Karte (Deine Funktion, z. B. initializeMap())
-initializeMap();
+initView();
 
 // Eventlistener für das Dekadeneingabefeld (Dropdown)
 document.getElementById('decade-input').addEventListener('change', function () {

@@ -1,64 +1,10 @@
-// Array zur Verwaltung der GeoJSON-Layer
-const geoJsonLayers =[];
+import{initView, clearGeoJsonLayers, createCircleMarkerDynamic, bindPopupEvents, addGeoJsonLayer, map, populateLocationDropdown} from './fuer-alle-karten.js';
+import { createFilterTime } from './filter_jahre.js';
+import { createFilterType } from './filter_typ.js';
 
-// Funktion zum Entfernen aller GeoJSON-Layer
-function clearGeoJsonLayers() {
-    geoJsonLayers.forEach(layer => map.removeLayer(layer));
-    geoJsonLayers.length = 0;
-}
+document.addEventListener('DOMContentLoaded', initView);
 
-
-
-
-function loadGeoJson() {
-    const url = `https://raw.githubusercontent.com/wiener-moderne-verein/wienerschnitzler-data/main/data/editions/geojson/wienerschnitzler_distinctPlaces.geojson`;
-    
-    // Entferne vorherige Layer
-    clearGeoJsonLayers();
-    
-    // GeoJSON laden und anzeigen
-    fetch(url).then(response => {
-        if (! response.ok) {
-            throw new Error('GeoJSON konnte nicht geladen werden.');
-        }
-        return response.json();
-    }).then(data => {
-        window.geoJsonData = data; // Speichert das GeoJSON global für spätere Filterung
-        displayFilteredGeoJson();
-        // Zeige alle Punkte an
-    }). catch (error => {
-        console.error('Error loading GeoJSON:', error);
-        clearGeoJsonLayers();
-    });
-}
-
-// Initialisierung der Karte und Laden der GeoJSON-Daten beim Laden der Seite
-document.addEventListener('DOMContentLoaded', () => {
-    initializeMapLarge();
-    // Karte initialisieren
-    
-    // GeoJSON-Daten laden und anzeigen
-    fetch('https://raw.githubusercontent.com/wiener-moderne-verein/wienerschnitzler-data/main/data/editions/geojson/wienerschnitzler_distinctPlaces.geojson').then(response => response.json()).then(data => {
-        window.geoJsonData = data;
-        displayFilteredGeoJson();
-        // Zeige alle Punkte an
-    }). catch (error => console.error('Fehler beim Laden der GeoJSON-Daten:', error));
-});
-
-
-function createCircleMarkerType(feature, latlng) {
-    const type = feature.properties.type || 'default';
-    const color = getColorByType(type);
-    return L.circleMarker(latlng, {
-        radius: 6,
-        color: color,
-        fillColor: color,
-        fillOpacity: 0.8,
-        weight: 2
-    });
-}
-
-function displayFilteredGeoJson() {
+export function displayFilteredGeoJsonType() {
   if (!window.geoJsonData || !window.geoJsonData.features) {
     console.warn("GeoJSON-Daten nicht geladen.");
     return;
@@ -152,21 +98,13 @@ function displayFilteredGeoJson() {
   }
 
   const newLayer = L.geoJSON(filteredFeatures, {
-    pointToLayer: createCircleMarkerType,
+    pointToLayer: createCircleMarkerDynamic("type"),
     onEachFeature: function (feature, layer) {
           bindPopupEvents(feature, layer);
         }   
   }).addTo(map);
 
-  geoJsonLayers.push(newLayer);
+  addGeoJsonLayer(newLayer);
   map.fitBounds(newLayer.getBounds());
 }
-
-
-
-
-
-
-
-
 

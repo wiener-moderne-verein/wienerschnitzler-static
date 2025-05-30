@@ -1,52 +1,10 @@
-// Array zur Verwaltung der GeoJSON-Layer
-const geoJsonLayers = [];
+import{initView, viewInitialized, clearGeoJsonLayers, createCircleMarkerDynamic, bindPopupEvents, populateLocationDropdown, geoJsonLayers} from './fuer-alle-karten.js';
+import {createFilterTime} from './filter_jahre.js';
+import {createLegend} from './filter_dauer.js';
 
-// Funktion zum Entfernen aller GeoJSON-Layer
-function clearGeoJsonLayers() {
-    geoJsonLayers.forEach(layer => map.removeLayer(layer));
-    geoJsonLayers.length = 0;
-}
+document.addEventListener('DOMContentLoaded', initView);
 
-
-function loadGeoJson() {
-    const url = `https://raw.githubusercontent.com/wiener-moderne-verein/wienerschnitzler-data/main/data/editions/geojson/wienerschnitzler_distinctPlaces.geojson`;
-    
-    // Entferne vorherige Layer
-    clearGeoJsonLayers();
-    
-    // GeoJSON laden und anzeigen
-    fetch(url)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('GeoJSON konnte nicht geladen werden.');
-            }
-            return response.json();
-        })
-        .then(data => {
-            window.geoJsonData = data; // Speichert das GeoJSON global für spätere Filterung
-            displayFilteredGeoJson();
-        })
-        .catch(error => {
-            console.error('Error loading GeoJSON:', error);
-            clearGeoJsonLayers();
-        });
-}
-
-// Initialisierung der Karte und Laden der GeoJSON-Daten beim Laden der Seite
-document.addEventListener('DOMContentLoaded', () => {
-    initializeMapLarge();
-
-    // GeoJSON-Daten laden und anzeigen
-    fetch('https://raw.githubusercontent.com/wiener-moderne-verein/wienerschnitzler-data/main/data/editions/geojson/wienerschnitzler_distinctPlaces.geojson')
-        .then(response => response.json())
-        .then(data => {
-            window.geoJsonData = data;
-            displayFilteredGeoJson();
-        })
-        .catch(error => console.error('Fehler beim Laden der GeoJSON-Daten:', error));
-});
-
-function displayFilteredGeoJson() {
+export function displayFilteredGeoJsonImportance(map) {
     if (!window.geoJsonData || !window.geoJsonData.features) {
         console.warn("GeoJSON-Daten nicht geladen.");
         return;
@@ -144,7 +102,7 @@ function displayFilteredGeoJson() {
 
     // GeoJSON-Layer erstellen – mit der Marker-Funktion createCircleMarker
     const newLayer = L.geoJSON(filteredFeatures, {
-        pointToLayer: createCircleMarker,
+        pointToLayer: createCircleMarkerDynamic("importance"),
         onEachFeature: function (feature, layer) {
           bindPopupEvents(feature, layer);
         }

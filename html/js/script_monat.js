@@ -1,23 +1,11 @@
-// Globaler Variablen-Container für GeoJSON-Layer
-const geoJsonLayers = [];
-// let lineLayer; // 'lineLayer' scheint in deinem Code nicht mehr global genutzt zu werden, eher 'activeLineLayer'
+import { initView, map, createCircleMarkerDynamic, bindPopupEvents, clearGeoJsonLayers, geoJsonLayers } from './fuer-alle-karten.js';
+import { setupLineToggleControl, updateLineUrlParam } from './linie-anzeigen.js';
+import { createLegend} from './filter_dauer.js';
+
 const namedLineLayers = {}; // Behalten wir für die Verwaltung der Linienlayer bei
 let activeLineLayer = null; // Globale Variable für den aktuell aktiven Linien-Layer
 
-// --- Hilfsfunktionen für Layer-Management (weitgehend unverändert) ---
-
-// Funktion zum Entfernen aller bisher hinzugefügten GeoJSON-Layer (Punkte)
-function clearGeoJsonLayers() {
-    geoJsonLayers.forEach(layer => map.removeLayer(layer));
-    geoJsonLayers.length = 0;
-    // Optional: Auch die Legende entfernen, falls vorhanden
-    const legend = document.querySelector('.legend');
-    if (legend) {
-        legend.remove();
-    }
-}
-
-// --- Ladefunktionen (unverändert in ihrer Logik, erwarten YYYY-MM) ---
+initView();
 
 function loadGeoJsonByMonth(month) { // Erwartet "YYYY-MM"
     const url = `https://raw.githubusercontent.com/wiener-moderne-verein/wienerschnitzler-data/main/data/editions/geojson/${month}.geojson`;
@@ -42,7 +30,7 @@ function loadGeoJsonByMonth(month) { // Erwartet "YYYY-MM"
         data.features.sort((a, b) => (a.properties?.importance || 0) - (b.properties?.importance || 0));
 
         const newLayer = L.geoJSON(data, {
-             pointToLayer: createCircleMarker,
+             pointToLayer: createCircleMarkerDynamic("importance"),
             onEachFeature: function (feature, layer) {
               if (typeof bindPopupEvents === 'function') {
                    bindPopupEvents(feature, layer);
@@ -88,6 +76,8 @@ function loadLineGeoJsonByMonth(month) { // Erwartet "YYYY-MM"
     // Setze den Toggle zurück (Status wird später basierend auf URL/Standard gesetzt)
     const lineToggle = document.getElementById('lineToggle');
     // lineToggle.checked = false; // Initial nicht aktiv, außer URL sagt was anderes
+    lineToggle.checked = false;
+    lineToggle.disabled = true;
 
     fetch(url)
         .then(response => {
@@ -132,11 +122,11 @@ function loadLineGeoJsonByMonth(month) { // Erwartet "YYYY-MM"
             newLineLayer.layerName = layerName;
             namedLineLayers[layerName] = newLineLayer;
             activeLineLayer = newLineLayer; // Setze den globalen aktiven Layer
-
-            // Prüfe den URL-Parameter 'l', ob der Layer initial sichtbar sein soll
             const params = new URLSearchParams(window.location.search);
             const lineParam = params.get('l');
-            const shouldBeVisible = (lineParam === 'on'); // Nur sichtbar wenn l=on
+            const shouldBeVisible = (lineParam === 'on');
+
+            setupLineToggleControl(activeLineLayer, shouldBeVisible);
 
              lineToggle.checked = shouldBeVisible; // Setze den Toggle-Status
 
@@ -158,23 +148,6 @@ function loadLineGeoJsonByMonth(month) { // Erwartet "YYYY-MM"
 
         });
 }
-
-// --- URL und Datums Hilfsfunktionen (angepasst/überprüft) ---
-
-// Funktion zur Aktualisierung des URL-Parameters "l" für den Linien-Layer
-function updateLineUrlParam(state) { // state ist 'on' oder 'off'
-    const params = new URLSearchParams(window.location.search);
-    if (state === 'on') {
-        params.set('l', 'on'); // Explizit 'on' setzen
-    } else {
-        params.delete('l'); // Oder ganz entfernen wenn 'off'
-        // Alternativ: params.set('l', 'off'); je nach gewünschtem Verhalten
-    }
-    // Rekonstruiere die URL ohne Neuladen der Seite
-    const newRelativePathQuery = window.location.pathname + (params.toString() ? '?' + params.toString() : '') + window.location.hash;
-    window.history.replaceState({ path: newRelativePathQuery }, '', newRelativePathQuery);
-}
-
 
 // Aktualisiert nur das Hash-Fragment (#YYYY-MM)
 function updateUrlFragment(month) { // month ist "YYYY-MM"
@@ -271,7 +244,6 @@ document.addEventListener('DOMContentLoaded', function() {
         yearSelect.appendChild(option);
     }
 
-    // --- NEU: Gemeinsame Funktion zum Auslösen des Ladens bei Dropdown-Änderung ---
     function triggerLoadFromDropdowns() {
         const selectedMonth = monthSelect.value; // Ist "01", "02", ...
         const selectedYear = yearSelect.value;   // Ist "YYYY" oder ""
@@ -288,23 +260,10 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // --- GEÄNDERT: Event Listener ---
-
-    // Event Listener für den Lade-Button (ENTFERNT)
-    /*
-    loadButton.addEventListener('click', function() {
-        // ... alter Code ...
-    });
-    */
-
-    // NEU: Event Listener für Monats-Dropdown
     monthSelect.addEventListener('change', triggerLoadFromDropdowns);
-
-    // NEU: Event Listener für Jahres-Dropdown
     yearSelect.addEventListener('change', triggerLoadFromDropdowns);
 
 
-    // Event Listener für Vorheriger-Monat-Button (unverändert)
     prevButton.addEventListener('click', function() {
         const currentYear = yearSelect.value;
         const currentMonth = monthSelect.value;
@@ -320,7 +279,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Event Listener für Nächster-Monat-Button (unverändert)
     nextButton.addEventListener('click', function() {
         const currentYear = yearSelect.value;
         const currentMonth = monthSelect.value;
@@ -369,23 +327,13 @@ document.addEventListener('DOMContentLoaded', function() {
     }
      setMonthAndLoad(initialMonth); // Lädt, wenn Jahr NICHT der Platzhalter war
 
+  if (activeLineLayer) {
+  const params = new URLSearchParams(window.location.search);
+  const isVisible = params.get('l') === 'on';
+  setupLineToggleControl(activeLineLayer, isVisible);
+}
 
-    // Initialisiere den Line-Toggle-Listener einmalig (unverändert)
-    initLineToggleControl();
-
-    // Karte initialisieren (unverändert)
-     if (typeof initializeMap === 'function') {
-        initializeMap();
-     } else {
-        console.error("Funktion 'initializeMap' ist nicht definiert!");
-     }
-
-}); // Ende DOMContentLoaded
-
-// Der Rest deines JavaScript-Codes (Funktionen wie setMonthAndLoad, loadGeoJsonByMonth etc.)
-// bleibt wie im vorherigen Schritt.
-
-// --- Line Toggle Logik (angepasst) ---
+}); 
 
 // Hilfsfunktion zum Aktualisieren des Icons basierend auf dem checked-Status
 function updateLineToggleIcon(isChecked) {
@@ -398,32 +346,3 @@ function updateLineToggleIcon(isChecked) {
 }
 
 
-// Einmaliger Setup des Toggle-Listeners
-function initLineToggleControl() {
-    const lineToggle = document.getElementById('lineToggle');
-    if (!lineToggle) return; // Beenden, wenn das Element nicht existiert
-
-    // Entferne vorherige Eventlistener durch Klonen (sicherste Methode)
-    const newToggle = lineToggle.cloneNode(true);
-    lineToggle.parentNode.replaceChild(newToggle, lineToggle);
-
-    // Binde den Eventlistener an den *neuen* Toggle
-    newToggle.addEventListener('change', function() {
-        const isChecked = this.checked;
-        if (isChecked) {
-            // Füge immer den aktuell *aktiven* Layer hinzu (falls vorhanden)
-            if (activeLineLayer && !map.hasLayer(activeLineLayer)) {
-                map.addLayer(activeLineLayer);
-                activeLineLayer.bringToBack(); // Linie hinter Punkte legen
-            }
-            updateLineUrlParam('on'); // Setze URL-Parameter auf 'on'
-        } else {
-            // Entferne den aktuell aktiven Layer (falls vorhanden)
-            if (activeLineLayer && map.hasLayer(activeLineLayer)) {
-                map.removeLayer(activeLineLayer);
-            }
-            updateLineUrlParam('off'); // Entferne URL-Parameter oder setze auf 'off'
-        }
-        updateLineToggleIcon(isChecked); // Aktualisiere das Icon
-    });
-}

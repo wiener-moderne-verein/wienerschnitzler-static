@@ -1,6 +1,11 @@
+import { initView, map, createCircleMarkerDynamic, bindPopupEvents, clearGeoJsonLayers, geoJsonLayers } from './fuer-alle-karten.js';
+import { setupLineToggleControl, updateLineUrlParam } from './linie-anzeigen.js';
+import { createLegend} from './filter_dauer.js';
+
 // Globale Variablen und Funktionen
-const geoJsonLayers = [];
-let lineLayer; // Für den Linien-Layer
+let lineLayer =[]; // Für den Linien-Layer
+
+
 
 // --- NEU: Konstanten für den Jahresbereich ---
 const startYear = 1869;
@@ -20,21 +25,6 @@ function getYearFromUrl() {
     const hash = window.location.hash;
     // Gibt den Hash-Wert ohne # zurück, oder null
     return hash ? hash.substring(1) : null;
-}
-
-// Funktion zum Entfernen aller GeoJSON-Layer
-function clearGeoJsonLayers() {
-    geoJsonLayers.forEach(layer => {
-        if (map.hasLayer(layer)) {
-             map.removeLayer(layer);
-        }
-        });
-    geoJsonLayers.length = 0;
-     // Optional: Auch die Legende entfernen
-     const legend = document.querySelector('.legend');
-     if (legend) {
-         legend.remove();
-     }
 }
 
 // Funktion zum Laden von GeoJSON basierend auf einem Jahr
@@ -68,19 +58,13 @@ function loadGeoJsonByYear(year) {
 
             // --- NEU: Layer mit sortierten Features erstellen ---
             const newLayer = L.geoJSON(data, {
-                pointToLayer: (feature, latlng) => {
-                    if (typeof createCircleMarker === 'function') {
-                        return createCircleMarker(feature, latlng);
-                    }
-                    console.warn("createCircleMarker Funktion nicht definiert, verwende Standardmarker.");
-                    return L.marker(latlng);
-                },
-                onEachFeature: function (feature, layer) {
-                    if (typeof bindPopupEvents === 'function') {
-                        bindPopupEvents(feature, layer);
-                    }
-                }
-            }).addTo(map);
+             pointToLayer: createCircleMarkerDynamic("importance"),
+            onEachFeature: function (feature, layer) {
+              if (typeof bindPopupEvents === 'function') {
+                   bindPopupEvents(feature, layer);
+                 }
+              }
+        }).addTo(map);
 
             geoJsonLayers.push(newLayer);
 
@@ -183,9 +167,7 @@ function loadLineGeoJsonByYear(year) {
         });
 }
 
-// --- ANGEPASSTE Funktion zum Setzen des Jahres und Laden ---
 function setYearAndLoad(year) {
-    // Hole Referenz zum SELECT-Element
     const yearSelect = document.getElementById('date-input');
     // Konvertiere zu Nummer für Vergleiche, zu String für's Setzen
     const yearNum = parseInt(String(year), 10);
@@ -198,7 +180,7 @@ function setYearAndLoad(year) {
          const fallbackYear = yearSelect.options[0]?.value || startYear;
          yearSelect.value = String(fallbackYear);
          alert(`Das angeforderte Jahr ${year} ist ungültig. Zeige ${yearSelect.value}.`);
-         // Rekursiver Aufruf mit dem Fallback-Wert, um Ladevorgang zu starten
+         initView();
          setYearAndLoad(yearSelect.value);
          return; // Wichtig: Beende die aktuelle Ausführung
     }
@@ -235,6 +217,7 @@ function setYearAndLoad(year) {
      if (nextYearButton) nextYearButton.disabled = (yearNum >= endYear);
 }
 
+
 // Event-Listener und Initialisierung
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -251,14 +234,6 @@ document.addEventListener('DOMContentLoaded', () => {
         option.textContent = y;
         yearSelect.appendChild(option);
     }
-
-    // Karte initialisieren (stelle sicher, dass die Funktion existiert)
-     if (typeof initializeMap === 'function') {
-        initializeMap();
-     } else {
-         console.error("Funktion initializeMap nicht gefunden!");
-     }
-
 
     // --- ANGEPASSTE Eventlistener ---
 

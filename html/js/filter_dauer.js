@@ -1,48 +1,46 @@
-// Funktion zum Erstellen der Legende
-function createLegend(maxImportance) {
-    const legend = document.getElementById('legend');
-    if (!legend) return;
-    
-    legend.innerHTML = '';
-    
-    const legendTitle = document.createElement('span');
-    legendTitle.innerText = '';
-    legend.appendChild(legendTitle);
-    
-    for (let i = 0; i < thresholds.length; i++) {
-        const threshold = thresholds[i];
-        const color = visibilityPalette[i];
-        
-        const legendItem = document.createElement('span');
-        legendItem.style.display = 'inline-flex';
-        legendItem.style.marginRight = '10px';
-        
-        const colorBox = document.createElement('span');
-        colorBox.style.width = '20px';
-        colorBox.style.height = '20px';
-        colorBox.style.backgroundColor = color;
-        colorBox.style.marginRight = '5px';
-        
-        const label = document.createElement('span');
-        label.innerText = threshold;
-        
-        legendItem.appendChild(colorBox);
-        legendItem.appendChild(label);
-        legend.appendChild(legendItem);
+import { displayFilteredGeoJsonImportance } from './script_gesamt.js';
+import { visibilityPalette, thresholds, clearGeoJsonLayers, map } from './fuer-alle-karten.js';
 
-        // Wenn der aktuelle Threshold größer als maxImportance ist, abbrechen
-        if (threshold > maxImportance) break;
-    }
+// Funktion zum Erstellen der Legende (unabhängig vom DOM-Event, kann so bleiben)
+export function createLegend(maxImportance) {
+  const legend = document.getElementById('legend');
+  if (!legend) return;
+
+  legend.innerHTML = '';
+
+  const legendTitle = document.createElement('span');
+  legendTitle.innerText = '';
+  legend.appendChild(legendTitle);
+
+  for (let i = 0; i < thresholds.length; i++) {
+    const threshold = thresholds[i];
+    const color = visibilityPalette[i];
+
+    const legendItem = document.createElement('span');
+    legendItem.style.display = 'inline-flex';
+    legendItem.style.marginRight = '10px';
+
+    const colorBox = document.createElement('span');
+    colorBox.style.width = '20px';
+    colorBox.style.height = '20px';
+    colorBox.style.backgroundColor = color;
+    colorBox.style.marginRight = '5px';
+
+    const label = document.createElement('span');
+    label.innerText = threshold;
+
+    legendItem.appendChild(colorBox);
+    legendItem.appendChild(label);
+    legend.appendChild(legendItem);
+
+    if (threshold > maxImportance) break;
+  }
 }
 
-
-
-
-// Funktion, um das Max-Eingabefeld mit dem höchsten Importance-Wert aus den GeoJSON-Daten vorzubelegen
+// Funktion, um das Max-Eingabefeld mit dem höchsten Importance-Wert vorzubelegen (kann getrennt bleiben)
 function prefillMaxImportance() {
   const maxInput = document.getElementById("max-input");
-  // Nur vorbelegen, wenn das Feld noch leer ist und Daten vorhanden sind
-  if (window.geoJsonData && window.geoJsonData.features && !maxInput.value) {
+  if (window.geoJsonData && window.geoJsonData.features && maxInput && !maxInput.value) {
     const overallMaxImportance = Math.max(
       ...window.geoJsonData.features.map(f => f.properties.importance || 0)
     );
@@ -50,57 +48,52 @@ function prefillMaxImportance() {
   }
 }
 
-// Rufe prefillMaxImportance auf, sobald die Seite geladen wurde (oder wenn die Daten verfügbar sind)
-window.addEventListener('load', prefillMaxImportance);
+window.addEventListener('DOMContentLoaded', () => {
+  prefillMaxImportance();
 
-// Falls sich der Min-Wert ändert, wird das "min"-Attribut für das Max-Eingabefeld aktualisiert,
-// sodass der Benutzer keinen Wert unterhalb des aktuellen Min-Werts wählen kann.
-document.getElementById("min-input").addEventListener("input", function() {
-  const minValue = parseFloat(this.value);
+  const minInput = document.getElementById("min-input");
   const maxInput = document.getElementById("max-input");
-  if (!isNaN(minValue)) {
-    maxInput.min = minValue;
-  } else {
-    maxInput.min = 0;
-  }
-});
+  const updateButton = document.getElementById("update-filter");
 
-// Event-Listener für den Button zum Aktualisieren des Filters
-document.getElementById("update-filter").addEventListener("click", function() {
-  let minValue = parseFloat(document.getElementById("min-input").value);
-  let maxValue = parseFloat(document.getElementById("max-input").value);
-  
-  // Setze Standardwerte, falls keine Eingabe erfolgt ist
-  if (isNaN(minValue)) {
-    minValue = 0;
-    document.getElementById("min-input").value = 0;
+  if (minInput && maxInput && updateButton) {
+    // Damit maxInput.min immer >= minInput.value ist
+    minInput.addEventListener("input", () => {
+      const minValue = parseFloat(minInput.value);
+      maxInput.min = !isNaN(minValue) ? minValue : 0;
+    });
+
+    // Automatisch URL anpassen und Karte aktualisieren bei Änderung
+    [minInput, maxInput].forEach(input => {
+      input.addEventListener("change", () => {
+        let minValue = parseFloat(minInput.value);
+        let maxValue = parseFloat(maxInput.value);
+
+        if (isNaN(minValue)) minValue = 0;
+        if (isNaN(maxValue)) maxValue = Infinity;
+
+        if (maxValue < minValue) {
+          alert("Der Max-Wert darf nicht unter dem Min-Wert liegen.");
+          return;
+        }
+
+        const params = new URLSearchParams(window.location.search);
+        params.set("min", minValue);
+        params.set("max", maxValue);
+        window.history.replaceState({}, '', `${window.location.pathname}?${params.toString()}`);
+        clearGeoJsonLayers();
+        displayFilteredGeoJsonImportance(map);
+      });
+    });
+
+    // Optional: Update-Button weiterhin für manuelles Update (z.B. andere Filter)
+    updateButton.addEventListener("click", () => {
+      // Einfach den gleichen Effekt wie oben auslösen, z.B. so:
+      minInput.dispatchEvent(new Event('change'));
+      maxInput.dispatchEvent(new Event('change'));
+    });
+
+  } else {
+    console.warn("Elemente für Filter (min-input, max-input, update-filter) nicht gefunden.");
   }
-  if (isNaN(maxValue)) {
-    // Falls keine Eingabe erfolgt ist, benutze den höchsten Importance-Wert aus den Daten
-    if (window.geoJsonData && window.geoJsonData.features) {
-      maxValue = Math.max(
-        ...window.geoJsonData.features.map(f => f.properties.importance || 0)
-      );
-      document.getElementById("max-input").value = maxValue;
-    } else {
-      maxValue = Infinity;
-    }
-  }
-  
-  // Sicherstellen, dass der Max-Wert nicht unter dem Min-Wert liegt
-  if (maxValue < minValue) {
-    alert("Der Max-Wert darf nicht unter dem Min-Wert liegen.");
-    return;
-  }
-  
-  // Aktualisiere die URL-Parameter "min" und "max"
-  const params = new URLSearchParams(window.location.search);
-  params.set("min", minValue);
-  params.set("max", maxValue);
-  
-  // Aktualisiere die URL, ohne die Seite neu zu laden
-  window.history.replaceState({}, '', `${window.location.pathname}?${params.toString()}`);
-  
-  // Aktualisiere die Karte (und ggf. das Dropdown) anhand der neuen Filterwerte
-  displayFilteredGeoJson();
+
 });

@@ -64,7 +64,7 @@
                                             data-bs-parent="#filterAccordion">
                                             <div class="accordion-body">
                                                 <div id="filter-type-content-placeholder">
-                                                  <div id="filter-type"> </div>
+                                                  <div id="filter-type"></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -114,10 +114,7 @@
                 </main>
                 <xsl:call-template name="html_footer"/>
                 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"/>
-                <script src="./js/fuer-alle-karten.js"/>
-                <script src="./js/filter_jahre.js"/>
-                <script src="./js/filter_typ.js"/>
-                <script src="./js/script_gesamt_typen.js"/>
+                <script type="module" src="./js/script_gesamt_typen.js"/>
             </body>
         </html>
     </xsl:template>

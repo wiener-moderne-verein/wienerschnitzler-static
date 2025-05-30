@@ -1,43 +1,265 @@
-function createCircleMarker(feature, latlng) {
-    const importance = feature.properties.importance || 0;
-    const color = getColorByImportance(importance);
-    const intensifiedColor = intensifyColor(color);
-    const radius = 5 + (importance / 5000) * 10;
-    
-    return L.circleMarker(latlng, {
-        radius: Math.min(13, Math.max(3, radius)), // Radius zwischen 3 und 13
-        color: intensifiedColor, // Intensivere Randfarbe
-        fillColor: color,      // Füllfarbe basierend auf der Wichtigkeit
-        fillOpacity: 1,        // Füllungsdeckkraft
-        weight: 2
+import { createFilterTime } from './filter_jahre.js';
+import { createLegend } from './filter_dauer.js';
+import { displayFilteredGeoJsonType } from './script_gesamt_typen.js';
+
+
+// Globale Map-Referenz
+export let map;
+export let lineLayer = [];
+export let geoJsonLayers = [];
+export let geoJsonData = null;
+
+// ===============================
+// Map Initialisierung
+// ===============================
+export function initializeMapLarge() {
+  if (map) {
+    console.warn("Map ist bereits initialisiert. Initialisierung abgebrochen.");
+    return; // Map nicht doppelt initialisieren
+  }
+
+  map = L.map('map-large').setView([48.2082, 16.3738], 5);
+
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a>',
+    subdomains: 'abcd',
+    maxZoom: 18
+  }).addTo(map);
+}
+
+// ===============================
+// GeoJSON Layer entfernen
+// ===============================
+export function clearGeoJsonLayers() {
+  if (geoJsonLayers.length > 0 && map) {
+    geoJsonLayers.forEach(layer => {
+      map.removeLayer(layer);
+    });
+    geoJsonLayers.length = 0; //
+  }
+}
+
+// ===============================
+// Dispatcher – erkennt Ansicht
+// ===============================
+function isTypenView() {
+  return window.location.href.includes("_typen");
+}
+
+// ===============================
+// Daten anzeigen
+// ===============================
+function displayGeoJson(features, mode) {
+  if (!features || features.length === 0 || !map) return;
+
+  // Sortiere nach importance für bessere Darstellung
+  if (mode === "importance") {
+    features.sort((a, b) => (a.properties.importance || 0) - (b.properties.importance || 0));
+  }
+
+  const markerFunction = createCircleMarkerDynamic(mode);
+
+  const newLayer = L.geoJSON(features, {
+    pointToLayer: markerFunction,
+    onEachFeature: (feature, layer) => bindPopupEvents(feature, layer)
+  }).addTo(map);
+
+  geoJsonLayers.push(newLayer);
+  map.fitBounds(newLayer.getBounds());
+
+  if (mode === "importance") {
+    const maxImp = features.reduce((max, f) => Math.max(max, f.properties.importance || 0), 0);
+    createLegend(maxImp);
+  }
+}
+
+// ===============================
+// Filter & Ansicht
+// ===============================
+function getSelectedYearsFromURL() {
+  const params = new URLSearchParams(window.location.search);
+  if (!params.has("years")) return null;
+  if (params.get("years") === "0") return new Set();
+  return new Set(params.get("years").split("_"));
+}
+
+function filterByYears(features) {
+  const selectedYears = getSelectedYearsFromURL();
+
+  if (selectedYears === null) return features; // keine Filter gesetzt
+
+  return features.filter(feature => {
+    const ts = feature.properties.timestamp;
+    const dates = Array.isArray(ts) ? ts : [ts];
+    return dates.some(date => selectedYears.has(date.substring(0, 4)));
+  });
+}
+
+function filterByImportance(features) {
+  const params = new URLSearchParams(window.location.search);
+  const min = params.has("min") ? Number(params.get("min")) : 0;
+  const max = params.has("max") ? Number(params.get("max")) : Infinity;
+
+  return features.filter(f => {
+    const imp = f.properties.importance || 0;
+    return imp >= min && imp <= max;
+  });
+}
+
+// ===============================
+// Öffentliche Init-Funktion
+// ===============================
+export let viewInitialized = false;
+
+export function initView() {
+  if (viewInitialized) {
+    console.warn("initView wurde bereits aufgerufen. Abbruch.");
+    return;
+  }
+  viewInitialized = true;
+
+  initializeMapLarge();
+  clearGeoJsonLayers();
+
+  const pathname = window.location.pathname.toLowerCase();
+  let viewType = "gesamt"; // Standardansicht
+
+  if (pathname.includes("gesamt_typen")) {
+    viewType = "typen";
+  } else if (pathname.includes("tag")) {
+    viewType = "tag";
+  } else if (pathname.includes("monat")) {
+    viewType = "monat";
+  } else if (pathname.includes("jahr")) {
+    viewType = "jahr";
+  } else if (pathname.includes("dekade")) {
+    viewType = "dekade";
+  } else if (pathname.includes("gesamt")) {
+    viewType = "gesamt";
+  }
+
+  const geoJsonUrls = {
+    gesamt: "https://raw.githubusercontent.com/wiener-moderne-verein/wienerschnitzler-data/main/data/editions/geojson/wienerschnitzler_distinctPlaces.geojson",
+    typen: "https://raw.githubusercontent.com/wiener-moderne-verein/wienerschnitzler-data/main/data/editions/geojson/wienerschnitzler_distinctPlaces.geojson",
+    tag: "https://raw.githubusercontent.com/wiener-moderne-verein/wienerschnitzler-data/main/data/editions/geojson/1895-12-01.geojson",
+    monat: "https://raw.githubusercontent.com/wiener-moderne-verein/wienerschnitzler-data/main/data/editions/geojson/1895-01.geojson",
+    jahr: "https://raw.githubusercontent.com/wiener-moderne-verein/wienerschnitzler-data/main/data/editions/geojson/1890.geojson",
+    dekade: "https://raw.githubusercontent.com/wiener-moderne-verein/wienerschnitzler-data/main/data/editions/geojson/1891-1900.geojson"
+  };
+
+  const url = geoJsonUrls[viewType];
+
+  console.log("Initialisiere Karte für Ansicht:", viewType, "→", url);
+
+  fetch(url)
+    .then(res => res.json())
+    .then(data => {
+      window.geoJsonData = data;
+      const allFeatures = data.features;
+
+      // Optional: falls Funktion undefiniert sein könnte, absichern
+      if (typeof createFilterTime === "function") {
+        createFilterTime(allFeatures);
+      }
+
+      if (viewType === "typen" && typeof displayFilteredGeoJsonType === "function") {
+        displayFilteredGeoJsonType();
+      } else if (viewType === "gesamt") {
+        let filtered = allFeatures;
+        if (typeof filterByYears === "function") {
+          filtered = filterByYears(filtered);
+        }
+        if (typeof filterByImportance === "function") {
+          filtered = filterByImportance(filtered);
+        }
+        if (typeof displayGeoJson === "function") {
+          displayGeoJson(filtered, "importance");
+        }
+      } else {
+        if (typeof displayGeoJson === "function") {
+        const onlyPoints = allFeatures.filter(feature => feature.geometry.type === "Point");
+displayGeoJson(onlyPoints);
+        }
+      }
+    })
+    .catch(err => {
+      console.error("Fehler beim Laden der GeoJSON-Daten:", err);
     });
 }
 
-// Funktion zum Initialisieren der Karte (für das große Karten-Element)
-function initializeMapLarge() {
-    window.map = L.map('map-large').setView([48.2082, 16.3738], 5);
-    
-    // Carto Positron Tile-Layer hinzufügen
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> contributors &copy; <a href="https://carto.com/">CARTO</a>',
-        subdomains: 'abcd',
-        maxZoom: 18
-    }).addTo(map);
-}
-  
-// Funktion zum Initialisieren der Karte (für das normale Karten-Element)
-function initializeMap() {
-    window.map = L.map('map-large').setView([48.2082, 16.3738], 5);
-    
-    // Carto Positron Tile-Layer hinzufügen
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> contributors &copy; <a href="https://carto.com/">CARTO</a>',
-        subdomains: 'abcd',
-        maxZoom: 18
-    }).addTo(map);
+export function addGeoJsonLayer(layer) {
+  geoJsonLayers.push(layer);
 }
 
-function bindPopupEvents(feature, layer) {
+export function createCircleMarkerDynamic(attributeName) {
+  return function (feature, latlng) {
+    const value = feature.properties?.[attributeName];
+
+    let color = '#888';
+    let radius = 3;
+
+    if (attributeName === 'day') {
+      // Sonderfall: "day" → immer roter Marker
+      color = '#cc0000';
+      radius = 5;
+
+    } else if (attributeName === 'type') {
+      const type = value || 'default';
+      color = getColorByType(type);
+      radius = 6;
+
+    } else if (attributeName === 'importance') {
+      const importance = typeof value === 'number' ? value : 0;
+      color = getColorByImportance(importance);
+      radius = 5 + (importance / 20000) * 10; // Radius zwischen 5 und ca. 15
+
+    } else if (attributeName === 'month') {
+      // Monatschattierungen in Blau
+      const month = parseInt(value, 10);
+      const hue = 200; // Blau-Ton
+      const lightness = 30 + (month / 12) * 40; // Von 30% bis 70%
+      color = `hsl(${hue}, 80%, ${lightness}%)`;
+      radius = 5;
+
+    } else if (attributeName === 'year') {
+      // Jahr als Grauverlauf (z. B. 1869–1931)
+      const year = parseInt(value, 10);
+      const minYear = 1869;
+      const maxYear = 1931;
+      const percent = (year - minYear) / (maxYear - minYear);
+      const gray = Math.round(100 * percent);
+      color = `hsl(0, 0%, ${gray}%)`; // Grau-Verlauf von hell zu dunkel
+      radius = 5;
+
+    } else if (attributeName === 'decade') {
+      // Jahrzehnt: verschiedene feste Farben (mapping)
+      const decadeColors = {
+        '1870': '#8dd3c7',
+        '1880': '#ffffb3',
+        '1890': '#bebada',
+        '1900': '#fb8072',
+        '1910': '#80b1d3',
+        '1920': '#fdb462',
+        '1930': '#b3de69'
+      };
+      const decadeKey = String(value);
+      color = decadeColors[decadeKey] || '#cccccc';
+      radius = 5;
+    }
+
+    return L.circleMarker(latlng, {
+      radius: radius,
+      color: color,
+      fillColor: color,
+      fillOpacity: 1,
+      weight: 2
+    });
+  };
+}
+
+
+
+export function bindPopupEvents(feature, layer) {
   if (feature.properties) {
     const popupContent = createPopupContent(feature);
     layer.bindPopup(popupContent, { maxWidth: 300 });
@@ -51,7 +273,7 @@ function bindPopupEvents(feature, layer) {
     
     // Falls noch nicht geschehen, einen globalen Klick-Handler an die Karte anhängen,
     // der alle offenen Popups schließt, wenn auf einen leeren Bereich geklickt wird.
-    if (typeof map !== 'undefined' && !map.hasCustomPopupClickHandler) {
+    if (map && !map.hasCustomPopupClickHandler) {
       map.on('click', function() {
         map.closePopup();
       });
@@ -61,7 +283,7 @@ function bindPopupEvents(feature, layer) {
   }
 }
 
-function createPopupContent(feature) {
+export function createPopupContent(feature) {
     const title = feature.properties.title || 'Kein Titel';
     const id = feature.properties.id || '#';
     const titleLink = `<a href="${id}.html" target="_blank" class="text-decoration-none">${title}</a>`;
@@ -178,8 +400,7 @@ function createPopupContent(feature) {
 </div>`;
 }
 
-
-function populateLocationDropdown(features) {
+export function populateLocationDropdown(features) {
     const params = new URLSearchParams(window.location.search);
     // Lese auch hier die Filtergrenzen für importance aus der URL
     const minImp = params.has("min") ? Number(params.get("min")) : 0;
@@ -295,7 +516,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 // Farbpalette und Hilfsfunktionen zur Farbauswahl
-const visibilityPalette = [
+export const visibilityPalette = [
     '#FFA500', // Orange
     '#FF7F50', // Coral
     '#ff5a64', // Morgenrot
@@ -325,10 +546,10 @@ const visibilityPalette = [
 ];
 
 // Schwellenwerte für die Farbauswahl
-const thresholds = [1, 2, 3, 4, 5, 10, 15, 25, 35, 50, 75, 100, 150, 250, 400, 600, 1000, 1500, 2500, 4000, 5000, 6000];
+export const thresholds = [1, 2, 3, 4, 5, 10, 15, 25, 35, 50, 75, 100, 150, 250, 400, 600, 1000, 1500, 2500, 4000, 5000, 6000, 10000, 15000, 20000, 30000, 50000];
 
 // Funktion zur Auswahl der Farbe basierend auf der Wichtigkeit (1 bis 5000)
-function getColorByImportance(importance) {
+export function getColorByImportance(importance) {
     if (importance === undefined) {
         return '#FF0000';
     }
@@ -340,12 +561,21 @@ function getColorByImportance(importance) {
     return visibilityPalette[visibilityPalette.length - 1];
 }
 
-// Funktion zum Erhöhen der Sättigung einer Farbe (bzw. zur Erzeugung einer intensiveren Variante)
-function intensifyColor(color) {
-    const hsl = d3.hsl(color);
-    hsl.h = (hsl.h + 10) % 360;
-    return hsl.toString();
-}
+// Farbpalette für verschiedene Typen
+const typeColorMap = {};
+const typePalette = [
+    '#FFA500', '#FF7F50', '#ff5a64', '#FF4500', '#FF0000', '#FF1493',
+    '#FF69B4', '#FF00FF', '#aaaafa', '#8A2BE2', '#9400D3', '#49274b',
+    '#8B008B', '#800080', '#4B0082', '#73cee5', '#0000FF', '#0000CD',
+    '#00008B', '#000080', '#191970', '#82d282', '#228B22', '#2E8B57',
+    '#006400', '#556B2F'
+];
 
+export function getColorByType(type) {
+    if (!typeColorMap[type]) {
+        typeColorMap[type] = typePalette[Object.keys(typeColorMap).length % typePalette.length];
+    }
+    return typeColorMap[type];
+}
 
 

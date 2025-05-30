@@ -1,3 +1,5 @@
+import { initializeMapLarge , map } from './fuer-alle-karten.js';
+
 const geojsonUrl = "https://raw.githubusercontent.com/wiener-moderne-verein/wienerschnitzler-data/refs/heads/main/data/editions/geojson/wienerschnitzler_distinctPlaces.geojson";
 
 const resultElement = document.getElementById('result');
@@ -114,40 +116,43 @@ function formatDate(isoDate) {
     }).join(", ");
 }
 
-// GeoJSON-Daten laden
+// GeoJSON laden
 fetch(geojsonUrl)
-    .then((response) => response.json())
-    .then((data) => {
+    .then(response => response.json())
+    .then(data => {
         geojsonData = data;
         console.log("GeoJSON-Daten erfolgreich geladen.");
     })
-    .catch((error) => {
+    .catch(error => {
         console.error("Fehler beim Laden der GeoJSON-Daten:", error);
         alert("Die GeoJSON-Daten konnten nicht geladen werden.");
     });
 
-// Karte erstellen und auf der Seite anzeigen
-initializeMap();
+// Karte initialisieren und global speichern
+initializeMapLarge();
 
+// Funktionen, die 'map' nutzen, können es jetzt verwenden
 function plotOnMap(lat, lon, nearest) {
-    // Bestehende Marker und Popup-Ebenen entfernen, aber Tile-Layer behalten
-    map.eachLayer(function (layer) {
-        if (!layer._url) { // Überprüfen, ob es kein Tile-Layer ist
+    if (!map) {
+        console.error("Map ist noch nicht initialisiert.");
+        return;
+    }
+
+    map.eachLayer(layer => {
+        if (!layer._url) { // Tile-Layer nicht entfernen
             map.removeLayer(layer);
         }
     });
 
-    // Benutzerstandort als blauer Punkt
     L.circleMarker([lat, lon], {
         color: '#AAAAFA',
-        radius: 10, // Größe des Kreises
+        radius: 10,
         fillOpacity: 0.8
     })
     .addTo(map)
     .bindPopup('Ihr Standort')
     .openPopup();
 
-    // Nächsten Ort als roten Punkt
     if (nearest) {
         L.circleMarker([nearest.lat, nearest.lon], {
             color: '#FF0000',
@@ -158,18 +163,16 @@ function plotOnMap(lat, lon, nearest) {
         .bindPopup(`Nächster Ort: ${nearest.name}`);
     }
 
-    // Grüne Linie zwischen den beiden Punkten
     if (lat !== undefined && nearest) {
         L.polyline(
             [
-                [lat, lon], 
+                [lat, lon],
                 [nearest.lat, nearest.lon]
             ],
             { color: 'green', weight: 2 }
         ).addTo(map);
     }
 
-    // Map-Zoom und Fokus anpassen
     const bounds = L.latLngBounds(
         [lat, lon],
         [nearest ? nearest.lat : lat, nearest ? nearest.lon : lat]
@@ -177,8 +180,7 @@ function plotOnMap(lat, lon, nearest) {
     map.fitBounds(bounds, { padding: [50, 50] });
 }
 
-
-
+// Event-Listener wie gehabt...
 document.getElementById('getLocation').addEventListener('click', () => {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition((position) => {
@@ -199,16 +201,12 @@ document.getElementById('locationForm').addEventListener('submit', (event) => {
     displayNearestLocation(latitude, longitude);
 });
 
-
-// Funktion zum erneuten Anzeigen der Abfrage
 function showQueryControls() {
     const queryControls = document.getElementById('queryControls');
     if (queryControls) {
         queryControls.style.display = 'block';
     }
-    // Optional: Setzen Sie das Ergebnis zurück
     document.getElementById('result').innerHTML = 'Bitte Standort teilen auswählen oder Koordinaten eingeben. (Nein, wir interessieren uns nicht dafür, wo Sie sich herumtreiben.)';
 }
 
-// Event-Listener für den "Neuen Ort abfragen"-Button
 document.getElementById('newQuery').addEventListener('click', showQueryControls);
