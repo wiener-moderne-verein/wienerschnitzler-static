@@ -179,7 +179,7 @@
                         </a>
                         <div class="card-body">
                            <p class="card-text">Wie viele Standorte an bestimmten Tagen kennen wir?
-                              Eine <a href="ueberblick.html">Übersicht</a>. </p>
+                              Eine <a href="uebersicht.html">Übersicht</a>. </p>
                         </div>
                      </div>
                   </div>
