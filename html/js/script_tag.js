@@ -1,4 +1,4 @@
-import { initView, map, createCircleMarkerDynamic, bindPopupEvents, clearGeoJsonLayers, geoJsonLayers } from './fuer-alle-karten.js';
+import { initView, map, createCircleMarkerDynamic, bindPopupEvents, clearGeoJsonLayers, geoJsonLayers, clearMap } from './fuer-alle-karten.js';
 import { setupLineToggleControl } from './linie-anzeigen.js';
 
 const wohnsitze =[ {
@@ -75,9 +75,7 @@ let lineLayer;
 
 function updateMapInhaltText(features, date, name) {
   const mapInhaltTextDiv = document.getElementById('map-inhalt-text');
-  if (lineLayer && map.hasLayer(lineLayer)) {
-    map.removeLayer(lineLayer);
-  }
+  
   if (mapInhaltTextDiv) {
     const isValidDate = date && /^\d{4}-\d{2}-\d{2}$/.test(date);
     const displayedDate = isValidDate ? formatIsoDateToGerman(date) : 'unbekanntes Datum';
@@ -89,7 +87,6 @@ function updateMapInhaltText(features, date, name) {
     if (filteredFeatures.length > 0) {
       const createLinkText = (feature) => {
         const title = feature.properties.title || feature.properties.id;
-        // Wohnsitz-Prüfung optional hier entfernen oder anpassen
         return `${title}`;
       };
 
@@ -119,8 +116,23 @@ function loadGeoJsonByDate(date) {
   const minDateObj = new Date("1862-05-15");
   const maxDateObj = new Date("1931-10-21");
 
+  // WICHTIG: clearMap() am Anfang aufrufen - mehrfach sicherstellen
+  clearMap();
+  
+  // Zusätzliche Sicherheit: Alle Layer explizit entfernen
+  geoJsonLayers.forEach(layer => {
+    if (map.hasLayer(layer)) {
+      map.removeLayer(layer);
+    }
+  });
+  geoJsonLayers.length = 0; // Array leeren
+  
+  // Auch lineLayer entfernen falls vorhanden
+  if (lineLayer && map.hasLayer(lineLayer)) {
+    map.removeLayer(lineLayer);
+  }
+
   if (inputDate < minDateObj || inputDate > maxDateObj) {
-    clearGeoJsonLayers();
     const formattedDate = formatIsoDateToGerman(date);
     const mapInhaltTextDiv = document.getElementById('map-inhalt-text');
     if (mapInhaltTextDiv) {
@@ -130,12 +142,6 @@ function loadGeoJsonByDate(date) {
   }
 
   const url = `https://raw.githubusercontent.com/wiener-moderne-verein/wienerschnitzler-data/main/data//editions/geojson/${date}.geojson`;
-
-  clearGeoJsonLayers();
-
-  if (lineLayer && map.hasLayer(lineLayer)) {
-    map.removeLayer(lineLayer);
-  }
 
   fetch(url)
     .then(response => {
@@ -176,8 +182,6 @@ function loadGeoJsonByDate(date) {
       if (lineVisible) {
         lineLayer.addTo(map);
         lineLayer.bringToBack();
-      } else {
-        map.removeLayer(lineLayer);
       }
 
       if (lineFeatures.length > 0) {
@@ -207,9 +211,11 @@ function loadGeoJsonByDate(date) {
     })
     .catch(error => {
       console.error('Error loading GeoJSON:', error);
-      clearGeoJsonLayers();
+      // Auch bei Fehlern die Map bereinigen
+      clearMap();
     });
 }
+
 
 function getDateFromUrl() {
   const hash = window.location.hash;
@@ -220,14 +226,35 @@ function setDateAndLoad(date) {
   const currentHash = window.location.hash.substring(1);
   if (currentHash !== date) {
     window.location.hash = date;
-    loadGeoJsonByDate(date); // sofort laden, nicht nur auf hashchange warten
+    // loadGeoJsonByDate wird durch hashchange-Event ausgelöst
   } else {
+    // Bei gleichem Hash direkt laden
     loadGeoJsonByDate(date);
   }
 }
-window.addEventListener('hashchange', function () {
+// Lösung 1: Polling-Mechanismus für Hash-Änderungen
+let lastHash = window.location.hash;
+
+function checkHashChange() {
+  const currentHash = window.location.hash;
+  if (currentHash !== lastHash) {
+    lastHash = currentHash;
+    const date = getDateFromUrl();
+    if (date) {
+      loadGeoJsonByDate(date);
+      document.getElementById('date-input').value = date;
+    }
+  }
+}
+
+// Überprüfung alle 500ms
+setInterval(checkHashChange, 500);
+
+window.addEventListener('hashchange', function() {
   const date = getDateFromUrl();
   if (date) {
+    // Explizit clearMap() aufrufen vor dem Laden neuer Daten
+    clearMap();
     loadGeoJsonByDate(date);
     document.getElementById('date-input').value = date;
   }
@@ -236,7 +263,20 @@ window.addEventListener('hashchange', function () {
 window.addEventListener('load', () => {
   const date = getDateFromUrl() || '1895-01-23';
   document.getElementById('date-input').value = date;
+  // clearMap() wird bereits in loadGeoJsonByDate() aufgerufen
   loadGeoJsonByDate(date);
+});
+
+// Zusätzliche Überprüfung bei Fokus-Ereignissen (für manuelle URL-Änderungen)
+window.addEventListener('focus', function() {
+  const date = getDateFromUrl();
+  const inputDate = document.getElementById('date-input').value;
+  
+  if (date && date !== inputDate) {
+    clearMap();
+    loadGeoJsonByDate(date);
+    document.getElementById('date-input').value = date;
+  }
 });
 
 function formatDateToISO(date) {
@@ -272,9 +312,9 @@ document.getElementById('next-day').addEventListener('click', function () {
 
 initView();
 
-const initialDate = getDateFromUrl() || '1895-01-23'; // z.B. Startdatum
-document.getElementById('date-input').value = initialDate; // Inputfeld setzen
-setDateAndLoad(initialDate); // GeoJSON für initialDate laden
+const initialDate = getDateFromUrl() || '1895-01-23';
+document.getElementById('date-input').value = initialDate;
+setDateAndLoad(initialDate);
 
 if (window.location.hash.substring(1) === initialDate) {
   loadGeoJsonByDate(initialDate);

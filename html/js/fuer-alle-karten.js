@@ -33,10 +33,39 @@ export function initializeMapLarge() {
 export function clearGeoJsonLayers() {
   if (geoJsonLayers.length > 0 && map) {
     geoJsonLayers.forEach(layer => {
-      map.removeLayer(layer);
+      if (map.hasLayer(layer)) {
+        map.removeLayer(layer);
+      }
     });
-    geoJsonLayers.length = 0; //
+    geoJsonLayers.length = 0; // Array leeren
   }
+}
+
+
+// ===============================
+// Vollständige Map-Bereinigung
+// ===============================
+export function clearMap() {
+  if (!map) return;
+  
+  // Alle GeoJSON Layer entfernen
+  clearGeoJsonLayers();
+  
+  // Alle anderen Layer entfernen (außer der Base-Tile-Layer)
+  map.eachLayer(function(layer) {
+    if (layer instanceof L.TileLayer) {
+      return; // Tile Layer behalten
+    }
+    if (layer instanceof L.Marker || 
+        layer instanceof L.CircleMarker || 
+        layer instanceof L.GeoJSON ||
+        layer instanceof L.LayerGroup) {
+      map.removeLayer(layer);
+    }
+  });
+  
+  // Alle Popups schließen
+  map.closePopup();
 }
 
 // ===============================
@@ -52,6 +81,9 @@ function isTypenView() {
 function displayGeoJson(features, mode) {
   if (!features || features.length === 0 || !map) return;
 
+  // Sicherheitshalber nochmals alle Layer bereinigen
+  clearGeoJsonLayers();
+
   // Sortiere nach importance für bessere Darstellung
   if (mode === "importance") {
     features.sort((a, b) => (a.properties.importance || 0) - (b.properties.importance || 0));
@@ -62,16 +94,26 @@ function displayGeoJson(features, mode) {
   const newLayer = L.geoJSON(features, {
     pointToLayer: markerFunction,
     onEachFeature: (feature, layer) => bindPopupEvents(feature, layer)
-  }).addTo(map);
+  });
 
+  // Layer zur Map hinzufügen
+  newLayer.addTo(map);
+  
+  // Layer zur Verwaltung hinzufügen
   geoJsonLayers.push(newLayer);
-  map.fitBounds(newLayer.getBounds());
+  
+  // Map an die neuen Bounds anpassen
+  if (newLayer.getBounds().isValid()) {
+    map.fitBounds(newLayer.getBounds());
+  }
 
   if (mode === "importance") {
     const maxImp = features.reduce((max, f) => Math.max(max, f.properties.importance || 0), 0);
     createLegend(maxImp);
   }
 }
+
+
 
 // ===============================
 // Filter & Ansicht
@@ -113,13 +155,20 @@ export let viewInitialized = false;
 
 export function initView() {
   if (viewInitialized) {
-    console.warn("initView wurde bereits aufgerufen. Abbruch.");
-    return;
+    console.warn("initView wurde bereits aufgerufen. Bereinige Map vor Neuinitialisierung.");
+    clearMap(); // Vollständige Bereinigung vor Neuinitialisierung
+    viewInitialized = false; // Reset für Neuinitialisierung
   }
+  
   viewInitialized = true;
-
-  initializeMapLarge();
-  clearGeoJsonLayers();
+  
+  // Map nur initialisieren wenn noch nicht vorhanden
+  if (!map) {
+    initializeMapLarge();
+  } else {
+    // Wenn Map bereits existiert, nur bereinigen
+    clearMap();
+  }
 
   const pathname = window.location.pathname.toLowerCase();
   let viewType = "gesamt"; // Standardansicht
@@ -154,6 +203,9 @@ export function initView() {
   fetch(url)
     .then(res => res.json())
     .then(data => {
+      // Bereinige nochmals vor dem Hinzufügen neuer Daten
+      clearMap();
+      
       window.geoJsonData = data;
       const allFeatures = data.features;
 
@@ -172,14 +224,10 @@ export function initView() {
         if (typeof filterByImportance === "function") {
           filtered = filterByImportance(filtered);
         }
-        if (typeof displayGeoJson === "function") {
-          displayGeoJson(filtered, "importance");
-        }
+        displayGeoJson(filtered, "importance");
       } else {
-        if (typeof displayGeoJson === "function") {
         const onlyPoints = allFeatures.filter(feature => feature.geometry.type === "Point");
-displayGeoJson(onlyPoints);
-        }
+        displayGeoJson(onlyPoints);
       }
     })
     .catch(err => {
@@ -578,4 +626,13 @@ export function getColorByType(type) {
     return typeColorMap[type];
 }
 
+// ===============================
+// Hilfsfunktion für Seiten-Navigation
+// ===============================
+export function resetMapForNewPage() {
+  if (map) {
+    clearMap();
+    viewInitialized = false;
+  }
+}
 
