@@ -11,8 +11,6 @@
    <xsl:template match="/">
       <html class="h-100">
          <head>
-            <meta charset="UTF-8"/>
-            <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
             <xsl:variable name="doc_title">
                <xsl:text>Wiener Schnitzler</xsl:text>
             </xsl:variable>
@@ -31,10 +29,10 @@
                   <div class="col-md-6 order-2 order-md-1">
                      <div class="image-container">
                         <img id="background-image" class="background"
-                           src="./images/wienmuseum/AnsichtenVonWien00001.jpg" alt="Hintergrund"/>
+                           src="./images/wienmuseum/AnsichtenVonWien00001.jpg" alt="Historische Ansicht von Wien aus dem Wiener Museum"/>
                         <img id="foreground-image" class="foreground"
                            src="./images/schnitzler-index2.png"
-                           alt="Arthur Schnitzler als digitalen Avatar"/>
+                           alt="Digitaler Avatar von Arthur Schnitzler vor Wien-Kulisse"/>
                      </div>
                   </div>
                   <!-- Linke Spalte für den Text -->
@@ -65,7 +63,7 @@
                      <div class="card content-item">
                         <a href="gesamt.html">
                            <img src="images/index/aufenthaltstage.png" class="card-img-top"
-                              alt="Aufenthaltstage"/>
+                              alt="Kartenansicht der Aufenthaltstage Schnitzlers"/>
                         </a>
                         <div class="card-body">
                            <p class="card-text">An welchen Orten hielt sich Schnitzler am häufigsten
@@ -77,7 +75,7 @@
                      <div class="card content-item">
                         <a href="gesamt_typen.html">
                            <img src="images/index/aufenthaltstypen.png" class="card-img-top"
-                              alt="Aufenthaltstypen"/>
+                              alt="Kartenansicht verschiedener Aufenthaltstypen"/>
                         </a>
                         <div class="card-body">
                            <p class="card-text">In welchen Museen war Schnitzler? Eine schnelle
@@ -90,7 +88,7 @@
                      <div class="card content-item">
                         <a href="listplace.html">
                            <img src="images/index/aufenthaltsorte.png" class="card-img-top"
-                              alt="Aufenthaltsorte"/>
+                              alt="Verzeichnis aller Aufenthaltsorte mit Details"/>
                         </a>
                         <div class="card-body">
                            <p class="card-text">Schlagen Sie <a href="listplace.html"
@@ -102,7 +100,7 @@
                      <div class="card content-item">
                         <a href="listplace-missing.html">
                            <img src="images/index/fehlend.png" class="card-img-top"
-                              alt="Nicht identifizierte Orte"/>
+                              alt="Liste noch nicht identifizierter Orte"/>
                         </a>
                         <div class="card-body">
                            <p class="card-text">Nicht immer wurden wir fündig. Hier sind derzeit <a
@@ -114,7 +112,7 @@
                      <div class="card content-item">
                         <a href="schnitzler-und-ich.html">
                            <img src="images/index/schnitzlerundich.png" class="card-img-top"
-                              alt="Schnitzler und ich"/>
+                              alt="Interaktive Karte - wo Ihnen Schnitzler am nächsten war"/>
                         </a>
                         <div class="card-body">
                            <p class="card-text">Wo Ihnen Schnitzler am nächsten stand, lässt sich
@@ -127,7 +125,7 @@
                      <div class="card content-item">
                         <a href="tag.html">
                            <img src="images/index/aufenthaltstag.png" class="card-img-top"
-                              alt="Aufenthaltstag"/>
+                              alt="Kartenansicht für einzelne Tage"/>
                         </a>
                         <div class="card-body">
                            <p class="card-text">Für jeden einzelnen <a href="tag.html">Tag</a> gibt
@@ -139,7 +137,7 @@
                      <div class="card content-item">
                         <a href="monat.html">
                            <img src="images/index/aufenthaltsmonat.png" class="card-img-top"
-                              alt="Aufenthaltsmonate"/>
+                              alt="Kartenansicht für Kalendermonate"/>
                         </a>
                         <div class="card-body">
                            <p class="card-text">Auch <a href="monat.html">Kalendermonate</a> können
@@ -151,7 +149,7 @@
                      <div class="card content-item">
                         <a href="jahr.html">
                            <img src="images/index/aufenthaltsjahr.png" class="card-img-top"
-                              alt="Aufenthalstjahre"/>
+                              alt="Kartenansicht für bestimmte Jahre"/>
                         </a>
                         <div class="card-body">
                            <p class="card-text">Wo war Schnitzler in einem bestimmten <a
@@ -163,7 +161,7 @@
                      <div class="card content-item">
                         <a href="dekade.html">
                            <img src="images/index/aufenthaltsdekade.png" class="card-img-top"
-                              alt="Aufenthalsdekade"/>
+                              alt="Kartenansicht für verschiedene Dekaden"/>
                         </a>
                         <div class="card-body">
                            <p class="card-text">Schnitzlers Verweilorte in den einzelnen <a href="dekade.html">Dekaden</a>.
@@ -175,7 +173,7 @@
                      <div class="card content-item">
                         <a href="ueberblick.html">
                            <img src="images/index/uebersicht.png" class="card-img-top"
-                              alt="Übersicht"/>
+                              alt="Übersicht über bekannte Standorte pro Tag"/>
                         </a>
                         <div class="card-body">
                            <p class="card-text">Wie viele Standorte an bestimmten Tagen kennen wir?
@@ -187,7 +185,7 @@
                      <div class="card content-item">
                         <a href="zeitleiste.html">
                            <img src="images/index/zeitleiste.png" class="card-img-top"
-                              alt="Übersicht"/>
+                              alt="Chronologische Zeitleiste der besuchten Orte"/>
                         </a>
                         <div class="card-body">
                            <p class="card-text">Die <a href="zeitleiste.html">Zeitleiste</a> zeigt
@@ -199,7 +197,7 @@
                      <div class="card content-item">
                         <a href="https://kepler.gl/demo/map?mapUrl=https://raw.githubusercontent.com/wiener-moderne-verein/wienerschnitzler-data/refs/heads/main/data/editions/geojson/wienerschnitzler_distinctPlaces.geojson" target="_blank">
                            <img src="images/index/keplergl.png" class="card-img-top"
-                              alt="Übersicht"/>
+                              alt="Kepler.gl interaktive Datenvisualisierung"/>
                         </a>
                         <div class="card-body">
                            <p class="card-text">Eigene Ansichten der Daten können schnell mit  
@@ -211,7 +209,7 @@
                      <div class="card content-item">
                         <a href="https://github.com/wiener-moderne-verein/wienerschnitzler-data" target="_blank">
                            <img src="images/index/github.png" class="card-img-top"
-                              alt="Übersicht"/>
+                              alt="GitHub Repository mit allen Quelldaten"/>
                         </a>
                         <div class="card-body">
                            <p class="card-text">Für Menschen mit ausgeprägtem Spielbedürfnis: Alle Quelldaten stehen auf

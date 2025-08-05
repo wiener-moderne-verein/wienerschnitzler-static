@@ -160,8 +160,8 @@ h4 {
 
 /* === Accordion Grund-Variablen === */
 .accordion {
-  /* Eigene Farbdefinitionen */
-  --projekt-farbe: #ECDA98;
+  /* Verwende globale CSS-Variablen */
+  --projekt-farbe: var(--projektfarbe);
   --weiss: #FFFFFF;
   --text-color-projekt: black;  /* Textfarbe auf Projektfarbe-Hintergrund */
   --text-color-weiss: black;    /* Textfarbe auf weißem Hintergrund */
