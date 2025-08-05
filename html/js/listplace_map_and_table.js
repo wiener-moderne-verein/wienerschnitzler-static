@@ -85,16 +85,22 @@ function populateMapFromTable(
 ) {
   table.on("tableBuilt", function () {
     console.log("built table");
-    let all_rows = this.getRows();
+    // Use getData() to get all data, not just visible rows
+    let all_data = this.getData();
+    let all_rows = all_data.map(data => ({getData: () => data}));
     var existing_markers_by_coordinates = init_map_from_rows(
       all_rows,
       markers
     );
+    
     table.on("dataFiltered", function (filters, rows) {
-      init_map_from_rows(rows, markers)
+      // Show all filtered data on map, not just current page
+      let filtered_data = this.getData("active");
+      let filtered_rows = filtered_data.map(data => ({getData: () => data}));
+      init_map_from_rows(filtered_rows, markers);
       map.fitBounds(markers.getBounds());
-
     });
+    
     //eventlistener for click on row
     table.on("rowClick", function (event, row) {
       let row_data = row.getData();
@@ -105,11 +111,12 @@ function populateMapFromTable(
         existing_markers_by_coordinates
       );
     });
+    
     try {
       map.fitBounds(markers.getBounds());
-  } catch (err) {
+    } catch (err) {
       console.log(err);
-  }
+    }
   });
 }
 

@@ -106,10 +106,20 @@ const langs = {
   default: {
     pagination: {
       counter: {
-        showing: "",
-        of: "of",
-        rows: "",
+        showing: "Zeige",
+        of: "von",
+        rows: "Einträgen",
+        all: "Alle"
       },
+      first: "Erste",
+      first_title: "Erste Seite",
+      last: "Letzte",
+      last_title: "Letzte Seite",
+      prev: "Vorherige",
+      prev_title: "Vorherige Seite", 
+      next: "Nächste",
+      next_title: "Nächste Seite",
+      page_size: "Seitengröße"
     },
   },
 };
@@ -127,7 +137,13 @@ const tabulator_cfg = {
   columns: columns,
   initialSort:[
     {column:"Ortsname", dir:"asc"},
-  ]
+  ],
+  pagination: true,
+  paginationMode: "local",
+  paginationSize: 25,
+  paginationSizeSelector: [10, 25, 50, 100, true],
+  paginationCounter: "rows",
+  paginationButtonCount: 5
 };
 
 /*this is just an extra capsule to pass cfg trough the functions*/

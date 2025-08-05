@@ -149,3 +149,7 @@ desktop.ini
 
 # MacOS
 .DS_Store
+
+.claude
+
+Claude.md
