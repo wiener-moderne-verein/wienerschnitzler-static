@@ -25,7 +25,7 @@
             <body class="schreibzeug-body">
                 <xsl:call-template name="nav_bar" />
                 <main class="flex-shrink-0 flex-grow-1">
-                    <div class="container schreibzeug-container">
+                    <div class="container schreibzeug-container" id="main-content">
                         <h1 class="schreibzeug-h1">404</h1>
                         <p class="schreibzeug-p lead">
                             Die gewünschte Seite existiert nicht. Sie sehen stattdessen das von Berthold Löffler und Michael Powolny 

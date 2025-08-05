@@ -17,11 +17,14 @@
             <xsl:call-template name="html_head">
                <xsl:with-param name="html_title" select="$doc_title"/>
             </xsl:call-template>
+            <!-- Erweiterte Meta-Description für bessere SEO -->
+            <meta name="description" content="Digitale Karte von Arthur Schnitzlers Aufenthalten in Wien (1862-1931). Geografische Verortung seiner Wege durch die Stadt basierend auf Tagebuch und Korrespondenz."/>
+            <meta name="keywords" content="Arthur Schnitzler, Wien, Karte, Digital Humanities, Geolokalisierung, Literatur, Tagebuch"/>
          </head>
          <body>
             <!-- Navbar -->
             <xsl:call-template name="nav_bar"/>
-            <div class="container mt-5">
+            <div class="container mt-5" id="main-content">
                <div class="row">
                   <h1>Wiener Schnitzler – Schnitzlers Wien</h1>
                   <h4>Eine geografische Verortung durch Martin Anton Müller und Laura Untner</h4>
@@ -29,10 +32,10 @@
                   <div class="col-md-6 order-2 order-md-1">
                      <div class="image-container">
                         <img id="background-image" class="background"
-                           src="./images/wienmuseum/AnsichtenVonWien00001.jpg" alt="Historische Ansicht von Wien aus dem Wiener Museum"/>
+                           src="./images/wienmuseum/AnsichtenVonWien00001.jpg" alt="Historische Ansicht von Wien aus dem Wiener Museum" loading="lazy"/>
                         <img id="foreground-image" class="foreground"
                            src="./images/schnitzler-index2.png"
-                           alt="Digitaler Avatar von Arthur Schnitzler vor Wien-Kulisse"/>
+                           alt="Digitaler Avatar von Arthur Schnitzler vor Wien-Kulisse" loading="lazy"/>
                      </div>
                   </div>
                   <!-- Linke Spalte für den Text -->
@@ -43,10 +46,10 @@
                         meist in Wien angesiedelt sind. Die Stadt verließ er nur für Reisen und
                         Sommeraufenthalte. Dank seines <a
                            href="https://schnitzler-tagebuch.acdh.oeaw.ac.at/" target="_blank" class="schnitzler-tagebuch-link"
-                           >Tagebuchs</a>, seiner <a
+                           aria-label="Schnitzler Tagebuch - öffnet in neuem Fenster">Tagebuchs</a>, seiner <a
                            href="https://schnitzler-briefe.acdh.oeaw.ac.at/" target="_blank"
                            class="schnitzler-briefe-link"
-                           >Korrespondenz</a> und weiterer Dokumente verzeichnen wir derzeit über
+                           aria-label="Schnitzler Briefe - öffnet in neuem Fenster">Korrespondenz</a> und weiterer Dokumente verzeichnen wir derzeit über
                         47.000 Aufenthalte an knapp 4950 Orten. Gegenwärtig gibt es für keine andere
                         Person seiner Zeit so viele frei verfügbare und georeferenzierte Daten.
                         Diese zeigen, wo Schnitzler sich bewegte, welche Häuser, Straßen,
@@ -195,25 +198,25 @@
                   </div>
                   <div class="col-12 col-md-6 col-lg-3">
                      <div class="card content-item">
-                        <a href="https://kepler.gl/demo/map?mapUrl=https://raw.githubusercontent.com/wiener-moderne-verein/wienerschnitzler-data/refs/heads/main/data/editions/geojson/wienerschnitzler_distinctPlaces.geojson" target="_blank">
+                        <a href="https://kepler.gl/demo/map?mapUrl=https://raw.githubusercontent.com/wiener-moderne-verein/wienerschnitzler-data/refs/heads/main/data/editions/geojson/wienerschnitzler_distinctPlaces.geojson" target="_blank" aria-label="Kepler.gl Karte - öffnet in neuem Fenster">
                            <img src="images/index/keplergl.png" class="card-img-top"
                               alt="Kepler.gl interaktive Datenvisualisierung"/>
                         </a>
                         <div class="card-body">
                            <p class="card-text">Eigene Ansichten der Daten können schnell mit  
-                              <a href="https://kepler.gl/demo/map?mapUrl=https://raw.githubusercontent.com/wiener-moderne-verein/wienerschnitzler-data/refs/heads/main/data/editions/geojson/wienerschnitzler_distinctPlaces.geojson" target="_blank">kepler.gl</a> erzeugt werden.</p>
+                              <a href="https://kepler.gl/demo/map?mapUrl=https://raw.githubusercontent.com/wiener-moderne-verein/wienerschnitzler-data/refs/heads/main/data/editions/geojson/wienerschnitzler_distinctPlaces.geojson" target="_blank" aria-label="Kepler.gl Karte - öffnet in neuem Fenster">kepler.gl</a> erzeugt werden.</p>
                         </div>
                      </div>
                   </div>
                   <div class="col-12 col-md-6 col-lg-3">
                      <div class="card content-item">
-                        <a href="https://github.com/wiener-moderne-verein/wienerschnitzler-data" target="_blank">
+                        <a href="https://github.com/wiener-moderne-verein/wienerschnitzler-data" target="_blank" aria-label="GitHub Repository - öffnet in neuem Fenster">
                            <img src="images/index/github.png" class="card-img-top"
                               alt="GitHub Repository mit allen Quelldaten"/>
                         </a>
                         <div class="card-body">
                            <p class="card-text">Für Menschen mit ausgeprägtem Spielbedürfnis: Alle Quelldaten stehen auf
-                               <a href="https://github.com/wiener-moderne-verein/wienerschnitzler-data" target="_blank">GitHub</a> zur freien 
+                               <a href="https://github.com/wiener-moderne-verein/wienerschnitzler-data" target="_blank" aria-label="GitHub Repository - öffnet in neuem Fenster">GitHub</a> zur freien 
                               Verfügung. </p>
                         </div>
                      </div>

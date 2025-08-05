@@ -277,7 +277,9 @@
                                             else
                                                 10"/>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="100%"
-                                        height="300" viewBox="0 0 1000 300">
+                                        height="300" viewBox="0 0 1000 300" role="img" aria-labelledby="svg-title svg-desc">
+                                        <title id="svg-title">Zeitlinie der Aufenthalte von Arthur Schnitzler</title>
+                                        <desc id="svg-desc">Ein Balkendiagramm zeigt die Häufigkeit von Schnitzlers Aufenthalten über die Jahre von 1870 bis 1930. Die Y-Achse zeigt die Anzahl der Aufenthalte, die X-Achse die Jahre.</desc>
                                         <!-- Achsen -->
                                         <line x1="50" y1="10" x2="50" y2="250" stroke="black"/>
                                         <line x1="50" y1="250" x2="950" y2="250" stroke="black"/>

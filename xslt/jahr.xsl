@@ -24,7 +24,7 @@
             <body class="h-100">
                 <xsl:call-template name="nav_bar"/>
                 <main class="w-100">
-                    <div class="container-fluid my-4">
+                    <div class="container-fluid my-4" id="main-content">
                         <h1>Jahre</h1>
                         <div class="map-container-wrapper">
                             <div id="map-large"> </div>

@@ -34,7 +34,7 @@
             </head>
             <body class="d-flex flex-column h-100">
                 <xsl:call-template name="nav_bar"/>
-                <main class="container">
+                <main class="container" id="main-content">
                     <div class="col">
                         <h1>
                             <xsl:value-of select="$doc_title"/>
@@ -154,7 +154,7 @@
                     </head>
                     <body class="w-100 h-100">
                         <xsl:call-template name="nav_bar"/>
-                        <main class="container">
+                        <main class="container" id="main-content">
                             <div class="col">
                                 <h1>
                                     <xsl:value-of select="$name"/>

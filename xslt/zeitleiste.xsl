@@ -26,7 +26,7 @@
             <body class="h-100">
                 <xsl:call-template name="nav_bar"/>
                 <main class="w-100">
-                    <div class="container-fluid my-4">
+                    <div class="container-fluid my-4" id="main-content">
                         <h1>Zeitleiste</h1>
                         <div class="form-group">
                             <label for="yearSelect">Jahr auswählen:</label>
