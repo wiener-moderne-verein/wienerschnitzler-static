@@ -217,14 +217,12 @@ export function initView() {
       if (viewType === "typen" && typeof displayFilteredGeoJsonType === "function") {
         displayFilteredGeoJsonType();
       } else if (viewType === "gesamt") {
-        let filtered = allFeatures;
-        if (typeof filterByYears === "function") {
-          filtered = filterByYears(filtered);
-        }
-        if (typeof filterByImportance === "function") {
-          filtered = filterByImportance(filtered);
-        }
-        displayGeoJson(filtered, "importance");
+        // Import displayFilteredGeoJsonImportance function
+        import('./script_gesamt.js').then(module => {
+          if (typeof module.displayFilteredGeoJsonImportance === "function") {
+            module.displayFilteredGeoJsonImportance(map);
+          }
+        });
       } else {
         const onlyPoints = allFeatures.filter(feature => feature.geometry.type === "Point");
         displayGeoJson(onlyPoints);
