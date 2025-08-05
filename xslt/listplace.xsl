@@ -15,7 +15,7 @@
         <xsl:variable name="doc_title">
             <xsl:text>Verzeichnis der Aufenthaltsorte Schnitzlers</xsl:text>
         </xsl:variable>
-        <html class="h-100">
+        <html lang="de" class="h-100">
             <head>
                 <xsl:call-template name="html_head">
                     <xsl:with-param name="html_title" select="$doc_title"/>
@@ -144,7 +144,7 @@
             <xsl:variable name="name"
                 select="normalize-space(string-join(./tei:placeName[1]//text()))"/>
             <xsl:result-document href="{$filename}">
-                <html class="h-100 w-100">
+                <html lang="de" class="h-100 w-100">
                     <head>
                         <xsl:call-template name="html_head">
                             <xsl:with-param name="html_title" select="$name"/>

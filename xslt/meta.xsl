@@ -12,7 +12,7 @@
         <xsl:variable name="doc_title">
             <xsl:value-of select="descendant::tei:titleStmt/tei:title[@level = 'a'][1]/text()"/>
         </xsl:variable>
-        <html class="h-100">
+        <html lang="de" class="h-100">
             <head>
                 <xsl:call-template name="html_head">
                     <xsl:with-param name="html_title" select="$doc_title"/>

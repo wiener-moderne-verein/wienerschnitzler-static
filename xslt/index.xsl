@@ -9,7 +9,7 @@
    <xsl:import href="./partials/html_navbar.xsl"/>
    <xsl:import href="./partials/html_footer.xsl"/>
    <xsl:template match="/">
-      <html class="h-100">
+      <html lang="de" class="h-100">
          <head>
             <xsl:variable name="doc_title">
                <xsl:text>Wiener Schnitzler</xsl:text>
