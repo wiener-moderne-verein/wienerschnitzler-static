@@ -1,5 +1,22 @@
 /* Custom Theme for Bootstrap 5 */
 
+/* Skip-to-content link for accessibility */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    background: #000;
+    color: white;
+    padding: 8px;
+    text-decoration: none;
+    border-radius: 0 0 4px 4px;
+    z-index: 9999;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
 :root {
     /* Primary colors */
     --primary: #ff0000;
@@ -136,6 +153,15 @@ h4 {
     margin-bottom: 1.5rem;
     text-align: center;
     letter-spacing: 0.02em;
+}
+
+/* H2 subtitle styling to match original H4 appearance */
+h2.subtitle {
+    margin-bottom: 1.5rem;
+    text-align: center;
+    letter-spacing: 0.02em;
+    font-size: 1.5rem; /* Same size as H4 */
+    font-weight: 500; /* Same weight as H4 */
 }
 
 .lead {
