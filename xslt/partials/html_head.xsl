@@ -19,6 +19,10 @@
         <!-- <meta property="og:url" content="{$base_url}" /> -->
         <meta property="og:site_name" content="{$project_short_title}"/>
         <meta property="og:image" content="{$project_logo}"/>
+        <!-- Preload kritischer Ressourcen für bessere Performance -->
+        <link rel="preload" href="css/style.css" as="style"/>
+        <link rel="preload" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" as="style"/>
+        
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
             rel="stylesheet"
             />

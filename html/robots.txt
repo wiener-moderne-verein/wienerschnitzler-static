@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://wienerschnitzler.org/sitemap.xml
+
+# Spezielle Anweisungen
+Disallow: /js/
+Disallow: /css/
+Allow: /css/style.css

@@ -83,4 +83,8 @@
             <include name="**/*.xml"/>
         </fileset>
     </copy>
+    <!-- Sitemap generieren für SEO -->
+    <exec executable="python3" failonerror="false">
+        <arg value="generate_sitemap.py"/>
+    </exec>
 </project>
