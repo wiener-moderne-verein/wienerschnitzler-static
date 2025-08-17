@@ -311,15 +311,11 @@ document.getElementById('next-day').addEventListener('click', function () {
   setDateAndLoad(newDate);
 });
 
-initView();
-
+// Nur initView() aufrufen, das übernimmt die Map-Initialisierung
+// Die Tag-spezifische Logik erfolgt über Event-Handler
 const initialDate = getDateFromUrl() || '1895-01-23';
 document.getElementById('date-input').value = initialDate;
 setDateAndLoad(initialDate);
-
-if (window.location.hash.substring(1) === initialDate) {
-  loadGeoJsonByDate(initialDate);
-}
 
 function checkDateInRange(date, id) {
 const inputDate = new Date(date);
