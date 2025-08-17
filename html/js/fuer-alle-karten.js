@@ -51,21 +51,34 @@ export function clearGeoJsonLayers() {
 export function clearMap() {
   if (!map) return;
   
+  // Alle Popups schließen
+  map.closePopup();
+  
   // Alle GeoJSON Layer entfernen
   clearGeoJsonLayers();
   
-  // Alle anderen Layer entfernen (außer der Base-Tile-Layer)
+  // ALLE Layer sammeln und entfernen (außer TileLayer)
+  const layersToRemove = [];
   map.eachLayer(function(layer) {
-    if (layer instanceof L.TileLayer) {
-      return; // Tile Layer behalten
+    if (!(layer instanceof L.TileLayer)) {
+      layersToRemove.push(layer);
     }
+  });
+  
+  // Layer entfernen
+  layersToRemove.forEach(layer => {
     map.removeLayer(layer);
   });
   
-  // Zusätzlich: Alle SVG-Elemente direkt aus dem DOM entfernen
-  const svgElements = map.getContainer().querySelectorAll('svg g');
-  svgElements.forEach(g => {
-    const paths = g.querySelectorAll('path.leaflet-interactive');
+  // Zusätzlich: Alle interaktiven SVG-Pfade direkt aus dem DOM entfernen
+  const mapContainer = map.getContainer();
+  const interactivePaths = mapContainer.querySelectorAll('path.leaflet-interactive');
+  interactivePaths.forEach(path => path.remove());
+  
+  // Alle SVG-Gruppen bereinigen
+  const svgGroups = mapContainer.querySelectorAll('svg g');
+  svgGroups.forEach(g => {
+    const paths = g.querySelectorAll('path[stroke="#888"]');
     paths.forEach(path => path.remove());
   });
 }
