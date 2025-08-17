@@ -47,17 +47,22 @@ jobs:
         npm install -g @axe-core/cli
         npm install -g pa11y-ci
         
+    - name: Start local server for testing
+      run: |
+        cd html && python3 -m http.server 8000 &
+        sleep 3
+        
     - name: Run axe accessibility tests
       run: |
         echo "🔍 Running axe-core accessibility tests..."
         npx @axe-core/cli \
           --tags wcag2a,wcag2aa,wcag21aa \
           --exit \
-          html/index.html \
-          html/listplace.html \
-          html/gesamt.html \
-          html/impressum.html \
-          html/kontakt.html
+          http://localhost:8000/index.html \
+          http://localhost:8000/listplace.html \
+          http://localhost:8000/gesamt.html \
+          http://localhost:8000/impressum.html \
+          http://localhost:8000/kontakt.html
           
     - name: Run pa11y accessibility tests  
       run: |
@@ -67,9 +72,9 @@ jobs:
           --standard WCAG2AA \
           --threshold 10 \
           --ignore "color-contrast" \
-          html/index.html \
-          html/listplace.html \
-          html/gesamt.html
+          http://localhost:8000/index.html \
+          http://localhost:8000/listplace.html \
+          http://localhost:8000/gesamt.html
       continue-on-error: true
       
     - name: Generate accessibility report
