@@ -116,18 +116,18 @@ function loadGeoJsonByDate(date) {
   const minDateObj = new Date("1862-05-15");
   const maxDateObj = new Date("1931-10-21");
 
-  // WICHTIG: clearMap() am Anfang aufrufen - mehrfach sicherstellen
-  clearMap();
+  // Sanfte Bereinigung nur für Tag-spezifische Layer
+  map.closePopup();
   
-  // Zusätzliche Sicherheit: Alle Layer explizit entfernen
+  // Alle existierenden geoJsonLayers entfernen
   geoJsonLayers.forEach(layer => {
     if (map.hasLayer(layer)) {
       map.removeLayer(layer);
     }
   });
-  geoJsonLayers.length = 0; // Array leeren
+  geoJsonLayers.length = 0;
   
-  // Auch lineLayer entfernen falls vorhanden
+  // LineLayer entfernen falls vorhanden
   if (lineLayer && map.hasLayer(lineLayer)) {
     map.removeLayer(lineLayer);
   }
@@ -211,8 +211,6 @@ function loadGeoJsonByDate(date) {
     })
     .catch(error => {
       console.error('Error loading GeoJSON:', error);
-      // Auch bei Fehlern die Map bereinigen
-      clearMap();
     });
 }
 
@@ -254,8 +252,6 @@ setInterval(checkHashChange, 500);
 window.addEventListener('hashchange', function() {
   const date = getDateFromUrl();
   if (date) {
-    // Explizit clearMap() aufrufen vor dem Laden neuer Daten
-    clearMap();
     loadGeoJsonByDate(date);
     document.getElementById('date-input').value = date;
   }
@@ -274,7 +270,6 @@ window.addEventListener('focus', function() {
   const inputDate = document.getElementById('date-input').value;
   
   if (date && date !== inputDate) {
-    clearMap();
     loadGeoJsonByDate(date);
     document.getElementById('date-input').value = date;
   }
