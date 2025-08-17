@@ -59,16 +59,15 @@ export function clearMap() {
     if (layer instanceof L.TileLayer) {
       return; // Tile Layer behalten
     }
-    if (layer instanceof L.Marker || 
-        layer instanceof L.CircleMarker || 
-        layer instanceof L.GeoJSON ||
-        layer instanceof L.LayerGroup) {
-      map.removeLayer(layer);
-    }
+    map.removeLayer(layer);
   });
   
-  // Alle Popups schließen
-  map.closePopup();
+  // Zusätzlich: Alle SVG-Elemente direkt aus dem DOM entfernen
+  const svgElements = map.getContainer().querySelectorAll('svg g');
+  svgElements.forEach(g => {
+    const paths = g.querySelectorAll('path.leaflet-interactive');
+    paths.forEach(path => path.remove());
+  });
 }
 
 // ===============================
