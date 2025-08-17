@@ -23,6 +23,29 @@
                 <link
                     href="https://unpkg.com/tabulator-tables@5.5.2/dist/css/tabulator_bootstrap5.min.css"
                     rel="stylesheet"/>
+                <style>
+                    /* Accessibility improvements for better color contrast */
+                    .tabulator-table a {
+                        color: #0056b3 !important; /* Darker blue for better contrast */
+                        text-decoration: underline;
+                    }
+                    .tabulator-table a:hover {
+                        color: #003d82 !important; /* Even darker on hover */
+                    }
+                    .tabulator-table a:visited {
+                        color: #6f42c1 !important; /* Purple for visited links with good contrast */
+                    }
+                    /* Ensure proper table semantics */
+                    .tabulator {
+                        role: table;
+                    }
+                    .tabulator-header {
+                        role: rowgroup;
+                    }
+                    .tabulator-tableholder .tabulator-table {
+                        role: rowgroup;
+                    }
+                </style>
                 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
                     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
                 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""/>

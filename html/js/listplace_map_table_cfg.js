@@ -30,6 +30,9 @@ const columns = [
     provide a string val in your html-table */
   {
     headerFilter: "input",
+    headerFilterParams: {
+      "aria-label": "Ortsname filtern"
+    },
     title: "Ortsname",
     field: "Ortsname",
     formatter: linkToDetailView,
@@ -37,6 +40,9 @@ const columns = [
   },
   {
     headerFilter: "input",
+    headerFilterParams: {
+      "aria-label": "Zugehörigkeiten filtern"
+    },
     title: "Zugehörigkeiten",
     field: "Zugehörigkeiten",
     formatter: "plaintext",
@@ -44,6 +50,9 @@ const columns = [
   },
   {
     headerFilter: "input",
+    headerFilterParams: {
+      "aria-label": "Erwähnungen filtern"
+    },
     title: "Erwähnungen",
     field: "mentions",
     formatter: "plaintext",
@@ -51,6 +60,9 @@ const columns = [
   },
   {
     headerFilter: "input",
+    headerFilterParams: {
+      "aria-label": "Typ filtern"
+    },
     title: "Typ",
     field: "ortstyp",
     formatter: "plaintext",
@@ -58,6 +70,9 @@ const columns = [
   },
   {
     headerFilter: "input",
+    headerFilterParams: {
+      "aria-label": "Wohn- und Arbeitsort filtern"
+    },
     title: "Wohn- und Arbeitsort",
     field: "Wohn- und Arbeitsort",
     formatter: "plaintext",
@@ -143,7 +158,11 @@ const tabulator_cfg = {
   paginationSize: 25,
   paginationSizeSelector: [10, 25, 50, 100, true],
   paginationCounter: "rows",
-  paginationButtonCount: 5
+  paginationButtonCount: 5,
+  // Accessibility improvements
+  accessibleTable: true,
+  tabEndNewRow: false,
+  ariaLabel: "Tabelle der Aufenthaltsorte Schnitzlers"
 };
 
 /*this is just an extra capsule to pass cfg trough the functions*/
