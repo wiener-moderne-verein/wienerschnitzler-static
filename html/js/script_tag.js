@@ -125,7 +125,7 @@ function loadGeoJsonByDate(date) {
   const minDateObj = new Date("1862-05-15");
   const maxDateObj = new Date("1931-10-21");
 
-  // Sanfte Bereinigung nur für Tag-spezifische Layer
+  // Tag-spezifische sanfte Bereinigung
   map.closePopup();
   
   // Alle existierenden geoJsonLayers entfernen
@@ -136,10 +136,15 @@ function loadGeoJsonByDate(date) {
   });
   geoJsonLayers.length = 0;
   
-  // LineLayer entfernen falls vorhanden
+  // LineLayer entfernen falls vorhanden  
   if (lineLayer && map.hasLayer(lineLayer)) {
     map.removeLayer(lineLayer);
   }
+  
+  // Nur für Tag-Seite: Aggressive DOM-Bereinigung für graue Punkte
+  const mapContainer = map.getContainer();
+  const greyPaths = mapContainer.querySelectorAll('path[stroke="#888"]');
+  greyPaths.forEach(path => path.remove());
 
   if (inputDate < minDateObj || inputDate > maxDateObj) {
     const formattedDate = formatIsoDateToGerman(date);
