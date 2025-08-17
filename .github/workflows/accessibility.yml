@@ -52,7 +52,6 @@ jobs:
         echo "🔍 Running axe-core accessibility tests..."
         npx @axe-core/cli \
           --tags wcag2a,wcag2aa,wcag21aa \
-          --disable-dev-shm-usage \
           --exit \
           html/index.html \
           html/listplace.html \
