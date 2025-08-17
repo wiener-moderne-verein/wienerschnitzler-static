@@ -70,17 +70,32 @@ export function clearMap() {
     map.removeLayer(layer);
   });
   
-  // Zusätzlich: Alle interaktiven SVG-Pfade direkt aus dem DOM entfernen
-  const mapContainer = map.getContainer();
-  const interactivePaths = mapContainer.querySelectorAll('path.leaflet-interactive');
-  interactivePaths.forEach(path => path.remove());
+  // Mehrfache DOM-Bereinigung mit Verzögerung
+  function cleanupDOM() {
+    const mapContainer = map.getContainer();
+    
+    // Alle interaktiven SVG-Pfade entfernen
+    const interactivePaths = mapContainer.querySelectorAll('path.leaflet-interactive');
+    interactivePaths.forEach(path => path.remove());
+    
+    // Alle grauen Pfade entfernen (#888)
+    const greyPaths = mapContainer.querySelectorAll('path[stroke="#888"]');
+    greyPaths.forEach(path => path.remove());
+    
+    // Alle SVG-Gruppen bereinigen
+    const svgGroups = mapContainer.querySelectorAll('svg g');
+    svgGroups.forEach(g => {
+      const paths = g.querySelectorAll('path[fill="#888"]');
+      paths.forEach(path => path.remove());
+    });
+  }
   
-  // Alle SVG-Gruppen bereinigen
-  const svgGroups = mapContainer.querySelectorAll('svg g');
-  svgGroups.forEach(g => {
-    const paths = g.querySelectorAll('path[stroke="#888"]');
-    paths.forEach(path => path.remove());
-  });
+  // Sofort ausführen
+  cleanupDOM();
+  
+  // Nochmals nach kurzer Verzögerung (für asynchrone Layer)
+  setTimeout(cleanupDOM, 10);
+  setTimeout(cleanupDOM, 50);
 }
 
 // ===============================
@@ -225,7 +240,7 @@ export function initView() {
       const allFeatures = data.features;
 
       // Optional: falls Funktion undefiniert sein könnte, absichern
-      if (typeof createFilterTime === "function") {
+      if (typeof createFilterTime === "function" && document.getElementById('filter-time')) {
         createFilterTime(allFeatures);
       }
 
