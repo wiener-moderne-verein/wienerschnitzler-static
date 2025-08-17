@@ -38,6 +38,9 @@ export function clearGeoJsonLayers() {
       }
     });
     geoJsonLayers.length = 0; // Array leeren
+    
+    // Alle Popups schließen
+    map.closePopup();
   }
 }
 
