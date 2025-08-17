@@ -69,33 +69,6 @@ export function clearMap() {
   layersToRemove.forEach(layer => {
     map.removeLayer(layer);
   });
-  
-  // Mehrfache DOM-Bereinigung mit Verzögerung
-  function cleanupDOM() {
-    const mapContainer = map.getContainer();
-    
-    // Alle interaktiven SVG-Pfade entfernen
-    const interactivePaths = mapContainer.querySelectorAll('path.leaflet-interactive');
-    interactivePaths.forEach(path => path.remove());
-    
-    // Alle grauen Pfade entfernen (#888)
-    const greyPaths = mapContainer.querySelectorAll('path[stroke="#888"]');
-    greyPaths.forEach(path => path.remove());
-    
-    // Alle SVG-Gruppen bereinigen
-    const svgGroups = mapContainer.querySelectorAll('svg g');
-    svgGroups.forEach(g => {
-      const paths = g.querySelectorAll('path[fill="#888"]');
-      paths.forEach(path => path.remove());
-    });
-  }
-  
-  // Sofort ausführen
-  cleanupDOM();
-  
-  // Nochmals nach kurzer Verzögerung (für asynchrone Layer)
-  setTimeout(cleanupDOM, 10);
-  setTimeout(cleanupDOM, 50);
 }
 
 // ===============================
@@ -208,11 +181,13 @@ export function initView() {
   } else if (pathname.includes("tag")) {
     viewType = "tag";
   } else if (pathname.includes("monat")) {
-    viewType = "monat";
+    // Monat-Ansicht hat eigene Logik - nicht automatisch laden
+    return;
   } else if (pathname.includes("jahr")) {
     viewType = "jahr";
   } else if (pathname.includes("dekade")) {
-    viewType = "dekade";
+    // Dekade-Ansicht hat eigene Logik - nicht automatisch laden
+    return;
   } else if (pathname.includes("gesamt")) {
     viewType = "gesamt";
   }
@@ -290,8 +265,14 @@ export function createCircleMarkerDynamic(attributeName) {
       radius = 5 + (importance / 20000) * 10; // Radius zwischen 5 und ca. 15
 
     } else if (attributeName === 'month') {
-      // Monatschattierungen in Blau
-      const month = parseInt(value, 10);
+      // Monatschattierungen in Blau - extrahiere Monat aus timestamp
+      let month = 1; // Default
+      if (feature.properties.timestamp && Array.isArray(feature.properties.timestamp)) {
+        const firstDate = feature.properties.timestamp[0];
+        if (firstDate) {
+          month = parseInt(firstDate.split('-')[1], 10) || 1;
+        }
+      }
       const hue = 200; // Blau-Ton
       const lightness = 30 + (month / 12) * 40; // Von 30% bis 70%
       color = `hsl(${hue}, 80%, ${lightness}%)`;
@@ -308,7 +289,15 @@ export function createCircleMarkerDynamic(attributeName) {
       radius = 5;
 
     } else if (attributeName === 'decade') {
-      // Jahrzehnt: verschiedene feste Farben (mapping)
+      // Jahrzehnt: verschiedene feste Farben - extrahiere Jahr aus timestamp
+      let decade = '1890'; // Default
+      if (feature.properties.timestamp && Array.isArray(feature.properties.timestamp)) {
+        const firstDate = feature.properties.timestamp[0];
+        if (firstDate) {
+          const year = parseInt(firstDate.split('-')[0], 10);
+          decade = String(Math.floor(year / 10) * 10);
+        }
+      }
       const decadeColors = {
         '1870': '#8dd3c7',
         '1880': '#ffffb3',
@@ -318,8 +307,7 @@ export function createCircleMarkerDynamic(attributeName) {
         '1920': '#fdb462',
         '1930': '#b3de69'
       };
-      const decadeKey = String(value);
-      color = decadeColors[decadeKey] || '#cccccc';
+      color = decadeColors[decade] || '#cccccc';
       radius = 5;
     }
 

@@ -1,4 +1,4 @@
-import { initView, map, createCircleMarkerDynamic, bindPopupEvents, clearGeoJsonLayers, geoJsonLayers, clearMap, initializeMapLarge } from './fuer-alle-karten.js';
+import { map, createCircleMarkerDynamic, bindPopupEvents, geoJsonLayers, initializeMapLarge } from './fuer-alle-karten.js';
 import { setupLineToggleControl } from './linie-anzeigen.js';
 
 const wohnsitze =[ {
@@ -75,6 +75,70 @@ let lineLayer;
 
 let currentlyLoadingDate = null; // Verhindert mehrfache Aufrufe
 
+// Tag-spezifische aggressive Bereinigung für graue Punkte
+function clearTagMap() {
+  if (!map) return;
+  
+  // Alle Popups schließen
+  map.closePopup();
+  
+  // Alle existierenden geoJsonLayers entfernen
+  geoJsonLayers.forEach(layer => {
+    if (map.hasLayer(layer)) {
+      map.removeLayer(layer);
+    }
+  });
+  geoJsonLayers.length = 0;
+  
+  // LineLayer entfernen falls vorhanden  
+  if (lineLayer && map.hasLayer(lineLayer)) {
+    map.removeLayer(lineLayer);
+  }
+  
+  // ALLE Layer entfernen (außer TileLayer) - für Tag-Ansicht
+  const layersToRemove = [];
+  map.eachLayer(function(layer) {
+    if (!(layer instanceof L.TileLayer)) {
+      layersToRemove.push(layer);
+    }
+  });
+  layersToRemove.forEach(layer => {
+    map.removeLayer(layer);
+  });
+  
+  // Aggressive DOM-Bereinigung für verbleibende SVG-Elemente
+  function cleanupTagDOM() {
+    const mapContainer = map.getContainer();
+    
+    // Alle grauen Punkte entfernen
+    const greyPaths = mapContainer.querySelectorAll('path[stroke="#888"]');
+    greyPaths.forEach(path => path.remove());
+    
+    const greyFillPaths = mapContainer.querySelectorAll('path[fill="#888"]');
+    greyFillPaths.forEach(path => path.remove());
+    
+    // Alle interaktiven Pfade mit unbekannten Farben entfernen
+    const interactivePaths = mapContainer.querySelectorAll('path.leaflet-interactive');
+    interactivePaths.forEach(path => {
+      const stroke = path.getAttribute('stroke');
+      const fill = path.getAttribute('fill');
+      // Behalte nur rote Punkte (#cc0000) und Linien (#462346)
+      if (stroke !== '#cc0000' && stroke !== '#462346' && fill !== '#cc0000') {
+        path.remove();
+      }
+    });
+  }
+  
+  // Sofort ausführen
+  cleanupTagDOM();
+  
+  // Mehrfache Ausführung mit Verzögerung für asynchrone Erstellung
+  setTimeout(cleanupTagDOM, 10);
+  setTimeout(cleanupTagDOM, 50);
+  setTimeout(cleanupTagDOM, 100);
+  setTimeout(cleanupTagDOM, 200);
+}
+
 function updateMapInhaltText(features, date, name) {
   const mapInhaltTextDiv = document.getElementById('map-inhalt-text');
   
@@ -125,26 +189,8 @@ function loadGeoJsonByDate(date) {
   const minDateObj = new Date("1862-05-15");
   const maxDateObj = new Date("1931-10-21");
 
-  // Tag-spezifische sanfte Bereinigung
-  map.closePopup();
-  
-  // Alle existierenden geoJsonLayers entfernen
-  geoJsonLayers.forEach(layer => {
-    if (map.hasLayer(layer)) {
-      map.removeLayer(layer);
-    }
-  });
-  geoJsonLayers.length = 0;
-  
-  // LineLayer entfernen falls vorhanden  
-  if (lineLayer && map.hasLayer(lineLayer)) {
-    map.removeLayer(lineLayer);
-  }
-  
-  // Nur für Tag-Seite: Aggressive DOM-Bereinigung für graue Punkte
-  const mapContainer = map.getContainer();
-  const greyPaths = mapContainer.querySelectorAll('path[stroke="#888"]');
-  greyPaths.forEach(path => path.remove());
+  // Tag-spezifische aggressive Bereinigung
+  clearTagMap();
 
   if (inputDate < minDateObj || inputDate > maxDateObj) {
     const formattedDate = formatIsoDateToGerman(date);
@@ -261,15 +307,15 @@ function checkHashChange() {
     lastHash = currentHash;
     const date = getDateFromUrl();
     if (date) {
-      clearMap(); // Explizit clearMap() vor dem Laden
+      clearTagMap(); // Tag-spezifische Bereinigung
       loadGeoJsonByDate(date);
       document.getElementById('date-input').value = date;
     }
   }
 }
 
-// Überprüfung alle 500ms - DEAKTIVIERT für Debugging
-// setInterval(checkHashChange, 500);
+// Überprüfung alle 500ms
+setInterval(checkHashChange, 500);
 
 window.addEventListener('hashchange', function() {
   const date = getDateFromUrl();

@@ -1,4 +1,4 @@
-import { initView, map, createCircleMarkerDynamic, bindPopupEvents, clearGeoJsonLayers, geoJsonLayers } from './fuer-alle-karten.js';
+import { map, createCircleMarkerDynamic, bindPopupEvents, clearGeoJsonLayers, geoJsonLayers, initializeMapLarge } from './fuer-alle-karten.js';
 import { setupLineToggleControl } from './linie-anzeigen.js';
 import { createLegend } from './filter_dauer.js';
 
@@ -195,7 +195,10 @@ function populateDecadeDropdown() {
     }
 }
 
-initView();
+// Nur Map initialisieren, ohne automatische Datenladung
+if (!map) {
+  initializeMapLarge();
+}
 
 // Eventlistener für das Dekadeneingabefeld (Dropdown)
 document.getElementById('decade-input').addEventListener('change', function () {

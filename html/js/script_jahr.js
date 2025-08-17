@@ -1,4 +1,4 @@
-import { initView, map, createCircleMarkerDynamic, bindPopupEvents, clearGeoJsonLayers, geoJsonLayers } from './fuer-alle-karten.js';
+import { map, createCircleMarkerDynamic, bindPopupEvents, clearGeoJsonLayers, geoJsonLayers, initializeMapLarge } from './fuer-alle-karten.js';
 import { setupLineToggleControl, updateLineUrlParam } from './linie-anzeigen.js';
 import { createLegend} from './filter_dauer.js';
 
@@ -180,7 +180,10 @@ function setYearAndLoad(year) {
          const fallbackYear = yearSelect.options[0]?.value || startYear;
          yearSelect.value = String(fallbackYear);
          alert(`Das angeforderte Jahr ${year} ist ungültig. Zeige ${yearSelect.value}.`);
-         initView();
+         // Nur Map initialisieren, ohne automatische Datenladung
+         if (!map) {
+           initializeMapLarge();
+         }
          setYearAndLoad(yearSelect.value);
          return; // Wichtig: Beende die aktuelle Ausführung
     }

@@ -1,11 +1,14 @@
-import { initView, map, createCircleMarkerDynamic, bindPopupEvents, clearGeoJsonLayers, geoJsonLayers } from './fuer-alle-karten.js';
+import { map, createCircleMarkerDynamic, bindPopupEvents, clearGeoJsonLayers, geoJsonLayers, initializeMapLarge } from './fuer-alle-karten.js';
 import { setupLineToggleControl, updateLineUrlParam } from './linie-anzeigen.js';
 import { createLegend} from './filter_dauer.js';
 
 const namedLineLayers = {}; // Behalten wir für die Verwaltung der Linienlayer bei
 let activeLineLayer = null; // Globale Variable für den aktuell aktiven Linien-Layer
 
-initView();
+// Nur Map initialisieren, ohne automatische Datenladung
+if (!map) {
+  initializeMapLarge();
+}
 
 function loadGeoJsonByMonth(month) { // Erwartet "YYYY-MM"
     const url = `https://raw.githubusercontent.com/wiener-moderne-verein/wienerschnitzler-data/main/data/editions/geojson/${month}.geojson`;
