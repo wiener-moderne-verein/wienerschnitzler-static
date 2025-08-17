@@ -241,6 +241,7 @@ function checkHashChange() {
     lastHash = currentHash;
     const date = getDateFromUrl();
     if (date) {
+      clearMap(); // Explizit clearMap() vor dem Laden
       loadGeoJsonByDate(date);
       document.getElementById('date-input').value = date;
     }
