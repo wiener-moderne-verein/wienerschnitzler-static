@@ -73,6 +73,8 @@ function getWohnsitzForDate(date) {
 let lineLayer; 
 // globale Variable für den Linien-Layer
 
+let currentlyLoadingDate = null; // Verhindert mehrfache Aufrufe
+
 function updateMapInhaltText(features, date, name) {
   const mapInhaltTextDiv = document.getElementById('map-inhalt-text');
   
@@ -112,6 +114,13 @@ function updateMapInhaltText(features, date, name) {
 }
 
 function loadGeoJsonByDate(date) {
+  // Verhindere mehrfache Aufrufe für dasselbe Datum
+  if (currentlyLoadingDate === date) {
+    console.log(`Debug: Überspringe doppelten Aufruf für ${date}`);
+    return;
+  }
+  currentlyLoadingDate = date;
+  
   const inputDate = new Date(date);
   const minDateObj = new Date("1862-05-15");
   const maxDateObj = new Date("1931-10-21");
@@ -161,6 +170,8 @@ function loadGeoJsonByDate(date) {
                Array.isArray(feature.properties.timestamp) &&
                feature.properties.timestamp.includes(date);
       });
+      
+      console.log(`Debug: Gefundene Features für ${date}:`, pointFeatures.length);
 
       // LineString-Features für Linie
       const lineFeatures = data.features.filter(feature => feature.geometry.type === 'LineString');
@@ -200,6 +211,8 @@ function loadGeoJsonByDate(date) {
       }).addTo(map);
 
       geoJsonLayers.push(pointsLayer);
+      console.log(`Debug: Layer erstellt mit ${pointsLayer.getLayers().length} Punkten`);
+      console.log(`Debug: Aktuell ${geoJsonLayers.length} Layer in geoJsonLayers`);
 
       if (pointsLayer.getLayers().length > 0) {
         map.fitBounds(pointsLayer.getBounds());
@@ -211,6 +224,10 @@ function loadGeoJsonByDate(date) {
     })
     .catch(error => {
       console.error('Error loading GeoJSON:', error);
+    })
+    .finally(() => {
+      // Ermögliche neue Aufrufe nach Abschluss
+      currentlyLoadingDate = null;
     });
 }
 
@@ -246,8 +263,8 @@ function checkHashChange() {
   }
 }
 
-// Überprüfung alle 500ms
-setInterval(checkHashChange, 500);
+// Überprüfung alle 500ms - DEAKTIVIERT für Debugging
+// setInterval(checkHashChange, 500);
 
 window.addEventListener('hashchange', function() {
   const date = getDateFromUrl();
