@@ -1,4 +1,4 @@
-import { initView, map, createCircleMarkerDynamic, bindPopupEvents, clearGeoJsonLayers, geoJsonLayers, clearMap } from './fuer-alle-karten.js';
+import { initView, map, createCircleMarkerDynamic, bindPopupEvents, clearGeoJsonLayers, geoJsonLayers, clearMap, initializeMapLarge } from './fuer-alle-karten.js';
 import { setupLineToggleControl } from './linie-anzeigen.js';
 
 const wohnsitze =[ {
@@ -311,8 +311,12 @@ document.getElementById('next-day').addEventListener('click', function () {
   setDateAndLoad(newDate);
 });
 
-// Nur initView() aufrufen, das übernimmt die Map-Initialisierung
-// Die Tag-spezifische Logik erfolgt über Event-Handler
+// Tag-Seite braucht kein initView() - hat eigene Map-Logik
+// Nur Map initialisieren falls noch nicht vorhanden
+if (!map) {
+  initializeMapLarge();
+}
+
 const initialDate = getDateFromUrl() || '1895-01-23';
 document.getElementById('date-input').value = initialDate;
 setDateAndLoad(initialDate);
