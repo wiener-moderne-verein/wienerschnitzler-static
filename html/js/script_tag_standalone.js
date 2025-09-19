@@ -241,25 +241,26 @@ function setupLineToggleControl(lineLayer, initialVisible) {
   lineToggle.checked = initialVisible;
 
   lineToggle.addEventListener('change', function() {
-    const params = new URLSearchParams(window.location.search);
-
     if (this.checked) {
       if (lineLayer && !map.hasLayer(lineLayer)) {
         lineLayer.addTo(map);
         lineLayer.bringToBack();
       }
-      params.set('l', 'on');
+      updateUrlParameter('l', 'on');
     } else {
       if (lineLayer && map.hasLayer(lineLayer)) {
         map.removeLayer(lineLayer);
       }
-      params.set('l', 'off');
+      updateUrlParameter('l', 'off');
     }
-
-    // URL aktualisieren ohne Neuladen der Seite
-    const newUrl = `${window.location.pathname}${window.location.hash}?${params.toString()}`;
-    window.history.replaceState(null, '', newUrl);
   });
+}
+
+// Hilfsfunktion zur korrekten URL-Parameter Behandlung
+function updateUrlParameter(key, value) {
+  const url = new URL(window.location);
+  url.searchParams.set(key, value);
+  window.history.replaceState(null, '', url.toString());
 }
 
 function updateMapInhaltText(features, date, name) {
