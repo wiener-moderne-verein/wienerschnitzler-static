@@ -78,7 +78,7 @@
                 <xsl:call-template name="html_footer"/>
                 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"/>
                
-                <script  type="module" src="./js/script_tag.js"/>
+                <script src="./js/script_tag_standalone.js"/>
             </body>
         </html>
     </xsl:template>
