@@ -9,6 +9,7 @@
     <xsl:param name="github_url">https://github.com/wiener-moderne-verein/wienerschnitzler-static</xsl:param>
     <xsl:param name="html_title">wienerschnitzler</xsl:param>
     <xsl:param name="project_logo">images/logo.png</xsl:param>
+    <xsl:param name="og_image">images/og-image.jpg</xsl:param>
     <xsl:param name="base_url">wienerschchnitzler.org</xsl:param>
     <xsl:param name="data_repo">https://github.com/wiener-moderne-verein/wienerschnitzler-data</xsl:param>
 </xsl:stylesheet>

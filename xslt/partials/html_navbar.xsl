@@ -4,10 +4,10 @@
     xmlns:tei="http://www.tei-c.org/ns/1.0"
     xmlns:xs="http://www.w3.org/2001/XMLSchema" exclude-result-prefixes="#all" version="2.0">
     <xsl:template match="/" name="nav_bar">
-        <a href="#main-content" class="skip-link">Zum Hauptinhalt springen</a>
-        <header>
+        <a href="#main-content" class="skip-link" accesskey="1">Zum Hauptinhalt springen</a>
+        <header role="banner">
             <div class="container">
-                <nav class="navbar navbar-expand-lg navbar-light" aria-label="Primary">
+                <nav class="navbar navbar-expand-lg navbar-light" role="navigation" aria-label="Hauptnavigation">
                     <!-- Roter BETA-Button -->
                             <!--<span class="navbar-text" style="position: relative;">
                                 <button class="btn btn-danger disabled" type="button" style="color: white; background-color: red; font-size: 0.75rem; padding: 0.25rem 0.5rem; transform: rotate(-10deg); position: absolute; bottom: -27px; right: -155px; z-index:2000;">BETA</button>
@@ -16,8 +16,8 @@
                         <img src="images/wienerschnitzler.jpg" height="30px" alt="Wiener Schnitzler Logo"/>
                     
                         <a class="navbar-brand" href="index.html">Wiener Schnitzler</a>
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Navigationsmenü öffnen">
+                            <span class="navbar-toggler-icon" aria-hidden="true"></span>
                         </button>
                         
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -73,9 +73,9 @@
                                     <ul class="dropdown-menu" aria-labelledby="schnitzlerLinksDropdown">
                                         <li><a class="dropdown-item" href="https://de.wikipedia.org/wiki/Arthur_Schnitzler" target="_blank" aria-label="Wikipedia - öffnet in neuem Fenster">Wikipedia</a></li>
                                         <li><a class="dropdown-item" href="https://www.geschichtewiki.wien.gv.at/Arthur_Schnitzler" target="_blank" aria-label="Wien Geschichte Wiki - öffnet in neuem Fenster">Wien Geschichte Wiki</a></li>
-                                        <li><a class="dropdown-item" href="https://schnitzler-tagebuch.acdh.oeaw.ac.at/" target="_blank" aria-label="Tagebuch (1879–1931) - öffnet in neuem Fenster">Tagebuch (1879–1931)</a></li>
-                                        <li><a class="dropdown-item" href="https://schnitzler-briefe.acdh.oeaw.ac.at/" target="_blank" aria-label="Briefe (1888–1931) - öffnet in neuem Fenster">Briefe (1888–1931)</a></li>
-                                        <li><a class="dropdown-item" href="https://www.arthur-schnitzler.de" target="_blank" aria-label="Werke digital (1905–1931) - öffnet in neuem Fenster">Werke digital (1905–1931)</a></li>
+                                        <li><a class="dropdown-item" href="https://schnitzler-tagebuch.acdh.oeaw.ac.at/" target="_blank" rel="noopener noreferrer" aria-label="Tagebuch (1879–1931) - öffnet in neuem Fenster">Tagebuch (1879–1931)</a></li>
+                                        <li><a class="dropdown-item" href="https://schnitzler-briefe.acdh.oeaw.ac.at/" target="_blank" rel="noopener noreferrer" aria-label="Briefe (1888–1931) - öffnet in neuem Fenster">Briefe (1888–1931)</a></li>
+                                        <li><a class="dropdown-item" href="https://www.arthur-schnitzler.de" target="_blank" rel="noopener noreferrer" aria-label="Werke digital (1905–1931) - öffnet in neuem Fenster">Werke digital (1905–1931)</a></li>
                                         <li><a class="dropdown-item" href="https://schnitzler-mikrofilme.acdh.oeaw.ac.at/" target="_blank" aria-label="Mikrofilme - öffnet in neuem Fenster">Mikrofilme</a></li>
                                         <li><a class="dropdown-item" href="https://schnitzler-zeitungen.acdh.oeaw.ac.at/" target="_blank" aria-label="Archiv der Zeitungsausschnitte - öffnet in neuem Fenster">Archiv der Zeitungsausschnitte</a></li>
                                         <li><a class="dropdown-item" href="https://schnitzler-interviews.acdh.oeaw.ac.at/" target="_blank" aria-label="Interviews, Meinungen, Proteste - öffnet in neuem Fenster">Interviews, Meinungen, Proteste</a></li>

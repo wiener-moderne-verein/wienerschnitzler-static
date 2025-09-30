@@ -15,10 +15,14 @@
                 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
                 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
                 <xsl:variable name="doc_title">
-                    <xsl:text>Wiener Schnitzler</xsl:text>
+                    <xsl:text>Aufenthalte nach Einzeltagen | Wiener Schnitzler</xsl:text>
+                </xsl:variable>
+                <xsl:variable name="doc_description">
+                    <xsl:text>Durchsuchen Sie Schnitzlers Aufenthaltsorte Tag für Tag. Detaillierte Kartendarstellung für jeden einzelnen Tag zwischen 1862 und 1931.</xsl:text>
                 </xsl:variable>
                 <xsl:call-template name="html_head">
                     <xsl:with-param name="html_title" select="$doc_title"/>
+                    <xsl:with-param name="page_description" select="$doc_description"/>
                 </xsl:call-template>
             </head>
             <body class="h-100">

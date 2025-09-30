@@ -5,20 +5,36 @@
     <xsl:include href="./params.xsl"/>
     <xsl:template match="/" name="html_head">
         <xsl:param name="html_title" select="$project_short_title"/>
+        <xsl:param name="page_description" select="$project_title"/>
+        <xsl:param name="page_url"/>
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"/>
         <link rel="icon" href="{$project_logo}" sizes="any"/>
         <title>
             <xsl:value-of select="$html_title"/>
         </title>
-        <!-- <link rel="canonical" href="{$base_url}" /> -->
-        <meta name="description" content="{$project_title}"/>
+        <xsl:if test="$page_url">
+            <link rel="canonical" href="{$page_url}"/>
+        </xsl:if>
+        <meta name="description" content="{$page_description}"/>
         <meta property="og:type" content="website"/>
-        <meta property="og:title" content="{$project_short_title}"/>
-        <meta property="og:description" content="{$project_title}"/>
-        <!-- <meta property="og:url" content="{$base_url}" /> -->
+        <meta property="og:title" content="{$html_title}"/>
+        <meta property="og:description" content="{$page_description}"/>
+        <xsl:if test="$page_url">
+            <meta property="og:url" content="{$page_url}"/>
+        </xsl:if>
         <meta property="og:site_name" content="{$project_short_title}"/>
-        <meta property="og:image" content="{$project_logo}"/>
+        <meta property="og:image" content="{$og_image}"/>
+        <meta property="og:image:alt" content="Wiener Schnitzler – Digitale Karte von Arthur Schnitzlers Aufenthalten in Wien"/>
+        <meta property="og:image:width" content="1200"/>
+        <meta property="og:image:height" content="630"/>
+        <meta property="og:locale" content="de_AT"/>
+        <meta name="twitter:card" content="summary_large_image"/>
+        <meta name="twitter:title" content="{$html_title}"/>
+        <meta name="twitter:description" content="{$page_description}"/>
+        <meta name="twitter:image" content="{$og_image}"/>
+        <meta name="twitter:image:alt" content="Wiener Schnitzler – Digitale Karte von Arthur Schnitzlers Aufenthalten in Wien"/>
         <!-- Preload kritischer Ressourcen für bessere Performance -->
         <link rel="preload" href="css/style.css" as="style"/>
         <link rel="preload" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" as="style"/>
@@ -37,5 +53,65 @@
         <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png" />
         <link rel="manifest" href="/images/site.webmanifest" />
         <!--<link rel="stylesheet" href="css/micro-editor.css" type="text/css"></link>-->
+
+        <!-- JSON-LD Structured Data -->
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": "Wiener Schnitzler – Schnitzlers Wien",
+            "alternateName": "Wiener Schnitzler",
+            "description": "Digitale Karte von Arthur Schnitzlers Aufenthalten in Wien (1862-1931). Geografische Verortung seiner Wege durch die Stadt basierend auf Tagebuch und Korrespondenz.",
+            "inLanguage": "de-AT",
+            "about": {
+                "@type": "Person",
+                "@id": "https://d-nb.info/gnd/118609807",
+                "name": "Arthur Schnitzler",
+                "birthDate": "1862-05-15",
+                "deathDate": "1931-10-21",
+                "birthPlace": {
+                    "@type": "Place",
+                    "name": "Wien, Praterstraße",
+                    "geo": {
+                        "@type": "GeoCoordinates",
+                        "latitude": 48.2082,
+                        "longitude": 16.3738
+                    }
+                },
+                "deathPlace": {
+                    "@type": "Place",
+                    "name": "Wien, Sternwartestraße",
+                    "geo": {
+                        "@type": "GeoCoordinates",
+                        "latitude": 48.2082,
+                        "longitude": 16.3738
+                    }
+                },
+                "sameAs": [
+                    "https://de.wikipedia.org/wiki/Arthur_Schnitzler",
+                    "https://d-nb.info/gnd/118609807",
+                    "https://www.wikidata.org/wiki/Q44331"
+                ]
+            },
+            "creator": {
+                "@type": "Organization",
+                "name": "Wiener Moderne Verein",
+                "url": "https://wiener-moderne-verein.github.io/"
+            },
+            "isBasedOn": [
+                {
+                    "@type": "Dataset",
+                    "name": "Schnitzler Tagebuch",
+                    "url": "https://schnitzler-tagebuch.acdh.oeaw.ac.at/"
+                },
+                {
+                    "@type": "Dataset",
+                    "name": "Schnitzler Briefe",
+                    "url": "https://schnitzler-briefe.acdh.oeaw.ac.at/"
+                }
+            ],
+            "license": "https://creativecommons.org/licenses/by/4.0/"
+        }
+        </script>
     </xsl:template>
 </xsl:stylesheet>

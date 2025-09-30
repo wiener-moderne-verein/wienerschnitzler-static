@@ -15,10 +15,14 @@
                 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
                 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
                 <xsl:variable name="doc_title">
-                    <xsl:text>Wiener Schnitzler</xsl:text>
+                    <xsl:text>Karte der Aufenthaltstage | Wiener Schnitzler</xsl:text>
+                </xsl:variable>
+                <xsl:variable name="doc_description">
+                    <xsl:text>Interaktive Karte mit allen Aufenthaltstagen Arthur Schnitzlers nach Häufigkeit. Visualisierung der über 47.000 georeferenzierten Aufenthalte an knapp 4950 Orten.</xsl:text>
                 </xsl:variable>
                 <xsl:call-template name="html_head">
                     <xsl:with-param name="html_title" select="$doc_title"/>
+                    <xsl:with-param name="page_description" select="$doc_description"/>
                 </xsl:call-template>
             </head>
             <body class="h-100">

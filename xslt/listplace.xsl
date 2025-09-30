@@ -13,12 +13,16 @@
         as="node()"/>
     <xsl:template match="/">
         <xsl:variable name="doc_title">
-            <xsl:text>Verzeichnis der Aufenthaltsorte Schnitzlers</xsl:text>
+            <xsl:text>Verzeichnis der Aufenthaltsorte | Wiener Schnitzler</xsl:text>
+        </xsl:variable>
+        <xsl:variable name="doc_description">
+            <xsl:text>Durchsuchbares Verzeichnis aller knapp 4950 Aufenthaltsorte Arthur Schnitzlers mit Bewohnerinnen und Bewohnern, Koordinaten und Häufigkeiten.</xsl:text>
         </xsl:variable>
         <html lang="de" class="h-100">
             <head>
                 <xsl:call-template name="html_head">
                     <xsl:with-param name="html_title" select="$doc_title"/>
+                    <xsl:with-param name="page_description" select="$doc_description"/>
                 </xsl:call-template>
                 <link
                     href="https://unpkg.com/tabulator-tables@5.5.2/dist/css/tabulator_bootstrap5.min.css"

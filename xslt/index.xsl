@@ -12,18 +12,21 @@
       <html lang="de" class="h-100">
          <head>
             <xsl:variable name="doc_title">
-               <xsl:text>Wiener Schnitzler</xsl:text>
+               <xsl:text>Wiener Schnitzler – Schnitzlers Wien | Digitale Karte seiner Aufenthaltsorte</xsl:text>
+            </xsl:variable>
+            <xsl:variable name="doc_description">
+               <xsl:text>Digitale Karte von Arthur Schnitzlers Aufenthalten in Wien (1862-1931). Über 47.000 georeferenzierte Aufenthalte an knapp 4950 Orten basierend auf Tagebuch und Korrespondenz. Ein Digital Humanities Projekt zur geografischen Verortung seiner Wege durch die Stadt.</xsl:text>
             </xsl:variable>
             <xsl:call-template name="html_head">
                <xsl:with-param name="html_title" select="$doc_title"/>
+               <xsl:with-param name="page_description" select="$doc_description"/>
             </xsl:call-template>
-            <!-- Erweiterte Meta-Description für bessere SEO -->
-            <meta name="description" content="Digitale Karte von Arthur Schnitzlers Aufenthalten in Wien (1862-1931). Geografische Verortung seiner Wege durch die Stadt basierend auf Tagebuch und Korrespondenz."/>
-            <meta name="keywords" content="Arthur Schnitzler, Wien, Karte, Digital Humanities, Geolokalisierung, Literatur, Tagebuch"/>
+            <meta name="keywords" content="Arthur Schnitzler, Wien, Karte, Digital Humanities, Geolokalisierung, Literatur, Tagebuch, Georeferenzierung, Wiener Moderne, Kartierung"/>
          </head>
          <body>
             <!-- Navbar -->
             <xsl:call-template name="nav_bar"/>
+            <main role="main">
             <div class="container mt-5" id="main-content">
                <div class="row">
                   <h1>Wiener Schnitzler – Schnitzlers Wien</h1>
@@ -32,10 +35,10 @@
                   <div class="col-md-6 order-2 order-md-1">
                      <div class="image-container">
                         <img id="background-image" class="background"
-                           src="./images/wienmuseum/AnsichtenVonWien00001.jpg" alt="Historische Ansicht von Wien aus dem Wiener Museum" loading="lazy"/>
+                           src="./images/wienmuseum/AnsichtenVonWien00001.jpg" alt="Historische Schwarzweiß-Ansicht von Wien, etwa um 1900, mit Blick auf die Innenstadt und Donaukanal" loading="lazy"/>
                         <img id="foreground-image" class="foreground"
                            src="./images/schnitzler-index2.png"
-                           alt="Digitaler Avatar von Arthur Schnitzler vor Wien-Kulisse" loading="lazy"/>
+                           alt="Stilisierte Silhouette von Arthur Schnitzler mit Hut und Brille vor historischer Wien-Kulisse" loading="lazy"/>
                      </div>
                   </div>
                   <!-- Linke Spalte für den Text -->
@@ -45,9 +48,9 @@
                         entfernt. Er verfasste erfolgreiche Dramen, Romane und Erzählungen, die
                         meist in Wien angesiedelt sind. Die Stadt verließ er nur für Reisen und
                         Sommeraufenthalte. Dank seines <a
-                           href="https://schnitzler-tagebuch.acdh.oeaw.ac.at/" target="_blank" class="schnitzler-tagebuch-link"
+                           href="https://schnitzler-tagebuch.acdh.oeaw.ac.at/" target="_blank" rel="noopener noreferrer" class="schnitzler-tagebuch-link"
                            aria-label="Schnitzler Tagebuch - öffnet in neuem Fenster">Tagebuchs</a>, seiner <a
-                           href="https://schnitzler-briefe.acdh.oeaw.ac.at/" target="_blank"
+                           href="https://schnitzler-briefe.acdh.oeaw.ac.at/" target="_blank" rel="noopener noreferrer"
                            class="schnitzler-briefe-link"
                            aria-label="Schnitzler Briefe - öffnet in neuem Fenster">Korrespondenz</a> und weiterer Dokumente verzeichnen wir derzeit über
                         47.000 Aufenthalte an knapp 4950 Orten. Gegenwärtig gibt es für keine andere
@@ -64,9 +67,9 @@
                <div class="row g-3">
                   <div class="col-12 col-md-6 col-lg-3">
                      <div class="card content-item">
-                        <a href="gesamt.html">
+                        <a href="gesamt.html" aria-label="Zur Karte der Aufenthaltstage">
                            <img src="images/index/aufenthaltstage.png" class="card-img-top"
-                              alt="Kartenansicht der Aufenthaltstage Schnitzlers"/>
+                              alt="Interaktive Karte mit farbigen Punkten zeigt Häufigkeit der Aufenthalte Schnitzlers an verschiedenen Orten" loading="lazy"/>
                         </a>
                         <div class="card-body">
                            <p class="card-text">An welchen Orten hielt sich Schnitzler am häufigsten
@@ -76,9 +79,9 @@
                   </div>
                   <div class="col-12 col-md-6 col-lg-3">
                      <div class="card content-item">
-                        <a href="gesamt_typen.html">
+                        <a href="gesamt_typen.html" aria-label="Zu den Aufenthaltstypen">
                            <img src="images/index/aufenthaltstypen.png" class="card-img-top"
-                              alt="Kartenansicht verschiedener Aufenthaltstypen"/>
+                              alt="Karte mit Filter-Optionen nach Ortstypen wie Museum, Theater, Café, Wohnung oder Park" loading="lazy"/>
                         </a>
                         <div class="card-body">
                            <p class="card-text">In welchen Museen war Schnitzler? Eine schnelle
@@ -89,9 +92,9 @@
                   </div>
                   <div class="col-12 col-md-6 col-lg-3">
                      <div class="card content-item">
-                        <a href="listplace.html">
+                        <a href="listplace.html" aria-label="Zum Ortsverzeichnis">
                            <img src="images/index/aufenthaltsorte.png" class="card-img-top"
-                              alt="Verzeichnis aller Aufenthaltsorte mit Details"/>
+                              alt="Tabellarische Auflistung aller Orte mit Namen, Koordinaten, Aufenthaltstagen und bekannten Bewohnern" loading="lazy"/>
                         </a>
                         <div class="card-body">
                            <p class="card-text">Schlagen Sie <a href="listplace.html"
@@ -101,9 +104,9 @@
                   </div>
                   <div class="col-12 col-md-6 col-lg-3">
                      <div class="card content-item">
-                        <a href="listplace-missing.html">
+                        <a href="listplace-missing.html" aria-label="Zu den nicht identifizierten Orten">
                            <img src="images/index/fehlend.png" class="card-img-top"
-                              alt="Liste noch nicht identifizierter Orte"/>
+                              alt="Liste von Ortsnamen aus Tagebuch und Briefen, die noch keiner geografischen Position zugeordnet werden konnten" loading="lazy"/>
                         </a>
                         <div class="card-body">
                            <p class="card-text">Nicht immer wurden wir fündig. Hier sind derzeit <a
@@ -113,9 +116,9 @@
                   </div>
                   <div class="col-12 col-md-6 col-lg-3">
                      <div class="card content-item">
-                        <a href="schnitzler-und-ich.html">
+                        <a href="schnitzler-und-ich.html" aria-label="Zu Schnitzler und ich">
                            <img src="images/index/schnitzlerundich.png" class="card-img-top"
-                              alt="Interaktive Karte - wo Ihnen Schnitzler am nächsten war"/>
+                              alt="Interaktive Funktion zur Berechnung, an welchem Ort Ihnen Schnitzler zeitlich am nächsten war" loading="lazy"/>
                         </a>
                         <div class="card-body">
                            <p class="card-text">Wo Ihnen Schnitzler am nächsten stand, lässt sich
@@ -126,9 +129,9 @@
                   </div>
                   <div class="col-12 col-md-6 col-lg-3">
                      <div class="card content-item">
-                        <a href="tag.html">
+                        <a href="tag.html" aria-label="Zur Tagesansicht">
                            <img src="images/index/aufenthaltstag.png" class="card-img-top"
-                              alt="Kartenansicht für einzelne Tage"/>
+                              alt="Datumsauswahl zur Anzeige aller Aufenthaltsorte an einem bestimmten Tag" loading="lazy"/>
                         </a>
                         <div class="card-body">
                            <p class="card-text">Für jeden einzelnen <a href="tag.html">Tag</a> gibt
@@ -138,9 +141,9 @@
                   </div>
                   <div class="col-12 col-md-6 col-lg-3">
                      <div class="card content-item">
-                        <a href="monat.html">
+                        <a href="monat.html" aria-label="Zur Monatsansicht">
                            <img src="images/index/aufenthaltsmonat.png" class="card-img-top"
-                              alt="Kartenansicht für Kalendermonate"/>
+                              alt="Kalenderauswahl zur Visualisierung aller Orte eines bestimmten Monats über alle Jahre hinweg" loading="lazy"/>
                         </a>
                         <div class="card-body">
                            <p class="card-text">Auch <a href="monat.html">Kalendermonate</a> können
@@ -150,9 +153,9 @@
                   </div>
                   <div class="col-12 col-md-6 col-lg-3">
                      <div class="card content-item">
-                        <a href="jahr.html">
+                        <a href="jahr.html" aria-label="Zur Jahresansicht">
                            <img src="images/index/aufenthaltsjahr.png" class="card-img-top"
-                              alt="Kartenansicht für bestimmte Jahre"/>
+                              alt="Jahresauswahl zwischen 1862 und 1931 zur Anzeige aller Aufenthaltsorte eines bestimmten Jahres" loading="lazy"/>
                         </a>
                         <div class="card-body">
                            <p class="card-text">Wo war Schnitzler in einem bestimmten <a
@@ -162,9 +165,9 @@
                   </div>
                   <div class="col-12 col-md-6 col-lg-3">
                      <div class="card content-item">
-                        <a href="dekade.html">
+                        <a href="dekade.html" aria-label="Zur Dekadenansicht">
                            <img src="images/index/aufenthaltsdekade.png" class="card-img-top"
-                              alt="Kartenansicht für verschiedene Dekaden"/>
+                              alt="Auswahl nach Jahrzehnten zur Darstellung von Schnitzlers Reiseverhalten in verschiedenen Lebensabschnitten" loading="lazy"/>
                         </a>
                         <div class="card-body">
                            <p class="card-text">Schnitzlers Verweilorte in den einzelnen <a href="dekade.html">Dekaden</a>.
@@ -174,9 +177,9 @@
                   </div>
                   <div class="col-12 col-md-6 col-lg-3">
                      <div class="card content-item">
-                        <a href="ueberblick.html">
+                        <a href="uebersicht.html" aria-label="Zur Datenübersicht">
                            <img src="images/index/uebersicht.png" class="card-img-top"
-                              alt="Übersicht über bekannte Standorte pro Tag"/>
+                              alt="Diagramm zeigt zeitliche Verteilung der bekannten Aufenthaltsorte und Datendichte über die Jahre" loading="lazy"/>
                         </a>
                         <div class="card-body">
                            <p class="card-text">Wie viele Standorte an bestimmten Tagen kennen wir?
@@ -186,9 +189,9 @@
                   </div>
                   <div class="col-12 col-md-6 col-lg-3">
                      <div class="card content-item">
-                        <a href="zeitleiste.html">
+                        <a href="zeitleiste.html" aria-label="Zur Zeitleiste">
                            <img src="images/index/zeitleiste.png" class="card-img-top"
-                              alt="Chronologische Zeitleiste der besuchten Orte"/>
+                              alt="Chronologische Zeitleiste zeigt Aufenthaltsorte entlang einer Zeitachse von 1862 bis 1931" loading="lazy"/>
                         </a>
                         <div class="card-body">
                            <p class="card-text">Die <a href="zeitleiste.html">Zeitleiste</a> zeigt
@@ -198,9 +201,9 @@
                   </div>
                   <div class="col-12 col-md-6 col-lg-3">
                      <div class="card content-item">
-                        <a href="https://kepler.gl/demo/map?mapUrl=https://raw.githubusercontent.com/wiener-moderne-verein/wienerschnitzler-data/refs/heads/main/data/editions/geojson/wienerschnitzler_distinctPlaces.geojson" target="_blank" aria-label="Kepler.gl Karte - öffnet in neuem Fenster">
+                        <a href="https://kepler.gl/demo/map?mapUrl=https://raw.githubusercontent.com/wiener-moderne-verein/wienerschnitzler-data/refs/heads/main/data/editions/geojson/wienerschnitzler_distinctPlaces.geojson" target="_blank" rel="noopener noreferrer" aria-label="Kepler.gl Karte - öffnet in neuem Fenster">
                            <img src="images/index/keplergl.png" class="card-img-top"
-                              alt="Kepler.gl interaktive Datenvisualisierung"/>
+                              alt="Screenshot der Kepler.gl Web-Anwendung zur freien Datenexploration und -visualisierung" loading="lazy"/>
                         </a>
                         <div class="card-body">
                            <p class="card-text">Eigene Ansichten der Daten können schnell mit  
@@ -210,9 +213,9 @@
                   </div>
                   <div class="col-12 col-md-6 col-lg-3">
                      <div class="card content-item">
-                        <a href="https://github.com/wiener-moderne-verein/wienerschnitzler-data" target="_blank" aria-label="GitHub Repository - öffnet in neuem Fenster">
+                        <a href="https://github.com/wiener-moderne-verein/wienerschnitzler-data" target="_blank" rel="noopener noreferrer" aria-label="GitHub Repository - öffnet in neuem Fenster">
                            <img src="images/index/github.png" class="card-img-top"
-                              alt="GitHub Repository mit allen Quelldaten"/>
+                              alt="GitHub Logo - Link zum öffentlichen Code-Repository mit TEI-XML Daten und GeoJSON Dateien" loading="lazy"/>
                         </a>
                         <div class="card-body">
                            <p class="card-text">Für Menschen mit ausgeprägtem Spielbedürfnis: Alle Quelldaten stehen auf
@@ -224,6 +227,7 @@
                   
                </div>
             </section>
+            </main>
 
 
 
