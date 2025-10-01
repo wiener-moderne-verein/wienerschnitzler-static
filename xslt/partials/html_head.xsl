@@ -3,7 +3,7 @@
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xs="http://www.w3.org/2001/XMLSchema"
     exclude-result-prefixes="#all" version="2.0">
     <xsl:include href="./params.xsl"/>
-    <xsl:template match="/" name="html_head">
+    <xsl:template name="html_head">
         <xsl:param name="html_title" select="$project_short_title"/>
         <xsl:param name="page_description" select="$project_title"/>
         <xsl:param name="page_url"/>

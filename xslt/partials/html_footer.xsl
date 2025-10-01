@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns="http://www.w3.org/1999/xhtml"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xs="http://www.w3.org/2001/XMLSchema"
     exclude-result-prefixes="#all" version="2.0">
-    <xsl:template match="/" name="html_footer">
+    <xsl:template name="html_footer">
         <footer class="text-center py-4 mt-5" role="contentinfo">
             <div class="container mt-5">
                 <div class="row justify-content-between">
