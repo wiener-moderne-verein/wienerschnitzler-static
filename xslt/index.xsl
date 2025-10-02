@@ -97,8 +97,9 @@
                               alt="Tabellarische Auflistung aller Orte mit Namen, Koordinaten, Aufenthaltstagen und bekannten Bewohnern" loading="lazy"/>
                         </a>
                         <div class="card-body">
-                           <p class="card-text">Schlagen Sie <a href="listplace.html"
-                                 >Aufenthaltsorte</a> und ihre Bewohner_innen nach. </p>
+                           <p class="card-text">Schlagen Sie Aufenthaltsorte und ihre Bewohner_innen im
+                              <a href="listplace.html"
+                                 >Verzeichnis</a> nach. </p>
                         </div>
                      </div>
                   </div>
@@ -134,7 +135,7 @@
                               alt="Datumsauswahl zur Anzeige aller Aufenthaltsorte an einem bestimmten Tag" loading="lazy"/>
                         </a>
                         <div class="card-body">
-                           <p class="card-text">Für jeden einzelnen <a href="tag.html">Tag</a> gibt
+                           <p class="card-text">Für jeden <a href="tag.html">einzelnen Tag</a> gibt
                               es eine eigene Karte. </p>
                         </div>
                      </div>
@@ -146,7 +147,7 @@
                               alt="Kalenderauswahl zur Visualisierung aller Orte eines bestimmten Monats über alle Jahre hinweg" loading="lazy"/>
                         </a>
                         <div class="card-body">
-                           <p class="card-text">Auch <a href="monat.html">Kalendermonate</a> können
+                           <p class="card-text">Auch <a href="monat.html">Monate</a> des Kalenders können
                               visualisiert werden. </p>
                         </div>
                      </div>

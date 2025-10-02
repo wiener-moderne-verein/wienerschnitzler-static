@@ -374,11 +374,10 @@
                                                   <xsl:variable name="when" select="@when"/>
                                                   <xsl:if
                                                   test="$tb-days/descendant::*:date[. = $when][1]">
-                                                  <button type="button" class="btn">
-                                                  <a class="schnitzler-tagebuch-link"
+                                                  <a class="btn schnitzler-tagebuch-link"
+                                                  role="button"
                                                   href="{concat('https://schnitzler-tagebuch.acdh.oeaw.ac.at/entry__', @when, '.html')}"
                                                   target="_blank">Schnitzler Tagebuch</a>
-                                                  </button>
                                                   </xsl:if>
                                                 </li>
                                             </xsl:for-each>
@@ -425,11 +424,10 @@
                                                   <xsl:variable name="when" select="@when"/>
                                                   <xsl:if
                                                   test="$tb-days/descendant::*:date[. = $when][1]">
-                                                  <button type="button" class="btn">
-                                                  <a class="schnitzler-tagebuch-link"
+                                                  <a class="btn schnitzler-tagebuch-link"
+                                                  role="button"
                                                   href="{concat('https://schnitzler-tagebuch.acdh.oeaw.ac.at/entry__', @when, '.html')}"
                                                   target="_blank">Schnitzler Tagebuch</a>
-                                                  </button>
                                                   </xsl:if>
                                                   </li>
                                                   </xsl:for-each>
