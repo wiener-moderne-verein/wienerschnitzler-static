@@ -159,8 +159,27 @@ fetch("https://raw.githubusercontent.com/wiener-moderne-verein/wienerschnitzler-
             newItems = newItems.filter(item => item.eventType === "p");
         }
         
-        timelineItems.clear();
-        timelineItems.add(newItems);
+        // Entferne nur Items, die nicht mehr benötigt werden, anstatt alles zu löschen
+        const currentIds = new Set(newItems.map(item => item.id));
+        const existingIds = timelineItems.getIds();
+
+        // Entferne Items, die nicht mehr in newItems sind
+        const idsToRemove = existingIds.filter(id => !currentIds.has(id));
+        if (idsToRemove.length > 0) {
+            timelineItems.remove(idsToRemove);
+        }
+
+        // Aktualisiere oder füge neue Items hinzu
+        newItems.forEach(item => {
+            const existingItem = timelineItems.get(item.id);
+            if (existingItem) {
+                // Item existiert bereits, aktualisiere es
+                timelineItems.update(item);
+            } else {
+                // Item existiert noch nicht, füge es hinzu
+                timelineItems.add(item);
+            }
+        });
     }
     
     
