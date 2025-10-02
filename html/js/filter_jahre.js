@@ -67,24 +67,7 @@ function toggleYearFilter(year) {
   }
 
   updateURLWithYears(selectedYears);
-
-  // Akkordion-Status aktualisieren
-  updateAccordionState(selectedYears);
-
   isTypenView() ? displayFilteredGeoJsonType() : displayFilteredGeoJsonImportance(map);
-}
-
-// Funktion zum Aktualisieren des Akkordion-Status
-function updateAccordionState(selectedYears) {
-  const collapseElement = document.getElementById('collapseTimeFilter');
-  if (!collapseElement) return;
-
-  const bsCollapse = bootstrap.Collapse.getInstance(collapseElement) || new bootstrap.Collapse(collapseElement, { toggle: false });
-
-  // Akkordion offen halten, wenn ein Filter aktiv ist (nicht alle ausgewählt)
-  if (selectedYears.size < allYears.size) {
-    bsCollapse.show();
-  }
 }
 
 // Erzeugt den Zeit-Filter (Jahr-Buttons) inklusive der Buttons "(alle)" und "(keinen)"
@@ -120,9 +103,6 @@ export function createFilterTime(features) {
     selectedYears = new Set(allYears);
   }
 
-  // Akkordion-Status initial setzen
-  updateAccordionState(selectedYears);
-
   // "Alle"-Toggle-Button
   const allButton = document.createElement('button');
   allButton.innerText = 'Alle';
@@ -135,7 +115,6 @@ export function createFilterTime(features) {
 
   allButton.addEventListener('click', function () {
     updateURLWithYears(new Set(allYears));
-    updateAccordionState(new Set(allYears));
     isTypenView() ? displayFilteredGeoJsonType() : displayFilteredGeoJsonImportance(map);
   });
 
@@ -153,7 +132,6 @@ export function createFilterTime(features) {
 
   noneButton.addEventListener('click', function () {
     updateURLWithYears(new Set());
-    updateAccordionState(new Set());
     isTypenView() ? displayFilteredGeoJsonType() : displayFilteredGeoJsonImportance(map);
   });
 

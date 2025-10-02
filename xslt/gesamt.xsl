@@ -33,87 +33,31 @@
                         <div class="map-container-wrapper">
                             <div id="map-large"> </div>
                             <div class="filter-column">
-                                <div class="accordion" id="filterAccordion">
-                                    <div class="accordion-item">
-                                        <h2 class="accordion-header" id="headingLegend">
-                                            <button class="accordion-button collapsed" type="button"
-                                                data-bs-toggle="collapse"
-                                                data-bs-target="#collapseLegend"
-                                                aria-expanded="false" aria-controls="collapseLegend"
-                                                > Aufenthaltstage </button>
-                                        </h2>
-                                        <div id="collapseLegend" class="accordion-collapse collapse"
-                                            aria-labelledby="headingLegend"
-                                            data-bs-parent="#filterAccordion">
-                                            <div class="accordion-body">
-                                                <div id="legend-content-placeholder">
-                                                  <div id="legend"/>
-                                                  <div class="info-text small">
-                                                  <p>Die Farbe des Punkts zeigt die Zahl der
-                                                  insgesamt nachgewiesenen Aufenthaltstage an diesem
-                                                  Ort.</p>
-                                                  </div>
-                                                </div>
-                                            </div>
+                                <div class="mb-4">
+                                    <h3 class="h5 mb-2">Aufenthaltstage</h3>
+                                    <div id="legend"/>
+                                    <div class="info-text small mt-2">
+                                        <p>Die Farbe des Punkts zeigt die Zahl der insgesamt nachgewiesenen Aufenthaltstage an diesem Ort.</p>
+                                    </div>
+                                </div>
+                                <div class="mb-4">
+                                    <h3 class="h5 mb-2">Zeitraum (Jahre)</h3>
+                                    <div id="filter-time"> </div>
+                                </div>
+                                <div class="mb-4">
+                                    <h3 class="h5 mb-2">Ortsauswahl</h3>
+                                    <div class="mb-3">
+                                        <label for="location-select" class="form-label">Ort auswählen:</label>
+                                        <select id="location-select" class="form-select form-select-sm">
+                                            <option value="" disabled="true">Wähle einen Ort</option>
+                                        </select>
+                                        <div class="info-text small">
+                                            <p>Das Auswahlfeld mit den Ortsnamen ist kein Filter, sondern fokussiert auf den jeweiligen Ort.</p>
                                         </div>
                                     </div>
-                                    <div class="accordion-item">
-                                        <h2 class="accordion-header" id="headingTimeFilter">
-                                            <button class="accordion-button collapsed" type="button"
-                                                data-bs-toggle="collapse"
-                                                data-bs-target="#collapseTimeFilter"
-                                                aria-expanded="false"
-                                                aria-controls="collapseTimeFilter"> Zeitraum (Jahre)
-                                            </button>
-                                        </h2>
-                                        <div id="collapseTimeFilter"
-                                            class="accordion-collapse collapse"
-                                            aria-labelledby="headingTimeFilter"
-                                            data-bs-parent="#filterAccordion">
-                                            <div class="accordion-body">
-                                                <div id="filter-time-content-placeholder">
-                                                  <div id="filter-time"> </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="accordion-item">
-                                            <h2 class="accordion-header" id="headingLocationInfo">
-                                                <button class="accordion-button collapsed"
-                                                  type="button" data-bs-toggle="collapse"
-                                                  data-bs-target="#collapseLocationInfo"
-                                                  aria-expanded="false"
-                                                  aria-controls="collapseLocationInfo"> Ortsauswahl
-                                                </button>
-                                            </h2>
-                                            <div id="collapseLocationInfo"
-                                                class="accordion-collapse collapse"
-                                                aria-labelledby="headingLocationInfo"
-                                                data-bs-parent="#filterAccordion">
-                                                <div class="accordion-body">
-                                                  <div class="mb-3">
-                                                  <label for="location-select" class="form-label"
-                                                  >Ort auswählen:</label>
-                                                  <select id="location-select"
-                                                  class="form-select form-select-sm">
-                                                  <option value="" disabled="true">Wähle einen
-                                                  Ort</option>
-                                                  </select>
-                                                  <div class="info-text small">
-                                                  <p>Das Auswahlfeld mit den Ortsnamen ist
-                                                    kein Filter, sondern fokussiert auf den
-                                                    jeweiligen Ort.</p>
-                                                  </div>
-                                                  </div>
-                                                </div>
-                                            </div>
-                                            <div class="info-text small mt-3">
-                                                <p>Auf dieser Seite werden alle Tage visualisiert,
-                                                  an denen sich Schnitzler an einem bestimmten Ort
-                                                  aufhielt. Durch die Auswahl eines Punktes werden
-                                                  genauere Informationen und Links angezeigt.</p>
-                                            </div>
-                                        </div>
-                                    </div>
+                                </div>
+                                <div class="info-text small mt-3">
+                                    <p>Auf dieser Seite werden alle Tage visualisiert, an denen sich Schnitzler an einem bestimmten Ort aufhielt. Durch die Auswahl eines Punktes werden genauere Informationen und Links angezeigt.</p>
                                 </div>
                             </div>
                         </div>
