@@ -408,14 +408,9 @@ export function createPopupContent(feature) {
             if (selectedYears.length === 0) {
                 // Es wurde ein Jahresfilter gesetzt, aber keine Jahre ausgewählt
                 stayInfo = "Keine Aufenthalte ausgewählt.";
-            } else if (selectedYears.length === 1) {
-                // Ein Jahr ausgewählt: "Ein Aufenthaltstag im Jahr 2019" oder "5 Aufenthaltstage im Jahr 2019"
-                stayInfo = (count === 1 ? "Ein Aufenthaltstag" : `${count} Aufenthaltstage`) +
-                           " im Jahr " + selectedYears[0] +":";
             } else {
-                // Mehrere Jahre ausgewählt: "Ein Aufenthaltstag in den Jahren 2018, 2019" oder "5 Aufenthaltstage in den Jahren 2018, 2019"
-                stayInfo = (count === 1 ? "Ein Aufenthaltstag" : `${count} Aufenthaltstage`) +
-                           " in den Jahren " + selectedYears.join(", ") +":";
+                // Jahresfilter ist gesetzt → zeige nur die Anzahl, ohne Jahre aufzulisten
+                stayInfo = (count === 1 ? "Ein Aufenthaltstag" : `${count} Aufenthaltstage`) + ":";
             }
             // Anschließend die (gefilterten) Tages-Links anhängen, sofern vorhanden:
             if (links) {
@@ -453,7 +448,7 @@ export function createPopupContent(feature) {
 
     return `
     <div class="rounded" style="font-family: Arial, sans-serif;">
-    <h5 class="m-0 mb-2">${titleLink}</h5>
+    <div class="m-0 mb-2" style="font-size: 1.25rem; font-weight: 500;">${titleLink}</div>
     <p class="m-0">${stayInfo}</p>
     ${wohnortContent}
     ${arbeitsortContent}
