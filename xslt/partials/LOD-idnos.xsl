@@ -107,7 +107,7 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Mehrfache Links</h5>
+                            <h2 class="modal-title fs-5" id="exampleModalLabel">Mehrfache Links</h2>
                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                 aria-label="Schließen"/>
                         </div>
