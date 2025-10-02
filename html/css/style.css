@@ -28,7 +28,7 @@
     --danger: #4b4b82;
     --warning: #910000;
     --erfolg: #005738;
-    --projektfarbe: #ECDA98; /* Definiere die Projektfarbe */
+    --projektfarbe: #6F5106; /* Definiere die Projektfarbe */
 }
 
 /* needed for interactive map in listplace.xsl */
@@ -311,36 +311,36 @@ h2.subtitle {
 
 /* Dropdown Hintergrundfarbe  */
 .dropdown-menu {
-    background-color: #ECDA98;
+    background-color: #6F5106;
 }
 
-/* Dropdown-Items Textfarbe schwarz */
+/* Dropdown-Items Textfarbe weiß */
 .dropdown-item {
-    color: black; /*  Schwarz */
+    color: white;
 }
 
-/* Hover-Zustand: Hintergrundfarbe hellrot, Text bleibt schwarz */
+/* Hover-Zustand: Hintergrundfarbe weiß, Text wird dunkel */
 .dropdown-item:hover {
     background-color: #fff;
     transition: all .1s ease-in;
-    color: #292929 /* Text bleibt schwarz */
+    color: #292929;
 }
 
 /* Active Dropdown-Item */
 .dropdown-item.active,
 .dropdown-item:active {
-    background-color: #ECDA98;
-    color: #292929 /* Text bleibt schwarz */
+    background-color: #6F5106;
+    color: white;
 }
 .dropdown-menu{
     border-radius: 2px;
-    border-color: #ECDA98;
+    border-color: #6F5106;
 
 }
 
 .navbar-toggler{
     border-radius: 2px;
-    border-color: #ECDA98;
+    border-color: #6F5106;
 }
 
 
@@ -453,11 +453,11 @@ span.share-bluesky {
 }
 header{
         width: 100%; /* setzt den header auf Contentbreite */
-        background-color: #ECDA98; /* Hellgelber Hintergrund */
+        background-color: #6F5106; /* Dunkles Goldbraun Hintergrund */
 }
 /* Gelber Hintergrund mit abgerundeten Ecken */
 .navbar {
-    background-color: #ECDA98; /* Hellgelber Hintergrund */
+    background-color: #6F5106; /* Dunkles Goldbraun Hintergrund */
     border-radius: 0 0 10px 10px; /* Abgerundete Ecken unten */
     position: relative; /* Positionierung zur genauen Platzierung des roten Rahmens */
     padding: 10px; /* Innenabstand für den roten Rahmen */
@@ -568,7 +568,7 @@ ul {
 .content-item img {
       width: 100%;
       height: auto;
-      border: 4px solid #ECDA98; /* Rahmen um das Bild */
+      border: 4px solid #6F5106; /* Rahmen um das Bild */
       border-radius: 5px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
