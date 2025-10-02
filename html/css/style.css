@@ -224,7 +224,7 @@ h2.subtitle {
 .accordion-button {
   /* Standard-Hintergrund (wird ggf. durch :has() überschrieben) */
   background-color: var(--bs-accordion-btn-bg);
-  color: var(--bs-accordion-btn-color);
+  color: white;
 
   /* Grundlegende Layout-Stile beibehalten */
   position: relative;
@@ -243,7 +243,7 @@ h2.subtitle {
 /* Aktiver Button (Projektfarbe) */
 .accordion-button:not(.collapsed) {
   background-color: var(--bs-accordion-active-bg);
-  color: var(--bs-accordion-active-color);
+  color: white;
   box-shadow: none; /* Entfernt den inneren Schatten von Bootstrap */
 }
 
