@@ -47,7 +47,7 @@
                                         <li><a class="dropdown-item" href="listplace.html">Verzeichnis</a></li>
                                         <li><a class="dropdown-item" href="listplace-missing.html">Nicht identifizierte Orte</a></li>
                                         <li><a class="dropdown-item" href="schnitzler-und-ich.html">Schnitzler und ich</a></li>
-                                        <li><a class="dropdown-item" href="https://kepler.gl/demo/map?mapUrl=https://raw.githubusercontent.com/wiener-moderne-verein/wienerschnitzler-data/refs/heads/main/data/editions/geojson/wienerschnitzler_distinctPlaces.geojson" target="_blank" aria-label="Kepler.gl - öffnet in neuem Fenster">Kepler.gl</a></li>
+                                        <li><a class="dropdown-item" href="https://kepler.gl/demo/map?mapUrl=https://raw.githubusercontent.com/wiener-moderne-verein/wienerschnitzler-data/refs/heads/main/data/editions/geojson/wienerschnitzler_distinctPlaces.geojson" target="_blank" rel="noopener noreferrer" aria-label="Kepler.gl - öffnet in neuem Fenster">Kepler.gl</a></li>
                                     </ul>
                                 </li>
                                 
@@ -71,20 +71,20 @@
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" id="schnitzlerLinksDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Schnitzler</a>
                                     <ul class="dropdown-menu" aria-labelledby="schnitzlerLinksDropdown">
-                                        <li><a class="dropdown-item" href="https://de.wikipedia.org/wiki/Arthur_Schnitzler" target="_blank" aria-label="Wikipedia - öffnet in neuem Fenster">Wikipedia</a></li>
-                                        <li><a class="dropdown-item" href="https://www.geschichtewiki.wien.gv.at/Arthur_Schnitzler" target="_blank" aria-label="Wien Geschichte Wiki - öffnet in neuem Fenster">Wien Geschichte Wiki</a></li>
+                                        <li><a class="dropdown-item" href="https://de.wikipedia.org/wiki/Arthur_Schnitzler" target="_blank" rel="noopener noreferrer" aria-label="Wikipedia - öffnet in neuem Fenster">Wikipedia</a></li>
+                                        <li><a class="dropdown-item" href="https://www.geschichtewiki.wien.gv.at/Arthur_Schnitzler" target="_blank" rel="noopener noreferrer" aria-label="Wien Geschichte Wiki - öffnet in neuem Fenster">Wien Geschichte Wiki</a></li>
                                         <li><a class="dropdown-item" href="https://schnitzler-tagebuch.acdh.oeaw.ac.at/" target="_blank" rel="noopener noreferrer" aria-label="Tagebuch (1879–1931) - öffnet in neuem Fenster">Tagebuch (1879–1931)</a></li>
                                         <li><a class="dropdown-item" href="https://schnitzler-briefe.acdh.oeaw.ac.at/" target="_blank" rel="noopener noreferrer" aria-label="Briefe (1888–1931) - öffnet in neuem Fenster">Briefe (1888–1931)</a></li>
                                         <li><a class="dropdown-item" href="https://www.arthur-schnitzler.de" target="_blank" rel="noopener noreferrer" aria-label="Werke digital (1905–1931) - öffnet in neuem Fenster">Werke digital (1905–1931)</a></li>
-                                        <li><a class="dropdown-item" href="https://schnitzler-mikrofilme.acdh.oeaw.ac.at/" target="_blank" aria-label="Mikrofilme - öffnet in neuem Fenster">Mikrofilme</a></li>
-                                        <li><a class="dropdown-item" href="https://schnitzler-zeitungen.acdh.oeaw.ac.at/" target="_blank" aria-label="Archiv der Zeitungsausschnitte - öffnet in neuem Fenster">Archiv der Zeitungsausschnitte</a></li>
-                                        <li><a class="dropdown-item" href="https://schnitzler-interviews.acdh.oeaw.ac.at/" target="_blank" aria-label="Interviews, Meinungen, Proteste - öffnet in neuem Fenster">Interviews, Meinungen, Proteste</a></li>
-                                        <li><a class="dropdown-item" href="https://schnitzler-bahr.acdh.oeaw.ac.at/" target="_blank" aria-label="Korrespondenz mit Hermann Bahr - öffnet in neuem Fenster">Korrespondenz mit Hermann Bahr</a></li>
-                                        <li><a class="dropdown-item" href="https://schnitzler-chronik.acdh.oeaw.ac.at/" target="_blank" aria-label="Chronik - öffnet in neuem Fenster">Chronik</a></li>
-                                        <li><a class="dropdown-item" href="https://schnitzler-lektueren.acdh.oeaw.ac.at/" target="_blank" aria-label="Lektüren - öffnet in neuem Fenster">Lektüren</a></li>
-                                        <li><a class="dropdown-item" href="https://pollaczek.acdh.oeaw.ac.at/" target="_blank" aria-label="Pollaczek: Schnitzler und ich - öffnet in neuem Fenster">Pollaczek: Schnitzler und ich</a></li>
-                                        <li><a class="dropdown-item" href="https://schnitzler-orte.acdh.oeaw.ac.at/" target="_blank" aria-label="Aufenthaltsorte - öffnet in neuem Fenster">Aufenthaltsorte</a></li>
-                                        <li><a class="dropdown-item" href="https://pmb.acdh.oeaw.ac.at/" target="_blank" aria-label="PMB – Personen der Moderne - öffnet in neuem Fenster">PMB – Personen der Moderne</a></li>
+                                        <li><a class="dropdown-item" href="https://schnitzler-mikrofilme.acdh.oeaw.ac.at/" target="_blank" rel="noopener noreferrer" aria-label="Mikrofilme - öffnet in neuem Fenster">Mikrofilme</a></li>
+                                        <li><a class="dropdown-item" href="https://schnitzler-zeitungen.acdh.oeaw.ac.at/" target="_blank" rel="noopener noreferrer" aria-label="Archiv der Zeitungsausschnitte - öffnet in neuem Fenster">Archiv der Zeitungsausschnitte</a></li>
+                                        <li><a class="dropdown-item" href="https://schnitzler-interviews.acdh.oeaw.ac.at/" target="_blank" rel="noopener noreferrer" aria-label="Interviews, Meinungen, Proteste - öffnet in neuem Fenster">Interviews, Meinungen, Proteste</a></li>
+                                        <li><a class="dropdown-item" href="https://schnitzler-bahr.acdh.oeaw.ac.at/" target="_blank" rel="noopener noreferrer" aria-label="Korrespondenz mit Hermann Bahr - öffnet in neuem Fenster">Korrespondenz mit Hermann Bahr</a></li>
+                                        <li><a class="dropdown-item" href="https://schnitzler-chronik.acdh.oeaw.ac.at/" target="_blank" rel="noopener noreferrer" aria-label="Chronik - öffnet in neuem Fenster">Chronik</a></li>
+                                        <li><a class="dropdown-item" href="https://schnitzler-lektueren.acdh.oeaw.ac.at/" target="_blank" rel="noopener noreferrer" aria-label="Lektüren - öffnet in neuem Fenster">Lektüren</a></li>
+                                        <li><a class="dropdown-item" href="https://pollaczek.acdh.oeaw.ac.at/" target="_blank" rel="noopener noreferrer" aria-label="Pollaczek: Schnitzler und ich - öffnet in neuem Fenster">Pollaczek: Schnitzler und ich</a></li>
+                                        <li><a class="dropdown-item" href="https://schnitzler-orte.acdh.oeaw.ac.at/" target="_blank" rel="noopener noreferrer" aria-label="Aufenthaltsorte - öffnet in neuem Fenster">Aufenthaltsorte</a></li>
+                                        <li><a class="dropdown-item" href="https://pmb.acdh.oeaw.ac.at/" target="_blank" rel="noopener noreferrer" aria-label="PMB – Personen der Moderne - öffnet in neuem Fenster">PMB – Personen der Moderne</a></li>
                                     </ul>
                                 </li>
                             </ul>

@@ -207,8 +207,8 @@
                               alt="Screenshot der Kepler.gl Web-Anwendung zur freien Datenexploration und -visualisierung" loading="lazy"/>
                         </a>
                         <div class="card-body">
-                           <p class="card-text">Eigene Ansichten der Daten können schnell mit  
-                              <a href="https://kepler.gl/demo/map?mapUrl=https://raw.githubusercontent.com/wiener-moderne-verein/wienerschnitzler-data/refs/heads/main/data/editions/geojson/wienerschnitzler_distinctPlaces.geojson" target="_blank" aria-label="Kepler.gl Karte - öffnet in neuem Fenster">kepler.gl</a> erzeugt werden.</p>
+                           <p class="card-text">Eigene Ansichten der Daten können schnell mit
+                              <a href="https://kepler.gl/demo/map?mapUrl=https://raw.githubusercontent.com/wiener-moderne-verein/wienerschnitzler-data/refs/heads/main/data/editions/geojson/wienerschnitzler_distinctPlaces.geojson" target="_blank" rel="noopener noreferrer" aria-label="Kepler.gl Karte - öffnet in neuem Fenster">kepler.gl</a> erzeugt werden.</p>
                         </div>
                      </div>
                   </div>
@@ -220,7 +220,7 @@
                         </a>
                         <div class="card-body">
                            <p class="card-text">Für Menschen mit ausgeprägtem Spielbedürfnis: Alle Quelldaten stehen auf
-                               <a href="https://github.com/wiener-moderne-verein/wienerschnitzler-data" target="_blank" aria-label="GitHub Repository - öffnet in neuem Fenster">GitHub</a> zur freien 
+                               <a href="https://github.com/wiener-moderne-verein/wienerschnitzler-data" target="_blank" rel="noopener noreferrer" aria-label="GitHub Repository - öffnet in neuem Fenster">GitHub</a> zur freien
                               Verfügung. </p>
                         </div>
                      </div>

@@ -623,6 +623,12 @@ ul {
     /* Geringere Mindesthöhe für die Balken */
     .vis-item {
       min-height: 10px;
+      cursor: pointer;
+    }
+
+    /* Hover-Effekt für Timeline-Items */
+    .vis-item:hover {
+      opacity: 0.8;
     }
     
     

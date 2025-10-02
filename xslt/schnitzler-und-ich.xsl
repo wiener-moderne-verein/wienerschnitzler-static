@@ -61,6 +61,7 @@
                                     <p>
                                         <a id="shareBluesky" target="_blank" title="Share on Bluesky"
                                             href="https://bsky.app/intent/compose?text=https://wienerschnitzler.org/schnitzler-und-ich.html"
+                                            rel="noopener noreferrer"
                                             aria-label="Auf Bluesky teilen - öffnet in neuem Fenster">
                                             <span class="share-bluesky">
                                                 <svg width="1em" height="1em" fill="#fff"

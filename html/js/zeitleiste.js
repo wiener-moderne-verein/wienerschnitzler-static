@@ -37,7 +37,9 @@ fetch("https://raw.githubusercontent.com/wiener-moderne-verein/wienerschnitzler-
             start: startDate,
             end: endDate,
             style: style,
-            eventType: item.type // "p" oder "a"
+            eventType: item.type, // "p" oder "a"
+            id: item.id,
+            title: item.title // für Tooltip
         };
     });
     
@@ -96,6 +98,26 @@ fetch("https://raw.githubusercontent.com/wiener-moderne-verein/wienerschnitzler-
     timeAxis: {
         scale: 'day',  // Maßstab auf Tag festlegen
         step: 1        // Schritt: 1 Tag
+    },
+    locale: 'de',
+    locales: {
+        de: {
+            current: 'Aktuell',
+            time: 'Zeit',
+            months: [
+                'Jänner', 'Feber', 'März', 'April', 'Mai', 'Juni',
+                'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'
+            ],
+            monthsShort: [
+                'Jän', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun',
+                'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'
+            ],
+            days: [
+                'Sonntag', 'Montag', 'Dienstag', 'Mittwoch',
+                'Donnerstag', 'Freitag', 'Samstag'
+            ],
+            daysShort: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa']
+        }
     }
 };
     const timeline = new Timeline(container, timelineItems, timelineOptions);
@@ -180,7 +202,18 @@ fetch("https://raw.githubusercontent.com/wiener-moderne-verein/wienerschnitzler-
     timeline.on('rangechanged', function () {
         updateTimelineItems();
     });
-    
+
+    // Click-Event für Timeline-Items: Navigiere zur Ortsseite
+    timeline.on('select', function (properties) {
+        if (properties.items.length > 0) {
+            const selectedItemId = properties.items[0];
+            // Extrahiere die ID und navigiere zur entsprechenden HTML-Seite
+            if (selectedItemId) {
+                window.location.href = `${selectedItemId}.html`;
+            }
+        }
+    });
+
     // Initiale Auswahl: Den URL-Parameter (oder Standardwert 1900) nutzen
     yearSelect.value = currentYear;
     updateTimeline(currentYear);

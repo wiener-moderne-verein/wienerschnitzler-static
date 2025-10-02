@@ -246,7 +246,10 @@
                                         Geonames ID
                                     </th>
                                     <td>
-                                        <a href="{./tei:idno[@type='GEONAMES']}" target="_blank">
+                                        <a href="{./tei:idno[@type='GEONAMES']}"
+                                           target="_blank"
+                                           rel="noopener noreferrer"
+                                           aria-label="Geonames - öffnet in neuem Fenster">
                                             <xsl:value-of select="tokenize(./tei:idno[@type='GEONAMES'], '/')[4]"/>
                                         </a>
                                     </td>
@@ -258,7 +261,10 @@
                                         Wikidata ID
                                     </th>
                                     <td>
-                                        <a href="{./tei:idno[@type='WIKIDATA']}" target="_blank">
+                                        <a href="{./tei:idno[@type='WIKIDATA']}"
+                                           target="_blank"
+                                           rel="noopener noreferrer"
+                                           aria-label="Wikidata - öffnet in neuem Fenster">
                                             <xsl:value-of select="tokenize(./tei:idno[@type='WIKIDATA'], '/')[last()]"/>
                                         </a>
                                     </td>
@@ -270,7 +276,10 @@
                                         GND ID
                                     </th>
                                     <td>
-                                        <a href="{./tei:idno[@type='GND']}" target="_blank">
+                                        <a href="{./tei:idno[@type='GND']}"
+                                           target="_blank"
+                                           rel="noopener noreferrer"
+                                           aria-label="GND - öffnet in neuem Fenster">
                                             <xsl:value-of select="tokenize(./tei:idno[@type='GND'], '/')[last()]"/>
                                         </a>
                                     </td>
@@ -452,7 +461,10 @@
                                         Geonames ID
                                     </th>
                                     <td>
-                                        <a href="{./tei:idno[@type='GEONAMES']}" target="_blank">
+                                        <a href="{./tei:idno[@type='GEONAMES']}"
+                                           target="_blank"
+                                           rel="noopener noreferrer"
+                                           aria-label="Geonames - öffnet in neuem Fenster">
                                             <xsl:value-of select="tokenize(./tei:idno[@type='GEONAMES'], '/')[4]"/>
                                         </a>
                                     </td>
@@ -464,7 +476,10 @@
                                         Wikidata ID
                                     </th>
                                     <td>
-                                        <a href="{./tei:idno[@type='WIKIDATA']}" target="_blank">
+                                        <a href="{./tei:idno[@type='WIKIDATA']}"
+                                           target="_blank"
+                                           rel="noopener noreferrer"
+                                           aria-label="Wikidata - öffnet in neuem Fenster">
                                             <xsl:value-of select="tokenize(./tei:idno[@type='WIKIDATA'], '/')[last()]"/>
                                         </a>
                                     </td>
@@ -476,7 +491,10 @@
                                         GND ID
                                     </th>
                                     <td>
-                                        <a href="{./tei:idno[@type='GND']}" target="_blank">
+                                        <a href="{./tei:idno[@type='GND']}"
+                                           target="_blank"
+                                           rel="noopener noreferrer"
+                                           aria-label="GND - öffnet in neuem Fenster">
                                             <xsl:value-of select="tokenize(./tei:idno[@type='GND'], '/')[last()]"/>
                                         </a>
                                     </td>
@@ -567,7 +585,10 @@
                                         Geonames ID
                                     </th>
                                     <td>
-                                        <a href="{./tei:idno[@type='GEONAMES']}" target="_blank">
+                                        <a href="{./tei:idno[@type='GEONAMES']}"
+                                           target="_blank"
+                                           rel="noopener noreferrer"
+                                           aria-label="Geonames - öffnet in neuem Fenster">
                                             <xsl:value-of select="tokenize(./tei:idno[@type='GEONAMES'], '/')[4]"/>
                                         </a>
                                     </td>
@@ -579,7 +600,10 @@
                                         Wikidata ID
                                     </th>
                                     <td>
-                                        <a href="{./tei:idno[@type='WIKIDATA']}" target="_blank">
+                                        <a href="{./tei:idno[@type='WIKIDATA']}"
+                                           target="_blank"
+                                           rel="noopener noreferrer"
+                                           aria-label="Wikidata - öffnet in neuem Fenster">
                                             <xsl:value-of select="tokenize(./tei:idno[@type='WIKIDATA'], '/')[last()]"/>
                                         </a>
                                     </td>
@@ -591,7 +615,10 @@
                                         GND ID
                                     </th>
                                     <td>
-                                        <a href="{./tei:idno[@type='GND']}" target="_blank">
+                                        <a href="{./tei:idno[@type='GND']}"
+                                           target="_blank"
+                                           rel="noopener noreferrer"
+                                           aria-label="GND - öffnet in neuem Fenster">
                                             <xsl:value-of select="tokenize(./tei:idno[@type='GND'], '/')[last()]"/>
                                         </a>
                                     </td>
