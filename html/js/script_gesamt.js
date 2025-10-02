@@ -1,4 +1,4 @@
-import{initView, viewInitialized, clearGeoJsonLayers, createCircleMarkerDynamic, bindPopupEvents, populateLocationDropdown, geoJsonLayers} from './fuer-alle-karten.js';
+import{initView, viewInitialized, clearGeoJsonLayers, createCircleMarkerDynamic, bindPopupEvents, populateLocationDropdown, geoJsonLayers, thresholds} from './fuer-alle-karten.js';
 import {createFilterTime} from './filter_jahre.js';
 import {createLegend} from './filter_dauer.js';
 
@@ -71,16 +71,53 @@ export function displayFilteredGeoJsonImportance(map) {
     populateLocationDropdown(filteredFeatures);
 
     // ============================
-    // Importance-Filter
+    // Threshold-Filter (Legende)
     // ============================
-    // Lese die Filtergrenzen aus den URL-Parametern "min" und "max"
-    const minImportance = params.has("min") ? Number(params.get("min")) : 0;
-    const maxImportance = params.has("max") ? Number(params.get("max")) : Infinity;
-    
-    filteredFeatures = filteredFeatures.filter(feature => {
-        const imp = feature.properties.importance || 0;
-        return imp >= minImportance && imp <= maxImportance;
-    });
+    let selectedThresholds = null;
+    if (params.has("thresholds")) {
+        const thresholdsParam = params.get("thresholds");
+        if (thresholdsParam === "0") {
+            selectedThresholds = new Set(); // keine Schwellenwerte ausgewählt
+        } else {
+            selectedThresholds = new Set(thresholdsParam.split("_").map(Number));
+        }
+    }
+
+    // Falls Schwellenwerte selektiert sind, filtere die Features entsprechend
+    if (selectedThresholds !== null && selectedThresholds.size > 0) {
+        filteredFeatures = filteredFeatures.filter(feature => {
+            const imp = feature.properties.importance || 0;
+
+            // Finde, zu welchem Schwellenwert dieser importance-Wert gehört
+            let belongsToThreshold = null;
+            for (let i = 0; i < thresholds.length; i++) {
+                if (i === 0) {
+                    // Erster Schwellenwert: alle Werte <= threshold
+                    if (imp <= thresholds[i]) {
+                        belongsToThreshold = thresholds[i];
+                        break;
+                    }
+                } else if (i === thresholds.length - 1) {
+                    // Letzter Schwellenwert: alle Werte > vorletzter threshold
+                    if (imp > thresholds[i - 1]) {
+                        belongsToThreshold = thresholds[i];
+                        break;
+                    }
+                } else {
+                    // Mittlere Schwellenwerte
+                    if (imp > thresholds[i - 1] && imp <= thresholds[i]) {
+                        belongsToThreshold = thresholds[i];
+                        break;
+                    }
+                }
+            }
+
+            return belongsToThreshold !== null && selectedThresholds.has(belongsToThreshold);
+        });
+    } else if (selectedThresholds !== null && selectedThresholds.size === 0) {
+        // Explizit keine Schwellenwerte ausgewählt → keine Features anzeigen
+        filteredFeatures = [];
+    }
 
     // ============================
     // Karte aktualisieren

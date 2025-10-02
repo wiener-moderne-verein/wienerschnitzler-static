@@ -2,20 +2,11 @@ import { displayFilteredGeoJsonImportance } from './script_gesamt.js';
 import { displayFilteredGeoJsonType } from './script_gesamt_typen.js';
 import { map } from './fuer-alle-karten.js';
 
-
+const PROJEKTFARBE = '#6F5106';
+const INACTIVE_COLOR = '#ddd';
 
 function isTypenView() {
   return window.location.href.includes("_typen");
-}
-
-// Funktion zum Einfärben der Jahre (unverändert)
-function lightenColor(color, percent) {
-  const num = parseInt(color.slice(1), 16),
-        amt = Math.round(255 * percent),
-        R = (num >> 16) + amt,
-        G = ((num >> 8) & 0x00FF) + amt,
-        B = (num & 0x0000FF) + amt;
-  return `rgb(${Math.min(R, 255)}, ${Math.min(G, 255)}, ${Math.min(B, 255)})`;
 }
 
 /*
@@ -68,15 +59,34 @@ function toggleYearFilter(year) {
   if (selectedYears === null) {
     selectedYears = new Set(allYears);
   }
-  
+
   if (selectedYears.has(String(year))) {
     selectedYears.delete(String(year));  // Jahr abwählen
   } else {
     selectedYears.add(String(year));       // Jahr auswählen
   }
-  
+
   updateURLWithYears(selectedYears);
+
+  // Akkordion-Status aktualisieren
+  updateAccordionState(selectedYears);
+
   isTypenView() ? displayFilteredGeoJsonType() : displayFilteredGeoJsonImportance(map);
+}
+
+// Funktion zum Aktualisieren des Akkordion-Status
+function updateAccordionState(selectedYears) {
+  const collapseElement = document.getElementById('collapseTimeFilter');
+  if (!collapseElement) return;
+
+  const bsCollapse = bootstrap.Collapse.getInstance(collapseElement) || new bootstrap.Collapse(collapseElement, { toggle: false });
+
+  // Akkordion offen halten, wenn zumindest ein Jahr ausgewählt ist (aber nicht alle)
+  if (selectedYears.size > 0 && selectedYears.size < allYears.size) {
+    bsCollapse.show();
+  } else {
+    bsCollapse.hide();
+  }
 }
 
 // Erzeugt den Zeit-Filter (Jahr-Buttons) inklusive der Buttons "(alle)" und "(keinen)"
@@ -111,62 +121,27 @@ export function createFilterTime(features) {
     // Kein Filter gesetzt → alle Jahre sind ausgewählt
     selectedYears = new Set(allYears);
   }
-  
-  // Beispielhafte Farbpalette (hier wie gehabt; diese kann natürlich erweitert werden)
-  const colorPalette = [
-    "#462346", "#a3b9c9", "#776d5a", "#987d7c", "#82D282", "#a09cb0", "#83d0f5", "#8DB1AB", "#587792", "#FF5A64",
-    "#AAAAFA"
-  ];
-  let colorIndex = 0;
-  
-  // Button "(alle)" – setzt den Filter so, dass alle Jahre ausgewählt sind (Parameter entfernen)
-  const allButton = document.createElement('button');
-  allButton.innerText = "(alle)";
-  allButton.classList.add('btn-filter', 'btn-filter-sm', 'm-1');
-  allButton.style.backgroundColor = "#ddd";
-  allButton.style.color = "black";
-  allButton.style.borderRadius = "1px";
-  
-  allButton.addEventListener('click', function () {
-    updateURLWithYears(new Set(allYears));
-    isTypenView() ? displayFilteredGeoJsonType() : displayFilteredGeoJsonImportance(map);
-  });
-  filter.appendChild(allButton);
-  
-  // Button "(keins)" – setzt den Filter so, dass keine Jahre ausgewählt sind (years=0)
-  const noneButton = document.createElement('button');
-  noneButton.innerText = "(keins)";
-  noneButton.classList.add('btn-filter', 'btn-filter-sm', 'm-1');
-  noneButton.style.backgroundColor = "#ddd";
-  noneButton.style.color = "black";
-  noneButton.style.borderRadius = "1px";
-  
-  noneButton.addEventListener('click', function () {
-    updateURLWithYears(new Set());
-    isTypenView() ? displayFilteredGeoJsonType() : displayFilteredGeoJsonImportance(map);
-  });
-  filter.appendChild(noneButton);
-  
-  // Für jedes Jahr einen eigenen Button erstellen
+
+  // Akkordion-Status initial setzen
+  updateAccordionState(selectedYears);
+
+  // Für jedes Jahr einen eigenen Toggle-Button erstellen
   years.forEach(year => {
-    const color = colorPalette[colorIndex % colorPalette.length];
-    colorIndex++;
-    
     const yearButton = document.createElement('button');
     yearButton.innerText = year;
     yearButton.classList.add('btn-filter', 'btn-filter-sm', 'm-1');
-    yearButton.style.backgroundColor = selectedYears.has(String(year))
-      ? lightenColor(color, 0.3)
-      : "#ddd";
-    yearButton.style.color = "black";
+    const isSelected = selectedYears.has(String(year));
+    yearButton.style.backgroundColor = isSelected ? PROJEKTFARBE : INACTIVE_COLOR;
+    yearButton.style.color = isSelected ? "white" : "black";
     yearButton.style.borderRadius = "1px";
+    yearButton.style.transition = "background-color 0.2s, color 0.2s";
     yearButton.dataset.year = year;
-    
+
     // Beim Klick wird das jeweilige Jahr umgeschaltet.
     yearButton.addEventListener('click', function () {
       toggleYearFilter(year);
     });
-    
+
     filter.appendChild(yearButton);
   });
 }

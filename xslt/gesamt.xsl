@@ -58,40 +58,6 @@
                                         </div>
                                     </div>
                                     <div class="accordion-item">
-                                        <h2 class="accordion-header" id="headingStayDuration">
-                                            <button class="accordion-button collapsed" type="button"
-                                                data-bs-toggle="collapse"
-                                                data-bs-target="#collapseStayDuration"
-                                                aria-expanded="false"
-                                                aria-controls="collapseStayDuration">
-                                                Aufenthaltsdauer </button>
-                                        </h2>
-                                        <div id="collapseStayDuration"
-                                            class="accordion-collapse collapse"
-                                            aria-labelledby="headingStayDuration"
-                                            data-bs-parent="#filterAccordion">
-                                            <div class="accordion-body">
-                                                <div class="mb-2">
-                                                  <label for="min-input" class="form-label"
-                                                  >Mindestaufenthalt (in Tagen):</label>
-                                                  <input type="number"
-                                                  class="form-control form-control-sm"
-                                                  id="min-input" placeholder="min."/>
-                                                </div>
-                                                <div class="mb-2">
-                                                  <label for="max-input" class="form-label"
-                                                  >Höchstaufenthalt (in Tagen):</label>
-                                                  <input type="number"
-                                                  class="form-control form-control-sm"
-                                                  id="max-input" placeholder="max."/>
-                                                </div>
-                                                <button id="update-filter"
-                                                  class="btn btn-primary btn-sm mt-2"
-                                                  >Anwenden</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="accordion-item">
                                         <h2 class="accordion-header" id="headingTimeFilter">
                                             <button class="accordion-button collapsed" type="button"
                                                 data-bs-toggle="collapse"
