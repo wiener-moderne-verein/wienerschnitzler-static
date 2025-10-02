@@ -57,10 +57,6 @@ export function createLegend(maxImportance) {
 
   legend.innerHTML = '';
 
-  const legendTitle = document.createElement('span');
-  legendTitle.innerText = '';
-  legend.appendChild(legendTitle);
-
   // Hole die in der URL ausgewählten Schwellenwerte
   let selectedThresholds = getSelectedThresholdsFromURL();
   if (selectedThresholds === null) {
@@ -68,6 +64,33 @@ export function createLegend(maxImportance) {
     selectedThresholds = new Set(thresholds);
   }
 
+  // "Alle"-Toggle-Button
+  const allButton = document.createElement('button');
+  allButton.innerText = 'Alle';
+  allButton.classList.add('btn', 'btn-sm', 'm-1');
+  const allSelected = selectedThresholds.size === thresholds.length;
+  allButton.style.backgroundColor = allSelected ? '#6F5106' : '#ddd';
+  allButton.style.color = allSelected ? 'white' : 'black';
+  allButton.style.border = '1px solid #ccc';
+  allButton.style.borderRadius = '3px';
+  allButton.style.cursor = 'pointer';
+  allButton.style.transition = 'background-color 0.2s, color 0.2s';
+
+  allButton.addEventListener('click', function(e) {
+    e.stopPropagation();
+    if (selectedThresholds.size === thresholds.length) {
+      // Alle deaktivieren
+      updateURLWithThresholds(new Set());
+    } else {
+      // Alle aktivieren
+      updateURLWithThresholds(new Set(thresholds));
+    }
+    displayFilteredGeoJsonImportance(map);
+  });
+
+  legend.appendChild(allButton);
+
+  // Erstelle alle Schwellenwert-Items (unabhängig von maxImportance)
   for (let i = 0; i < thresholds.length; i++) {
     const threshold = thresholds[i];
     const color = visibilityPalette[i];
@@ -122,8 +145,6 @@ export function createLegend(maxImportance) {
     });
 
     legend.appendChild(legendItem);
-
-    if (threshold > maxImportance) break;
   }
 }
 

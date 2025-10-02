@@ -125,6 +125,31 @@ export function createFilterTime(features) {
   // Akkordion-Status initial setzen
   updateAccordionState(selectedYears);
 
+  // "Alle"-Toggle-Button
+  const allButton = document.createElement('button');
+  allButton.innerText = 'Alle';
+  allButton.classList.add('btn-filter', 'btn-filter-sm', 'm-1');
+  const allSelected = selectedYears.size === allYears.size;
+  allButton.style.backgroundColor = allSelected ? PROJEKTFARBE : INACTIVE_COLOR;
+  allButton.style.color = allSelected ? "white" : "black";
+  allButton.style.borderRadius = "1px";
+  allButton.style.transition = "background-color 0.2s, color 0.2s";
+
+  allButton.addEventListener('click', function () {
+    if (selectedYears.size === allYears.size) {
+      // Alle deaktivieren
+      updateURLWithYears(new Set());
+      updateAccordionState(new Set());
+    } else {
+      // Alle aktivieren
+      updateURLWithYears(new Set(allYears));
+      updateAccordionState(new Set(allYears));
+    }
+    isTypenView() ? displayFilteredGeoJsonType() : displayFilteredGeoJsonImportance(map);
+  });
+
+  filter.appendChild(allButton);
+
   // Für jedes Jahr einen eigenen Toggle-Button erstellen
   years.forEach(year => {
     const yearButton = document.createElement('button');
