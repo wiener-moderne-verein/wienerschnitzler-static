@@ -81,11 +81,9 @@ function updateAccordionState(selectedYears) {
 
   const bsCollapse = bootstrap.Collapse.getInstance(collapseElement) || new bootstrap.Collapse(collapseElement, { toggle: false });
 
-  // Akkordion offen halten, wenn zumindest ein Jahr ausgewählt ist (aber nicht alle)
-  if (selectedYears.size > 0 && selectedYears.size < allYears.size) {
+  // Akkordion offen halten, wenn ein Filter aktiv ist (nicht alle ausgewählt)
+  if (selectedYears.size < allYears.size) {
     bsCollapse.show();
-  } else {
-    bsCollapse.hide();
   }
 }
 
@@ -136,19 +134,30 @@ export function createFilterTime(features) {
   allButton.style.transition = "background-color 0.2s, color 0.2s";
 
   allButton.addEventListener('click', function () {
-    if (selectedYears.size === allYears.size) {
-      // Alle deaktivieren
-      updateURLWithYears(new Set());
-      updateAccordionState(new Set());
-    } else {
-      // Alle aktivieren
-      updateURLWithYears(new Set(allYears));
-      updateAccordionState(new Set(allYears));
-    }
+    updateURLWithYears(new Set(allYears));
+    updateAccordionState(new Set(allYears));
     isTypenView() ? displayFilteredGeoJsonType() : displayFilteredGeoJsonImportance(map);
   });
 
   filter.appendChild(allButton);
+
+  // "Keine"-Toggle-Button
+  const noneButton = document.createElement('button');
+  noneButton.innerText = 'Keine';
+  noneButton.classList.add('btn-filter', 'btn-filter-sm', 'm-1');
+  const noneSelected = selectedYears.size === 0;
+  noneButton.style.backgroundColor = noneSelected ? PROJEKTFARBE : INACTIVE_COLOR;
+  noneButton.style.color = noneSelected ? "white" : "black";
+  noneButton.style.borderRadius = "1px";
+  noneButton.style.transition = "background-color 0.2s, color 0.2s";
+
+  noneButton.addEventListener('click', function () {
+    updateURLWithYears(new Set());
+    updateAccordionState(new Set());
+    isTypenView() ? displayFilteredGeoJsonType() : displayFilteredGeoJsonImportance(map);
+  });
+
+  filter.appendChild(noneButton);
 
   // Für jedes Jahr einen eigenen Toggle-Button erstellen
   years.forEach(year => {

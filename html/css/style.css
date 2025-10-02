@@ -258,11 +258,13 @@ h2.subtitle {
   background-repeat: no-repeat;
   background-size: var(--bs-accordion-btn-icon-width, 1.25rem);
   transition: var(--bs-accordion-btn-icon-transition);
+  filter: brightness(0) invert(1); /* Icon weiß machen */
 }
 
 .accordion-button:not(.collapsed)::after {
   background-image: var(--bs-accordion-btn-active-icon);
   transform: var(--bs-accordion-btn-icon-transform);
+  filter: brightness(0) invert(1); /* Icon weiß machen */
 }
 
 /* Spezifischer Zustand: Eingeklappter Button wird weiß, WENN ein anderer Button aktiv ist */

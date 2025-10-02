@@ -47,7 +47,21 @@ function toggleThreshold(threshold) {
   }
 
   updateURLWithThresholds(selectedThresholds);
+  updateLegendAccordionState(selectedThresholds);
   displayFilteredGeoJsonImportance(map);
+}
+
+// Funktion zum Aktualisieren des Akkordion-Status für Legende
+function updateLegendAccordionState(selectedThresholds) {
+  const collapseElement = document.getElementById('collapseLegend');
+  if (!collapseElement) return;
+
+  const bsCollapse = bootstrap.Collapse.getInstance(collapseElement) || new bootstrap.Collapse(collapseElement, { toggle: false });
+
+  // Akkordion offen halten, wenn ein Filter aktiv ist (nicht alle ausgewählt)
+  if (selectedThresholds.size < thresholds.length) {
+    bsCollapse.show();
+  }
 }
 
 // Funktion zum Erstellen der interaktiven Legende
@@ -78,17 +92,36 @@ export function createLegend(maxImportance) {
 
   allButton.addEventListener('click', function(e) {
     e.stopPropagation();
-    if (selectedThresholds.size === thresholds.length) {
-      // Alle deaktivieren
-      updateURLWithThresholds(new Set());
-    } else {
-      // Alle aktivieren
-      updateURLWithThresholds(new Set(thresholds));
-    }
+    updateURLWithThresholds(new Set(thresholds));
+    updateLegendAccordionState(new Set(thresholds));
     displayFilteredGeoJsonImportance(map);
   });
 
   legend.appendChild(allButton);
+
+  // "Keine"-Toggle-Button
+  const noneButton = document.createElement('button');
+  noneButton.innerText = 'Keine';
+  noneButton.classList.add('btn', 'btn-sm', 'm-1');
+  const noneSelected = selectedThresholds.size === 0;
+  noneButton.style.backgroundColor = noneSelected ? '#6F5106' : '#ddd';
+  noneButton.style.color = noneSelected ? 'white' : 'black';
+  noneButton.style.border = '1px solid #ccc';
+  noneButton.style.borderRadius = '3px';
+  noneButton.style.cursor = 'pointer';
+  noneButton.style.transition = 'background-color 0.2s, color 0.2s';
+
+  noneButton.addEventListener('click', function(e) {
+    e.stopPropagation();
+    updateURLWithThresholds(new Set());
+    updateLegendAccordionState(new Set());
+    displayFilteredGeoJsonImportance(map);
+  });
+
+  legend.appendChild(noneButton);
+
+  // Akkordion-Status initial setzen
+  updateLegendAccordionState(selectedThresholds);
 
   // Erstelle alle Schwellenwert-Items (unabhängig von maxImportance)
   for (let i = 0; i < thresholds.length; i++) {
