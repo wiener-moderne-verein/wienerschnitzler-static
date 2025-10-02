@@ -27,26 +27,22 @@
                         </h1>
                         <xsl:apply-templates select=".//tei:body"/>
                         <xsl:if test="descendant::tei:note">
-                            <xsl:element name="tei:div">
-                                <xsl:attribute name="class">footnotes</xsl:attribute>
-                                <xsl:attribute name="style">max-width:600px; margin-left: 50px;
-                                    margin-top: 100px;</xsl:attribute>
+                            <div class="footnotes" style="max-width:600px; margin-left: 50px; margin-top: 100px;">
+                                <hr style="margin-bottom: 1rem;"/>
                                 <small>
-                                    <dl>
+                                    <ol>
                                         <xsl:for-each select="descendant::tei:note">
-                                            <dt><xsl:variable name="zaehler"
-                                                  select="count(preceding::tei:note) + 1"/>
-                                                <a id="footnote-{$zaehler}"
-                                                  href="#note-ref-{$zaehler}">
-                                                  <xsl:value-of select="$zaehler"/>
-                                                </a>.</dt>
-                                            <dd>
+                                            <xsl:variable name="zaehler"
+                                                select="count(preceding::tei:note) + 1"/>
+                                            <li id="footnote-{$zaehler}" value="{$zaehler}">
                                                 <xsl:apply-templates/>
-                                            </dd>
+                                                <xsl:text> </xsl:text>
+                                                <a href="#note-ref-{$zaehler}" aria-label="Zurück zum Text">↩</a>
+                                            </li>
                                         </xsl:for-each>
-                                    </dl>
+                                    </ol>
                                 </small>
-                            </xsl:element>
+                            </div>
                         </xsl:if>
                     </div>
                 </main>
