@@ -617,12 +617,14 @@ export function getColorByImportance(importance) {
     if (importance === undefined) {
         return '#FF0000';
     }
-    for (let i = 0; i < thresholds.length; i++) {
-        if (importance <= thresholds[i]) {
+    // Finde den höchsten Schwellenwert, der kleiner oder gleich importance ist
+    for (let i = thresholds.length - 1; i >= 0; i--) {
+        if (importance >= thresholds[i]) {
             return visibilityPalette[i];
         }
     }
-    return visibilityPalette[visibilityPalette.length - 1];
+    // Fallback: wenn importance < kleinster Schwellenwert, verwende erste Farbe
+    return visibilityPalette[0];
 }
 
 // Farbpalette für verschiedene Typen

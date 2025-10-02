@@ -189,7 +189,7 @@ h2.subtitle {
   /* Verwende globale CSS-Variablen */
   --projekt-farbe: var(--projektfarbe);
   --weiss: #FFFFFF;
-  --text-color-projekt: black;  /* Textfarbe auf Projektfarbe-Hintergrund */
+  --text-color-projekt: white;  /* Textfarbe auf Projektfarbe-Hintergrund */
   --text-color-weiss: black;    /* Textfarbe auf weißem Hintergrund */
 
   /* Bootstrap Variablen überschreiben */
