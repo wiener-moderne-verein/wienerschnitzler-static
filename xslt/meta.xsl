@@ -146,6 +146,12 @@
                 <xsl:attribute name="target">
                     <xsl:text>_blank</xsl:text>
                 </xsl:attribute>
+                <xsl:attribute name="rel">
+                    <xsl:text>noopener noreferrer</xsl:text>
+                </xsl:attribute>
+                <xsl:attribute name="aria-label">
+                    <xsl:value-of select="concat(., ' - öffnet in neuem Fenster')"/>
+                </xsl:attribute>
             </xsl:if>
             <xsl:apply-templates/>
         </xsl:element>

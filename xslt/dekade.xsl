@@ -30,15 +30,17 @@
                             <div id="map-large"> </div>
                             <div class="filter-column">
                                 <div class="controls d-flex justify-content-between align-items-center mb-3">
-                                <button id="prev-decade" class="btn btn-secondary  btn-navigation">
-                                    <i class="bi bi-arrow-left-circle"/>
+                                <button id="prev-decade" class="btn btn-secondary  btn-navigation"
+                                    aria-label="Vorherige Dekade">
+                                    <i class="bi bi-arrow-left-circle" aria-hidden="true"/>
                                 </button>
-                            
-                                <select id="decade-input"> </select>
-                            
-                            
-                                <button id="next-decade" class="btn btn-secondary  btn-navigation">
-                                    <i class="bi bi-arrow-right-circle"/>
+
+                                <select id="decade-input" aria-label="Dekade auswählen"> </select>
+
+
+                                <button id="next-decade" class="btn btn-secondary  btn-navigation"
+                                    aria-label="Nächste Dekade">
+                                    <i class="bi bi-arrow-right-circle" aria-hidden="true"/>
                                 </button>
                                 </div>
                                 <p>

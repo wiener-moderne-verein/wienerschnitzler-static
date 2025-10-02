@@ -6,6 +6,10 @@
         <footer class="text-center py-4 mt-5" role="contentinfo">
             <div class="container mt-5">
                 <div class="row justify-content-between">
+                    <p class="mt-2" lang="de">Zitiervorschlag: Martin Anton Müller, Laura Untner: Wiener
+                        Schnitzler – Schnitzlers Wien. Eine geografische Verortung von Arthur
+                        Schnitzler. Wien, Berlin 2025, https://wienerschnitzler.org/ (Zugriff am
+                        <i>Datum</i>).</p>
                     <div class="col-md-5 text-start mb-4">
                         <img src="./images/wmv-logo-white.jpg" alt="Logo des Wiener Moderne Vereins"
                             class="img-fluid my-2" width="150" height="auto"/>
@@ -16,10 +20,6 @@
                             alt="Logo der Kulturabteilung der Stadt Wien" class="img-fluid my-2" width="150" height="auto"/>
                         <p>Gefördert von der Stadt Wien Kultur (2024–2025)</p>
                     </div>
-                    <p class="mt-2" lang="de">Zitiervorschlag: Martin Anton Müller, Laura Untner: Wiener
-                        Schnitzler – Schnitzlers Wien. Eine geografische Verortung von Arthur
-                        Schnitzler. Wien, Berlin 2025, https://wienerschnitzler.org/ (Zugriff am
-                            <i>Datum</i>).</p>
                 </div>
             </div>
         </footer>

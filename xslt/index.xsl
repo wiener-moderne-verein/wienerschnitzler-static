@@ -30,7 +30,7 @@
             <div class="container mt-5" id="main-content">
                <div class="row">
                   <h1>Wiener Schnitzler – Schnitzlers Wien</h1>
-                  <h2 class="fs-4">Eine geografische Verortung durch Martin Anton Müller und Laura Untner</h2>
+                  <h2 class="fs-4 text-center">Eine geografische Verortung durch Martin Anton Müller und Laura Untner</h2>
                   <!-- Rechte Spalte für das Bild (wird zuerst angezeigt auf kleinen Bildschirmen) -->
                   <div class="col-md-6 order-2 order-md-1">
                      <div class="image-container">

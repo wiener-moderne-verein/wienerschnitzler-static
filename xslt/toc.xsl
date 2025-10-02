@@ -51,7 +51,10 @@
                                                   select="replace(tokenize($full_path, '/')[last()], '.xml', '.html')"
                                                   />
                                                 </xsl:attribute>
-                                                <i class="bi bi-link-45deg"/>
+                                                <xsl:attribute name="aria-label">
+                                                  <xsl:text>Zur Seite</xsl:text>
+                                                </xsl:attribute>
+                                                <i class="bi bi-link-45deg" aria-hidden="true"/>
                                             </a>
                                         </td>
                                         <td>

@@ -78,7 +78,13 @@
                                     <xsl:attribute name="target">
                                         <xsl:text>_blank</xsl:text>
                                     </xsl:attribute>
-                                    <i class="bi bi-box-arrow-up-right"/> OpenStreetMap </a>
+                                    <xsl:attribute name="rel">
+                                        <xsl:text>noopener noreferrer</xsl:text>
+                                    </xsl:attribute>
+                                    <xsl:attribute name="aria-label">
+                                        <xsl:text>OpenStreetMap - öffnet in neuem Fenster</xsl:text>
+                                    </xsl:attribute>
+                                    <i class="bi bi-box-arrow-up-right" aria-hidden="true"/> OpenStreetMap </a>
                             </xsl:if>
                         </div>
                     </div>
@@ -368,16 +374,20 @@
                                                   <xsl:value-of select="tei:eventName"/>
                                                   </a>
                                                   <a class="btn schnitzler-chronik-link"
-                                                  role="button>"
+                                                  role="button"
                                                   href="{concat('https://schnitzler-chronik.acdh.oeaw.ac.at/', @when, '.html')}"
-                                                  target="_blank">Schnitzler Chronik</a>
+                                                  target="_blank"
+                                                  rel="noopener noreferrer"
+                                                  aria-label="Schnitzler Chronik - öffnet in neuem Fenster">Schnitzler Chronik</a>
                                                   <xsl:variable name="when" select="@when"/>
                                                   <xsl:if
                                                   test="$tb-days/descendant::*:date[. = $when][1]">
                                                   <a class="btn schnitzler-tagebuch-link"
                                                   role="button"
                                                   href="{concat('https://schnitzler-tagebuch.acdh.oeaw.ac.at/entry__', @when, '.html')}"
-                                                  target="_blank">Schnitzler Tagebuch</a>
+                                                  target="_blank"
+                                                  rel="noopener noreferrer"
+                                                  aria-label="Schnitzler Tagebuch - öffnet in neuem Fenster">Schnitzler Tagebuch</a>
                                                   </xsl:if>
                                                 </li>
                                             </xsl:for-each>
@@ -418,16 +428,20 @@
                                                   <xsl:value-of select="tei:eventName"/>
                                                   </a>
                                                   <a class="btn schnitzler-chronik-link"
-                                                  role="button>"
+                                                  role="button"
                                                   href="{concat('https://schnitzler-chronik.acdh.oeaw.ac.at/', @when, '.html')}"
-                                                  target="_blank">Schnitzler Chronik</a>
+                                                  target="_blank"
+                                                  rel="noopener noreferrer"
+                                                  aria-label="Schnitzler Chronik - öffnet in neuem Fenster">Schnitzler Chronik</a>
                                                   <xsl:variable name="when" select="@when"/>
                                                   <xsl:if
                                                   test="$tb-days/descendant::*:date[. = $when][1]">
                                                   <a class="btn schnitzler-tagebuch-link"
                                                   role="button"
                                                   href="{concat('https://schnitzler-tagebuch.acdh.oeaw.ac.at/entry__', @when, '.html')}"
-                                                  target="_blank">Schnitzler Tagebuch</a>
+                                                  target="_blank"
+                                                  rel="noopener noreferrer"
+                                                  aria-label="Schnitzler Tagebuch - öffnet in neuem Fenster">Schnitzler Tagebuch</a>
                                                   </xsl:if>
                                                   </li>
                                                   </xsl:for-each>

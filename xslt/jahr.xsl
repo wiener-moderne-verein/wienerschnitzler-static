@@ -30,16 +30,18 @@
                             <div id="map-large"> </div>
                             <div class="filter-column">
                                 <div class="controls d-flex justify-content-between align-items-center mb-3">
-                                    
-                                    <button id="prev-year" class="btn btn-secondary btn-navigation">
-                                        <i class="bi bi-arrow-left-circle"></i>
+
+                                    <button id="prev-year" class="btn btn-secondary btn-navigation"
+                                        aria-label="Vorheriges Jahr">
+                                        <i class="bi bi-arrow-left-circle" aria-hidden="true"></i>
                                     </button>
-                                    
+
                                     <select id="date-input" class="form-select w-auto" aria-label="Jahr auswählen">
                                         <option value="">Lädt...</option> </select>
-                                    
-                                    <button id="next-year" class="btn btn-secondary btn-navigation">
-                                        <i class="bi bi-arrow-right-circle"></i>
+
+                                    <button id="next-year" class="btn btn-secondary btn-navigation"
+                                        aria-label="Nächstes Jahr">
+                                        <i class="bi bi-arrow-right-circle" aria-hidden="true"></i>
                                     </button>
                                     
                                 </div>

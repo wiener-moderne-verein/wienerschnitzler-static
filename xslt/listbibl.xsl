@@ -54,7 +54,10 @@
                                               <xsl:attribute name="href">
                                               <xsl:value-of select="concat($id, '.html')"/>
                                               </xsl:attribute>
-                                              <i class="bi bi-link-45deg"/>
+                                              <xsl:attribute name="aria-label">
+                                              <xsl:text>Zur Detailseite der Publikation</xsl:text>
+                                              </xsl:attribute>
+                                              <i class="bi bi-link-45deg" aria-hidden="true"/>
                                             </a>
                                         </td>
                                         <td>

@@ -37,8 +37,9 @@
                                     class="controls d-flex justify-content-between align-items-center mb-3 gap-3">
                                     <div class="d-flex justify-content-start">
                                         <button id="prev-day"
-                                            class="btn btn-secondary  btn-navigation">
-                                            <i class="bi bi-arrow-left-circle"/>
+                                            class="btn btn-secondary  btn-navigation"
+                                            aria-label="Vorheriger Tag">
+                                            <i class="bi bi-arrow-left-circle" aria-hidden="true"/>
                                         </button>
                                     </div>
                                     <div class="d-flex center-content-start">
@@ -47,8 +48,9 @@
                                     </div>
                                     <div class="d-flex justify-content-end">
                                         <button id="next-day"
-                                            class="btn btn-secondary  btn-navigation">
-                                            <i class="bi bi-arrow-right-circle"/>
+                                            class="btn btn-secondary  btn-navigation"
+                                            aria-label="Nächster Tag">
+                                            <i class="bi bi-arrow-right-circle" aria-hidden="true"/>
                                         </button>
                                     </div>
                                 </div>
