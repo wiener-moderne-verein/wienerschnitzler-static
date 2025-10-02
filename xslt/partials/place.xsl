@@ -46,7 +46,7 @@
                                     <p class="text-center">
                                         <xsl:variable name="idnos-of-current" as="node()">
                                             <xsl:element name="nodeset_place">
-                                                <xsl:for-each select="tei:idno">
+                                                <xsl:for-each select="tei:idno[not(@type='wienerschnitzler') and not(@subtype='wienerschnitzler')]">
                                                   <xsl:copy-of select="."/>
                                                 </xsl:for-each>
                                             </xsl:element>
