@@ -39,7 +39,7 @@
                                         <button id="prev-day"
                                             class="btn btn-secondary  btn-navigation"
                                             aria-label="Vorheriger Tag">
-                                            <i class="bi bi-arrow-left-circle" aria-hidden="true"/>
+                                            <i class="bi bi-arrow-left-circle text-white" aria-hidden="true"/>
                                         </button>
                                     </div>
                                     <div class="d-flex center-content-start">
@@ -50,7 +50,7 @@
                                         <button id="next-day"
                                             class="btn btn-secondary  btn-navigation"
                                             aria-label="Nächster Tag">
-                                            <i class="bi bi-arrow-right-circle" aria-hidden="true"/>
+                                            <i class="bi bi-arrow-right-circle text-white" aria-hidden="true"/>
                                         </button>
                                     </div>
                                 </div>

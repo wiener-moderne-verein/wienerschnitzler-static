@@ -45,7 +45,7 @@
                                             <option value="" disabled="true">Wähle einen Ort</option>
                                         </select>
                                         <div class="info-text small">
-                                            <p>Das Auswahlfeld mit den Ortsnamen löst Verschiebungen des Mittelpunkts und Auswahlbereichs der Karte aus.</p>
+                                            <p>Das Auswahlfeld mit den Ortsnamen ist kein Filter, sondern fokussiert auf den jeweiligen Ort.</p>
                                         </div>
                                     </div>
                                 </div>

@@ -58,6 +58,7 @@ const wohnsitze = [{
 }];
 
 let currentlyLoadingDate = null; // Verhindert mehrfache Aufrufe
+let tagebuchDates = []; // Liste der Tagebuch-Daten
 
 // Map Initialisierung - komplett eigenständig
 function initializeMapLarge() {
@@ -280,7 +281,7 @@ function updateMapInhaltText(features, date, name) {
         return `${title}`;
       };
 
-      textContent = `Am <a class="schnitzler-chronik-link" href="https://schnitzler-chronik.acdh.oeaw.ac.at/${date}.html" target="_blank">${displayedName}</a> war Schnitzler an folgenden Orten: ${
+      textContent = `Am ${displayedName} war Schnitzler an folgenden Orten: ${
         filteredFeatures.length === 1
           ? `<a href="${encodeURIComponent(filteredFeatures[0].properties.id)}.html">${createLinkText(filteredFeatures[0])}</a>.`
           : filteredFeatures.slice(0, -1).map(feature => `<a href="${encodeURIComponent(feature.properties.id)}.html">${createLinkText(feature)}</a>`).join(', ') +
@@ -295,7 +296,16 @@ function updateMapInhaltText(features, date, name) {
       }
     }
 
-    mapInhaltTextDiv.innerHTML = textContent;
+    // Füge die Links zu Chronik und Tagebuch hinzu
+    const hasTagebuch = tagebuchDates.includes(date);
+    const linksHtml = `
+      <div class="mt-3 p-2 border rounded">
+        <a class="btn schnitzler-chronik-link me-2" role="button" href="https://schnitzler-chronik.acdh.oeaw.ac.at/${date}.html" target="_blank" rel="noopener noreferrer" aria-label="Schnitzler Chronik - öffnet in neuem Fenster">Schnitzler Chronik</a>
+        ${hasTagebuch ? `<a class="btn schnitzler-tagebuch-link" role="button" href="https://schnitzler-tagebuch.acdh.oeaw.ac.at/entry__${date}.html" target="_blank" rel="noopener noreferrer" aria-label="Schnitzler Tagebuch - öffnet in neuem Fenster">Schnitzler Tagebuch</a>` : ''}
+      </div>
+    `;
+
+    mapInhaltTextDiv.innerHTML = textContent + linksHtml;
   } else {
     console.error('Element mit ID "map-inhalt-text" nicht gefunden.');
   }
@@ -449,7 +459,22 @@ window.addEventListener('hashchange', function() {
   }
 });
 
-window.addEventListener('load', () => {
+// Lade die Liste der Tagebuch-Daten
+async function loadTagebuchDates() {
+  try {
+    const response = await fetch('https://raw.githubusercontent.com/wiener-moderne-verein/wienerschnitzler-data/main/utils/index_days.xml');
+    const xmlText = await response.text();
+    const parser = new DOMParser();
+    const xmlDoc = parser.parseFromString(xmlText, 'text/xml');
+    const dateElements = xmlDoc.getElementsByTagName('date');
+    tagebuchDates = Array.from(dateElements).map(el => el.textContent);
+  } catch (error) {
+    console.error('Fehler beim Laden der Tagebuch-Daten:', error);
+  }
+}
+
+window.addEventListener('load', async () => {
+  await loadTagebuchDates();
   const date = getDateFromUrl() || '1895-01-23';
   document.getElementById('date-input').value = date;
   loadGeoJsonByDate(date);
