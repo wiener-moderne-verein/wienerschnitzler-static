@@ -10,27 +10,23 @@
         as="node()"/>
     <xsl:param select="document('../utils/index_days.xml')" name="tb-days"/>
     <xsl:template match="tei:place" name="place_detail">
-        <div style="margin-bottom:35px; margin-top:50px;">
-            <!--<div class="d-flex justify-content-around">
-                <!-\- Button zum Kartenbereich -\->
-                <a href="#accordionMap" class="btn btn-secondary">
-                    Karte
-                </a>
-                <!-\- Button zum Tabellenbereich -\->
-                <a href="#accordionTables" class="btn btn-secondary">
-                    Zugehörigkeiten
-                </a>
-                <!-\- Button zum Erwähnungsbereich -\->
-                <a href="#accordionMentions" class="btn btn-secondary">
-                    Aufenthalte
-                </a>
-            </div>-->
-        </div>
         <xsl:variable name="placeName1" select="tei:placeName[1]" as="xs:string"/>
         <xsl:variable name="current-xml-id" select="@xml:id" as="xs:string"/>
+
+        <!-- Inhaltsverzeichnis -->
+        <div class="text-center my-4">
+            <xsl:if test="./tei:location[@type = 'coords']/tei:geo">
+                <a href="#karte" class="btn btn-outline-secondary btn-sm mx-2">Karte</a>
+            </xsl:if>
+            <a href="#zugehoerigkeiten" class="btn btn-outline-secondary btn-sm mx-2">Zugehörigkeiten</a>
+            <xsl:if test="$distinctPlaces/tei:place[@xml:id = $current-xml-id]/tei:listEvent/tei:event[1]">
+                <a href="#aufenthalte" class="btn btn-outline-secondary btn-sm mx-2">Aufenthalte</a>
+            </xsl:if>
+        </div>
+
         <xsl:choose>
             <xsl:when test="./tei:location[@type = 'coords']/tei:geo">
-                <div style="margin-bottom:35px;">
+                <div id="karte" style="margin-bottom:35px; margin-top:50px;">
                     <h2 class="mb-3">Karte</h2>
                     <div id="mapContainer" class="position-relative mx-auto" style="max-width: 800px; width: 100%; aspect-ratio: 4/3; max-height: 300px;">
                         <button type="button" class="btn-close position-absolute top-0 end-0 m-2"
@@ -98,7 +94,7 @@
                 </p>
             </xsl:otherwise>
         </xsl:choose>
-        <div style="margin-bottom:35px;">
+        <div id="zugehoerigkeiten" style="margin-bottom:35px; margin-top:50px;">
             <h2 class="mb-3">Zugehörigkeiten</h2>
             <table class="table entity-table">
                             <xsl:if
@@ -220,7 +216,7 @@
                         select="count($distinctPlaces/tei:place[@xml:id = $current-xml-id]/tei:listEvent/tei:event)"
                     />
                 </xsl:variable>
-                <div style="margin-bottom:35px;">
+                <div id="aufenthalte" style="margin-bottom:35px; margin-top:50px;">
                     <h2 class="mb-3">
                         <xsl:choose>
                             <xsl:when test="$anzahl-aufenthalte = 1">
