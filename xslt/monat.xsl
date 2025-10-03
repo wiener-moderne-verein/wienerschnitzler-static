@@ -35,12 +35,12 @@
                                         <button id="prev-day"
                                             class="btn btn-secondary btn-navigation"
                                             aria-label="Vorheriger Monat">
-                                            <i class="bi bi-arrow-left-circle" aria-hidden="true"/>
+                                            <i class="bi bi-arrow-left-circle text-white" aria-hidden="true"/>
                                         </button>
                                         <button id="next-day"
                                             class="btn btn-secondary btn-navigation"
                                             aria-label="Nächster Monat">
-                                            <i class="bi bi-arrow-right-circle" aria-hidden="true"/>
+                                            <i class="bi bi-arrow-right-circle text-white" aria-hidden="true"/>
                                         </button>
                                     </div>
                                     <div
@@ -76,23 +76,19 @@
                                     <span style="margin: 10px; font-weight: bold"
                                         >Aufenthaltstage:</span>
                                 </div>
-                                <p
-                                    >
-                                    <!-- In Deinem HTML -->
-                                    <div class="form-check form-switch">
-                                        <!-- Ohne checked-Attribut ist der Schalter standardmäßig ausgeschaltet -->
-                                        <input class="form-check-input" type="checkbox"
-                                            id="lineToggle"/>
-                                        <label class="form-check-label" for="lineToggle">
-                                            <span id="lineToggleIcon" class="fs-5"
-                                                title="Schaltet die Linie ein oder aus"/>
-                                            <!-- Standard: Linie ausgeschaltet, also X anzeigen -->
-                                            <b>Verbindungslinie</b> ein-/ausschalten. Sie folgt den
-                                            einzelnen Tagen, ist aber innerhalb eines Tages <span
-                                                class="fw-bold text-danger">nicht</span>
-                                            chronologisch geordnet. </label>
-                                    </div>
-                                </p>
+                                <div class="form-check form-switch mb-3">
+                                    <!-- Ohne checked-Attribut ist der Schalter standardmäßig ausgeschaltet -->
+                                    <input class="form-check-input" type="checkbox"
+                                        id="lineToggle"/>
+                                    <label class="form-check-label" for="lineToggle">
+                                        <span id="lineToggleIcon" class="fs-5"
+                                            title="Schaltet die Linie ein oder aus"/>
+                                        <!-- Standard: Linie ausgeschaltet, also X anzeigen -->
+                                        <b>Verbindungslinie</b> ein-/ausschalten. Sie folgt den
+                                        einzelnen Tagen, ist aber innerhalb eines Tages <span
+                                            class="fw-bold text-danger">nicht</span>
+                                        chronologisch geordnet. </label>
+                                </div>
                                 <p class="text-start text-muted small">Auf dieser Seite werden
                                     einzelne Monate in Schnitzlers Leben visualisiert. Durch die
                                     Auswahl eines Punktes werden die jeweiligen Aufenthaltstage

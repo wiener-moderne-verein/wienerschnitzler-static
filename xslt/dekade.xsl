@@ -32,7 +32,7 @@
                                 <div class="controls d-flex justify-content-between align-items-center mb-3">
                                 <button id="prev-decade" class="btn btn-secondary  btn-navigation"
                                     aria-label="Vorherige Dekade">
-                                    <i class="bi bi-arrow-left-circle" aria-hidden="true"/>
+                                    <i class="bi bi-arrow-left-circle text-white" aria-hidden="true"/>
                                 </button>
 
                                 <select id="decade-input" aria-label="Dekade auswählen"> </select>
@@ -40,7 +40,7 @@
 
                                 <button id="next-decade" class="btn btn-secondary  btn-navigation"
                                     aria-label="Nächste Dekade">
-                                    <i class="bi bi-arrow-right-circle" aria-hidden="true"/>
+                                    <i class="bi bi-arrow-right-circle text-white" aria-hidden="true"/>
                                 </button>
                                 </div>
                                 <p>
@@ -52,23 +52,20 @@
                         </div>
                         
                             
-                                
-                                
-                                <p class="mb-3">
-                                    <!-- In Deinem HTML -->
-                                    <div class="form-check form-switch">
-                                        <!-- Ohne checked-Attribut ist der Schalter standardmäßig ausgeschaltet -->
-                                        <input class="form-check-input" type="checkbox"
-                                            id="lineToggle"/>
-                                        <label class="form-check-label" form="lineToggle">
-                                            <span id="lineToggleIcon" class="fs-5"
-                                                title="Schaltet die Linie ein oder aus"/>
-                                            <!-- Standard: Linie ausgeschaltet, also X anzeigen -->
-                                            <b>Verbindungslinie</b> ein-/ausschalten. Sie folgt den einzelnen Tagen, ist aber innerhalb eines
-                                            Tages <span class="fw-bold text-danger"
-                                                >nicht</span> chronologisch geordnet. </label>
-                                    </div>
-                                </p>
+
+
+                                <div class="form-check form-switch mb-3">
+                                    <!-- Ohne checked-Attribut ist der Schalter standardmäßig ausgeschaltet -->
+                                    <input class="form-check-input" type="checkbox"
+                                        id="lineToggle"/>
+                                    <label class="form-check-label" for="lineToggle">
+                                        <span id="lineToggleIcon" class="fs-5"
+                                            title="Schaltet die Linie ein oder aus"/>
+                                        <!-- Standard: Linie ausgeschaltet, also X anzeigen -->
+                                        <b>Verbindungslinie</b> ein-/ausschalten. Sie folgt den einzelnen Tagen, ist aber innerhalb eines
+                                        Tages <span class="fw-bold text-danger"
+                                            >nicht</span> chronologisch geordnet. </label>
+                                </div>
                                 <p class="text-start text-muted small">Auf dieser Seite werden Dekaden in
                                     Schnitzlers Leben visualisiert. Durch die Auswahl eines
                                     Punktes werden die jeweiligen Aufenthaltstage innerhalb
