@@ -54,19 +54,20 @@
                             
 
 
-                                <div class="form-check form-switch mb-3">
-                                    <!-- Ohne checked-Attribut ist der Schalter standardmäßig ausgeschaltet -->
+                                <div class="form-check form-switch">
                                     <input class="form-check-input" type="checkbox"
                                         id="lineToggle"/>
                                     <label class="form-check-label" for="lineToggle">
                                         <span id="lineToggleIcon" class="fs-5"
                                             title="Schaltet die Linie ein oder aus"/>
-                                        <!-- Standard: Linie ausgeschaltet, also X anzeigen -->
-                                        <b>Verbindungslinie</b> ein-/ausschalten. Sie folgt den einzelnen Tagen, ist aber innerhalb eines
-                                        Tages <span class="fw-bold text-danger"
-                                            >nicht</span> chronologisch geordnet. </label>
+                                        <b>Verbindungslinie</b>
+                                    </label>
                                 </div>
-                                <p class="text-start text-muted small">Auf dieser Seite werden Dekaden in
+                                <p class="text-muted small mb-3" style="margin-left: 2.5rem;">
+                                    Sie folgt den einzelnen Tagen, ist aber innerhalb eines Tages
+                                    <span class="fw-bold text-danger">nicht</span> chronologisch geordnet.
+                                </p>
+                                <p class="text-start text-muted small mt-3">Auf dieser Seite werden Dekaden in
                                     Schnitzlers Leben visualisiert. Durch die Auswahl eines
                                     Punktes werden die jeweiligen Aufenthaltstage innerhalb
                                     desselben angezeigt.</p>

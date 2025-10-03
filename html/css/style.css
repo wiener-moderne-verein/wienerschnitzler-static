@@ -48,20 +48,19 @@
                     .map-container-wrapper {
                     display: flex; /* Aktiviert Flexbox */
                     gap: 20px; /* Abstand zwischen Karte und Filterspalte */
-                    height: 80vh; /* Höhe des gesamten Bereichs (anpassbar) */
-                    /* Oder eine feste Höhe, z.B. height: 700px; */
+                    align-items: flex-start; /* Richtet Elemente oben aus */
                     }
-                    
+
                     #map-large {
                     flex-grow: 1; /* Lässt die Karte den verfügbaren Platz einnehmen */
-                    height: 100%; /* Füllt die Höhe des Wrappers aus */
+                    height: 80vh; /* Feste Höhe für die Karte */
                     border: 1px solid #ccc; /* Optional: Rahmen um die Karte */
                     }
-                    
+
                     .filter-column {
                     width: 300px; /* Feste Breite für die Filterspalte (anpassbar) */
                     flex-shrink: 0; /* Verhindert, dass die Spalte schrumpft */
-                    overflow-y: auto; /* Scrollbar, falls Inhalt zu lang wird */
+                    overflow-y: visible; /* Kein internes Scrollen */
                     padding: 15px;
                     border: 0px solid #eee; /* Optional: Rahmen um die Spalte */
                     display: flex;
