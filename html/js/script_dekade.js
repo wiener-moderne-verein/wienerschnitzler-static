@@ -1,6 +1,6 @@
 import { map, createCircleMarkerDynamic, bindPopupEvents, clearGeoJsonLayers, geoJsonLayers, initializeMapLarge } from './fuer-alle-karten.js';
 import { setupLineToggleControl } from './linie-anzeigen.js';
-import { createLegend } from './filter_dauer.js';
+import { createStaticLegend } from './legend_static.js';
 
 // Array zur Verwaltung der Punkt-Layer
 let lineLayer; 
@@ -48,7 +48,7 @@ function loadGeoJsonByDecade(decade) {
                 0,
                 ...data.features.map(feature => feature.properties.importance || 0)
             );
-            createLegend(maxImportance);
+            createStaticLegend(maxImportance);
         })
         .catch(error => {
             console.error('Fehler beim Laden des GeoJSON:', error);

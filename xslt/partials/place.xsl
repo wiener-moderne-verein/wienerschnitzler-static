@@ -28,54 +28,56 @@
             <xsl:when test="./tei:location[@type = 'coords']/tei:geo">
                 <div id="karte" style="margin-bottom:35px; margin-top:50px;">
                     <h2 class="mb-3">Karte</h2>
-                    <div id="mapContainer" class="position-relative mx-auto" style="max-width: 800px; width: 100%; aspect-ratio: 4/3; max-height: 300px;">
-                        <button type="button" class="btn-close position-absolute top-0 end-0 m-2"
-                                aria-label="Karte schließen" onclick="document.getElementById('mapContainer').style.display='none';"
-                                style="z-index: 1000;"></button>
-                        <xsl:if
-                            test="key('only-relevant-uris', tei:idno/@subtype, $relevant-uris)[1]">
-                            <div class="container w-75 mx-auto mt-2">
-                                <p class="text-center">
-                                    <xsl:variable name="idnos-of-current" as="node()">
-                                        <xsl:element name="nodeset_place">
-                                            <xsl:for-each select="tei:idno[not(@type='wienerschnitzler') and not(@subtype='wienerschnitzler')]">
-                                              <xsl:copy-of select="."/>
-                                            </xsl:for-each>
-                                        </xsl:element>
-                                    </xsl:variable>
-                                    <xsl:call-template name="mam:idnosToLinks">
-                                        <xsl:with-param name="idnos-of-current"
-                                            select="$idnos-of-current"/>
-                                    </xsl:call-template>
-                                </p>
-                            </div>
-                        </xsl:if>
-                        <div id="map_detail" style="height: 100%; width: 100%;"/>
-                        <xsl:if test=".//tei:location">
-                            <xsl:variable name="mlat"
-                                select="replace(tokenize(./tei:location[@type = 'coords'][1]/tei:geo[1], '\s')[1], ',', '.')"/>
-                            <xsl:variable name="mlong"
-                                select="replace(tokenize(./tei:location[@type = 'coords'][1]/tei:geo[1], '\s')[2], ',', '.')"/>
-                            <xsl:variable name="mappin"
-                                select="concat('mlat=',$mlat, '&amp;mlon=', $mlong)"
-                                as="xs:string"/>
-                            <xsl:variable name="openstreetmapurl"
-                                select="concat('https://www.openstreetmap.org/?', $mappin, '#map=12/', $mlat, '/', $mlong)"/>
-                            <a class="osm-link">
-                                <xsl:attribute name="href">
-                                    <xsl:value-of select="$openstreetmapurl"/>
-                                </xsl:attribute>
-                                <xsl:attribute name="target">
-                                    <xsl:text>_blank</xsl:text>
-                                </xsl:attribute>
-                                <xsl:attribute name="rel">
-                                    <xsl:text>noopener noreferrer</xsl:text>
-                                </xsl:attribute>
-                                <xsl:attribute name="aria-label">
-                                    <xsl:text>OpenStreetMap - öffnet in neuem Fenster</xsl:text>
-                                </xsl:attribute>
-                                <i class="bi bi-box-arrow-up-right" aria-hidden="true"/> OpenStreetMap </a>
-                        </xsl:if>
+                    <div class="mx-auto" style="max-width: 800px; width: 100%;">
+                        <div id="mapContainer" class="position-relative" style="width: 100%; height: 300px;">
+                            <button type="button" class="btn-close position-absolute top-0 end-0 m-2"
+                                    aria-label="Karte schließen" onclick="document.getElementById('mapContainer').style.display='none';"
+                                    style="z-index: 1000;"></button>
+                            <xsl:if
+                                test="key('only-relevant-uris', tei:idno/@subtype, $relevant-uris)[1]">
+                                <div class="container w-75 mx-auto mt-2">
+                                    <p class="text-center">
+                                        <xsl:variable name="idnos-of-current" as="node()">
+                                            <xsl:element name="nodeset_place">
+                                                <xsl:for-each select="tei:idno[not(@type='wienerschnitzler') and not(@subtype='wienerschnitzler')]">
+                                                  <xsl:copy-of select="."/>
+                                                </xsl:for-each>
+                                            </xsl:element>
+                                        </xsl:variable>
+                                        <xsl:call-template name="mam:idnosToLinks">
+                                            <xsl:with-param name="idnos-of-current"
+                                                select="$idnos-of-current"/>
+                                        </xsl:call-template>
+                                    </p>
+                                </div>
+                            </xsl:if>
+                            <div id="map_detail" style="height: 100%; width: 100%;"/>
+                            <xsl:if test=".//tei:location">
+                                <xsl:variable name="mlat"
+                                    select="replace(tokenize(./tei:location[@type = 'coords'][1]/tei:geo[1], '\s')[1], ',', '.')"/>
+                                <xsl:variable name="mlong"
+                                    select="replace(tokenize(./tei:location[@type = 'coords'][1]/tei:geo[1], '\s')[2], ',', '.')"/>
+                                <xsl:variable name="mappin"
+                                    select="concat('mlat=',$mlat, '&amp;mlon=', $mlong)"
+                                    as="xs:string"/>
+                                <xsl:variable name="openstreetmapurl"
+                                    select="concat('https://www.openstreetmap.org/?', $mappin, '#map=12/', $mlat, '/', $mlong)"/>
+                                <a class="osm-link">
+                                    <xsl:attribute name="href">
+                                        <xsl:value-of select="$openstreetmapurl"/>
+                                    </xsl:attribute>
+                                    <xsl:attribute name="target">
+                                        <xsl:text>_blank</xsl:text>
+                                    </xsl:attribute>
+                                    <xsl:attribute name="rel">
+                                        <xsl:text>noopener noreferrer</xsl:text>
+                                    </xsl:attribute>
+                                    <xsl:attribute name="aria-label">
+                                        <xsl:text>OpenStreetMap - öffnet in neuem Fenster</xsl:text>
+                                    </xsl:attribute>
+                                    <i class="bi bi-box-arrow-up-right" aria-hidden="true"/> OpenStreetMap </a>
+                            </xsl:if>
+                        </div>
                     </div>
                 </div>
             </xsl:when>

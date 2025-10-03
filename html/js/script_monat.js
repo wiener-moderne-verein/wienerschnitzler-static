@@ -1,6 +1,6 @@
 import { map, createCircleMarkerDynamic, bindPopupEvents, clearGeoJsonLayers, geoJsonLayers, initializeMapLarge } from './fuer-alle-karten.js';
 import { setupLineToggleControl, updateLineUrlParam } from './linie-anzeigen.js';
-import { createLegend} from './filter_dauer.js';
+import { createStaticLegend } from './legend_static.js';
 
 const namedLineLayers = {}; // Behalten wir für die Verwaltung der Linienlayer bei
 let activeLineLayer = null; // Globale Variable für den aktuell aktiven Linien-Layer
@@ -49,9 +49,9 @@ function loadGeoJsonByMonth(month) { // Erwartet "YYYY-MM"
 
         // Optional: Legende etc. erstellen
         const maxImportance = Math.max(0, ...data.features.map(feature => feature.properties?.importance || 0));
-        // Stelle sicher, dass createLegend definiert ist
-        if (typeof createLegend === 'function') {
-            createLegend(maxImportance);
+        // Stelle sicher, dass createStaticLegend definiert ist
+        if (typeof createStaticLegend === 'function') {
+            createStaticLegend(maxImportance);
         }
     }).catch (error => {
         // Fehler wurde bereits im 'response.ok'-Check behandelt oder ist ein Netzwerkfehler

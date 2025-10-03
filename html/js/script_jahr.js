@@ -1,6 +1,6 @@
 import { map, createCircleMarkerDynamic, bindPopupEvents, clearGeoJsonLayers, geoJsonLayers, initializeMapLarge } from './fuer-alle-karten.js';
 import { setupLineToggleControl, updateLineUrlParam } from './linie-anzeigen.js';
-import { createLegend} from './filter_dauer.js';
+import { createStaticLegend } from './legend_static.js';
 
 // Globale Variablen und Funktionen
 let lineLayer =[]; // Für den Linien-Layer
@@ -78,8 +78,8 @@ function loadGeoJsonByYear(year) {
                 ...data.features.map(f => f.properties?.importance || 0)
             );
 
-            if (typeof createLegend === 'function') {
-                createLegend(maxImportance);
+            if (typeof createStaticLegend === 'function') {
+                createStaticLegend(maxImportance);
             }
         })
         .catch(error => {
