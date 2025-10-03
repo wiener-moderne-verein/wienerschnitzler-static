@@ -203,8 +203,6 @@ export function initView() {
 
   const url = geoJsonUrls[viewType];
 
-  console.log("Initialisiere Karte für Ansicht:", viewType, "→", url);
-
   fetch(url)
     .then(res => res.json())
     .then(data => {
