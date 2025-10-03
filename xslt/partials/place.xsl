@@ -30,63 +30,56 @@
         <xsl:variable name="current-xml-id" select="@xml:id" as="xs:string"/>
         <xsl:choose>
             <xsl:when test="./tei:location[@type = 'coords']/tei:geo">
-                <div class="accordion" id="accordionMap" style="margin-bottom:35px;">
-                    <div class="accordion-item">
-                        <h2 class="accordion-header bg-default" id="headingMap">
-                            <button class="accordion-button" id="toggleMapButton" type="button"
-                                data-bs-toggle="collapse" data-bs-target="#collapseMap"
-                                aria-expanded="true" aria-controls="collapseMap"> Karte </button>
-                        </h2>
-                        <!-- Karte im Collapse -->
-                        <div id="collapseMap" class="accordion-collapse collapse show"
-                            aria-labelledby="headingMap" data-bs-parent="#accordionMap">
-                            <xsl:if
-                                test="key('only-relevant-uris', tei:idno/@subtype, $relevant-uris)[1]">
-                                <div class="container w-75 mx-auto mt-2">
-                                    <p class="text-center">
-                                        <xsl:variable name="idnos-of-current" as="node()">
-                                            <xsl:element name="nodeset_place">
-                                                <xsl:for-each select="tei:idno[not(@type='wienerschnitzler') and not(@subtype='wienerschnitzler')]">
-                                                  <xsl:copy-of select="."/>
-                                                </xsl:for-each>
-                                            </xsl:element>
-                                        </xsl:variable>
-                                        <xsl:call-template name="mam:idnosToLinks">
-                                            <xsl:with-param name="idnos-of-current"
-                                                select="$idnos-of-current"/>
-                                        </xsl:call-template>
-                                    </p>
-                                </div>
-                            </xsl:if>
-                            <div class="accordion-body">
-                                <div id="map_detail" style="height: 500px;"/>
+                <div style="margin-bottom:35px;">
+                    <h2 class="mb-3">Karte</h2>
+                    <div id="mapContainer" class="position-relative" style="max-width: 100%; aspect-ratio: 4/3;">
+                        <button type="button" class="btn-close position-absolute top-0 end-0 m-2"
+                                aria-label="Karte schließen" onclick="document.getElementById('mapContainer').style.display='none';"
+                                style="z-index: 1000;"></button>
+                        <xsl:if
+                            test="key('only-relevant-uris', tei:idno/@subtype, $relevant-uris)[1]">
+                            <div class="container w-75 mx-auto mt-2">
+                                <p class="text-center">
+                                    <xsl:variable name="idnos-of-current" as="node()">
+                                        <xsl:element name="nodeset_place">
+                                            <xsl:for-each select="tei:idno[not(@type='wienerschnitzler') and not(@subtype='wienerschnitzler')]">
+                                              <xsl:copy-of select="."/>
+                                            </xsl:for-each>
+                                        </xsl:element>
+                                    </xsl:variable>
+                                    <xsl:call-template name="mam:idnosToLinks">
+                                        <xsl:with-param name="idnos-of-current"
+                                            select="$idnos-of-current"/>
+                                    </xsl:call-template>
+                                </p>
                             </div>
-                            <xsl:if test=".//tei:location">
-                                <xsl:variable name="mlat"
-                                    select="replace(tokenize(./tei:location[@type = 'coords'][1]/tei:geo[1], '\s')[1], ',', '.')"/>
-                                <xsl:variable name="mlong"
-                                    select="replace(tokenize(./tei:location[@type = 'coords'][1]/tei:geo[1], '\s')[2], ',', '.')"/>
-                                <xsl:variable name="mappin"
-                                    select="concat('mlat=',$mlat, '&amp;mlon=', $mlong)"
-                                    as="xs:string"/>
-                                <xsl:variable name="openstreetmapurl"
-                                    select="concat('https://www.openstreetmap.org/?', $mappin, '#map=12/', $mlat, '/', $mlong)"/>
-                                <a class="osm-link">
-                                    <xsl:attribute name="href">
-                                        <xsl:value-of select="$openstreetmapurl"/>
-                                    </xsl:attribute>
-                                    <xsl:attribute name="target">
-                                        <xsl:text>_blank</xsl:text>
-                                    </xsl:attribute>
-                                    <xsl:attribute name="rel">
-                                        <xsl:text>noopener noreferrer</xsl:text>
-                                    </xsl:attribute>
-                                    <xsl:attribute name="aria-label">
-                                        <xsl:text>OpenStreetMap - öffnet in neuem Fenster</xsl:text>
-                                    </xsl:attribute>
-                                    <i class="bi bi-box-arrow-up-right" aria-hidden="true"/> OpenStreetMap </a>
-                            </xsl:if>
-                        </div>
+                        </xsl:if>
+                        <div id="map_detail" style="height: 100%; width: 100%;"/>
+                        <xsl:if test=".//tei:location">
+                            <xsl:variable name="mlat"
+                                select="replace(tokenize(./tei:location[@type = 'coords'][1]/tei:geo[1], '\s')[1], ',', '.')"/>
+                            <xsl:variable name="mlong"
+                                select="replace(tokenize(./tei:location[@type = 'coords'][1]/tei:geo[1], '\s')[2], ',', '.')"/>
+                            <xsl:variable name="mappin"
+                                select="concat('mlat=',$mlat, '&amp;mlon=', $mlong)"
+                                as="xs:string"/>
+                            <xsl:variable name="openstreetmapurl"
+                                select="concat('https://www.openstreetmap.org/?', $mappin, '#map=12/', $mlat, '/', $mlong)"/>
+                            <a class="osm-link">
+                                <xsl:attribute name="href">
+                                    <xsl:value-of select="$openstreetmapurl"/>
+                                </xsl:attribute>
+                                <xsl:attribute name="target">
+                                    <xsl:text>_blank</xsl:text>
+                                </xsl:attribute>
+                                <xsl:attribute name="rel">
+                                    <xsl:text>noopener noreferrer</xsl:text>
+                                </xsl:attribute>
+                                <xsl:attribute name="aria-label">
+                                    <xsl:text>OpenStreetMap - öffnet in neuem Fenster</xsl:text>
+                                </xsl:attribute>
+                                <i class="bi bi-box-arrow-up-right" aria-hidden="true"/> OpenStreetMap </a>
+                        </xsl:if>
                     </div>
                 </div>
             </xsl:when>
@@ -105,20 +98,9 @@
                 </p>
             </xsl:otherwise>
         </xsl:choose>
-        <div class="accordion" id="accordionTables" style="margin-bottom:35px;">
-            <!-- Toggle-Button -->
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="headingTable1">
-                    <button class="accordion-button" id="toggleTableButton" type="button"
-                        data-bs-toggle="collapse" data-bs-target="#collapseTable1"
-                        aria-expanded="true" aria-controls="collapseTable1"> Zugehörigkeiten
-                    </button>
-                </h2>
-                <!-- Tabelle im Collapse -->
-                <div id="collapseTable1" class="accordion-collapse show"
-                    aria-labelledby="headingTable1" data-bs-parent="#accordionTables">
-                    <div class="accordion-body">
-                        <table class="table entity-table">
+        <div style="margin-bottom:35px;">
+            <h2 class="mb-3">Zugehörigkeiten</h2>
+            <table class="table entity-table">
                             <xsl:if
                                 test="count(distinct-values(tei:placeName[not(@type = 'legacy-name') and not(@type = 'legacy-name-merge')])) gt 1">
                                 <tr>
@@ -228,10 +210,7 @@
                                     </td>
                                 </tr>
                             </xsl:if>
-                        </table>
-                    </div>
-                </div>
-            </div>
+            </table>
         </div>
         <div>
             <xsl:if
@@ -241,28 +220,19 @@
                         select="count($distinctPlaces/tei:place[@xml:id = $current-xml-id]/tei:listEvent/tei:event)"
                     />
                 </xsl:variable>
-                <div class="accordion" id="accordionMentions" style="margin-bottom:35px;">
-                    <!-- Toggle-Button -->
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="mentions1">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#mentions" aria-expanded="true"
-                                aria-controls="mentions">
-                                <xsl:choose>
-                                    <xsl:when test="$anzahl-aufenthalte = 1">
-                                        <xsl:text>Ein nachgewiesener Aufenthalt Schnitzlers</xsl:text>
-                                    </xsl:when>
-                                    <xsl:otherwise>
-                                        <xsl:value-of select="$anzahl-aufenthalte"/>
-                                        <xsl:text> nachgewiesene Aufenthalte Schnitzlers</xsl:text>
-                                    </xsl:otherwise>
-                                </xsl:choose>
-                            </button>
-                        </h2>
-                        <!-- Tabelle im Collapse -->
-                        <div id="mentions" class="accordion-collapse show"
-                            aria-labelledby="mentions" data-bs-parent="#accordionMentions">
-                            <div>
+                <div style="margin-bottom:35px;">
+                    <h2 class="mb-3">
+                        <xsl:choose>
+                            <xsl:when test="$anzahl-aufenthalte = 1">
+                                <xsl:text>Ein nachgewiesener Aufenthalt Schnitzlers</xsl:text>
+                            </xsl:when>
+                            <xsl:otherwise>
+                                <xsl:value-of select="$anzahl-aufenthalte"/>
+                                <xsl:text> nachgewiesene Aufenthalte Schnitzlers</xsl:text>
+                            </xsl:otherwise>
+                        </xsl:choose>
+                    </h2>
+                    <div>
                                 <!-- Balkendiagramm -->
                                 <xsl:variable name="start-year" select="1869"/>
                                 <xsl:variable name="end-year" select="1931"/>
@@ -363,7 +333,7 @@
                                     </svg>
                                 </xsl:if>
                             </div>
-                            <div class="accordion-body">
+                            <div>
                                 <xsl:choose>
                                     <xsl:when test="$anzahl-aufenthalte lt 12">
                                         <ul>
@@ -424,40 +394,12 @@
                                     </xsl:otherwise>
                                 </xsl:choose>
                             </div>
-                        </div>
-                    </div>
                 </div>
             </xsl:if>
         </div>
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
             integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
         <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""/>
-        <script>
-                
-                const toggleMapButton = document.getElementById("toggleMapButton");
-                const collapseMap = document.getElementById("collapseMap");
-                
-                collapseMap.addEventListener("hidden.bs.collapse", () => {
-                toggleMapButton.textContent = "Karte anzeigen";
-                });
-                
-                collapseMap.addEventListener("shown.bs.collapse", () => {
-                toggleMapButton.textContent = "Karte";
-                });
-                
-                const toggleTableButton = document.getElementById("toggleTableButton");
-                const collapseTable1 = document.getElementById("collapseTable1");
-                
-                // Text ändern, wenn die Tabelle ausgeblendet wird
-                collapseTable1.addEventListener("hidden.bs.collapse", () => {
-                toggleTableButton.textContent = "Zugehörigkeiten anzeigen";
-                });
-                
-                // Text ändern, wenn die Tabelle eingeblendet wird
-                collapseTable1.addEventListener("shown.bs.collapse", () => {
-                toggleTableButton.textContent = "Zugehörigkeiten";
-                });
-            </script>
     </xsl:template>
     <!-- Function to check if a value is in the list -->
     <xsl:function name="mam:is-id-in-list" as="xs:boolean">
