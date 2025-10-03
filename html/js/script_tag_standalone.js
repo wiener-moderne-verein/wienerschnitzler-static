@@ -299,7 +299,7 @@ function updateMapInhaltText(features, date, name) {
     // Füge die Links zu Chronik und Tagebuch hinzu
     const hasTagebuch = tagebuchDates.includes(date);
     const linksHtml = `
-      <div class="mt-3 p-2 border rounded">
+      <div class="mt-3 p-1 border rounded d-inline-block">
         <a class="btn schnitzler-chronik-link me-2" role="button" href="https://schnitzler-chronik.acdh.oeaw.ac.at/${date}.html" target="_blank" rel="noopener noreferrer" aria-label="Schnitzler Chronik - öffnet in neuem Fenster">Schnitzler Chronik</a>
         ${hasTagebuch ? `<a class="btn schnitzler-tagebuch-link" role="button" href="https://schnitzler-tagebuch.acdh.oeaw.ac.at/entry__${date}.html" target="_blank" rel="noopener noreferrer" aria-label="Schnitzler Tagebuch - öffnet in neuem Fenster">Schnitzler Tagebuch</a>` : ''}
       </div>
@@ -462,7 +462,7 @@ window.addEventListener('hashchange', function() {
 // Lade die Liste der Tagebuch-Daten
 async function loadTagebuchDates() {
   try {
-    const response = await fetch('https://raw.githubusercontent.com/wiener-moderne-verein/wienerschnitzler-data/main/utils/index_days.xml');
+    const response = await fetch('../utils/index_days.xml');
     const xmlText = await response.text();
     const parser = new DOMParser();
     const xmlDoc = parser.parseFromString(xmlText, 'text/xml');
