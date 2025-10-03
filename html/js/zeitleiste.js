@@ -142,22 +142,21 @@ fetch("https://raw.githubusercontent.com/wiener-moderne-verein/wienerschnitzler-
     function updateTimelineItems() {
         const windowRange = timeline.getWindow();
         const windowDuration = windowRange.end - windowRange.start;
-        
-        // Bestimme newItems basierend auf dem Zoomlevel:
+
+        // Bestimme newItems basierend auf dem Zoomlevel UND der Checkbox:
         let newItems;
         if (windowDuration > typeThreshold) {
             // Bei großer Ansicht: nur primary-Items
             newItems = currentYearItems.filter(item => item.eventType === "p");
         } else {
-            // Bei kleiner Ansicht: alle Items
-            newItems = currentYearItems.slice();
-            // Kopie aller Items
-        }
-        
-        // Falls das Auswahlfeld "Orte innerhalb von Orten" ausgeschaltet ist,
-        // entferne zusätzlich alle "a"-Items.
-        if (! showAdditional) {
-            newItems = newItems.filter(item => item.eventType === "p");
+            // Bei kleiner Ansicht: zeige alle oder nur "p"-Items basierend auf Checkbox
+            if (showAdditional) {
+                // Checkbox aktiviert: alle Items anzeigen
+                newItems = currentYearItems.slice();
+            } else {
+                // Checkbox deaktiviert: nur "p"-Items anzeigen
+                newItems = currentYearItems.filter(item => item.eventType === "p");
+            }
         }
         
         // Entferne nur Items, die nicht mehr benötigt werden, anstatt alles zu löschen
