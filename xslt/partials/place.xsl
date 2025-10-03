@@ -32,7 +32,7 @@
             <xsl:when test="./tei:location[@type = 'coords']/tei:geo">
                 <div style="margin-bottom:35px;">
                     <h2 class="mb-3">Karte</h2>
-                    <div id="mapContainer" class="position-relative" style="max-width: 100%; aspect-ratio: 4/3;">
+                    <div id="mapContainer" class="position-relative mx-auto" style="max-width: 800px; width: 100%; aspect-ratio: 4/3; max-height: 300px;">
                         <button type="button" class="btn-close position-absolute top-0 end-0 m-2"
                                 aria-label="Karte schließen" onclick="document.getElementById('mapContainer').style.display='none';"
                                 style="z-index: 1000;"></button>
