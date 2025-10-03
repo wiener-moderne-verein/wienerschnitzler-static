@@ -13,7 +13,7 @@ let currentYearItems =[];
 // JSON-Daten laden
 fetch("https://raw.githubusercontent.com/wiener-moderne-verein/wienerschnitzler-data/main/data/editions/json/wienerschnitzler_timeline.json").then(response => response.json()).then(data => {
     // Erstelle Timeline-Items und speichere auch den "type" in "eventType"
-    const items = data.map(item => {
+    const items = data.map((item, index) => {
         const timeStamp = item.timestamp[0];
         let startStr, endStr;
         if (timeStamp.includes('/')) {[startStr, endStr] = timeStamp.split('/');
@@ -22,7 +22,7 @@ fetch("https://raw.githubusercontent.com/wiener-moderne-verein/wienerschnitzler-
         }
         const startDate = new Date(startStr);
         const endDate = endStr ? new Date(endStr): undefined;
-        
+
         // Farbe berechnen: Zahl aus "id" extrahieren und als Hue (mod 360) nutzen
         let color = "gray"; // Fallback
         const idNumber = parseInt(item.id.replace("pmb", ""), 10);
@@ -31,14 +31,15 @@ fetch("https://raw.githubusercontent.com/wiener-moderne-verein/wienerschnitzler-
             color = `hsl(${hue}, 70%, 50%)`;
         }
         const style = `background-color: ${color}; color: white;`;
-        
+
         return {
             content: item.title,
             start: startDate,
             end: endDate,
             style: style,
             eventType: item.type, // "p" oder "a"
-            id: item.id,
+            id: `${item.id}_${startStr}_${index}`, // Eindeutige ID mit Datum und Index
+            placeId: item.id, // Original-ID für die Navigation
             title: item.title // für Tooltip
         };
     });
@@ -210,8 +211,8 @@ fetch("https://raw.githubusercontent.com/wiener-moderne-verein/wienerschnitzler-
     });
     
     // Jetzt wird das Auswahlfeld "Orte innerhalb von Orten" (toggleAdditional) deklariert:
-    let showAdditional = true; // Default: "a" werden angezeigt
     const toggleAdditional = document.getElementById("toggleAdditional");
+    let showAdditional = toggleAdditional.checked; // Verwende aktuellen Checkbox-Status
     toggleAdditional.addEventListener("change", () => {
         showAdditional = toggleAdditional.checked;
         updateTimelineItems();
@@ -226,9 +227,10 @@ fetch("https://raw.githubusercontent.com/wiener-moderne-verein/wienerschnitzler-
     timeline.on('select', function (properties) {
         if (properties.items.length > 0) {
             const selectedItemId = properties.items[0];
-            // Extrahiere die ID und navigiere zur entsprechenden HTML-Seite
-            if (selectedItemId) {
-                window.location.href = `${selectedItemId}.html`;
+            // Hole das Item-Objekt und verwende placeId für die Navigation
+            const selectedItem = timelineItems.get(selectedItemId);
+            if (selectedItem && selectedItem.placeId) {
+                window.location.href = `${selectedItem.placeId}.html`;
             }
         }
     });

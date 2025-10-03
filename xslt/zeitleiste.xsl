@@ -32,8 +32,8 @@
                             <label for="yearSelect">Jahr auswählen:</label>
                             <select id="yearSelect"></select>
                             <div style="width: 20px"></div>
-                            <input type="checkbox" id="toggleAdditional" checked="false" />
-                            <label for="toggleAdditional">In der Wochen- oder Tagesansicht werden Orte innerhalb von Orten gezeigt</label>
+                            <input type="checkbox" id="toggleAdditional" />
+                            <label for="toggleAdditional" class="ms-2">In der Wochen- oder Tagesansicht werden Orte innerhalb von Orten gezeigt</label>
                         </div>
                        <div class="center"> 
                            <div id="timeline" style="height: 500px;"></div>
