@@ -468,7 +468,6 @@ export function populateLocationDropdown(features) {
 
     const locationSelect = document.getElementById('location-select');
     if (!locationSelect) {
-        console.warn("Kein Element mit der ID 'location-select' vorhanden. Überspringe Dropdown-Befüllung.");
         return;
     }
     // Dropdown leeren
@@ -550,7 +549,6 @@ export function populateLocationDropdown(features) {
 document.addEventListener('DOMContentLoaded', function () {
     const locationSelect = document.getElementById('location-select');
     if (!locationSelect) {
-        console.warn("Kein Element mit der ID 'location-select' vorhanden. Kein Event-Listener für das Dropdown wird hinzugefügt.");
         return;
     }
 
