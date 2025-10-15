@@ -138,6 +138,23 @@ if (document.readyState === 'loading') {
 }
 
 function initMap() {
+    // Prüfe, ob das Container-Element eine Breite hat
+    const mapContainer = document.getElementById('map-large');
+    if (!mapContainer) {
+        console.error('Map-Container nicht gefunden!');
+        return;
+    }
+
+    const containerWidth = mapContainer.offsetWidth;
+    console.log('Map-Container Breite:', containerWidth);
+
+    // Wenn keine Breite, warte länger
+    if (containerWidth === 0) {
+        console.warn('Map-Container hat noch keine Breite, warte 200ms...');
+        setTimeout(initMap, 200);
+        return;
+    }
+
     initializeMapLarge();
 
     // Leaflet-Größe nach Initialisierung neu berechnen (wichtig für mobile Geräte)

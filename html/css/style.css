@@ -47,21 +47,20 @@
 
                     .map-container-wrapper {
                     display: flex; /* Aktiviert Flexbox */
+                    flex-direction: row; /* Nebeneinander auf großen Bildschirmen */
                     gap: 20px; /* Abstand zwischen Karte und Filterspalte */
                     align-items: flex-start; /* Richtet Elemente oben aus */
                     }
 
                     #map-large {
-                    flex-grow: 1; /* Lässt die Karte den verfügbaren Platz einnehmen */
+                    flex: 1 1 0%; /* Nimmt verfügbaren Platz, kann schrumpfen */
                     height: 80vh; /* Feste Höhe für die Karte */
                     border: 1px solid #ccc; /* Optional: Rahmen um die Karte */
-                    min-width: 0; /* Wichtig für Flexbox - erlaubt Schrumpfen */
-                    flex-basis: 0; /* Startet mit 0 Breite und wächst dann */
+                    min-width: 0; /* Erlaubt Schrumpfen unter Inhaltsgröße */
                     }
 
                     .filter-column {
-                    width: 300px; /* Feste Breite für die Filterspalte (anpassbar) */
-                    flex-shrink: 0; /* Verhindert, dass die Spalte schrumpft */
+                    flex: 0 0 300px; /* Feste Breite, schrumpft nicht */
                     overflow-y: visible; /* Kein internes Scrollen */
                     padding: 15px;
                     border: 0px solid #eee; /* Optional: Rahmen um die Spalte */
@@ -121,13 +120,18 @@
                     gap: 10px; /* Kleinerer Abstand auf mobilen Geräten */
                     }
                     .filter-column {
+                    flex: 0 0 auto; /* Automatische Höhe */
                     width: 100%; /* Volle Breite auf kleinen Screens */
+                    max-width: 100%; /* Nicht breiter als Container */
                     max-height: none; /* Keine Höhenbegrenzung */
                     padding: 10px; /* Kleineres Padding auf mobilen Geräten */
                     }
                     #map-large {
+                    flex: 0 0 auto; /* Keine Flex-Grow/Shrink */
                     height: 50vh; /* Feste Höhe für die Karte auf kleinen Screens */
-                    width: 100%; /* Sicherstellen, dass die Karte volle Breite hat */
+                    width: 100% !important; /* Volle Breite erzwingen */
+                    min-width: 100%; /* Mindestens volle Breite */
+                    max-width: 100%; /* Maximal volle Breite */
                     }
                     }
                     
