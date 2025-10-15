@@ -45,47 +45,49 @@
     margin-right: auto;
 }
 
-                    /* MOBILE FIRST: Standard für kleine Bildschirme */
-                    .map-container-wrapper {
-                    display: block;
-                    width: 100%;
-                    }
-
-                    #map-large {
-                    width: 100% !important;
-                    height: 80vh;
-                    border: 1px solid #ccc;
-                    display: block;
-                    }
-
-                    .filter-column {
-                    width: 100%;
-                    padding: 15px;
-                    border: 0px solid #eee;
-                    display: flex;
-                    flex-direction: column;
-                    gap: 15px;
-                    margin-top: 20px;
-                    }
-
-                    /* DESKTOP: Ab 993px nebeneinander */
-                    @media (min-width: 993px) {
+                    /* Desktop: Filter seitlich (nebeneinander) */
                     .map-container-wrapper {
                     display: flex;
                     flex-direction: row;
                     gap: 20px;
-                    align-items: flex-start;
+                    width: 100%;
                     }
 
                     #map-large {
-                    width: calc(100% - 320px) !important;
-                    flex-shrink: 0;
+                    flex: 1;
+                    min-width: 0;
+                    height: 80vh;
+                    border: 1px solid #ccc;
                     }
 
                     .filter-column {
                     width: 300px;
                     flex-shrink: 0;
-                    margin-top: 0;
+                    padding: 15px;
+                    border: 0px solid #eee;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 15px;
+                    }
+
+                    /* Mobile: Filter unterhalb (< 768px) */
+                    @media (max-width: 768px) {
+                    .map-container-wrapper {
+                    display: block !important;
+                    }
+
+                    #map-large {
+                    width: 100% !important;
+                    min-width: 100% !important;
+                    max-width: 100% !important;
+                    height: 50vh !important;
+                    }
+
+                    .filter-column {
+                    width: 100% !important;
+                    max-width: 100% !important;
+                    margin-top: 20px;
+                    padding: 10px;
                     }
                     }
                     
@@ -131,19 +133,7 @@
                     font-size: 0.9em;
                     color: #555;
                     }
-                    
-                    /* Mobile Optimierungen */
-                    @media (max-width: 768px) {
-                    #map-large {
-                    width: 100% !important; /* Explizite Breite für Mobile */
-                    height: 50vh !important; /* Kleinere Höhe auf Smartphones */
-                    }
-                    .filter-column {
-                    width: 100% !important; /* Explizite Breite für Mobile */
-                    padding: 10px; /* Kleineres Padding auf mobilen Geräten */
-                    }
-                    }
-                    
+
 
 /** Match bootstrap navlink focus outline color. */
 :focus-visible {
