@@ -53,14 +53,15 @@
                     }
 
                     #map-large {
-                    flex: 1 1 0%; /* Nimmt verfügbaren Platz, kann schrumpfen */
+                    flex: 1 1 auto; /* Nimmt verfügbaren Platz */
                     height: 80vh; /* Feste Höhe für die Karte */
                     border: 1px solid #ccc; /* Optional: Rahmen um die Karte */
-                    min-width: 0; /* Erlaubt Schrumpfen unter Inhaltsgröße */
+                    min-width: 300px; /* Verhindert zu starkes Schrumpfen */
                     }
 
                     .filter-column {
-                    flex: 0 0 300px; /* Feste Breite, schrumpft nicht */
+                    width: 300px; /* Feste Breite für die Filterspalte (anpassbar) */
+                    flex-shrink: 0; /* Verhindert, dass die Spalte schrumpft */
                     overflow-y: visible; /* Kein internes Scrollen */
                     padding: 15px;
                     border: 0px solid #eee; /* Optional: Rahmen um die Spalte */
@@ -127,10 +128,10 @@
                     padding: 10px; /* Kleineres Padding auf mobilen Geräten */
                     }
                     #map-large {
-                    flex: 0 0 auto; /* Keine Flex-Grow/Shrink */
+                    flex: 1 1 100% !important; /* Volle Breite mit Flex */
                     height: 50vh; /* Feste Höhe für die Karte auf kleinen Screens */
                     width: 100% !important; /* Volle Breite erzwingen */
-                    min-width: 100%; /* Mindestens volle Breite */
+                    min-width: 100% !important; /* Überschreibt die 300px von oben */
                     max-width: 100%; /* Maximal volle Breite */
                     }
                     }
