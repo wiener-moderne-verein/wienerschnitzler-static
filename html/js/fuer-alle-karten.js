@@ -1,6 +1,7 @@
-import { createFilterTime } from './filter_jahre.js';
-import { createLegend } from './filter_dauer.js';
-import { displayFilteredGeoJsonType } from './script_gesamt_typen.js';
+// Lazy imports um zirkuläre Abhängigkeiten und ungewollte Event-Listener zu vermeiden
+// import { createFilterTime } from './filter_jahre.js';
+// import { createLegend } from './filter_dauer.js';
+// import { displayFilteredGeoJsonType } from './script_gesamt_typen.js';
 
 
 // Globale Map-Referenz
@@ -112,7 +113,9 @@ function displayGeoJson(features, mode) {
 
   if (mode === "importance") {
     const maxImp = features.reduce((max, f) => Math.max(max, f.properties.importance || 0), 0);
-    createLegend(maxImp);
+    import('./filter_dauer.js').then(module => {
+      module.createLegend(maxImp);
+    });
   }
 }
 
@@ -216,12 +219,16 @@ export function initView() {
       const allFeatures = data.features;
 
       // Optional: falls Funktion undefiniert sein könnte, absichern
-      if (typeof createFilterTime === "function" && document.getElementById('filter-time')) {
-        createFilterTime(allFeatures);
+      if (document.getElementById('filter-time')) {
+        import('./filter_jahre.js').then(module => {
+          module.createFilterTime(allFeatures);
+        });
       }
 
-      if (viewType === "typen" && typeof displayFilteredGeoJsonType === "function") {
-        displayFilteredGeoJsonType();
+      if (viewType === "typen") {
+        import('./script_gesamt_typen.js').then(module => {
+          module.displayFilteredGeoJsonType();
+        });
       } else if (viewType === "gesamt") {
         // Import displayFilteredGeoJsonImportance function
         import('./script_gesamt.js').then(module => {

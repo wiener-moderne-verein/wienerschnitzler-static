@@ -116,13 +116,16 @@
                     .map-container-wrapper {
                     flex-direction: column; /* Untereinander auf kleinen Screens */
                     height: auto; /* Höhe automatisch anpassen */
+                    gap: 10px; /* Kleinerer Abstand auf mobilen Geräten */
                     }
                     .filter-column {
                     width: 100%; /* Volle Breite auf kleinen Screens */
-                    max-height: 40vh; /* Begrenzte Höhe mit Scrollen */
+                    max-height: none; /* Keine Höhenbegrenzung */
+                    padding: 10px; /* Kleineres Padding auf mobilen Geräten */
                     }
                     #map-large {
                     height: 50vh; /* Feste Höhe für die Karte auf kleinen Screens */
+                    width: 100%; /* Sicherstellen, dass die Karte volle Breite hat */
                     }
                     }
                     
