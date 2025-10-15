@@ -55,8 +55,9 @@
                     #map-large {
                     flex: 1 1 auto; /* Nimmt verfügbaren Platz */
                     height: 80vh; /* Feste Höhe für die Karte */
+                    width: 100%; /* Nimmt volle Breite des Flex-Containers */
                     border: 1px solid #ccc; /* Optional: Rahmen um die Karte */
-                    min-width: 300px; /* Verhindert zu starkes Schrumpfen */
+                    min-width: 500px; /* Verhindert zu starkes Schrumpfen auf Desktop */
                     }
 
                     .filter-column {
