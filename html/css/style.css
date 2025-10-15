@@ -135,9 +135,11 @@
                     /* Mobile Optimierungen */
                     @media (max-width: 768px) {
                     #map-large {
+                    width: 100% !important; /* Explizite Breite für Mobile */
                     height: 50vh !important; /* Kleinere Höhe auf Smartphones */
                     }
                     .filter-column {
+                    width: 100% !important; /* Explizite Breite für Mobile */
                     padding: 10px; /* Kleineres Padding auf mobilen Geräten */
                     }
                     }
