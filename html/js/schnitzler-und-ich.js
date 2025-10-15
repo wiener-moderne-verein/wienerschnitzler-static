@@ -175,7 +175,12 @@ function initMap() {
     }
 
     const containerWidth = mapContainer.offsetWidth;
+    const computedStyle = window.getComputedStyle(mapContainer);
     console.log('Map-Container Breite nach Anpassung:', containerWidth);
+    console.log('Computed width:', computedStyle.width);
+    console.log('Computed min-width:', computedStyle.minWidth);
+    console.log('Computed max-width:', computedStyle.maxWidth);
+    console.log('Viewport Breite:', window.innerWidth);
 
     // Wenn keine Breite, warte länger (max 5 Versuche)
     if (containerWidth === 0) {

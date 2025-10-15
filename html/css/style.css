@@ -55,12 +55,19 @@
                     }
 
                     #map-large {
-                    /* Explizite Breite mit calc() - kein Flexbox-Wachstum */
-                    width: calc(100% - 320px); /* 100% minus Filter (300px) minus gap (20px) */
+                    /* Fallback für alte Browser */
+                    width: 100%;
                     height: 80vh;
                     border: 1px solid #ccc;
-                    flex-shrink: 0; /* Verhindert Schrumpfen */
-                    flex-grow: 0; /* Verhindert Wachstum */
+                    flex-shrink: 0;
+                    flex-grow: 0;
+                    }
+
+                    /* Nur auf großen Bildschirmen: calc() verwenden */
+                    @media (min-width: 993px) {
+                    #map-large {
+                    width: calc(100% - 320px); /* 100% minus Filter (300px) minus gap (20px) */
+                    }
                     }
 
                     .filter-column {
