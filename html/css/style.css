@@ -115,6 +115,21 @@
                     color: #555;
                     }
                     
+                    /* Responsive Anpassung für mittlere Bildschirme */
+                    @media (max-width: 992px) {
+                    .map-container-wrapper {
+                    flex-direction: column !important; /* Stack auf mittleren Screens */
+                    width: 100% !important;
+                    }
+                    .filter-column {
+                    width: 100% !important;
+                    }
+                    #map-large {
+                    width: 100% !important;
+                    min-width: 100% !important;
+                    }
+                    }
+
                     /* Responsive Anpassung für kleine Bildschirme */
                     @media (max-width: 768px) {
                     .map-container-wrapper {
