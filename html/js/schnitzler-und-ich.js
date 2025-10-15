@@ -145,21 +145,51 @@ function initMap() {
         return;
     }
 
-    // Erzwinge Breite per JavaScript als Fallback
-    if (window.innerWidth <= 768) {
+    // Erzwinge Breite per JavaScript als Fallback - AGGRESSIV!
+    if (window.innerWidth <= 992) {
+        console.log('Mobile/Tablet Modus erkannt, erzwinge Breiten...');
+
+        // Setze Parent-Container-Breiten
+        const mapWrapper = mapContainer.closest('.map-container-wrapper');
+        if (mapWrapper) {
+            mapWrapper.style.width = '100%';
+            mapWrapper.style.maxWidth = '100%';
+            mapWrapper.style.display = 'flex';
+            mapWrapper.style.flexDirection = 'column';
+            console.log('map-wrapper Breite gesetzt');
+        }
+
+        // Setze Karten-Breite
         mapContainer.style.width = '100%';
         mapContainer.style.minWidth = '100%';
-        console.log('Mobile Modus: Breite auf 100% gesetzt');
+        mapContainer.style.maxWidth = '100%';
+        mapContainer.style.flex = '1 1 100%';
+        console.log('Map-Container Breite auf 100% gesetzt');
+
+        // Setze Filter-Breite
+        const filterColumn = document.querySelector('.filter-column');
+        if (filterColumn) {
+            filterColumn.style.width = '100%';
+            console.log('Filter-Column Breite gesetzt');
+        }
     }
 
     const containerWidth = mapContainer.offsetWidth;
-    console.log('Map-Container Breite:', containerWidth);
+    console.log('Map-Container Breite nach Anpassung:', containerWidth);
 
-    // Wenn keine Breite, warte länger
+    // Wenn keine Breite, warte länger (max 5 Versuche)
     if (containerWidth === 0) {
-        console.warn('Map-Container hat noch keine Breite, warte 200ms...');
-        setTimeout(initMap, 200);
-        return;
+        if (!initMap.attempts) initMap.attempts = 0;
+        initMap.attempts++;
+
+        if (initMap.attempts < 5) {
+            console.warn(`Map-Container hat noch keine Breite, Versuch ${initMap.attempts}/5, warte 200ms...`);
+            setTimeout(initMap, 200);
+            return;
+        } else {
+            console.error('Map-Container hat nach 5 Versuchen immer noch keine Breite!');
+            // Versuche es trotzdem
+        }
     }
 
     initializeMapLarge();

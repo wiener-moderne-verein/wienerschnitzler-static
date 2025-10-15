@@ -55,10 +55,11 @@
                     }
 
                     #map-large {
-                    flex: 1 1 auto; /* Nimmt verfügbaren Platz */
+                    flex: 1 1 0%; /* Basis 0%, wächst und füllt verfügbaren Platz */
                     height: 80vh; /* Feste Höhe für die Karte */
                     border: 1px solid #ccc; /* Optional: Rahmen um die Karte */
                     min-width: 300px; /* Verhindert zu starkes Schrumpfen auf Desktop */
+                    max-width: 100%; /* Verhindert Overflow */
                     }
 
                     .filter-column {
@@ -115,18 +116,24 @@
                     color: #555;
                     }
                     
-                    /* Responsive Anpassung für mittlere Bildschirme */
+                    /* Responsive Anpassung für mittlere und kleine Bildschirme */
                     @media (max-width: 992px) {
                     .map-container-wrapper {
                     flex-direction: column !important; /* Stack auf mittleren Screens */
                     width: 100% !important;
+                    max-width: 100% !important;
                     }
                     .filter-column {
                     width: 100% !important;
+                    max-width: 100% !important;
                     }
-                    #map-large {
+                    #map-large,
+                    .map-container-wrapper #map-large,
+                    div#map-large {
+                    flex: 0 0 auto !important;
                     width: 100% !important;
                     min-width: 100% !important;
+                    max-width: 100% !important;
                     }
                     }
 
