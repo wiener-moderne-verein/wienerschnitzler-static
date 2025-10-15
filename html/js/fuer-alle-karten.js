@@ -176,7 +176,10 @@ export function initView() {
   const pathname = window.location.pathname.toLowerCase();
   let viewType = "gesamt"; // Standardansicht
 
-  if (pathname.includes("gesamt_typen")) {
+  if (pathname.includes("schnitzler-und-ich")) {
+    // Schnitzler-und-ich-Ansicht hat eigene Logik - nicht automatisch laden
+    return;
+  } else if (pathname.includes("gesamt_typen")) {
     viewType = "typen";
   } else if (pathname.includes("tag")) {
     viewType = "tag";
