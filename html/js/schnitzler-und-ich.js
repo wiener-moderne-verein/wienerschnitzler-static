@@ -131,6 +131,11 @@ fetch(geojsonUrl)
 // Karte initialisieren und global speichern
 initializeMapLarge();
 
+// Leaflet-Größe nach Initialisierung neu berechnen (wichtig für mobile Geräte)
+setTimeout(() => {
+    if (map) map.invalidateSize();
+}, 100);
+
 // Funktionen, die 'map' nutzen, können es jetzt verwenden
 function plotOnMap(lat, lon, nearest) {
     if (!map) {
