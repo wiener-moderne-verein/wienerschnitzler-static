@@ -45,40 +45,48 @@
     margin-right: auto;
 }
 
+                    /* MOBILE FIRST: Standard für kleine Bildschirme */
                     .map-container-wrapper {
-                    display: flex; /* Aktiviert Flexbox */
-                    flex-direction: row; /* Nebeneinander auf großen Bildschirmen */
-                    gap: 20px; /* Abstand zwischen Karte und Filterspalte */
-                    align-items: flex-start; /* Richtet Elemente oben aus */
-                    width: 100%; /* WICHTIG: Container braucht explizite Breite */
-                    max-width: 100%; /* Nicht breiter als Parent */
+                    display: block;
+                    width: 100%;
                     }
 
                     #map-large {
-                    /* Fallback für alte Browser */
-                    width: 100%;
+                    width: 100% !important;
                     height: 80vh;
                     border: 1px solid #ccc;
-                    flex-shrink: 0;
-                    flex-grow: 0;
-                    }
-
-                    /* Nur auf großen Bildschirmen: calc() verwenden */
-                    @media (min-width: 993px) {
-                    #map-large {
-                    width: calc(100% - 320px); /* 100% minus Filter (300px) minus gap (20px) */
-                    }
+                    display: block;
                     }
 
                     .filter-column {
-                    width: 300px; /* Feste Breite für die Filterspalte (anpassbar) */
-                    flex-shrink: 0; /* Verhindert, dass die Spalte schrumpft */
-                    overflow-y: visible; /* Kein internes Scrollen */
+                    width: 100%;
                     padding: 15px;
-                    border: 0px solid #eee; /* Optional: Rahmen um die Spalte */
+                    border: 0px solid #eee;
                     display: flex;
-                    flex-direction: column; /* Ordnet Elemente in der Spalte untereinander an */
-                    gap: 15px; /* Abstand zwischen den Filterelementen */
+                    flex-direction: column;
+                    gap: 15px;
+                    margin-top: 20px;
+                    }
+
+                    /* DESKTOP: Ab 993px nebeneinander */
+                    @media (min-width: 993px) {
+                    .map-container-wrapper {
+                    display: flex;
+                    flex-direction: row;
+                    gap: 20px;
+                    align-items: flex-start;
+                    }
+
+                    #map-large {
+                    width: calc(100% - 320px) !important;
+                    flex-shrink: 0;
+                    }
+
+                    .filter-column {
+                    width: 300px;
+                    flex-shrink: 0;
+                    margin-top: 0;
+                    }
                     }
                     
                     /* Entferne alte Zentrierungs- und Breiten-Styles von den Filter-Divs */
@@ -124,49 +132,13 @@
                     color: #555;
                     }
                     
-                    /* Responsive Anpassung für mittlere und kleine Bildschirme */
-                    @media (max-width: 992px) {
-                    .map-container-wrapper {
-                    flex-direction: column !important; /* Stack auf mittleren Screens */
-                    width: 100% !important;
-                    max-width: 100% !important;
-                    }
-                    .filter-column {
-                    width: 100% !important;
-                    max-width: 100% !important;
-                    }
-                    #map-large,
-                    .map-container-wrapper #map-large,
-                    div#map-large {
-                    flex: 0 0 auto !important;
-                    width: 100% !important;
-                    min-width: 100% !important;
-                    max-width: 100% !important;
-                    }
-                    }
-
-                    /* Responsive Anpassung für kleine Bildschirme */
+                    /* Mobile Optimierungen */
                     @media (max-width: 768px) {
-                    .map-container-wrapper {
-                    flex-direction: column !important; /* Untereinander auf kleinen Screens */
-                    height: auto !important; /* Höhe automatisch anpassen */
-                    gap: 10px !important; /* Kleinerer Abstand auf mobilen Geräten */
-                    width: 100% !important;
+                    #map-large {
+                    height: 50vh !important; /* Kleinere Höhe auf Smartphones */
                     }
                     .filter-column {
-                    flex: 0 0 auto !important; /* Automatische Höhe */
-                    width: 100% !important; /* Volle Breite auf kleinen Screens */
-                    max-width: 100% !important; /* Nicht breiter als Container */
-                    max-height: none !important; /* Keine Höhenbegrenzung */
-                    padding: 10px !important; /* Kleineres Padding auf mobilen Geräten */
-                    }
-                    .map-container-wrapper #map-large,
-                    div#map-large {
-                    flex: 0 0 auto !important; /* Keine Flex-Basis */
-                    height: 50vh !important; /* Feste Höhe für die Karte auf kleinen Screens */
-                    width: 100% !important; /* Volle Breite erzwingen */
-                    min-width: 100% !important; /* Überschreibt die 300px von oben */
-                    max-width: 100% !important; /* Maximal volle Breite */
+                    padding: 10px; /* Kleineres Padding auf mobilen Geräten */
                     }
                     }
                     
