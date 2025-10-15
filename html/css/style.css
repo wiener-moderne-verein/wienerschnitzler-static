@@ -55,11 +55,12 @@
                     }
 
                     #map-large {
-                    flex: 1 1 0%; /* Basis 0%, wächst und füllt verfügbaren Platz */
-                    height: 80vh; /* Feste Höhe für die Karte */
-                    border: 1px solid #ccc; /* Optional: Rahmen um die Karte */
-                    min-width: 300px; /* Verhindert zu starkes Schrumpfen auf Desktop */
-                    max-width: 100%; /* Verhindert Overflow */
+                    /* Explizite Breite mit calc() - kein Flexbox-Wachstum */
+                    width: calc(100% - 320px); /* 100% minus Filter (300px) minus gap (20px) */
+                    height: 80vh;
+                    border: 1px solid #ccc;
+                    flex-shrink: 0; /* Verhindert Schrumpfen */
+                    flex-grow: 0; /* Verhindert Wachstum */
                     }
 
                     .filter-column {
