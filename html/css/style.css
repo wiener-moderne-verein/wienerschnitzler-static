@@ -55,6 +55,8 @@
                     flex-grow: 1; /* Lässt die Karte den verfügbaren Platz einnehmen */
                     height: 80vh; /* Feste Höhe für die Karte */
                     border: 1px solid #ccc; /* Optional: Rahmen um die Karte */
+                    min-width: 0; /* Wichtig für Flexbox - erlaubt Schrumpfen */
+                    flex-basis: 0; /* Startet mit 0 Breite und wächst dann */
                     }
 
                     .filter-column {

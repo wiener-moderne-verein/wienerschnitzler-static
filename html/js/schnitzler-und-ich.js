@@ -129,12 +129,43 @@ fetch(geojsonUrl)
     });
 
 // Karte initialisieren und global speichern
-initializeMapLarge();
+// Warte auf DOMContentLoaded um sicherzustellen, dass CSS geladen ist
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initMap);
+} else {
+    // DOM bereits geladen
+    initMap();
+}
 
-// Leaflet-Größe nach Initialisierung neu berechnen (wichtig für mobile Geräte)
-setTimeout(() => {
-    if (map) map.invalidateSize();
-}, 100);
+function initMap() {
+    initializeMapLarge();
+
+    // Leaflet-Größe nach Initialisierung neu berechnen (wichtig für mobile Geräte)
+    // Mehrere Timeouts für verschiedene Browser-Rendering-Zyklen
+    setTimeout(() => {
+        if (map) {
+            map.invalidateSize();
+            console.log('Map invalidateSize() aufgerufen nach 100ms');
+        }
+    }, 100);
+
+    setTimeout(() => {
+        if (map) {
+            map.invalidateSize();
+            console.log('Map invalidateSize() aufgerufen nach 500ms');
+        }
+    }, 500);
+}
+
+// Resize-Listener für Orientierungswechsel auf mobilen Geräten
+window.addEventListener('resize', () => {
+    if (map) {
+        setTimeout(() => {
+            map.invalidateSize();
+            console.log('Map invalidateSize() nach Resize');
+        }, 100);
+    }
+});
 
 // Funktionen, die 'map' nutzen, können es jetzt verwenden
 function plotOnMap(lat, lon, nearest) {
