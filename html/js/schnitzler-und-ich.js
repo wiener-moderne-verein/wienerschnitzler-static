@@ -145,6 +145,13 @@ function initMap() {
         return;
     }
 
+    // Erzwinge Breite per JavaScript als Fallback
+    if (window.innerWidth <= 768) {
+        mapContainer.style.width = '100%';
+        mapContainer.style.minWidth = '100%';
+        console.log('Mobile Modus: Breite auf 100% gesetzt');
+    }
+
     const containerWidth = mapContainer.offsetWidth;
     console.log('Map-Container Breite:', containerWidth);
 

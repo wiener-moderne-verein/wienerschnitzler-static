@@ -113,26 +113,28 @@
                     color: #555;
                     }
                     
-                    /* Optional: Responsive Anpassung für kleine Bildschirme */
+                    /* Responsive Anpassung für kleine Bildschirme */
                     @media (max-width: 768px) {
                     .map-container-wrapper {
-                    flex-direction: column; /* Untereinander auf kleinen Screens */
-                    height: auto; /* Höhe automatisch anpassen */
-                    gap: 10px; /* Kleinerer Abstand auf mobilen Geräten */
+                    flex-direction: column !important; /* Untereinander auf kleinen Screens */
+                    height: auto !important; /* Höhe automatisch anpassen */
+                    gap: 10px !important; /* Kleinerer Abstand auf mobilen Geräten */
+                    width: 100% !important;
                     }
                     .filter-column {
-                    flex: 0 0 auto; /* Automatische Höhe */
-                    width: 100%; /* Volle Breite auf kleinen Screens */
-                    max-width: 100%; /* Nicht breiter als Container */
-                    max-height: none; /* Keine Höhenbegrenzung */
-                    padding: 10px; /* Kleineres Padding auf mobilen Geräten */
+                    flex: 0 0 auto !important; /* Automatische Höhe */
+                    width: 100% !important; /* Volle Breite auf kleinen Screens */
+                    max-width: 100% !important; /* Nicht breiter als Container */
+                    max-height: none !important; /* Keine Höhenbegrenzung */
+                    padding: 10px !important; /* Kleineres Padding auf mobilen Geräten */
                     }
-                    #map-large {
-                    flex: 1 1 100% !important; /* Volle Breite mit Flex */
-                    height: 50vh; /* Feste Höhe für die Karte auf kleinen Screens */
+                    .map-container-wrapper #map-large,
+                    div#map-large {
+                    flex: 0 0 auto !important; /* Keine Flex-Basis */
+                    height: 50vh !important; /* Feste Höhe für die Karte auf kleinen Screens */
                     width: 100% !important; /* Volle Breite erzwingen */
                     min-width: 100% !important; /* Überschreibt die 300px von oben */
-                    max-width: 100%; /* Maximal volle Breite */
+                    max-width: 100% !important; /* Maximal volle Breite */
                     }
                     }
                     
