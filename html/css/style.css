@@ -352,6 +352,10 @@ h2.subtitle {
     border-color: #6F5106;
 }
 
+.navbar-toggler-icon {
+    filter: brightness(0) invert(1);
+}
+
 
 .schnitzler-chronik-link,
 .schnitzler-chronik-link:visited{
