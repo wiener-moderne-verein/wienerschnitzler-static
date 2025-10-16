@@ -355,7 +355,7 @@ h2.subtitle {
 
 .schnitzler-chronik-link,
 .schnitzler-chronik-link:visited{
-    color: #C67F53;
+    color: #008B8B;
     font-weight: bold;
     text-decoration: none;
     cursor: pointer;
@@ -363,7 +363,7 @@ h2.subtitle {
 }
 
 .schnitzler-chronik-link:hover {
-    background-color: #C67F53;
+    background-color: #008B8B;
     color: white;
     text-decoration: none;
 }
