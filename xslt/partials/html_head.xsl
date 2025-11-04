@@ -11,6 +11,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <meta name="robots"
             content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"/>
+        <meta name="google-site-verification" content="2TRK7_cqGM_A6eA9XsIgPb8hcA-ui3FZN3GkVFHsyEQ" />
         <link rel="icon" href="{$project_logo}" sizes="any"/>
         <title>
             <xsl:value-of select="$html_title"/>
