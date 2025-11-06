@@ -21,8 +21,12 @@
                 <xsl:variable name="doc_title">
                     <xsl:text>Wiener Schnitzler</xsl:text>
                 </xsl:variable>
+                <xsl:variable name="doc_description">
+                    <xsl:text>Übersicht nach Anzahl der Aufenthaltsorte – Interaktive Karte und Heatmap von Arthur Schnitzlers Wegen durch Wien</xsl:text>
+                </xsl:variable>
                 <xsl:call-template name="html_head">
                     <xsl:with-param name="html_title" select="$doc_title"/>
+                    <xsl:with-param name="page_description" select="$doc_description"/>
                 </xsl:call-template>
                 <style>
                     .ch-domain-text {font-size: 20px;}

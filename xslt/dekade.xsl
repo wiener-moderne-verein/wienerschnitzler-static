@@ -17,8 +17,12 @@
                 <xsl:variable name="doc_title">
                     <xsl:text>Wiener Schnitzler</xsl:text>
                 </xsl:variable>
+                <xsl:variable name="doc_description">
+                    <xsl:text>Schnitzlers Aufenthaltsorte nach Dekaden – Übersicht von Arthur Schnitzlers Wegen durch Wien in 10-Jahres-Zeiträumen</xsl:text>
+                </xsl:variable>
                 <xsl:call-template name="html_head">
                     <xsl:with-param name="html_title" select="$doc_title"/>
+                    <xsl:with-param name="page_description" select="$doc_description"/>
                 </xsl:call-template>
             </head>
             <body class="h-100">

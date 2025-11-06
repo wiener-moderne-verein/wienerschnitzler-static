@@ -7,6 +7,7 @@
         <xsl:param name="html_title" select="$project_short_title"/>
         <xsl:param name="page_description" select="$project_title"/>
         <xsl:param name="page_url"/>
+        <xsl:param name="page_type" select="'WebPage'"/>
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <meta name="robots"
@@ -124,6 +125,27 @@
             "url": "https://schnitzler-briefe.acdh.oeaw.ac.at/"
         }
     ],
+    "license": "https://creativecommons.org/licenses/by/4.0/"
+}</script>
+        <!-- Page-specific structured data -->
+        <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "<xsl:value-of select="$page_type"/>",
+    "name": "<xsl:value-of select="$html_title"/>",
+    "description": "<xsl:value-of select="$page_description"/>",
+    "inLanguage": "de-AT",<xsl:if test="$page_url">
+    "url": "<xsl:value-of select="$page_url"/>",</xsl:if>
+    "isPartOf": {
+        "@type": "WebSite",
+        "name": "Wiener Schnitzler – Schnitzlers Wien",
+        "url": "https://wienerschnitzler.org/"
+    },
+    "creator": {
+        "@type": "Organization",
+        "name": "Wiener Moderne Verein",
+        "url": "https://wiener-moderne-verein.github.io/"
+    },
     "license": "https://creativecommons.org/licenses/by/4.0/"
 }</script>
     </xsl:template>

@@ -12,10 +12,21 @@
         <xsl:variable name="doc_title">
             <xsl:value-of select="descendant::tei:titleStmt/tei:title[@level = 'a'][1]/text()"/>
         </xsl:variable>
+        <xsl:variable name="doc_description">
+            <xsl:choose>
+                <xsl:when test="descendant::tei:body//tei:p">
+                    <xsl:value-of select="substring(normalize-space((descendant::tei:body//tei:p)[1]), 1, 160)"/>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:value-of select="concat($doc_title, ' – ', $project_title)"/>
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:variable>
         <html lang="de" class="h-100">
             <head>
                 <xsl:call-template name="html_head">
                     <xsl:with-param name="html_title" select="$doc_title"/>
+                    <xsl:with-param name="page_description" select="$doc_description"/>
                 </xsl:call-template>
             </head>
             <body class="d-flex flex-column h-100">

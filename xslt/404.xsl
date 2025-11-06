@@ -19,7 +19,8 @@
         <html lang="de" class="h-100">
             <head>
                 <xsl:call-template name="html_head">
-                    <xsl:with-param name="html_title" select="$doc_title"></xsl:with-param>
+                    <xsl:with-param name="html_title" select="$doc_title"/>
+                    <xsl:with-param name="page_description" select="'Seite nicht gefunden – Diese Seite existiert nicht auf Wiener Schnitzler'"/>
                 </xsl:call-template>
             </head>
             <body class="schreibzeug-body">

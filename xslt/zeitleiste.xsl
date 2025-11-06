@@ -16,8 +16,12 @@
                 <xsl:variable name="doc_title">
                     <xsl:text>Wiener Schnitzler</xsl:text>
                 </xsl:variable>
+                <xsl:variable name="doc_description">
+                    <xsl:text>Zeitleiste – Interaktive Visualisierung der zeitlichen Entwicklung von Arthur Schnitzlers Aufenthalten in Wien</xsl:text>
+                </xsl:variable>
                 <xsl:call-template name="html_head">
                     <xsl:with-param name="html_title" select="$doc_title"/>
+                    <xsl:with-param name="page_description" select="$doc_description"/>
                 </xsl:call-template>
                 <script type="text/javascript" src="https://unpkg.com/vis-timeline@latest/standalone/umd/vis-timeline-graph2d.min.js"></script>
                 <link href="https://unpkg.com/vis-timeline@latest/styles/vis-timeline-graph2d.min.css" rel="stylesheet" type="text/css" />
