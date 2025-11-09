@@ -31,6 +31,9 @@ jobs:
       - name: Install Saxon, Ant and Fundament
         run: |
           ./shellscripts/script.sh
+          ls -la saxon/
+          echo "Saxon JAR check:"
+          ls -la saxon/saxon9he.jar || echo "Saxon JAR not found!"
       - name: install python things
         run: pip install -r requirements.txt
       - name: Fetch the data
