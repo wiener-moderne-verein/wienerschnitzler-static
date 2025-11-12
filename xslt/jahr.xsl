@@ -23,6 +23,7 @@
                 <xsl:call-template name="html_head">
                     <xsl:with-param name="html_title" select="$doc_title"/>
                     <xsl:with-param name="page_description" select="$doc_description"/>
+                    <xsl:with-param name="page_url" select="concat($base_url, '/jahr.html')"/>
                 </xsl:call-template>
             </head>
             <body class="h-100">

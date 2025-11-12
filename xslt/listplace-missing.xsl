@@ -19,6 +19,7 @@
             <head>
                 <xsl:call-template name="html_head">
                     <xsl:with-param name="html_title" select="$doc_title"/>
+                    <xsl:with-param name="page_url" select="concat($base_url, '/listplace-missing.html')"/>
                 </xsl:call-template>
                 <link
                     href="https://unpkg.com/tabulator-tables@5.5.2/dist/css/tabulator_bootstrap5.min.css"

@@ -21,6 +21,7 @@
             <head>
                 <xsl:call-template name="html_head">
                     <xsl:with-param name="html_title" select="$doc_title"></xsl:with-param>
+                    <xsl:with-param name="page_url" select="concat($base_url, '/toc.html')"/>
                 </xsl:call-template>
             </head>
             

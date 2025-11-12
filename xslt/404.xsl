@@ -21,6 +21,7 @@
                 <xsl:call-template name="html_head">
                     <xsl:with-param name="html_title" select="$doc_title"/>
                     <xsl:with-param name="page_description" select="'Seite nicht gefunden – Diese Seite existiert nicht auf Wiener Schnitzler'"/>
+                    <xsl:with-param name="page_url" select="concat($base_url, '/404.html')"/>
                 </xsl:call-template>
             </head>
             <body class="schreibzeug-body">

@@ -22,11 +22,15 @@
                 </xsl:otherwise>
             </xsl:choose>
         </xsl:variable>
+        <xsl:variable name="filename">
+            <xsl:value-of select="replace(tokenize(document-uri(/), '/')[last()], '.xml', '.html')"/>
+        </xsl:variable>
         <html lang="de" class="h-100">
             <head>
                 <xsl:call-template name="html_head">
                     <xsl:with-param name="html_title" select="$doc_title"/>
                     <xsl:with-param name="page_description" select="$doc_description"/>
+                    <xsl:with-param name="page_url" select="concat($base_url, '/', $filename)"/>
                 </xsl:call-template>
             </head>
             <body class="d-flex flex-column h-100">

@@ -16,6 +16,7 @@
                 <xsl:call-template name="html_head">
                     <xsl:with-param name="html_title" select="'Arthur Schnitzler und ich'"/>
                     <xsl:with-param name="page_description" select="'Wo stand Ihnen Schnitzler am nächsten? – Finden Sie heraus, welche Orte in Wien Arthur Schnitzler in Ihrer Nähe besucht hat'"/>
+                    <xsl:with-param name="page_url" select="concat($base_url, '/schnitzler-und-ich.html')"/>
                 </xsl:call-template>
             </head>
             <body class="d-flex flex-column h-100">
