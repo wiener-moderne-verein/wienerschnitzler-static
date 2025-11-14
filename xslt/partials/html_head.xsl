@@ -21,6 +21,10 @@
             <link rel="canonical" href="{$page_url}"/>
         </xsl:if>
         <meta name="description" content="{$page_description}"/>
+        <meta name="author" content="Wiener Moderne Verein"/>
+        <meta name="creator" content="Wiener Moderne Verein"/>
+        <meta name="dcterms.license" content="https://creativecommons.org/licenses/by/4.0/"/>
+        <meta name="license" content="CC BY 4.0"/>
         <meta property="og:type" content="website"/>
         <meta property="og:title" content="{$html_title}"/>
         <meta property="og:description" content="{$page_description}"/>

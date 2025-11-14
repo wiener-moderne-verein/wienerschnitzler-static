@@ -15,11 +15,16 @@
         <xsl:variable name="doc_title">
             <xsl:value-of select=".//tei:titleStmt/tei:title[1]/text()"/>
         </xsl:variable>
+        <xsl:variable name="doc_description">
+            <xsl:text>Verzeichnis der Institutionen und Organisationen – Institutionen, Vereine und Unternehmen in Arthur Schnitzlers Umfeld.</xsl:text>
+        </xsl:variable>
         <html class="h-100">
 
             <head>
                 <xsl:call-template name="html_head">
                     <xsl:with-param name="html_title" select="$doc_title"></xsl:with-param>
+                    <xsl:with-param name="page_description" select="$doc_description"/>
+                    <xsl:with-param name="page_url" select="concat($base_url, '/listorg.html')"/>
                 </xsl:call-template>
             </head>
             
@@ -81,6 +86,7 @@
                     <head>
                         <xsl:call-template name="html_head">
                             <xsl:with-param name="html_title" select="$name"></xsl:with-param>
+                            <xsl:with-param name="page_description" select="concat('Informationen zu ', $name, ' – Institution im Kontext von Arthur Schnitzler.')"/>
                         </xsl:call-template>
                     </head>
                     <body class="d-flex flex-column h-100">

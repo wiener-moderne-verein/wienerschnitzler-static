@@ -15,10 +15,13 @@
 
     <xsl:template match="/">
         <xsl:variable name="doc_title" select="'Impressum'"/>
+        <xsl:variable name="doc_description" select="'Impressum und Kontaktinformationen des Wiener Schnitzler Projekts – Digitale Karte von Arthur Schnitzlers Aufenthalten in Wien.'"/>
         <html lang="de" class="h-100">
             <head>
                 <xsl:call-template name="html_head">
                     <xsl:with-param name="html_title" select="$doc_title"></xsl:with-param>
+                    <xsl:with-param name="page_description" select="$doc_description"/>
+                    <xsl:with-param name="page_url" select="concat($base_url, '/imprint.html')"/>
                 </xsl:call-template>
             </head>
             

@@ -176,6 +176,7 @@
                     <head>
                         <xsl:call-template name="html_head">
                             <xsl:with-param name="html_title" select="$name"/>
+                            <xsl:with-param name="page_description" select="concat('Detailinformationen zu ', $name, ' – Aufenthaltsort Arthur Schnitzlers mit Erwähnungen und geografischer Verortung.')"/>
                         </xsl:call-template>
                     </head>
                     <body class="w-100 h-100">

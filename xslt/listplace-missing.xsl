@@ -15,10 +15,14 @@
         <xsl:variable name="doc_title">
             <xsl:text>Nicht identifizierte Aufenthaltsorte</xsl:text>
         </xsl:variable>
+        <xsl:variable name="doc_description">
+            <xsl:text>Nicht identifizierte Aufenthaltsorte Arthur Schnitzlers – Ortsnamen aus Tagebuch und Briefen, die noch keiner genauen geografischen Position zugeordnet werden konnten.</xsl:text>
+        </xsl:variable>
         <html lang="de" class="h-100">
             <head>
                 <xsl:call-template name="html_head">
                     <xsl:with-param name="html_title" select="$doc_title"/>
+                    <xsl:with-param name="page_description" select="$doc_description"/>
                     <xsl:with-param name="page_url" select="concat($base_url, '/listplace-missing.html')"/>
                 </xsl:call-template>
                 <link
@@ -151,6 +155,7 @@
                     <head>
                         <xsl:call-template name="html_head">
                             <xsl:with-param name="html_title" select="$name"/>
+                            <xsl:with-param name="page_description" select="concat('Detailinformationen zum Ort ', $name, ' – noch nicht eindeutig identifizierter Aufenthaltsort Arthur Schnitzlers.')"/>
                         </xsl:call-template>
                     </head>
                     <body class="w-100 h-100">

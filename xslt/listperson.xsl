@@ -16,11 +16,16 @@
         <xsl:variable name="doc_title">
             <xsl:value-of select=".//tei:titleStmt/tei:title[1]/text()"/>
         </xsl:variable>
+        <xsl:variable name="doc_description">
+            <xsl:text>Personenverzeichnis – Verzeichnis aller Personen in Arthur Schnitzlers Leben und Werk.</xsl:text>
+        </xsl:variable>
         <html class="h-100">
-            
+
             <head>
                 <xsl:call-template name="html_head">
                     <xsl:with-param name="html_title" select="$doc_title"></xsl:with-param>
+                    <xsl:with-param name="page_description" select="$doc_description"/>
+                    <xsl:with-param name="page_url" select="concat($base_url, '/listperson.html')"/>
                 </xsl:call-template>
             </head>
             
@@ -90,6 +95,7 @@
                     <head>
                         <xsl:call-template name="html_head">
                             <xsl:with-param name="html_title" select="$name"></xsl:with-param>
+                            <xsl:with-param name="page_description" select="concat('Biografische Informationen zu ', $name, ' – Person im Leben und Werk Arthur Schnitzlers.')"/>
                         </xsl:call-template>
                     </head>
 

@@ -16,11 +16,16 @@
         <xsl:variable name="doc_title">
             <xsl:value-of select=".//tei:titleStmt/tei:title[1]/text()"/>
         </xsl:variable>
+        <xsl:variable name="doc_description">
+            <xsl:text>Verzeichnis der Publikationen – Bibliografische Nachweise zu Arthur Schnitzler und seinem Werk.</xsl:text>
+        </xsl:variable>
         <html class="h-100">
 
             <head >
                 <xsl:call-template name="html_head">
                     <xsl:with-param name="html_title" select="$doc_title"></xsl:with-param>
+                    <xsl:with-param name="page_description" select="$doc_description"/>
+                    <xsl:with-param name="page_url" select="concat($base_url, '/listbibl.html')"/>
                 </xsl:call-template>
             </head>
             
@@ -91,6 +96,7 @@
                     <head>
                         <xsl:call-template name="html_head">
                         <xsl:with-param name="html_title" select="$name"></xsl:with-param>
+                        <xsl:with-param name="page_description" select="concat('Bibliografische Informationen zu ', $name, ' – Werk und Publikation im Kontext von Arthur Schnitzler.')"/>
                     </xsl:call-template>
                     </head>
 
