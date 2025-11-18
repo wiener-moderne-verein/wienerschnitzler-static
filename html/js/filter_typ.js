@@ -10,14 +10,22 @@ export function createFilterType(features) {
         console.error("Fehler: Element mit ID 'filter-type' nicht gefunden!");
         return;
     }
-    
+
     // Legende leeren
     filter.innerHTML = '';
-    
+
     // Titel hinzufügen
     const filterTitle = document.createElement('span');
     filterTitle.innerText = '';
     filter.appendChild(filterTitle);
+
+    // Suchfeld hinzufügen
+    const searchInput = document.createElement('input');
+    searchInput.type = 'text';
+    searchInput.placeholder = 'Typen filtern...';
+    searchInput.classList.add('form-control', 'form-control-sm', 'mb-2');
+    searchInput.id = 'type-search-input';
+    filter.appendChild(searchInput);
     
     // Zunächst prüfen, ob in der URL ein "years"-Parameter vorhanden ist.
     // Falls ja, wird nur für Features gezählt, die einen Timestamp in den ausgewählten Jahren haben.
@@ -109,11 +117,11 @@ export function createFilterType(features) {
     uniqueTypes.forEach(type => {
         const count = typeCountMap[type];
         const color = getColorByType(type);
-        
+
         const button = document.createElement('button');
         button.innerText = `${type} (${count})`;
         // Hier werden die btn-filter-Klassen hinzugefügt
-        button.classList.add('btn-filter', 'btn-filter-sm', 'm-1');
+        button.classList.add('btn-filter', 'btn-filter-sm', 'm-1', 'type-button');
         // Falls der Typ in selectedTypes enthalten ist, wird er farbig dargestellt,
         // andernfalls in Grau
         button.style.backgroundColor = selectedTypes.has(type) ? color : "#ccc";
@@ -123,14 +131,29 @@ export function createFilterType(features) {
         button.style.margin = "1px";
         button.style.cursor = "pointer";
         button.style.borderRadius = "2px";
-        
+
         button.dataset.type = type; // Typ im Button speichern
-        
+
         button.addEventListener('click', function () {
             toggleTypeFilter(type);
         });
-        
+
         filter.appendChild(button);
+    });
+
+    // Event Listener für das Suchfeld hinzufügen
+    searchInput.addEventListener('input', function (e) {
+        const searchTerm = e.target.value.toLowerCase();
+        const typeButtons = filter.querySelectorAll('.type-button');
+
+        typeButtons.forEach(button => {
+            const type = button.dataset.type.toLowerCase();
+            if (type.includes(searchTerm)) {
+                button.style.display = '';
+            } else {
+                button.style.display = 'none';
+            }
+        });
     });
 }
 
