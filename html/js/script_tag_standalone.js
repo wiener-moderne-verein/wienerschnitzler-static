@@ -82,6 +82,15 @@ function formatIsoDateToGerman(dateStr) {
   return `${Number(parts[2])}.${Number(parts[1])}.${parts[0]}`;
 }
 
+// Hilfsfunktion zur Formatierung von ISO-Datum mit Wochentag (z.B. "Dienstag, dem 3.3.1863")
+function formatIsoDateWithWeekday(dateStr) {
+  const date = new Date(dateStr);
+  const weekdays = ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'];
+  const weekday = weekdays[date.getDay()];
+  const formattedDate = formatIsoDateToGerman(dateStr);
+  return `${weekday}, dem ${formattedDate}`;
+}
+
 // Funktion, die anhand des Datums den entsprechenden Wohnsitz aus dem Array sucht
 function getWohnsitzForDate(date) {
   const inputDate = new Date(date);
@@ -281,7 +290,9 @@ function updateMapInhaltText(features, date, name) {
         return `${title}`;
       };
 
-      textContent = `Am ${displayedName} war Schnitzler an folgenden Orten: ${
+      const dateWithWeekday = isValidDate ? formatIsoDateWithWeekday(date) : displayedName;
+
+      textContent = `Am ${dateWithWeekday} war Schnitzler an folgenden Orten: ${
         filteredFeatures.length === 1
           ? `<a href="${encodeURIComponent(filteredFeatures[0].properties.id)}.html">${createLinkText(filteredFeatures[0])}</a>.`
           : filteredFeatures.slice(0, -1).map(feature => `<a href="${encodeURIComponent(feature.properties.id)}.html">${createLinkText(feature)}</a>`).join(', ') +
@@ -327,7 +338,7 @@ function loadGeoJsonByDate(date) {
   clearTagMap();
 
   if (inputDate < minDateObj || inputDate > maxDateObj) {
-    const formattedDate = formatIsoDateToGerman(date);
+    const formattedDate = formatIsoDateWithWeekday(date);
     const mapInhaltTextDiv = document.getElementById('map-inhalt-text');
     if (mapInhaltTextDiv) {
       mapInhaltTextDiv.innerHTML = `Am ${formattedDate} war Arthur Schnitzler nicht am Leben.`;
