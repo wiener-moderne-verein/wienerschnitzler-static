@@ -66,7 +66,7 @@
         </html>
     </xsl:template>
     <xsl:template match="tei:div[@type = 'faqs']">
-        <div class="accordion" id="faqAccordion">
+        <div>
             <xsl:apply-templates select="tei:div[@type = 'faq']"/>
         </div>
     </xsl:template>
@@ -82,47 +82,27 @@
         </ul>
     </xsl:template>
     <xsl:template match="tei:div[@type = 'faq']">
-        <div class="accordion-item">
-            <xsl:variable name="faqId" select="@xml:id"/>
-            <h2 class="accordion-header" id="{concat('heading', $faqId)}">
-                <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                    data-bs-target="{concat('#collapseCategory', $faqId)}" aria-expanded="false"
-                    aria-controls="{concat('collapseCategory', $faqId)}">
-                    <xsl:value-of select="tei:head[1]"/>
-                </button>
-            </h2>
-            <div id="{concat('collapseCategory', $faqId)}" class="accordion-collapse collapse"
-                aria-labelledby="{concat('heading', $faqId)}" data-bs-parent="#faqAccordion">
-                <div class="accordion-body">
-                    <div class="accordion" id="{concat('category', $faqId, 'Accordion')}">
-                        <xsl:apply-templates select="tei:list" mode="faq"/>
-                    </div>
-                </div>
+        <details>
+            <summary>
+                <xsl:value-of select="tei:head[1]"/>
+            </summary>
+            <div>
+                <xsl:apply-templates select="tei:list" mode="faq"/>
             </div>
-        </div>
+        </details>
     </xsl:template>
     <xsl:template match="tei:list[parent::tei:div/@type = 'faq']" mode="faq">
         <xsl:apply-templates select="tei:item" mode="faq"/>
     </xsl:template>
     <xsl:template match="tei:item" mode="faq">
-        <xsl:variable name="faqParentId" select="ancestor::tei:div[@type = 'faq']/@xml:id"/>
-        <xsl:variable name="questionId" select="concat($faqParentId, '-q', position())"/>
-        <div class="accordion-item">
-            <h2 class="accordion-header" id="{concat('heading', $questionId)}">
-                <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                    data-bs-target="{concat('#collapse', $questionId)}" aria-expanded="false"
-                    aria-controls="{concat('collapse', $questionId)}">
-                    <xsl:value-of select="tei:q"/>
-                </button>
-            </h2>
-            <div id="{concat('collapse', $questionId)}" class="accordion-collapse collapse"
-                aria-labelledby="{concat('heading', $questionId)}"
-                data-bs-parent="{concat('#category', $faqParentId, 'Accordion')}">
-                <div class="accordion-body">
-                    <xsl:apply-templates select="tei:p"/>
-                </div>
+        <details>
+            <summary>
+                <xsl:value-of select="tei:q"/>
+            </summary>
+            <div>
+                <xsl:apply-templates select="tei:p"/>
             </div>
-        </div>
+        </details>
     </xsl:template>
     <xsl:template match="tei:p">
         <p id="{generate-id()}">

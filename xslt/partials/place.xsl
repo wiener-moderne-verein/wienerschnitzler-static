@@ -350,27 +350,13 @@
                                             <xsl:for-each-group
                                                 select="$distinctPlaces/tei:place[@xml:id = $current-xml-id]/tei:listEvent/tei:event"
                                                 group-by="substring(@when, 1, 4)">
-                                                <div class="accordion" id="accordionExample">
-                                                  <!-- Jahr-Gruppe -->
-                                                  <div class="accordion-item">
-                                                  <h2 class="accordion-header"
-                                                  id="heading-{current-grouping-key()}">
-                                                  <button class="accordion-button collapsed"
-                                                  type="button" data-bs-toggle="collapse"
-                                                  data-bs-target="#collapse-{current-grouping-key()}"
-                                                  aria-expanded="false"
-                                                  aria-controls="collapse-{current-grouping-key()}">
+                                                <details>
+                                                  <summary>
                                                   <!-- Jahr und Anzahl -->
                                                   <xsl:value-of
                                                   select="concat(current-grouping-key(), ' (', count(current-group()), ')')"
                                                   />
-                                                  </button>
-                                                  </h2>
-                                                  <div id="collapse-{current-grouping-key()}"
-                                                  class="accordion-collapse collapse"
-                                                  aria-labelledby="heading-{current-grouping-key()}"
-                                                  data-bs-parent="#accordionExample">
-                                                  <div class="accordion-body">
+                                                  </summary>
                                                   <ul>
                                                   <!-- Ereignisse innerhalb des Jahres -->
                                                   <xsl:for-each select="current-group()">
@@ -379,14 +365,11 @@
                                                   >
                                                   <xsl:value-of select="tei:eventName"/>
                                                   </a>
-                                                  
+
                                                   </li>
                                                   </xsl:for-each>
                                                   </ul>
-                                                  </div>
-                                                  </div>
-                                                  </div>
-                                                </div>
+                                                </details>
                                             </xsl:for-each-group>
                                         </ul>
                                     </xsl:otherwise>
