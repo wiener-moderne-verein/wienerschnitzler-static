@@ -66,7 +66,7 @@
         </html>
     </xsl:template>
     <xsl:template match="tei:div[@type = 'faqs']">
-        <div>
+        <div class="faq-container">
             <xsl:apply-templates select="tei:div[@type = 'faq']"/>
         </div>
     </xsl:template>
@@ -82,11 +82,11 @@
         </ul>
     </xsl:template>
     <xsl:template match="tei:div[@type = 'faq']">
-        <details>
-            <summary>
+        <details class="faq-category">
+            <summary class="faq-category-title">
                 <xsl:value-of select="tei:head[1]"/>
             </summary>
-            <div>
+            <div class="faq-category-content">
                 <xsl:apply-templates select="tei:list" mode="faq"/>
             </div>
         </details>
@@ -95,11 +95,11 @@
         <xsl:apply-templates select="tei:item" mode="faq"/>
     </xsl:template>
     <xsl:template match="tei:item" mode="faq">
-        <details>
-            <summary>
+        <details class="faq-item">
+            <summary class="faq-question">
                 <xsl:value-of select="tei:q"/>
             </summary>
-            <div>
+            <div class="faq-answer">
                 <xsl:apply-templates select="tei:p"/>
             </div>
         </details>
