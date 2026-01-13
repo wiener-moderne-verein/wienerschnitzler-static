@@ -275,7 +275,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // --- Initialisierung ---
-    // Initialisiere die Karte mit dem Jahr aus der URL oder einem Standardwert
+    // Initialisiere die Karte ZUERST
+    if (!map) {
+        initializeMapLarge();
+    }
+
+    // Dann initialisiere die Karte mit dem Jahr aus der URL oder einem Standardwert
     const initialYear = getYearFromUrl() || '1890'; // Dein Standardjahr
     setYearAndLoad(initialYear); // Setzt Dropdown-Wert, lädt Daten, prüft Grenzen
 

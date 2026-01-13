@@ -6,26 +6,8 @@ function updateLineToggleButtonLabel(button, visible) {
   button.innerHTML = labelText;
 }
 
-const lineToggle = document.getElementById('lineToggle');
-const lineToggleIcon = document.getElementById('lineToggleIcon');
-
-lineToggle.addEventListener('change', function() {
-  if (this.checked) {
-    // Wenn eingeschaltet: zeige den gefüllten Kreis
-    lineToggleIcon.innerHTML = '';
-    // Hier z.B. den Layer zur Karte hinzufügen:
-    map.addLayer(lineLayer);
-    // Stelle sicher, dass der Layer in den Hintergrund rückt, wenn nötig:
-    lineLayer.bringToBack();
-    updateLineUrlParam('on');
-  } else {
-    // Wenn ausgeschaltet: zeige ein X
-    lineToggleIcon.innerHTML = '';
-    // Hier z.B. den Layer von der Karte entfernen:
-    map.removeLayer(lineLayer);
-    updateLineUrlParam('off');
-  }
-});
+// Event-Listener werden nur eingerichtet, wenn setupLineToggleControl aufgerufen wird
+// Entfernt den automatischen Event-Listener beim Modulimport
 
 // Funktion zur Aktualisierung des URL-Parameters "l" (optional)
 export function updateLineUrlParam(state) {
