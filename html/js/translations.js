@@ -25,8 +25,9 @@ export function t(key) {
         if (value && typeof value === 'object' && k in value) {
             value = value[k];
         } else {
-            console.warn(`Translation key not found: ${key}`);
-            return key;
+            // Return undefined if key not found, but don't warn
+            // (caller can decide what to do with undefined)
+            return undefined;
         }
     }
 

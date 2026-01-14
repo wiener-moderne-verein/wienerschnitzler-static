@@ -106,7 +106,7 @@ export function createFilterTime(features) {
 
   // "Alle"-Toggle-Button
   const allButton = document.createElement('button');
-  allButton.innerText = t('filter.all');
+  allButton.innerText = t('filter.all') || 'Alle';
   allButton.classList.add('btn-filter', 'btn-filter-sm', 'm-1');
   const allSelected = selectedYears.size === allYears.size;
   allButton.style.backgroundColor = allSelected ? PROJEKTFARBE : INACTIVE_COLOR;
@@ -123,7 +123,7 @@ export function createFilterTime(features) {
 
   // "Keine"-Toggle-Button
   const noneButton = document.createElement('button');
-  noneButton.innerText = t('filter.none');
+  noneButton.innerText = t('filter.none') || 'Keine';
   noneButton.classList.add('btn-filter', 'btn-filter-sm', 'm-1');
   const noneSelected = selectedYears.size === 0;
   noneButton.style.backgroundColor = noneSelected ? PROJEKTFARBE : INACTIVE_COLOR;

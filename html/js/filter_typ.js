@@ -86,7 +86,7 @@ export function createFilterType(features) {
     
     // "(alle)"-Button erstellen
     const allButton = document.createElement('button');
-    allButton.innerText = t('location.all');
+    allButton.innerText = t('location.all') || '(alle)';
     allButton.classList.add('btn-filter', 'btn-filter-sm', 'm-1');
     allButton.style.backgroundColor = "#ddd";
     allButton.style.color = "black";
@@ -101,7 +101,7 @@ export function createFilterType(features) {
     
     // "(keine)"-Button erstellen
     const noneButton = document.createElement('button');
-    noneButton.innerText = t('filter.none');
+    noneButton.innerText = t('filter.none') || '(keine)';
     noneButton.classList.add('btn-filter', 'btn-filter-sm', 'm-1');
     noneButton.style.backgroundColor = "#ddd";
     noneButton.style.color = "black";
@@ -120,7 +120,10 @@ export function createFilterType(features) {
         const color = getColorByType(type);
 
         const button = document.createElement('button');
-        button.innerText = `${type} (${count})`;
+        // Translate type name if translation available
+        const placeTypes = t('place_types');
+        const translatedType = (typeof placeTypes === 'object' && placeTypes[type]) ? placeTypes[type] : type;
+        button.innerText = `${translatedType} (${count})`;
         // Hier werden die btn-filter-Klassen hinzugefügt
         button.classList.add('btn-filter', 'btn-filter-sm', 'm-1', 'type-button');
         // Falls der Typ in selectedTypes enthalten ist, wird er farbig dargestellt,

@@ -203,6 +203,9 @@
     <text key="js.filter.all">Alle</text>
     <text key="js.filter.none">Keine</text>
     <text key="js.location.all">(alle)</text>
+    <text key="js.popup.one_day">Ein Aufenthaltstag</text>
+    <text key="js.popup.days">Aufenthaltstage</text>
+    <text key="js.popup.no_stays">Keine Aufenthalte ausgewählt.</text>
 
     <!-- AI Translation Notice -->
     <text key="ai.notice.title">Automatische Übersetzung</text>

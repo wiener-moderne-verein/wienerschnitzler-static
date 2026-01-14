@@ -416,10 +416,10 @@ export function createPopupContent(feature) {
         if (yearFilterPresent) {
             if (selectedYears.length === 0) {
                 // Es wurde ein Jahresfilter gesetzt, aber keine Jahre ausgewählt
-                stayInfo = "Keine Aufenthalte ausgewählt.";
+                stayInfo = t('popup.no_stays') || 'Keine Aufenthalte ausgewählt.';
             } else {
                 // Jahresfilter ist gesetzt → zeige nur die Anzahl, ohne Jahre aufzulisten
-                stayInfo = (count === 1 ? "Ein Aufenthaltstag" : `${count} Aufenthaltstage`) + ":";
+                stayInfo = (count === 1 ? (t('popup.one_day') || 'Ein Aufenthaltstag') : `${count} ${t('popup.days') || 'Aufenthaltstage'}`) + ":";
             }
             // Anschließend die (gefilterten) Tages-Links anhängen, sofern vorhanden:
             if (links) {
@@ -427,7 +427,7 @@ export function createPopupContent(feature) {
             }
         } else {
             // Kein Jahresfilter → alle Tage berücksichtigen, wie bisher
-            stayInfo = (count === 1 ? "Ein Aufenthaltstag" : `${count} Aufenthaltstage`) + ":<br/>" + links;
+            stayInfo = (count === 1 ? (t('popup.one_day') || 'Ein Aufenthaltstag') : `${count} ${t('popup.days') || 'Aufenthaltstage'}`) + ":<br/>" + links;
         }
     }
 
@@ -484,7 +484,7 @@ export function populateLocationDropdown(features) {
     // Füge den Auswahlpunkt "(alle)" an erster Stelle ein
     const allOption = document.createElement('option');
     allOption.value = 'europe'; // Dieser Wert wird später im Event-Listener abgefangen
-    allOption.textContent = t('location.all');
+    allOption.textContent = t('location.all') || '(alle)';
     locationSelect.appendChild(allOption);
 
     // Definiere die gewünschte Reihenfolge für bestimmte Bezirke (Beispiele: Wien, I., II. usw.)
