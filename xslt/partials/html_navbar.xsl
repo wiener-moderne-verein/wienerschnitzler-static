@@ -162,12 +162,60 @@
                                         <xsl:value-of select="local:translate('nav.periods')"/>
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="zeitraeumeDropdown">
-                                        <li><a class="dropdown-item" href="tag.html"><xsl:value-of select="local:translate('nav.periods.day')"/></a></li>
-                                        <li><a class="dropdown-item" href="monat.html"><xsl:value-of select="local:translate('nav.periods.month')"/></a></li>
-                                        <li><a class="dropdown-item" href="jahr.html"><xsl:value-of select="local:translate('nav.periods.year')"/></a></li>
-                                        <li><a class="dropdown-item" href="dekade.html"><xsl:value-of select="local:translate('nav.periods.decade')"/></a></li>
-                                        <li><a class="dropdown-item" href="uebersicht.html"><xsl:value-of select="local:translate('nav.periods.overview')"/></a></li>
-                                        <li><a class="dropdown-item" href="zeitleiste.html"><xsl:value-of select="local:translate('nav.periods.timeline')"/></a></li>
+                                        <li><a class="dropdown-item">
+                                            <xsl:attribute name="href">
+                                                <xsl:choose>
+                                                    <xsl:when test="$language = 'en'">tag-en.html</xsl:when>
+                                                    <xsl:otherwise>tag.html</xsl:otherwise>
+                                                </xsl:choose>
+                                            </xsl:attribute>
+                                            <xsl:value-of select="local:translate('nav.periods.day')"/>
+                                        </a></li>
+                                        <li><a class="dropdown-item">
+                                            <xsl:attribute name="href">
+                                                <xsl:choose>
+                                                    <xsl:when test="$language = 'en'">monat-en.html</xsl:when>
+                                                    <xsl:otherwise>monat.html</xsl:otherwise>
+                                                </xsl:choose>
+                                            </xsl:attribute>
+                                            <xsl:value-of select="local:translate('nav.periods.month')"/>
+                                        </a></li>
+                                        <li><a class="dropdown-item">
+                                            <xsl:attribute name="href">
+                                                <xsl:choose>
+                                                    <xsl:when test="$language = 'en'">jahr-en.html</xsl:when>
+                                                    <xsl:otherwise>jahr.html</xsl:otherwise>
+                                                </xsl:choose>
+                                            </xsl:attribute>
+                                            <xsl:value-of select="local:translate('nav.periods.year')"/>
+                                        </a></li>
+                                        <li><a class="dropdown-item">
+                                            <xsl:attribute name="href">
+                                                <xsl:choose>
+                                                    <xsl:when test="$language = 'en'">dekade-en.html</xsl:when>
+                                                    <xsl:otherwise>dekade.html</xsl:otherwise>
+                                                </xsl:choose>
+                                            </xsl:attribute>
+                                            <xsl:value-of select="local:translate('nav.periods.decade')"/>
+                                        </a></li>
+                                        <li><a class="dropdown-item">
+                                            <xsl:attribute name="href">
+                                                <xsl:choose>
+                                                    <xsl:when test="$language = 'en'">uebersicht-en.html</xsl:when>
+                                                    <xsl:otherwise>uebersicht.html</xsl:otherwise>
+                                                </xsl:choose>
+                                            </xsl:attribute>
+                                            <xsl:value-of select="local:translate('nav.periods.overview')"/>
+                                        </a></li>
+                                        <li><a class="dropdown-item">
+                                            <xsl:attribute name="href">
+                                                <xsl:choose>
+                                                    <xsl:when test="$language = 'en'">zeitleiste-en.html</xsl:when>
+                                                    <xsl:otherwise>zeitleiste.html</xsl:otherwise>
+                                                </xsl:choose>
+                                            </xsl:attribute>
+                                            <xsl:value-of select="local:translate('nav.periods.timeline')"/>
+                                        </a></li>
 
                                     </ul>
                                 </li>
