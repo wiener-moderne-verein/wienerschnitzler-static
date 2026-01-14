@@ -1,5 +1,6 @@
 import { displayFilteredGeoJsonImportance } from './script_gesamt.js';
 import { visibilityPalette, thresholds, clearGeoJsonLayers, map } from './fuer-alle-karten.js';
+import { t } from './translations.js';
 
 // Hilfsfunktion zum Abrufen der ausgewählten Schwellenwerte aus der URL
 function getSelectedThresholdsFromURL() {
@@ -66,7 +67,7 @@ export function createLegend(maxImportance) {
 
   // "Alle"-Toggle-Button
   const allButton = document.createElement('button');
-  allButton.innerText = 'Alle';
+  allButton.innerText = t('filter.all');
   allButton.classList.add('btn', 'btn-sm', 'm-1');
   const allSelected = selectedThresholds.size === thresholds.length;
   allButton.style.backgroundColor = allSelected ? '#6F5106' : '#ddd';
@@ -86,7 +87,7 @@ export function createLegend(maxImportance) {
 
   // "Keine"-Toggle-Button
   const noneButton = document.createElement('button');
-  noneButton.innerText = 'Keine';
+  noneButton.innerText = t('filter.none');
   noneButton.classList.add('btn', 'btn-sm', 'm-1');
   const noneSelected = selectedThresholds.size === 0;
   noneButton.style.backgroundColor = noneSelected ? '#6F5106' : '#ddd';

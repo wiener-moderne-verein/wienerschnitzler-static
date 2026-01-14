@@ -11,9 +11,18 @@
         <factory name="net.sf.saxon.TransformerFactoryImpl"/>
         <classpath location="${basedir}/saxon/saxon9he.jar"/>
     </xslt>
-    <xslt style="./xslt/meta.xsl" basedir="./data/meta" destdir="${target}" includes="*.xml">
+    <!-- Build German meta pages (exclude English versions) -->
+    <xslt style="./xslt/meta.xsl" basedir="./data/meta" destdir="${target}" includes="*.xml" excludes="*-en.xml">
         <factory name="net.sf.saxon.TransformerFactoryImpl"/>
         <classpath location="${basedir}/saxon/saxon9he.jar"/>
+        <param name="language" expression="de"/>
+    </xslt>
+    <!-- Build English meta pages -->
+    <xslt style="./xslt/meta.xsl" basedir="./data/meta" destdir="${target}" includes="*-en.xml">
+        <factory name="net.sf.saxon.TransformerFactoryImpl"/>
+        <classpath location="${basedir}/saxon/saxon9he.jar"/>
+        <param name="language" expression="en"/>
+        <mapper type="glob" from="*-en.xml" to="*-en.html"/>
     </xslt>
     <xslt in="${index}" out="${target}/uebersicht.html" style="./xslt/uebersicht.xsl">
         <factory name="net.sf.saxon.TransformerFactoryImpl"/>
@@ -40,9 +49,17 @@
         <factory name="net.sf.saxon.TransformerFactoryImpl"/>
         <classpath location="${basedir}/saxon/saxon9he.jar"/>
     </xslt>
+    <!-- gesamt.html - German version -->
     <xslt in="${index}" out="${target}/gesamt.html" style="./xslt/gesamt.xsl">
         <factory name="net.sf.saxon.TransformerFactoryImpl"/>
         <classpath location="${basedir}/saxon/saxon9he.jar"/>
+        <param name="language" expression="de"/>
+    </xslt>
+    <!-- gesamt-en.html - English version -->
+    <xslt in="${index}" out="${target}/gesamt-en.html" style="./xslt/gesamt.xsl">
+        <factory name="net.sf.saxon.TransformerFactoryImpl"/>
+        <classpath location="${basedir}/saxon/saxon9he.jar"/>
+        <param name="language" expression="en"/>
     </xslt>
     <xslt in="${index}" out="${target}/gesamt_typen.html" style="./xslt/gesamt_typen.xsl">
         <factory name="net.sf.saxon.TransformerFactoryImpl"/>
@@ -52,9 +69,19 @@
         <factory name="net.sf.saxon.TransformerFactoryImpl"/>
         <classpath location="${basedir}/saxon/saxon9he.jar"/>
     </xslt>
+    <!-- Build German version (index.html) -->
     <xslt in="${index}" out="${target}/index.html" style="./xslt/index.xsl">
         <factory name="net.sf.saxon.TransformerFactoryImpl"/>
         <classpath location="${basedir}/saxon/saxon9he.jar"/>
+        <param name="language" expression="de"/>
+        <param name="output_filename" expression="index.html"/>
+    </xslt>
+    <!-- Build English version (index-en.html) -->
+    <xslt in="${index}" out="${target}/index-en.html" style="./xslt/index.xsl">
+        <factory name="net.sf.saxon.TransformerFactoryImpl"/>
+        <classpath location="${basedir}/saxon/saxon9he.jar"/>
+        <param name="language" expression="en"/>
+        <param name="output_filename" expression="index-en.html"/>
     </xslt>
     <xslt in="./data/indices/listplace.xml" out="${target}/listplace.html"
         style="./xslt/listplace.xsl">

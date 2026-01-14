@@ -3,6 +3,7 @@
 // import { createLegend } from './filter_dauer.js';
 // import { displayFilteredGeoJsonType } from './script_gesamt_typen.js';
 
+import { t } from './translations.js';
 
 // Globale Map-Referenz
 export let map;
@@ -483,7 +484,7 @@ export function populateLocationDropdown(features) {
     // Füge den Auswahlpunkt "(alle)" an erster Stelle ein
     const allOption = document.createElement('option');
     allOption.value = 'europe'; // Dieser Wert wird später im Event-Listener abgefangen
-    allOption.textContent = '(alle)';
+    allOption.textContent = t('location.all');
     locationSelect.appendChild(allOption);
 
     // Definiere die gewünschte Reihenfolge für bestimmte Bezirke (Beispiele: Wien, I., II. usw.)

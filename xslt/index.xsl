@@ -3,26 +3,99 @@
    xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:tei="http://www.tei-c.org/ns/1.0"
    xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:local="http://dse-static.foo.bar" version="2.0"
    exclude-result-prefixes="xsl tei xs local">
+   <xsl:import href="./partials/shared.xsl"/>
    <xsl:import href="./partials/html_head.xsl"/>
    <xsl:import href="./partials/html_navbar.xsl"/>
    <xsl:import href="./partials/html_footer.xsl"/>
    <xsl:output encoding="UTF-8" media-type="text/html" method="html" version="5.0" indent="yes"
       omit-xml-declaration="yes"/>
+
+   <!-- Override for index page - base-uri() returns listplace.xml but we want index.html -->
+   <xsl:param name="output_filename">index.html</xsl:param>
+
+   <!-- Template for index cards -->
+   <xsl:template name="index-card">
+      <xsl:param name="href"/>
+      <xsl:param name="aria_key"/>
+      <xsl:param name="img_src"/>
+      <xsl:param name="img_alt_key"/>
+      <xsl:param name="text_before_key"/>
+      <xsl:param name="link_text_key"/>
+      <xsl:param name="text_after" select="''"/>
+      <xsl:param name="external" select="false()"/>
+
+      <div class="col-12 col-md-6 col-lg-3">
+         <div class="card content-item">
+            <!-- Dynamically adjust href for language -->
+            <xsl:variable name="localized_href">
+               <xsl:choose>
+                  <xsl:when test="$external or starts-with($href, 'http')">
+                     <xsl:value-of select="$href"/>
+                  </xsl:when>
+                  <xsl:when test="$language = 'en' and contains($href, '.html')">
+                     <xsl:value-of select="replace($href, '\.html', '-en.html')"/>
+                  </xsl:when>
+                  <xsl:otherwise>
+                     <xsl:value-of select="$href"/>
+                  </xsl:otherwise>
+               </xsl:choose>
+            </xsl:variable>
+            <a href="{$localized_href}">
+               <xsl:if test="$external">
+                  <xsl:attribute name="target">_blank</xsl:attribute>
+                  <xsl:attribute name="rel">noopener noreferrer</xsl:attribute>
+               </xsl:if>
+               <xsl:attribute name="aria-label">
+                  <xsl:value-of select="local:translate($aria_key)"/>
+                  <xsl:if test="$external">
+                     <xsl:value-of select="concat(' - ', local:translate('aria.opens_new_window'))"/>
+                  </xsl:if>
+               </xsl:attribute>
+               <img src="{$img_src}" class="card-img-top" loading="lazy">
+                  <xsl:attribute name="alt">
+                     <xsl:value-of select="local:translate($img_alt_key)"/>
+                  </xsl:attribute>
+               </img>
+            </a>
+            <div class="card-body">
+               <p class="card-text">
+                  <xsl:value-of select="local:translate($text_before_key)"/>
+                  <xsl:text> </xsl:text>
+                  <a href="{$localized_href}">
+                     <xsl:if test="$external">
+                        <xsl:attribute name="target">_blank</xsl:attribute>
+                        <xsl:attribute name="rel">noopener noreferrer</xsl:attribute>
+                        <xsl:attribute name="aria-label">
+                           <xsl:value-of select="concat(local:translate($link_text_key), ' - ', local:translate('aria.opens_new_window'))"/>
+                        </xsl:attribute>
+                     </xsl:if>
+                     <xsl:value-of select="local:translate($link_text_key)"/>
+                  </a>
+                  <xsl:value-of select="$text_after"/>
+               </p>
+            </div>
+         </div>
+      </div>
+   </xsl:template>
+
    <xsl:template match="/">
-      <html lang="de" class="h-100">
+      <html class="h-100">
+         <xsl:attribute name="lang">
+            <xsl:value-of select="$language"/>
+         </xsl:attribute>
          <head>
-            <xsl:variable name="doc_title">
-               <xsl:text>Wiener Schnitzler – Schnitzlers Wien | Digitale Karte seiner Aufenthaltsorte</xsl:text>
-            </xsl:variable>
-            <xsl:variable name="doc_description">
-               <xsl:text>Digitale Karte von Arthur Schnitzlers Aufenthalten in Wien (1862-1931). Über 47.000 georeferenzierte Aufenthalte an knapp 4950 Orten basierend auf Tagebuch und Korrespondenz. Ein Digital Humanities Projekt zur geografischen Verortung seiner Wege durch die Stadt.</xsl:text>
-            </xsl:variable>
+            <xsl:variable name="doc_title" select="local:translate('index.title')"/>
+            <xsl:variable name="doc_description" select="local:translate('index.meta_description')"/>
             <xsl:call-template name="html_head">
                <xsl:with-param name="html_title" select="$doc_title"/>
                <xsl:with-param name="page_description" select="$doc_description"/>
                <xsl:with-param name="page_url" select="concat($base_url, '/index.html')"/>
             </xsl:call-template>
-            <meta name="keywords" content="Arthur Schnitzler, Wien, Karte, Digital Humanities, Geolokalisierung, Literatur, Tagebuch, Georeferenzierung, Wiener Moderne, Kartierung"/>
+            <meta name="keywords">
+               <xsl:attribute name="content">
+                  <xsl:value-of select="local:translate('index.keywords')"/>
+               </xsl:attribute>
+            </meta>
          </head>
          <body>
             <!-- Navbar -->
@@ -30,203 +103,199 @@
             <main role="main">
             <div class="container mt-5" id="main-content">
                <div class="row">
-                  <h1>Wiener Schnitzler – Schnitzlers Wien</h1>
-                  <h2 class="fs-4 text-center">Eine geografische Verortung durch Martin Anton Müller und Laura Untner</h2>
+                  <h1><xsl:value-of select="local:translate('index.main_title')"/></h1>
+                  <h2 class="fs-4 text-center"><xsl:value-of select="local:translate('index.subtitle')"/></h2>
                   <!-- Rechte Spalte für das Bild (wird zuerst angezeigt auf kleinen Bildschirmen) -->
                   <div class="col-md-6 order-2 order-md-1">
                      <div class="image-container">
                         <img id="background-image" class="background"
-                           src="./images/wienmuseum/AnsichtenVonWien00001.jpg" alt="Historische Schwarzweiß-Ansicht von Wien, etwa um 1900, mit Blick auf die Innenstadt und Donaukanal" loading="lazy"/>
+                           src="./images/wienmuseum/AnsichtenVonWien00001.jpg" loading="lazy">
+                           <xsl:attribute name="alt">
+                              <xsl:value-of select="local:translate('index.image_alt_background')"/>
+                           </xsl:attribute>
+                        </img>
                         <img id="foreground-image" class="foreground"
-                           src="./images/schnitzler-index2.png"
-                           alt="Stilisierte Silhouette von Arthur Schnitzler mit Hut und Brille vor historischer Wien-Kulisse" loading="lazy"/>
+                           src="./images/schnitzler-index2.png" loading="lazy">
+                           <xsl:attribute name="alt">
+                              <xsl:value-of select="local:translate('index.image_alt_foreground')"/>
+                           </xsl:attribute>
+                        </img>
                      </div>
                   </div>
                   <!-- Linke Spalte für den Text -->
                   <div class="col-md-6 order-1 order-md-2">
-                     <p class="lead">Arthur Schnitzler wurde 1862 in Wien in der Praterstraße
-                        geboren und starb 1931 in der Sternwartestraße, kaum zehn Kilometer
-                        entfernt. Er verfasste erfolgreiche Dramen, Romane und Erzählungen, die
-                        meist in Wien angesiedelt sind. Die Stadt verließ er nur für Reisen und
-                        Sommeraufenthalte. Dank seines <a
-                           href="https://schnitzler-tagebuch.acdh.oeaw.ac.at/" target="_blank" rel="noopener noreferrer" class="schnitzler-tagebuch-link"
-                           aria-label="Schnitzler Tagebuch - öffnet in neuem Fenster">Tagebuchs</a>, seiner <a
-                           href="https://schnitzler-briefe.acdh.oeaw.ac.at/" target="_blank" rel="noopener noreferrer"
-                           class="schnitzler-briefe-link"
-                           aria-label="Schnitzler Briefe - öffnet in neuem Fenster">Korrespondenz</a> und weiterer Dokumente verzeichnen wir derzeit über
-                        47.000 Aufenthalte an knapp 4950 Orten. Gegenwärtig gibt es für keine andere
-                        Person seiner Zeit so viele frei verfügbare und georeferenzierte Daten.
-                        Diese zeigen, wo Schnitzler sich bewegte, welche Häuser, Straßen,
-                        Stadtteile, Städte und Länder er kannte und welche ihm wichtig waren.
-                      Zugleich sieht man, wo
-                        er sich nie aufhielt.</p>
+                     <p class="lead">
+                        <xsl:value-of select="local:translate('index.intro_text')"/>
+                        <xsl:text> </xsl:text>
+                        <a href="https://schnitzler-tagebuch.acdh.oeaw.ac.at/" target="_blank" rel="noopener noreferrer" class="schnitzler-tagebuch-link">
+                           <xsl:attribute name="aria-label">
+                              <xsl:value-of select="concat(local:translate('index.intro_diary_link'), ' - ', local:translate('aria.opens_new_window'))"/>
+                           </xsl:attribute>
+                           <xsl:value-of select="local:translate('index.intro_diary_link')"/>
+                        </a>
+                        <xsl:text>, </xsl:text>
+                        <xsl:if test="$language = 'de'"><xsl:text>seiner </xsl:text></xsl:if>
+                        <xsl:if test="$language = 'en'"><xsl:text>his </xsl:text></xsl:if>
+                        <a href="https://schnitzler-briefe.acdh.oeaw.ac.at/" target="_blank" rel="noopener noreferrer" class="schnitzler-briefe-link">
+                           <xsl:attribute name="aria-label">
+                              <xsl:value-of select="concat(local:translate('index.intro_letters_link'), ' - ', local:translate('aria.opens_new_window'))"/>
+                           </xsl:attribute>
+                           <xsl:value-of select="local:translate('index.intro_letters_link')"/>
+                        </a>
+                        <xsl:text> </xsl:text>
+                        <xsl:value-of select="local:translate('index.intro_text_continued')"/>
+                     </p>
                   </div>
                </div>
             </div>
 
             <section class="container my-5">
                <div class="row g-3">
-                  <div class="col-12 col-md-6 col-lg-3">
-                     <div class="card content-item">
-                        <a href="gesamt.html" aria-label="Zur Karte der Aufenthaltstage">
-                           <img src="images/index/aufenthaltstage.png" class="card-img-top"
-                              alt="Interaktive Karte mit farbigen Punkten zeigt Häufigkeit der Aufenthalte Schnitzlers an verschiedenen Orten" loading="lazy"/>
-                        </a>
-                        <div class="card-body">
-                           <p class="card-text">An welchen Orten hielt sich Schnitzler am häufigsten
-                              auf? Eine Karte nach <a href="gesamt.html">Aufenthaltstagen</a>. </p>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="col-12 col-md-6 col-lg-3">
-                     <div class="card content-item">
-                        <a href="gesamt_typen.html" aria-label="Zu den Aufenthaltstypen">
-                           <img src="images/index/aufenthaltstypen.png" class="card-img-top"
-                              alt="Karte mit Filter-Optionen nach Ortstypen wie Museum, Theater, Café, Wohnung oder Park" loading="lazy"/>
-                        </a>
-                        <div class="card-body">
-                           <p class="card-text">In welchen Museen war Schnitzler? Eine schnelle
-                              Antwort gibt es bei den <a href="gesamt_typen.html"
-                                 >Aufenthaltstypen</a>. </p>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="col-12 col-md-6 col-lg-3">
-                     <div class="card content-item">
-                        <a href="listplace.html" aria-label="Zum Ortsverzeichnis">
-                           <img src="images/index/aufenthaltsorte.png" class="card-img-top"
-                              alt="Tabellarische Auflistung aller Orte mit Namen, Koordinaten, Aufenthaltstagen und bekannten Bewohnern" loading="lazy"/>
-                        </a>
-                        <div class="card-body">
-                           <p class="card-text">Schlagen Sie Aufenthaltsorte und ihre Bewohner_innen im
-                              <a href="listplace.html"
-                                 >Verzeichnis</a> nach. </p>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="col-12 col-md-6 col-lg-3">
-                     <div class="card content-item">
-                        <a href="listplace-missing.html" aria-label="Zu den nicht identifizierten Orten">
-                           <img src="images/index/fehlend.png" class="card-img-top"
-                              alt="Liste von Ortsnamen aus Tagebuch und Briefen, die noch keiner geografischen Position zugeordnet werden konnten" loading="lazy"/>
-                        </a>
-                        <div class="card-body">
-                           <p class="card-text">Nicht immer wurden wir fündig. Hier sind derzeit <a
-                                 href="listplace-missing.html">nicht identifizierte Orte</a>. </p>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="col-12 col-md-6 col-lg-3">
-                     <div class="card content-item">
-                        <a href="schnitzler-und-ich.html" aria-label="Zu Schnitzler und ich">
-                           <img src="images/index/schnitzlerundich.png" class="card-img-top"
-                              alt="Interaktive Funktion zur Berechnung, an welchem Ort Ihnen Schnitzler zeitlich am nächsten war" loading="lazy"/>
-                        </a>
-                        <div class="card-body">
-                           <p class="card-text">Wo Ihnen Schnitzler am nächsten stand, lässt sich
-                              über <a href="schnitzler-und-ich.html">Schnitzler und ich</a>
-                              abfragen. </p>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="col-12 col-md-6 col-lg-3">
-                     <div class="card content-item">
-                        <a href="tag.html" aria-label="Zur Tagesansicht">
-                           <img src="images/index/aufenthaltstag.png" class="card-img-top"
-                              alt="Datumsauswahl zur Anzeige aller Aufenthaltsorte an einem bestimmten Tag" loading="lazy"/>
-                        </a>
-                        <div class="card-body">
-                           <p class="card-text">Für jeden <a href="tag.html">einzelnen Tag</a> gibt
-                              es eine eigene Karte. </p>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="col-12 col-md-6 col-lg-3">
-                     <div class="card content-item">
-                        <a href="monat.html" aria-label="Zur Monatsansicht">
-                           <img src="images/index/aufenthaltsmonat.png" class="card-img-top"
-                              alt="Kalenderauswahl zur Visualisierung aller Orte eines bestimmten Monats über alle Jahre hinweg" loading="lazy"/>
-                        </a>
-                        <div class="card-body">
-                           <p class="card-text">Auch <a href="monat.html">Monate</a> des Kalenders können
-                              visualisiert werden. </p>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="col-12 col-md-6 col-lg-3">
-                     <div class="card content-item">
-                        <a href="jahr.html" aria-label="Zur Jahresansicht">
-                           <img src="images/index/aufenthaltsjahr.png" class="card-img-top"
-                              alt="Jahresauswahl zwischen 1862 und 1931 zur Anzeige aller Aufenthaltsorte eines bestimmten Jahres" loading="lazy"/>
-                        </a>
-                        <div class="card-body">
-                           <p class="card-text">Wo war Schnitzler in einem bestimmten <a
-                                 href="jahr.html">Jahr</a>?</p>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="col-12 col-md-6 col-lg-3">
-                     <div class="card content-item">
-                        <a href="dekade.html" aria-label="Zur Dekadenansicht">
-                           <img src="images/index/aufenthaltsdekade.png" class="card-img-top"
-                              alt="Auswahl nach Jahrzehnten zur Darstellung von Schnitzlers Reiseverhalten in verschiedenen Lebensabschnitten" loading="lazy"/>
-                        </a>
-                        <div class="card-body">
-                           <p class="card-text">Schnitzlers Verweilorte in den einzelnen <a href="dekade.html">Dekaden</a>.
-                           </p>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="col-12 col-md-6 col-lg-3">
-                     <div class="card content-item">
-                        <a href="uebersicht.html" aria-label="Zur Datenübersicht">
-                           <img src="images/index/uebersicht.png" class="card-img-top"
-                              alt="Diagramm zeigt zeitliche Verteilung der bekannten Aufenthaltsorte und Datendichte über die Jahre" loading="lazy"/>
-                        </a>
-                        <div class="card-body">
-                           <p class="card-text">Wie viele Standorte an bestimmten Tagen kennen wir?
-                              Eine <a href="uebersicht.html">Übersicht</a>. </p>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="col-12 col-md-6 col-lg-3">
-                     <div class="card content-item">
-                        <a href="zeitleiste.html" aria-label="Zur Zeitleiste">
-                           <img src="images/index/zeitleiste.png" class="card-img-top"
-                              alt="Chronologische Zeitleiste zeigt Aufenthaltsorte entlang einer Zeitachse von 1862 bis 1931" loading="lazy"/>
-                        </a>
-                        <div class="card-body">
-                           <p class="card-text">Die <a href="zeitleiste.html">Zeitleiste</a> zeigt
-                              die besuchten Orte chronologisch. </p>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="col-12 col-md-6 col-lg-3">
-                     <div class="card content-item">
-                        <a href="https://kepler.gl/demo/map?mapUrl=https://raw.githubusercontent.com/wiener-moderne-verein/wienerschnitzler-data/refs/heads/main/data/editions/geojson/wienerschnitzler_distinctPlaces.geojson" target="_blank" rel="noopener noreferrer" aria-label="Kepler.gl Karte - öffnet in neuem Fenster">
-                           <img src="images/index/keplergl.png" class="card-img-top"
-                              alt="Screenshot der Kepler.gl Web-Anwendung zur freien Datenexploration und -visualisierung" loading="lazy"/>
-                        </a>
-                        <div class="card-body">
-                           <p class="card-text">Eigene Ansichten der Daten können schnell mit
-                              <a href="https://kepler.gl/demo/map?mapUrl=https://raw.githubusercontent.com/wiener-moderne-verein/wienerschnitzler-data/refs/heads/main/data/editions/geojson/wienerschnitzler_distinctPlaces.geojson" target="_blank" rel="noopener noreferrer" aria-label="Kepler.gl Karte - öffnet in neuem Fenster">kepler.gl</a> erzeugt werden.</p>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="col-12 col-md-6 col-lg-3">
-                     <div class="card content-item">
-                        <a href="https://github.com/wiener-moderne-verein/wienerschnitzler-data" target="_blank" rel="noopener noreferrer" aria-label="GitHub Repository - öffnet in neuem Fenster">
-                           <img src="images/index/github.png" class="card-img-top"
-                              alt="GitHub Logo - Link zum öffentlichen Code-Repository mit TEI-XML Daten und GeoJSON Dateien" loading="lazy"/>
-                        </a>
-                        <div class="card-body">
-                           <p class="card-text">Für Menschen mit ausgeprägtem Spielbedürfnis: Alle Quelldaten stehen auf
-                               <a href="https://github.com/wiener-moderne-verein/wienerschnitzler-data" target="_blank" rel="noopener noreferrer" aria-label="GitHub Repository - öffnet in neuem Fenster">GitHub</a> zur freien
-                              Verfügung. </p>
-                        </div>
-                     </div>
-                  </div>
-                  
+                  <!-- Card: Aufenthaltstage -->
+                  <xsl:call-template name="index-card">
+                     <xsl:with-param name="href">gesamt.html</xsl:with-param>
+                     <xsl:with-param name="aria_key">index.card_days_aria</xsl:with-param>
+                     <xsl:with-param name="img_src">images/index/aufenthaltstage.png</xsl:with-param>
+                     <xsl:with-param name="img_alt_key">index.card_days_img_alt</xsl:with-param>
+                     <xsl:with-param name="text_before_key">index.card_days_text</xsl:with-param>
+                     <xsl:with-param name="link_text_key">index.card_days_link</xsl:with-param>
+                     <xsl:with-param name="text_after">.</xsl:with-param>
+                  </xsl:call-template>
+
+                  <!-- Card: Typen -->
+                  <xsl:call-template name="index-card">
+                     <xsl:with-param name="href">gesamt_typen.html</xsl:with-param>
+                     <xsl:with-param name="aria_key">index.card_types_aria</xsl:with-param>
+                     <xsl:with-param name="img_src">images/index/aufenthaltstypen.png</xsl:with-param>
+                     <xsl:with-param name="img_alt_key">index.card_types_img_alt</xsl:with-param>
+                     <xsl:with-param name="text_before_key">index.card_types_text</xsl:with-param>
+                     <xsl:with-param name="link_text_key">index.card_types_link</xsl:with-param>
+                     <xsl:with-param name="text_after">.</xsl:with-param>
+                  </xsl:call-template>
+
+                  <!-- Card: Verzeichnis -->
+                  <xsl:call-template name="index-card">
+                     <xsl:with-param name="href">listplace.html</xsl:with-param>
+                     <xsl:with-param name="aria_key">index.card_directory_aria</xsl:with-param>
+                     <xsl:with-param name="img_src">images/index/aufenthaltsorte.png</xsl:with-param>
+                     <xsl:with-param name="img_alt_key">index.card_directory_img_alt</xsl:with-param>
+                     <xsl:with-param name="text_before_key">index.card_directory_text</xsl:with-param>
+                     <xsl:with-param name="link_text_key">index.card_directory_link</xsl:with-param>
+                     <xsl:with-param name="text_after" select="concat(' ', local:translate('index.card_directory_text_after'))"/>
+                  </xsl:call-template>
+
+                  <!-- Card: Nicht identifizierte Orte -->
+                  <xsl:call-template name="index-card">
+                     <xsl:with-param name="href">listplace-missing.html</xsl:with-param>
+                     <xsl:with-param name="aria_key">index.card_missing_aria</xsl:with-param>
+                     <xsl:with-param name="img_src">images/index/fehlend.png</xsl:with-param>
+                     <xsl:with-param name="img_alt_key">index.card_missing_img_alt</xsl:with-param>
+                     <xsl:with-param name="text_before_key">index.card_missing_text</xsl:with-param>
+                     <xsl:with-param name="link_text_key">index.card_missing_link</xsl:with-param>
+                     <xsl:with-param name="text_after">.</xsl:with-param>
+                  </xsl:call-template>
+
+                  <!-- Card: Schnitzler und ich -->
+                  <xsl:call-template name="index-card">
+                     <xsl:with-param name="href">schnitzler-und-ich.html</xsl:with-param>
+                     <xsl:with-param name="aria_key">index.card_schnitzler_and_me_aria</xsl:with-param>
+                     <xsl:with-param name="img_src">images/index/schnitzlerundich.png</xsl:with-param>
+                     <xsl:with-param name="img_alt_key">index.card_schnitzler_and_me_img_alt</xsl:with-param>
+                     <xsl:with-param name="text_before_key">index.card_schnitzler_and_me_text</xsl:with-param>
+                     <xsl:with-param name="link_text_key">index.card_schnitzler_and_me_link</xsl:with-param>
+                     <xsl:with-param name="text_after" select="concat(' ', local:translate('index.card_schnitzler_and_me_text_after'))"/>
+                  </xsl:call-template>
+
+                  <!-- Card: Tag -->
+                  <xsl:call-template name="index-card">
+                     <xsl:with-param name="href">tag.html</xsl:with-param>
+                     <xsl:with-param name="aria_key">index.card_day_aria</xsl:with-param>
+                     <xsl:with-param name="img_src">images/index/aufenthaltstag.png</xsl:with-param>
+                     <xsl:with-param name="img_alt_key">index.card_day_img_alt</xsl:with-param>
+                     <xsl:with-param name="text_before_key">index.card_day_text</xsl:with-param>
+                     <xsl:with-param name="link_text_key">index.card_day_link</xsl:with-param>
+                     <xsl:with-param name="text_after" select="concat(' ', local:translate('index.card_day_text_after'))"/>
+                  </xsl:call-template>
+
+                  <!-- Card: Monat -->
+                  <xsl:call-template name="index-card">
+                     <xsl:with-param name="href">monat.html</xsl:with-param>
+                     <xsl:with-param name="aria_key">index.card_month_aria</xsl:with-param>
+                     <xsl:with-param name="img_src">images/index/aufenthaltsmonat.png</xsl:with-param>
+                     <xsl:with-param name="img_alt_key">index.card_month_img_alt</xsl:with-param>
+                     <xsl:with-param name="text_before_key">index.card_month_text</xsl:with-param>
+                     <xsl:with-param name="link_text_key">index.card_month_link</xsl:with-param>
+                     <xsl:with-param name="text_after" select="concat(' ', local:translate('index.card_month_text_after'))"/>
+                  </xsl:call-template>
+
+                  <!-- Card: Jahr -->
+                  <xsl:call-template name="index-card">
+                     <xsl:with-param name="href">jahr.html</xsl:with-param>
+                     <xsl:with-param name="aria_key">index.card_year_aria</xsl:with-param>
+                     <xsl:with-param name="img_src">images/index/aufenthaltsjahr.png</xsl:with-param>
+                     <xsl:with-param name="img_alt_key">index.card_year_img_alt</xsl:with-param>
+                     <xsl:with-param name="text_before_key">index.card_year_text</xsl:with-param>
+                     <xsl:with-param name="link_text_key">index.card_year_link</xsl:with-param>
+                     <xsl:with-param name="text_after" select="local:translate('index.card_year_text_after')"/>
+                  </xsl:call-template>
+
+                  <!-- Card: Dekade -->
+                  <xsl:call-template name="index-card">
+                     <xsl:with-param name="href">dekade.html</xsl:with-param>
+                     <xsl:with-param name="aria_key">index.card_decade_aria</xsl:with-param>
+                     <xsl:with-param name="img_src">images/index/aufenthaltsdekade.png</xsl:with-param>
+                     <xsl:with-param name="img_alt_key">index.card_decade_img_alt</xsl:with-param>
+                     <xsl:with-param name="text_before_key">index.card_decade_text</xsl:with-param>
+                     <xsl:with-param name="link_text_key">index.card_decade_link</xsl:with-param>
+                     <xsl:with-param name="text_after">.</xsl:with-param>
+                  </xsl:call-template>
+
+                  <!-- Card: Übersicht -->
+                  <xsl:call-template name="index-card">
+                     <xsl:with-param name="href">uebersicht.html</xsl:with-param>
+                     <xsl:with-param name="aria_key">index.card_overview_aria</xsl:with-param>
+                     <xsl:with-param name="img_src">images/index/uebersicht.png</xsl:with-param>
+                     <xsl:with-param name="img_alt_key">index.card_overview_img_alt</xsl:with-param>
+                     <xsl:with-param name="text_before_key">index.card_overview_text</xsl:with-param>
+                     <xsl:with-param name="link_text_key">index.card_overview_link</xsl:with-param>
+                     <xsl:with-param name="text_after">.</xsl:with-param>
+                  </xsl:call-template>
+
+                  <!-- Card: Zeitleiste -->
+                  <xsl:call-template name="index-card">
+                     <xsl:with-param name="href">zeitleiste.html</xsl:with-param>
+                     <xsl:with-param name="aria_key">index.card_timeline_aria</xsl:with-param>
+                     <xsl:with-param name="img_src">images/index/zeitleiste.png</xsl:with-param>
+                     <xsl:with-param name="img_alt_key">index.card_timeline_img_alt</xsl:with-param>
+                     <xsl:with-param name="text_before_key">index.card_timeline_text</xsl:with-param>
+                     <xsl:with-param name="link_text_key">index.card_timeline_link</xsl:with-param>
+                     <xsl:with-param name="text_after" select="concat(' ', local:translate('index.card_timeline_text_after'))"/>
+                  </xsl:call-template>
+
+                  <!-- Card: Kepler.gl -->
+                  <xsl:call-template name="index-card">
+                     <xsl:with-param name="href">https://kepler.gl/demo/map?mapUrl=https://raw.githubusercontent.com/wiener-moderne-verein/wienerschnitzler-data/refs/heads/main/data/editions/geojson/wienerschnitzler_distinctPlaces.geojson</xsl:with-param>
+                     <xsl:with-param name="aria_key">index.card_kepler_aria</xsl:with-param>
+                     <xsl:with-param name="img_src">images/index/keplergl.png</xsl:with-param>
+                     <xsl:with-param name="img_alt_key">index.card_kepler_img_alt</xsl:with-param>
+                     <xsl:with-param name="text_before_key">index.card_kepler_text</xsl:with-param>
+                     <xsl:with-param name="link_text_key">index.card_kepler_link</xsl:with-param>
+                     <xsl:with-param name="text_after" select="concat(' ', local:translate('index.card_kepler_text_after'))"/>
+                     <xsl:with-param name="external" select="true()"/>
+                  </xsl:call-template>
+
+                  <!-- Card: GitHub -->
+                  <xsl:call-template name="index-card">
+                     <xsl:with-param name="href">https://github.com/wiener-moderne-verein/wienerschnitzler-data</xsl:with-param>
+                     <xsl:with-param name="aria_key">index.card_github_aria</xsl:with-param>
+                     <xsl:with-param name="img_src">images/index/github.png</xsl:with-param>
+                     <xsl:with-param name="img_alt_key">index.card_github_img_alt</xsl:with-param>
+                     <xsl:with-param name="text_before_key">index.card_github_text</xsl:with-param>
+                     <xsl:with-param name="link_text_key">index.card_github_link</xsl:with-param>
+                     <xsl:with-param name="text_after" select="concat(' ', local:translate('index.card_github_text_after'))"/>
+                     <xsl:with-param name="external" select="true()"/>
+                  </xsl:call-template>
+
                </div>
             </section>
             </main>

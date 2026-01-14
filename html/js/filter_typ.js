@@ -1,5 +1,6 @@
 import { getColorByType } from './fuer-alle-karten.js';
 import { displayFilteredGeoJsonType } from './script_gesamt_typen.js';
+import { t } from './translations.js';
 
 // Globale Variable, in der alle existierenden Typen (als Strings) gespeichert werden.
 let allTypes = new Set();
@@ -85,7 +86,7 @@ export function createFilterType(features) {
     
     // "(alle)"-Button erstellen
     const allButton = document.createElement('button');
-    allButton.innerText = "(alle)";
+    allButton.innerText = t('location.all');
     allButton.classList.add('btn-filter', 'btn-filter-sm', 'm-1');
     allButton.style.backgroundColor = "#ddd";
     allButton.style.color = "black";
@@ -100,7 +101,7 @@ export function createFilterType(features) {
     
     // "(keine)"-Button erstellen
     const noneButton = document.createElement('button');
-    noneButton.innerText = "(keine)";
+    noneButton.innerText = t('filter.none');
     noneButton.classList.add('btn-filter', 'btn-filter-sm', 'm-1');
     noneButton.style.backgroundColor = "#ddd";
     noneButton.style.color = "black";

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+    xmlns:tei="http://www.tei-c.org/ns/1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:local="http://dse-static.foo.bar" version="2.0" exclude-result-prefixes="xsl tei xs local">
+    <xsl:output encoding="UTF-8" media-type="text/html" method="html" version="5.0" indent="yes"
+        omit-xml-declaration="yes"/>
+    <xsl:include href="./partials/shared.xsl"/>
+    <xsl:include href="./partials/html_navbar.xsl"/>
+    <xsl:include href="./partials/html_head.xsl"/>
+    <xsl:include href="./partials/html_footer.xsl"/>
+    <xsl:template match="/">
+        <html lang="de" class="h-100">
+            <head>
+                <meta charset="UTF-8"/>
+                <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+                <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+                <xsl:variable name="doc_title">
+                    <xsl:text>Karte der Aufenthaltstage | Wiener Schnitzler</xsl:text>
+                </xsl:variable>
+                <xsl:variable name="doc_description">
+                    <xsl:text>Interaktive Karte mit allen Aufenthaltstagen Arthur Schnitzlers nach Häufigkeit. Visualisierung der über 47.000 georeferenzierten Aufenthalte an knapp 4950 Orten.</xsl:text>
+                </xsl:variable>
+                <xsl:call-template name="html_head">
+                    <xsl:with-param name="html_title" select="$doc_title"/>
+                    <xsl:with-param name="page_description" select="$doc_description"/>
+                    <xsl:with-param name="page_url" select="concat($base_url, '/gesamt.html')"/>
+                </xsl:call-template>
+            </head>
+            <body class="h-100">
+                <xsl:call-template name="nav_bar"/>
+                <main class="w-100">
+                    <div class="container-fluid my-4" id="main-content">
+                        <h1>Anzahl der Aufenthalte Schnitzlers</h1>
+                        <div class="map-container-wrapper">
+                            <div id="map-large"> </div>
+                            <div class="filter-column">
+                                <div class="mb-4">
+                                    <h3 class="h5 mb-2">Aufenthaltstage</h3>
+                                    <div id="legend"/>
+                                    <div class="info-text small mt-2">
+                                        <p>Die Farbe des Punkts zeigt die Zahl der insgesamt nachgewiesenen Aufenthaltstage an diesem Ort.</p>
+                                    </div>
+                                </div>
+                                <div class="mb-4">
+                                    <h3 class="h5 mb-2">Zeitraum (Jahre)</h3>
+                                    <div id="filter-time"> </div>
+                                </div>
+                                <div class="mb-4">
+                                    <h3 class="h5 mb-2">Ortsauswahl</h3>
+                                    <div class="mb-3">
+                                        <label for="location-select" class="form-label">Ort auswählen:</label>
+                                        <select id="location-select" class="form-select form-select-sm">
+                                            <option value="" disabled="true">Wähle einen Ort</option>
+                                        </select>
+                                        <div class="info-text small">
+                                            <p>Das Auswahlfeld mit den Ortsnamen ist kein Filter, sondern fokussiert auf den jeweiligen Ort.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="info-text small mt-3">
+                                    <p>Auf dieser Seite werden alle Tage visualisiert, an denen sich Schnitzler an einem bestimmten Ort aufhielt. Durch die Auswahl eines Punktes werden genauere Informationen und Links angezeigt.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+                <xsl:call-template name="html_footer"/>
+                <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"/>
+                <script type="module" src="./js/script_gesamt.js"/>
+            </body>
+        </html>
+    </xsl:template>
+</xsl:stylesheet>

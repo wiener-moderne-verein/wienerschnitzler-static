@@ -1,6 +1,7 @@
 import { displayFilteredGeoJsonImportance } from './script_gesamt.js';
 import { displayFilteredGeoJsonType } from './script_gesamt_typen.js';
 import { map } from './fuer-alle-karten.js';
+import { t } from './translations.js';
 
 const PROJEKTFARBE = '#6F5106';
 const INACTIVE_COLOR = '#ddd';
@@ -105,7 +106,7 @@ export function createFilterTime(features) {
 
   // "Alle"-Toggle-Button
   const allButton = document.createElement('button');
-  allButton.innerText = 'Alle';
+  allButton.innerText = t('filter.all');
   allButton.classList.add('btn-filter', 'btn-filter-sm', 'm-1');
   const allSelected = selectedYears.size === allYears.size;
   allButton.style.backgroundColor = allSelected ? PROJEKTFARBE : INACTIVE_COLOR;
@@ -122,7 +123,7 @@ export function createFilterTime(features) {
 
   // "Keine"-Toggle-Button
   const noneButton = document.createElement('button');
-  noneButton.innerText = 'Keine';
+  noneButton.innerText = t('filter.none');
   noneButton.classList.add('btn-filter', 'btn-filter-sm', 'm-1');
   const noneSelected = selectedYears.size === 0;
   noneButton.style.backgroundColor = noneSelected ? PROJEKTFARBE : INACTIVE_COLOR;

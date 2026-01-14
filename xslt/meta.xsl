@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:tei="http://www.tei-c.org/ns/1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    xmlns:mam="whatever" version="2.0" exclude-result-prefixes="xsl tei xs">
-    <xsl:output encoding="UTF-8" media-type="text/html" method="html" version="5.0" indent="yes"
-        omit-xml-declaration="yes"/>
+    xmlns:mam="whatever" xmlns:local="http://dse-static.foo.bar" version="2.0" exclude-result-prefixes="xsl tei xs local">
+    <xsl:import href="./partials/shared.xsl"/>
     <xsl:import href="./partials/html_navbar.xsl"/>
     <xsl:import href="./partials/html_head.xsl"/>
     <xsl:import href="./partials/html_footer.xsl"/>
     <xsl:import href="./partials/biblStruct-output.xsl"/>
+    <xsl:output encoding="UTF-8" media-type="text/html" method="html" version="5.0" indent="yes"
+        omit-xml-declaration="yes"/>
     <xsl:template match="/">
         <xsl:variable name="doc_title">
             <xsl:value-of select="descendant::tei:titleStmt/tei:title[@level = 'a'][1]/text()"/>
@@ -25,7 +26,10 @@
         <xsl:variable name="filename">
             <xsl:value-of select="replace(tokenize(document-uri(/), '/')[last()], '.xml', '.html')"/>
         </xsl:variable>
-        <html lang="de" class="h-100">
+        <html class="h-100">
+            <xsl:attribute name="lang">
+                <xsl:value-of select="$language"/>
+            </xsl:attribute>
             <head>
                 <xsl:call-template name="html_head">
                     <xsl:with-param name="html_title" select="$doc_title"/>
@@ -52,7 +56,12 @@
                                             <li id="footnote-{$zaehler}" value="{$zaehler}">
                                                 <xsl:apply-templates/>
                                                 <xsl:text> </xsl:text>
-                                                <a href="#note-ref-{$zaehler}" aria-label="Zurück zum Text">↩</a>
+                                                <a href="#note-ref-{$zaehler}">
+                                                    <xsl:attribute name="aria-label">
+                                                        <xsl:value-of select="local:translate('meta.footnote_return')"/>
+                                                    </xsl:attribute>
+                                                    <xsl:text>↩</xsl:text>
+                                                </a>
                                             </li>
                                         </xsl:for-each>
                                     </ol>
@@ -145,7 +154,7 @@
                     <xsl:text>noopener noreferrer</xsl:text>
                 </xsl:attribute>
                 <xsl:attribute name="aria-label">
-                    <xsl:value-of select="concat(., ' - öffnet in neuem Fenster')"/>
+                    <xsl:value-of select="concat(., ' - ', local:translate('meta.external_link_label'))"/>
                 </xsl:attribute>
             </xsl:if>
             <xsl:apply-templates/>

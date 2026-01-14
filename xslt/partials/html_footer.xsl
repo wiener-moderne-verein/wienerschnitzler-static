@@ -1,24 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+    xmlns:local="http://dse-static.foo.bar"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
     exclude-result-prefixes="#all" version="2.0">
+    <xsl:import href="shared.xsl"/>
+
     <xsl:template name="html_footer">
         <footer class="text-center py-4 mt-5" role="contentinfo">
             <div class="container mt-5">
                 <div class="row justify-content-between">
-                    <p class="mt-2" lang="de">Zitiervorschlag: Martin Anton Müller, Laura Untner: Wiener
-                        Schnitzler – Schnitzlers Wien. Eine geografische Verortung von Arthur
-                        Schnitzler. Wien, Berlin 2025, https://wienerschnitzler.org/ (Zugriff am
-                        <i>Datum</i>).</p>
+                    <p class="mt-2">
+                        <xsl:attribute name="lang">
+                            <xsl:value-of select="$language"/>
+                        </xsl:attribute>
+                        <xsl:value-of select="local:translate('footer.citation_label')"/>
+                        <xsl:text> </xsl:text>
+                        <xsl:value-of select="local:translate('footer.citation_text')"/>
+                        <xsl:text> </xsl:text>
+                        <i><xsl:value-of select="local:translate('footer.citation_date')"/></i>
+                        <xsl:text>).</xsl:text>
+                    </p>
                     <div class="col-md-5 text-start mb-4">
-                        <img src="./images/wmv-logo-white.jpg" alt="Logo des Wiener Moderne Vereins"
-                            class="img-fluid my-2" width="150" height="auto"/>
-                        <p>Ein Projekt von: Wiener Moderne Verein</p>
+                        <img src="./images/wmv-logo-white.jpg" class="img-fluid my-2" width="150" height="auto">
+                            <xsl:attribute name="alt">
+                                <xsl:value-of select="local:translate('footer.wmv_alt')"/>
+                            </xsl:attribute>
+                        </img>
+                        <p><xsl:value-of select="local:translate('footer.wmv_text')"/></p>
                     </div>
                     <div class="col-md-5 text-end mb-4">
-                        <img src="./images/Stadt_Wien_Kultur_pos_rgb.jpg"
-                            alt="Logo der Kulturabteilung der Stadt Wien" class="img-fluid my-2" width="150" height="auto"/>
-                        <p>Gefördert von der Stadt Wien Kultur (2024–2025)</p>
+                        <img src="./images/Stadt_Wien_Kultur_pos_rgb.jpg" class="img-fluid my-2" width="150" height="auto">
+                            <xsl:attribute name="alt">
+                                <xsl:value-of select="local:translate('footer.stadt_wien_alt')"/>
+                            </xsl:attribute>
+                        </img>
+                        <p><xsl:value-of select="local:translate('footer.stadt_wien_text')"/></p>
                     </div>
                 </div>
             </div>

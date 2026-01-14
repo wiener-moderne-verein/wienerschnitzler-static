@@ -6,6 +6,22 @@
     xmlns:local="http://dse-static.foo.bar"
     exclude-result-prefixes="xs"
     version="2.0">
+    <xsl:import href="params.xsl"/>
+
+    <!-- Translation lookup function -->
+    <xsl:function name="local:translate" as="xs:string">
+        <xsl:param name="key" as="xs:string"/>
+        <xsl:variable name="translation" select="$translations/text[@key=$key]"/>
+        <xsl:choose>
+            <xsl:when test="$translation">
+                <xsl:value-of select="$translation"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:value-of select="concat('[', $key, ']')"/>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:function>
+
     <xsl:function name="local:makeId" as="xs:string">
         <xsl:param name="currentNode" as="node()"/>
         <xsl:variable name="nodeCurrNr">

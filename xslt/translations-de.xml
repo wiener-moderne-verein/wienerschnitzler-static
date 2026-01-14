@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<translations lang="de">
+    <!-- Navigation -->
+    <text key="nav.skip_to_content">Zum Hauptinhalt springen</text>
+    <text key="nav.site_title">Wiener Schnitzler</text>
+    <text key="nav.toggle_menu">Navigationsmenü öffnen</text>
+
+    <!-- Navigation: Projekt -->
+    <text key="nav.project">Projekt</text>
+    <text key="nav.project.about">Über das Projekt</text>
+    <text key="nav.project.faqs">Antworten auf häufige Fragen</text>
+    <text key="nav.project.bibliography">Auswahlbibliografie</text>
+    <text key="nav.project.contact">Kontakt</text>
+    <text key="nav.project.imprint">Impressum</text>
+
+    <!-- Navigation: Orte -->
+    <text key="nav.places">Orte</text>
+    <text key="nav.places.days">Aufenthaltstage</text>
+    <text key="nav.places.types">Typen</text>
+    <text key="nav.places.directory">Verzeichnis</text>
+    <text key="nav.places.missing">Nicht identifizierte Orte</text>
+    <text key="nav.places.schnitzler_and_me">Schnitzler und ich</text>
+    <text key="nav.places.kepler">Kepler.gl</text>
+
+    <!-- Navigation: Zeiträume -->
+    <text key="nav.periods">Zeiträume</text>
+    <text key="nav.periods.day">Einzelner Tag</text>
+    <text key="nav.periods.month">Monat</text>
+    <text key="nav.periods.year">Jahr</text>
+    <text key="nav.periods.decade">Dekade</text>
+    <text key="nav.periods.overview">Übersicht</text>
+    <text key="nav.periods.timeline">Zeitleiste</text>
+
+    <!-- Navigation: Schnitzler -->
+    <text key="nav.schnitzler">Schnitzler</text>
+    <text key="nav.schnitzler.wikipedia">Wikipedia</text>
+    <text key="nav.schnitzler.wien_wiki">Wien Geschichte Wiki</text>
+    <text key="nav.schnitzler.diary">Tagebuch (1879–1931)</text>
+    <text key="nav.schnitzler.letters">Briefe (1888–1931)</text>
+    <text key="nav.schnitzler.works">Werke digital (1905–1931)</text>
+    <text key="nav.schnitzler.microfilms">Mikrofilme</text>
+    <text key="nav.schnitzler.newspapers">Archiv der Zeitungsausschnitte</text>
+    <text key="nav.schnitzler.interviews">Interviews, Meinungen, Proteste</text>
+    <text key="nav.schnitzler.bahr">Korrespondenz mit Hermann Bahr</text>
+    <text key="nav.schnitzler.chronicle">Chronik</text>
+    <text key="nav.schnitzler.readings">Lektüren</text>
+    <text key="nav.schnitzler.pollaczek">Pollaczek: Schnitzler und ich</text>
+    <text key="nav.schnitzler.locations">Aufenthaltsorte</text>
+    <text key="nav.schnitzler.pmb">PMB – Personen der Moderne</text>
+
+    <!-- Navigation: Language -->
+    <text key="nav.language">Sprache</text>
+    <text key="nav.language.german">Deutsch</text>
+    <text key="nav.language.english">English</text>
+
+    <!-- Index Page -->
+    <text key="index.title">Wiener Schnitzler – Schnitzlers Wien</text>
+    <text key="index.meta_description">Digitale Karte von Arthur Schnitzlers Aufenthalten in Wien (1862-1931). Über 47.000 georeferenzierte Aufenthalte an knapp 4950 Orten basierend auf Tagebuch und Korrespondenz. Ein Digital Humanities Projekt zur geografischen Verortung seiner Wege durch die Stadt.</text>
+    <text key="index.keywords">Arthur Schnitzler, Wien, Karte, Digital Humanities, Geolokalisierung, Literatur, Tagebuch, Georeferenzierung, Wiener Moderne, Kartierung</text>
+    <text key="index.main_title">Wiener Schnitzler – Schnitzlers Wien</text>
+    <text key="index.subtitle">Eine geografische Verortung durch Martin Anton Müller und Laura Untner</text>
+    <text key="index.image_alt_background">Historische Schwarzweiß-Ansicht von Wien, etwa um 1900, mit Blick auf die Innenstadt und Donaukanal</text>
+    <text key="index.image_alt_foreground">Stilisierte Silhouette von Arthur Schnitzler mit Hut und Brille vor historischer Wien-Kulisse</text>
+    <text key="index.intro_text">Arthur Schnitzler wurde 1862 in Wien in der Praterstraße geboren und starb 1931 in der Sternwartestraße, kaum zehn Kilometer entfernt. Er verfasste erfolgreiche Dramen, Romane und Erzählungen, die meist in Wien angesiedelt sind. Die Stadt verließ er nur für Reisen und Sommeraufenthalte. Dank seines</text>
+    <text key="index.intro_diary_link">Tagebuchs</text>
+    <text key="index.intro_letters_link">Korrespondenz</text>
+    <text key="index.intro_text_continued">und weiterer Dokumente verzeichnen wir derzeit über 47.000 Aufenthalte an knapp 4950 Orten. Gegenwärtig gibt es für keine andere Person seiner Zeit so viele frei verfügbare und georeferenzierte Daten. Diese zeigen, wo Schnitzler sich bewegte, welche Häuser, Straßen, Stadtteile, Städte und Länder er kannte und welche ihm wichtig waren. Zugleich sieht man, wo er sich nie aufhielt.</text>
+
+    <!-- Index Page: Cards -->
+    <text key="index.card_days_aria">Zur Karte der Aufenthaltstage</text>
+    <text key="index.card_days_img_alt">Interaktive Karte mit farbigen Punkten zeigt Häufigkeit der Aufenthalte Schnitzlers an verschiedenen Orten</text>
+    <text key="index.card_days_text">An welchen Orten hielt sich Schnitzler am häufigsten auf? Eine Karte nach</text>
+    <text key="index.card_days_link">Aufenthaltstagen</text>
+
+    <text key="index.card_types_aria">Zu den Aufenthaltstypen</text>
+    <text key="index.card_types_img_alt">Karte mit Filter-Optionen nach Ortstypen wie Museum, Theater, Café, Wohnung oder Park</text>
+    <text key="index.card_types_text">In welchen Museen war Schnitzler? Eine schnelle Antwort gibt es bei den</text>
+    <text key="index.card_types_link">Aufenthaltstypen</text>
+
+    <text key="index.card_directory_aria">Zum Ortsverzeichnis</text>
+    <text key="index.card_directory_img_alt">Tabellarische Auflistung aller Orte mit Namen, Koordinaten, Aufenthaltstagen und bekannten Bewohnern</text>
+    <text key="index.card_directory_text">Schlagen Sie Aufenthaltsorte und ihre Bewohner_innen im</text>
+    <text key="index.card_directory_link">Verzeichnis</text>
+    <text key="index.card_directory_text_after">nach.</text>
+
+    <text key="index.card_missing_aria">Zu den nicht identifizierten Orten</text>
+    <text key="index.card_missing_img_alt">Liste von Ortsnamen aus Tagebuch und Briefen, die noch keiner geografischen Position zugeordnet werden konnten</text>
+    <text key="index.card_missing_text">Nicht immer wurden wir fündig. Hier sind derzeit</text>
+    <text key="index.card_missing_link">nicht identifizierte Orte</text>
+
+    <text key="index.card_schnitzler_and_me_aria">Zu Schnitzler und ich</text>
+    <text key="index.card_schnitzler_and_me_img_alt">Interaktive Funktion zur Berechnung, an welchem Ort Ihnen Schnitzler zeitlich am nächsten war</text>
+    <text key="index.card_schnitzler_and_me_text">Wo Ihnen Schnitzler am nächsten stand, lässt sich über</text>
+    <text key="index.card_schnitzler_and_me_link">Schnitzler und ich</text>
+    <text key="index.card_schnitzler_and_me_text_after">abfragen.</text>
+
+    <text key="index.card_day_aria">Zur Tagesansicht</text>
+    <text key="index.card_day_img_alt">Datumsauswahl zur Anzeige aller Aufenthaltsorte an einem bestimmten Tag</text>
+    <text key="index.card_day_text">Für jeden</text>
+    <text key="index.card_day_link">einzelnen Tag</text>
+    <text key="index.card_day_text_after">gibt es eine eigene Karte.</text>
+
+    <text key="index.card_month_aria">Zur Monatsansicht</text>
+    <text key="index.card_month_img_alt">Kalenderauswahl zur Visualisierung aller Orte eines bestimmten Monats über alle Jahre hinweg</text>
+    <text key="index.card_month_text">Auch</text>
+    <text key="index.card_month_link">Monate</text>
+    <text key="index.card_month_text_after">des Kalenders können visualisiert werden.</text>
+
+    <text key="index.card_year_aria">Zur Jahresansicht</text>
+    <text key="index.card_year_img_alt">Jahresauswahl zwischen 1862 und 1931 zur Anzeige aller Aufenthaltsorte eines bestimmten Jahres</text>
+    <text key="index.card_year_text">Wo war Schnitzler in einem bestimmten</text>
+    <text key="index.card_year_link">Jahr</text>
+    <text key="index.card_year_text_after">?</text>
+
+    <text key="index.card_decade_aria">Zur Dekadenansicht</text>
+    <text key="index.card_decade_img_alt">Auswahl nach Jahrzehnten zur Darstellung von Schnitzlers Reiseverhalten in verschiedenen Lebensabschnitten</text>
+    <text key="index.card_decade_text">Schnitzlers Verweilorte in den einzelnen</text>
+    <text key="index.card_decade_link">Dekaden</text>
+
+    <text key="index.card_overview_aria">Zur Datenübersicht</text>
+    <text key="index.card_overview_img_alt">Diagramm zeigt zeitliche Verteilung der bekannten Aufenthaltsorte und Datendichte über die Jahre</text>
+    <text key="index.card_overview_text">Wie viele Standorte an bestimmten Tagen kennen wir? Eine</text>
+    <text key="index.card_overview_link">Übersicht</text>
+
+    <text key="index.card_timeline_aria">Zur Zeitleiste</text>
+    <text key="index.card_timeline_img_alt">Chronologische Zeitleiste zeigt Aufenthaltsorte entlang einer Zeitachse von 1862 bis 1931</text>
+    <text key="index.card_timeline_text">Die</text>
+    <text key="index.card_timeline_link">Zeitleiste</text>
+    <text key="index.card_timeline_text_after">zeigt die besuchten Orte chronologisch.</text>
+
+    <text key="index.card_kepler_aria">Kepler.gl Karte - öffnet in neuem Fenster</text>
+    <text key="index.card_kepler_img_alt">Screenshot der Kepler.gl Web-Anwendung zur freien Datenexploration und -visualisierung</text>
+    <text key="index.card_kepler_text">Eigene Ansichten der Daten können schnell mit</text>
+    <text key="index.card_kepler_link">kepler.gl</text>
+    <text key="index.card_kepler_text_after">erzeugt werden.</text>
+
+    <text key="index.card_github_aria">GitHub Repository - öffnet in neuem Fenster</text>
+    <text key="index.card_github_img_alt">GitHub Logo - Link zum öffentlichen Code-Repository mit TEI-XML Daten und GeoJSON Dateien</text>
+    <text key="index.card_github_text">Für Menschen mit ausgeprägtem Spielbedürfnis: Alle Quelldaten stehen auf</text>
+    <text key="index.card_github_link">GitHub</text>
+    <text key="index.card_github_text_after">zur freien Verfügung.</text>
+
+    <!-- Footer -->
+    <text key="footer.citation_label">Zitiervorschlag:</text>
+    <text key="footer.citation_text">Martin Anton Müller, Laura Untner: Wiener Schnitzler – Schnitzlers Wien. Eine geografische Verortung von Arthur Schnitzler. Wien, Berlin 2025, https://wienerschnitzler.org/ (Zugriff am</text>
+    <text key="footer.citation_date">Datum</text>
+    <text key="footer.wmv_alt">Logo des Wiener Moderne Vereins</text>
+    <text key="footer.wmv_text">Ein Projekt von: Wiener Moderne Verein</text>
+    <text key="footer.stadt_wien_alt">Logo der Kulturabteilung der Stadt Wien</text>
+    <text key="footer.stadt_wien_text">Gefördert von der Stadt Wien Kultur (2024–2025)</text>
+
+    <!-- Aria Labels -->
+    <text key="aria.main_navigation">Hauptnavigation</text>
+    <text key="aria.opens_new_window">öffnet in neuem Fenster</text>
+
+    <!-- gesamt.xsl - Map of stays -->
+    <text key="gesamt.title">Karte der Aufenthaltstage | Wiener Schnitzler</text>
+    <text key="gesamt.meta_description">Interaktive Karte mit allen Aufenthaltstagen Arthur Schnitzlers nach Häufigkeit. Visualisierung der über 47.000 georeferenzierten Aufenthalte an knapp 4950 Orten.</text>
+    <text key="gesamt.heading">Anzahl der Aufenthalte Schnitzlers</text>
+    <text key="gesamt.legend_title">Aufenthaltstage</text>
+    <text key="gesamt.legend_info">Die Farbe des Punkts zeigt die Zahl der insgesamt nachgewiesenen Aufenthaltstage an diesem Ort.</text>
+    <text key="gesamt.filter_time">Zeitraum (Jahre)</text>
+    <text key="gesamt.location_select_title">Ortsauswahl</text>
+    <text key="gesamt.location_select_label">Ort auswählen:</text>
+    <text key="gesamt.location_select_placeholder">Wähle einen Ort</text>
+    <text key="gesamt.location_select_info">Das Auswahlfeld mit den Ortsnamen ist kein Filter, sondern fokussiert auf den jeweiligen Ort.</text>
+    <text key="gesamt.page_info">Auf dieser Seite werden alle Tage visualisiert, an denen sich Schnitzler an einem bestimmten Ort aufhielt. Durch die Auswahl eines Punktes werden genauere Informationen und Links angezeigt.</text>
+
+    <!-- tag.xsl - Daily view -->
+    <text key="tag.title">Aufenthalte nach Einzeltagen | Wiener Schnitzler</text>
+    <text key="tag.meta_description">Durchsuchen Sie Schnitzlers Aufenthaltsorte Tag für Tag. Detaillierte Kartendarstellung für jeden einzelnen Tag zwischen 1862 und 1931.</text>
+    <text key="tag.heading">Tag für Tag</text>
+    <text key="tag.prev_day">Vorheriger Tag</text>
+    <text key="tag.next_day">Nächster Tag</text>
+    <text key="tag.line_toggle_label">Verbindungslinie</text>
+    <text key="tag.line_toggle_info">ein-/ausschalten. Sie macht den geografischen Raum besser sichtbar. Sie stellt <strong>nicht</strong> die Reihenfolge dar, in der die Orte aufgesucht wurden.</text>
+    <text key="tag.page_info">Auf dieser Seite werden die einzelnen Tage in Schnitzlers Leben visualisiert.</text>
+
+    <!-- listplace.xsl - Places directory -->
+    <text key="listplace.title">Verzeichnis der Aufenthaltsorte | Wiener Schnitzler</text>
+    <text key="listplace.meta_description">Durchsuchbares Verzeichnis aller knapp 4950 Aufenthaltsorte Arthur Schnitzlers mit Bewohnerinnen und Bewohnern, Koordinaten und Häufigkeiten.</text>
+    <text key="listplace.table_placename">Ortsname</text>
+    <text key="listplace.table_affiliations">Zugehörigkeiten</text>
+    <text key="listplace.table_mentions">Erwähnungen</text>
+    <text key="listplace.table_type">Typ</text>
+    <text key="listplace.table_residents">Wohn- und Arbeitsort</text>
+    <text key="listplace.table_lat">lat</text>
+    <text key="listplace.table_lng">lng</text>
+    <text key="listplace.table_link">linkToEntity</text>
+
+    <!-- Common UI elements -->
+    <text key="ui.select_option">Auswählen</text>
+    <text key="ui.loading">Lädt...</text>
+    <text key="ui.no_results">Keine Ergebnisse</text>
+    <text key="ui.show_more">Mehr anzeigen</text>
+    <text key="ui.show_less">Weniger anzeigen</text>
+
+    <!-- meta.xsl - Dynamic content pages -->
+    <text key="meta.external_link_label">öffnet in neuem Fenster</text>
+    <text key="meta.footnote_return">Zurück zum Text</text>
+
+    <!-- JavaScript translations -->
+    <text key="js.filter.all">Alle</text>
+    <text key="js.filter.none">Keine</text>
+    <text key="js.location.all">(alle)</text>
+
+    <!-- AI Translation Notice -->
+    <text key="ai.notice.title">Automatische Übersetzung</text>
+    <text key="ai.notice.message">Diese englische Version wurde automatisch mit KI-Unterstützung übersetzt.</text>
+</translations>
