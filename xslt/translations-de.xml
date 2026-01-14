@@ -222,4 +222,23 @@
     <text key="gesamt_typen.location_select_placeholder">Wähle einen Ort</text>
     <text key="gesamt_typen.location_select_info">Das Auswahlfeld mit den Ortsnamen ist kein Filter, sondern fokussiert auf den jeweiligen Ort.</text>
     <text key="gesamt_typen.page_info">Auf dieser Seite werden die Aufenthaltsorte nach Arten von Orten visualisiert. Manche Orte lassen sich nicht ausreichend sauber voneinander unterscheiden (»Café-Restaurant«). Im Zweifel empfiehlt sich, besser großzügig ähnliche Typen auszuwählen.</text>
+
+    <!-- schnitzler-und-ich.xsl - Interactive location feature -->
+    <text key="schnitzler_und_ich.title">Arthur Schnitzler und ich</text>
+    <text key="schnitzler_und_ich.meta_description">Wo stand Ihnen Schnitzler am nächsten? – Finden Sie heraus, welche Orte in Wien Arthur Schnitzler in Ihrer Nähe besucht hat</text>
+    <text key="schnitzler_und_ich.heading">Wo stand Ihnen Schnitzler am nächsten?</text>
+    <text key="schnitzler_und_ich.use_location">Meinen Standort verwenden</text>
+    <text key="schnitzler_und_ich.or_enter_coords">Oder Koordinaten eingeben:</text>
+    <text key="schnitzler_und_ich.latitude">Breitengrad:</text>
+    <text key="schnitzler_und_ich.longitude">Längengrad:</text>
+    <text key="schnitzler_und_ich.find_nearest">Nächsten Ort finden</text>
+    <text key="schnitzler_und_ich.result_heading">Ergebnis:</text>
+    <text key="schnitzler_und_ich.result_instruction">Bitte Standort teilen auswählen oder Koordinaten eingeben. (Nein, wir interessieren uns nicht dafür, wo Sie sich herumtreiben.)</text>
+    <text key="schnitzler_und_ich.new_query">Neuen Ort abfragen</text>
+    <text key="schnitzler_und_ich.share_bluesky_label">Auf Bluesky teilen - öffnet in neuem Fenster</text>
+
+    <!-- listplace-missing.xsl - Unidentified places -->
+    <text key="listplace_missing.title">Nicht identifizierte Aufenthaltsorte</text>
+    <text key="listplace_missing.meta_description">Nicht identifizierte Aufenthaltsorte Arthur Schnitzlers – Ortsnamen aus Tagebuch und Briefen, die noch keiner genauen geografischen Position zugeordnet werden konnten.</text>
+    <text key="listplace_missing.intro">Die folgenden Orte konnten wir bislang nur ungenau auf der Landkarte verorten. Wir freuen uns über entsprechende Hinweise, die zur Lösung beitragen können.</text>
 </translations>

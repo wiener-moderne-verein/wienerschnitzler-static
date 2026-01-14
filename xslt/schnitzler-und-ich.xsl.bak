@@ -1,88 +1,70 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:tei="http://www.tei-c.org/ns/1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    xmlns:local="http://dse-static.foo.bar"
-    version="2.0" exclude-result-prefixes="xsl tei xs local">
-    <xsl:import href="./partials/shared.xsl"/>
+    version="2.0" exclude-result-prefixes="xsl tei xs">
+    <xsl:output encoding="UTF-8" media-type="text/html" method="html" version="5.0" indent="yes"
+        omit-xml-declaration="yes"/>
     <xsl:import href="./partials/html_navbar.xsl"/>
     <xsl:import href="./partials/html_head.xsl"/>
     <xsl:import href="partials/html_footer.xsl"/>
-    <xsl:output encoding="UTF-8" media-type="text/html" method="html" version="5.0" indent="yes"
-        omit-xml-declaration="yes"/>
     <xsl:template match="/">
-        <xsl:variable name="doc_title" select="local:translate('schnitzler_und_ich.title')"/>
-        <xsl:variable name="doc_description" select="local:translate('schnitzler_und_ich.meta_description')"/>
-        <xsl:variable name="page_filename">
-            <xsl:choose>
-                <xsl:when test="$language = 'en'">schnitzler-und-ich-en.html</xsl:when>
-                <xsl:otherwise>schnitzler-und-ich.html</xsl:otherwise>
-            </xsl:choose>
-        </xsl:variable>
         <html class="h-100">
-            <xsl:attribute name="lang">
-                <xsl:value-of select="$language"/>
-            </xsl:attribute>
             <head>
                 <meta charset="UTF-8"/>
                 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
                 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
                 <xsl:call-template name="html_head">
-                    <xsl:with-param name="html_title" select="$doc_title"/>
-                    <xsl:with-param name="page_description" select="$doc_description"/>
-                    <xsl:with-param name="page_url" select="concat($base_url, '/', $page_filename)"/>
+                    <xsl:with-param name="html_title" select="'Arthur Schnitzler und ich'"/>
+                    <xsl:with-param name="page_description" select="'Wo stand Ihnen Schnitzler am nächsten? – Finden Sie heraus, welche Orte in Wien Arthur Schnitzler in Ihrer Nähe besucht hat'"/>
+                    <xsl:with-param name="page_url" select="concat($base_url, '/schnitzler-und-ich.html')"/>
                 </xsl:call-template>
             </head>
             <body class="d-flex flex-column h-100">
                 <xsl:call-template name="nav_bar"/>
                 <main class="w-100">
                     <div class="container-fluid my-4" id="main-content">
-                        <h1><xsl:value-of select="local:translate('schnitzler_und_ich.heading')"/></h1>
+                        <h1>Wo stand Ihnen Schnitzler am nächsten?</h1>
                         <div class="map-container-wrapper">
                             <div id="map-large"> </div>
                             <div class="filter-column" >
                                 <div id="queryControls">
-                                        <button id="getLocation" class="btn btn-primary w-100">
-                                            <xsl:value-of select="local:translate('schnitzler_und_ich.use_location')"/>
-                                        </button>
-
-                                        <p><xsl:value-of select="local:translate('schnitzler_und_ich.or_enter_coords')"/></p>
+                                        <button id="getLocation" class="btn btn-primary w-100"
+                                            >Meinen Standort verwenden</button>
+                                    
+                                        <p>Oder Koordinaten eingeben:</p>
                                         <form id="locationForm">
                                             <div class="mb-3">
-                                                <label for="latitude" class="form-label">
-                                                    <xsl:value-of select="local:translate('schnitzler_und_ich.latitude')"/>
-                                                </label>
+                                                <label for="latitude" class="form-label"
+                                                  >Breitengrad:</label>
                                                 <input type="number" id="latitude"
                                                   class="form-control" step="0.000001"
                                                   required="required"/>
                                             </div>
                                             <div class="mb-3">
-                                                <label for="longitude" class="form-label">
-                                                    <xsl:value-of select="local:translate('schnitzler_und_ich.longitude')"/>
-                                                </label>
+                                                <label for="longitude" class="form-label"
+                                                  >Längengrad:</label>
                                                 <input type="number" id="longitude"
                                                   class="form-control" step="0.000001"
                                                   required="required"/>
                                             </div>
-                                            <button type="submit" class="btn btn-secondary w-100">
-                                                <xsl:value-of select="local:translate('schnitzler_und_ich.find_nearest')"/>
-                                            </button>
+                                            <button type="submit" class="btn btn-secondary w-100"
+                                                >Nächsten Ort finden</button>
                                         </form>
                                 </div>
                                 <div class="container mt-4">
-                                    <h2><xsl:value-of select="local:translate('schnitzler_und_ich.result_heading')"/></h2>
-                                    <p id="result"><xsl:value-of select="local:translate('schnitzler_und_ich.result_instruction')"/></p>
+                                    <h2>Ergebnis:</h2>
+                                    <p id="result">Bitte Standort teilen auswählen oder Koordinaten
+                                        eingeben. (Nein, wir interessieren uns nicht dafür, wo Sie sich
+                                        herumtreiben.)</p>
                                     <p class="mb-2 d-none" id="newQueryContainer">
-                                        <button id="newQuery" class="btn btn-secondary">
-                                            <xsl:value-of select="local:translate('schnitzler_und_ich.new_query')"/>
-                                        </button>
+                                        <button id="newQuery" class="btn btn-secondary">Neuen Ort
+                                            abfragen</button>
                                     </p>
                                     <p>
                                         <a id="shareBluesky" target="_blank" title="Share on Bluesky"
                                             href="https://bsky.app/intent/compose?text=https://wienerschnitzler.org/schnitzler-und-ich.html"
-                                            rel="noopener noreferrer">
-                                            <xsl:attribute name="aria-label">
-                                                <xsl:value-of select="local:translate('schnitzler_und_ich.share_bluesky_label')"/>
-                                            </xsl:attribute>
+                                            rel="noopener noreferrer"
+                                            aria-label="Auf Bluesky teilen - öffnet in neuem Fenster">
                                             <span class="share-bluesky">
                                                 <svg width="1em" height="1em" fill="#fff"
                                                     viewBox="0 0 600 530"

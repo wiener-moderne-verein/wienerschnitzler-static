@@ -222,4 +222,23 @@
     <text key="gesamt_typen.location_select_placeholder">Choose a location</text>
     <text key="gesamt_typen.location_select_info">The selection field with location names is not a filter, but focuses on the respective location.</text>
     <text key="gesamt_typen.page_info">This page visualizes the locations by types of places. Some places cannot be distinguished cleanly from each other (e.g., "Café-Restaurant"). When in doubt, it is advisable to select similar types generously.</text>
+
+    <!-- schnitzler-und-ich.xsl - Interactive location feature -->
+    <text key="schnitzler_und_ich.title">Arthur Schnitzler and Me</text>
+    <text key="schnitzler_und_ich.meta_description">Where were you closest to Schnitzler? – Find out which places in Vienna Arthur Schnitzler visited near you</text>
+    <text key="schnitzler_und_ich.heading">Where were you closest to Schnitzler?</text>
+    <text key="schnitzler_und_ich.use_location">Use my location</text>
+    <text key="schnitzler_und_ich.or_enter_coords">Or enter coordinates:</text>
+    <text key="schnitzler_und_ich.latitude">Latitude:</text>
+    <text key="schnitzler_und_ich.longitude">Longitude:</text>
+    <text key="schnitzler_und_ich.find_nearest">Find nearest place</text>
+    <text key="schnitzler_und_ich.result_heading">Result:</text>
+    <text key="schnitzler_und_ich.result_instruction">Please select share location or enter coordinates. (No, we're not interested in where you hang out.)</text>
+    <text key="schnitzler_und_ich.new_query">Query new location</text>
+    <text key="schnitzler_und_ich.share_bluesky_label">Share on Bluesky - opens in new window</text>
+
+    <!-- listplace-missing.xsl - Unidentified places -->
+    <text key="listplace_missing.title">Unidentified Locations</text>
+    <text key="listplace_missing.meta_description">Unidentified locations of Arthur Schnitzler – Place names from diary and letters that could not yet be assigned to a precise geographic position.</text>
+    <text key="listplace_missing.intro">We have so far only been able to locate the following places imprecisely on the map. We welcome any hints that can contribute to solving this.</text>
 </translations>

@@ -20,10 +20,16 @@
                 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
                 <xsl:variable name="doc_title" select="local:translate('gesamt_typen.title')"/>
                 <xsl:variable name="doc_description" select="local:translate('gesamt_typen.meta_description')"/>
+                <xsl:variable name="page_filename">
+                    <xsl:choose>
+                        <xsl:when test="$language = 'en'">gesamt_typen-en.html</xsl:when>
+                        <xsl:otherwise>gesamt_typen.html</xsl:otherwise>
+                    </xsl:choose>
+                </xsl:variable>
                 <xsl:call-template name="html_head">
                     <xsl:with-param name="html_title" select="$doc_title"/>
                     <xsl:with-param name="page_description" select="$doc_description"/>
-                    <xsl:with-param name="page_url" select="concat($base_url, '/gesamt_typen.html')"/>
+                    <xsl:with-param name="page_url" select="concat($base_url, '/', $page_filename)"/>
                 </xsl:call-template>
             </head>
             <body class="h-100">

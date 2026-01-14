@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:tei="http://www.tei-c.org/ns/1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    version="2.0" exclude-result-prefixes="xsl tei xs">
+    xmlns:local="http://dse-static.foo.bar"
+    version="2.0" exclude-result-prefixes="xsl tei xs local">
     <xsl:output encoding="UTF-8" media-type="text/html" method="html" version="5.0" indent="yes"
         omit-xml-declaration="yes"/>
+    <xsl:import href="./partials/shared.xsl"/>
     <xsl:import href="partials/html_navbar.xsl"/>
     <xsl:import href="partials/html_head.xsl"/>
     <xsl:import href="partials/html_footer.xsl"/>
@@ -12,18 +14,23 @@
         select="document('../data/editions/xml/wienerschnitzler_distinctPlaces.xml')/tei:TEI/tei:text/tei:body/tei:listPlace"
         as="node()"/>
     <xsl:template match="/">
-        <xsl:variable name="doc_title">
-            <xsl:text>Nicht identifizierte Aufenthaltsorte</xsl:text>
+        <xsl:variable name="doc_title" select="local:translate('listplace_missing.title')"/>
+        <xsl:variable name="doc_description" select="local:translate('listplace_missing.meta_description')"/>
+        <xsl:variable name="page_filename">
+            <xsl:choose>
+                <xsl:when test="$language = 'en'">listplace-missing-en.html</xsl:when>
+                <xsl:otherwise>listplace-missing.html</xsl:otherwise>
+            </xsl:choose>
         </xsl:variable>
-        <xsl:variable name="doc_description">
-            <xsl:text>Nicht identifizierte Aufenthaltsorte Arthur Schnitzlers – Ortsnamen aus Tagebuch und Briefen, die noch keiner genauen geografischen Position zugeordnet werden konnten.</xsl:text>
-        </xsl:variable>
-        <html lang="de" class="h-100">
+        <html class="h-100">
+            <xsl:attribute name="lang">
+                <xsl:value-of select="$language"/>
+            </xsl:attribute>
             <head>
                 <xsl:call-template name="html_head">
                     <xsl:with-param name="html_title" select="$doc_title"/>
                     <xsl:with-param name="page_description" select="$doc_description"/>
-                    <xsl:with-param name="page_url" select="concat($base_url, '/listplace-missing.html')"/>
+                    <xsl:with-param name="page_url" select="concat($base_url, '/', $page_filename)"/>
                 </xsl:call-template>
                 <link
                     href="https://unpkg.com/tabulator-tables@5.5.2/dist/css/tabulator_bootstrap5.min.css"
@@ -44,21 +51,20 @@
                         <h1>
                             <xsl:value-of select="$doc_title"/>
                         </h1>
-                        <p>Die folgenden Orte konnten wir bislang nur ungenau auf der Landkarte verorten. Wir freuen 
-                        uns über entsprechende Hinweise, die zur Lösung beitragen können.</p>
+                        <p><xsl:value-of select="local:translate('listplace_missing.intro')"/></p>
                         <div id="map"/>
                         <table id="placesTable"
                             style="width:100%; margin: auto;">
                             <thead>
                                 <tr>
-                                    <th scope="col">Ortsname</th>
-                                    <th scope="col">Zugehörigkeiten</th>
-                                    <th scope="col">Erwähnungen</th>
-                                    <th scope="col">Typ</th>
-                                    <th scope="col">Wohn- und Arbeitsort</th>
-                                    <th scope="col">lat</th>
-                                    <th scope="col">lng</th>
-                                    <th scope="col">linkToEntity</th>
+                                    <th scope="col"><xsl:value-of select="local:translate('listplace.table_placename')"/></th>
+                                    <th scope="col"><xsl:value-of select="local:translate('listplace.table_affiliations')"/></th>
+                                    <th scope="col"><xsl:value-of select="local:translate('listplace.table_mentions')"/></th>
+                                    <th scope="col"><xsl:value-of select="local:translate('listplace.table_type')"/></th>
+                                    <th scope="col"><xsl:value-of select="local:translate('listplace.table_residents')"/></th>
+                                    <th scope="col"><xsl:value-of select="local:translate('listplace.table_lat')"/></th>
+                                    <th scope="col"><xsl:value-of select="local:translate('listplace.table_lng')"/></th>
+                                    <th scope="col"><xsl:value-of select="local:translate('listplace.table_link')"/></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -139,7 +145,14 @@
                 </main>
                 <xsl:call-template name="html_footer"/>
                 <script type="text/javascript" src="https://unpkg.com/tabulator-tables@5.5.2/dist/js/tabulator.min.js"/>
-                <script src="js/listplace_map_table_cfg.js"/>
+                <xsl:choose>
+                    <xsl:when test="$language = 'en'">
+                        <script src="js/listplace_map_table_cfg_en.js"/>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <script src="js/listplace_map_table_cfg.js"/>
+                    </xsl:otherwise>
+                </xsl:choose>
                 <script src="js/listplace_map_and_table.js"/>
                 <script>
                     build_map_and_table(map_cfg, table_cfg, wms_cfg=null, tms_cfg=null);
@@ -151,7 +164,10 @@
             <xsl:variable name="name"
                 select="normalize-space(string-join(./tei:placeName[1]//text()))"/>
             <xsl:result-document href="{$filename}">
-                <html lang="de" class="h-100 w-100">
+                <html class="h-100 w-100">
+                    <xsl:attribute name="lang">
+                        <xsl:value-of select="$language"/>
+                    </xsl:attribute>
                     <head>
                         <xsl:call-template name="html_head">
                             <xsl:with-param name="html_title" select="$name"/>

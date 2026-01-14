@@ -16,6 +16,12 @@
     <xsl:template match="/">
         <xsl:variable name="doc_title" select="local:translate('listplace.title')"/>
         <xsl:variable name="doc_description" select="local:translate('listplace.meta_description')"/>
+        <xsl:variable name="page_filename">
+            <xsl:choose>
+                <xsl:when test="$language = 'en'">listplace-en.html</xsl:when>
+                <xsl:otherwise>listplace.html</xsl:otherwise>
+            </xsl:choose>
+        </xsl:variable>
         <html class="h-100">
             <xsl:attribute name="lang">
                 <xsl:value-of select="$language"/>
@@ -24,7 +30,7 @@
                 <xsl:call-template name="html_head">
                     <xsl:with-param name="html_title" select="$doc_title"/>
                     <xsl:with-param name="page_description" select="$doc_description"/>
-                    <xsl:with-param name="page_url" select="concat($base_url, '/listplace.html')"/>
+                    <xsl:with-param name="page_url" select="concat($base_url, '/', $page_filename)"/>
                 </xsl:call-template>
                 <link
                     href="https://unpkg.com/tabulator-tables@5.5.2/dist/css/tabulator_bootstrap5.min.css"
