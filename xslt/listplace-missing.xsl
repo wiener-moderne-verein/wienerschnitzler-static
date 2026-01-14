@@ -13,6 +13,29 @@
     <xsl:param name="distinctPlaces"
         select="document('../data/editions/xml/wienerschnitzler_distinctPlaces.xml')/tei:TEI/tei:text/tei:body/tei:listPlace"
         as="node()"/>
+    <xsl:variable name="place_types" select="document('../data/indices/ortstypen.xml')"/>
+
+    <!-- Function to translate place type -->
+    <xsl:function name="local:translate-place-type" as="xs:string">
+        <xsl:param name="de_name" as="xs:string"/>
+        <xsl:choose>
+            <xsl:when test="$language = 'en'">
+                <xsl:variable name="translation" select="$place_types//item[name[@xml:lang='de'] = $de_name]/name[@xml:lang='en']"/>
+                <xsl:choose>
+                    <xsl:when test="$translation">
+                        <xsl:value-of select="$translation"/>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:value-of select="$de_name"/>
+                    </xsl:otherwise>
+                </xsl:choose>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:value-of select="$de_name"/>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:function>
+
     <xsl:template match="/">
         <xsl:variable name="doc_title" select="local:translate('listplace_missing.title')"/>
         <xsl:variable name="doc_description" select="local:translate('listplace_missing.meta_description')"/>
@@ -92,7 +115,7 @@
                                         </td>
                                         <td><!-- Typ -->
                                             <xsl:value-of
-                                                select="normalize-space(descendant::tei:desc[@type='entity_type_literal'][1]/text())"/>
+                                                select="local:translate-place-type(normalize-space(descendant::tei:desc[@type='entity_type_literal'][1]/text()))"/>
                                         </td>
                                         <td><!-- Personen -->
                                             <xsl:for-each select="descendant::tei:noteGrp/tei:note">

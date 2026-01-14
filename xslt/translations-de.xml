@@ -241,4 +241,85 @@
     <text key="listplace_missing.title">Nicht identifizierte Aufenthaltsorte</text>
     <text key="listplace_missing.meta_description">Nicht identifizierte Aufenthaltsorte Arthur Schnitzlers – Ortsnamen aus Tagebuch und Briefen, die noch keiner genauen geografischen Position zugeordnet werden konnten.</text>
     <text key="listplace_missing.intro">Die folgenden Orte konnten wir bislang nur ungenau auf der Landkarte verorten. Wir freuen uns über entsprechende Hinweise, die zur Lösung beitragen können.</text>
+
+    <!-- tag.xsl - Day view -->
+    <text key="tag.title">Aufenthalte nach Einzeltagen | Wiener Schnitzler</text>
+    <text key="tag.meta_description">Durchsuchen Sie Schnitzlers Aufenthaltsorte Tag für Tag. Detaillierte Kartendarstellung für jeden einzelnen Tag zwischen 1862 und 1931.</text>
+    <text key="tag.heading">Tag für Tag</text>
+    <text key="tag.prev_day">Vorheriger Tag</text>
+    <text key="tag.next_day">Nächster Tag</text>
+    <text key="tag.line_toggle_title">Schaltet die Linie ein oder aus</text>
+    <text key="tag.line_toggle_label">Verbindungslinie</text>
+    <text key="tag.line_info">ein-/ausschalten. Sie macht den geografischen Raum besser sichtbar. Sie stellt</text>
+    <text key="tag.line_not">nicht</text>
+    <text key="tag.line_order">die Reihenfolge dar, in der die Orte aufgesucht wurden.</text>
+    <text key="tag.page_info">Auf dieser Seite werden die einzelnen Tage in Schnitzlers Leben visualisiert.</text>
+
+    <!-- monat.xsl - Month view -->
+    <text key="monat.title">Wiener Schnitzler</text>
+    <text key="monat.meta_description">Schnitzlers Aufenthaltsorte nach Monaten – Monatliche Übersicht der Orte, an denen Arthur Schnitzler in Wien war</text>
+    <text key="monat.heading">Monate</text>
+    <text key="monat.prev_month">Vorheriger Monat</text>
+    <text key="monat.next_month">Nächster Monat</text>
+    <text key="monat.select_month">Monat auswählen</text>
+    <text key="monat.select_year">Jahr auswählen</text>
+    <text key="monat.year_placeholder">Jahr...</text>
+    <text key="monat.month_janner">Jänner</text>
+    <text key="monat.month_februar">Feber</text>
+    <text key="monat.month_march">März</text>
+    <text key="monat.month_april">April</text>
+    <text key="monat.month_may">Mai</text>
+    <text key="monat.month_june">Juni</text>
+    <text key="monat.month_july">Juli</text>
+    <text key="monat.month_august">August</text>
+    <text key="monat.month_september">September</text>
+    <text key="monat.month_october">Oktober</text>
+    <text key="monat.month_november">November</text>
+    <text key="monat.month_december">Dezember</text>
+    <text key="monat.legend_title">Zahl der Aufenthaltstage (Legende):</text>
+    <text key="monat.legend_days">Aufenthaltstage:</text>
+    <text key="monat.line_toggle_title">Schaltet die Linie ein oder aus</text>
+    <text key="monat.line_toggle_label">Verbindungslinie</text>
+    <text key="monat.line_warning_1">Sie folgt den einzelnen Tagen, ist aber innerhalb eines Tages</text>
+    <text key="monat.line_warning_not">nicht</text>
+    <text key="monat.line_warning_2">chronologisch geordnet.</text>
+    <text key="monat.page_info">Auf dieser Seite werden einzelne Monate in Schnitzlers Leben visualisiert. Durch die Auswahl eines Punktes werden die jeweiligen Aufenthaltstage innerhalb des Monats angezeigt.</text>
+
+    <!-- jahr.xsl - Year view -->
+    <text key="jahr.title">Wiener Schnitzler</text>
+    <text key="jahr.meta_description">Schnitzlers Aufenthaltsorte nach Jahren – Chronologische Übersicht von Arthur Schnitzlers Wegen durch Wien von 1862 bis 1931</text>
+    <text key="jahr.heading">Jahre</text>
+    <text key="jahr.prev_year">Vorheriges Jahr</text>
+    <text key="jahr.next_year">Nächstes Jahr</text>
+    <text key="jahr.select_year">Jahr auswählen</text>
+    <text key="jahr.loading">Lädt...</text>
+    <text key="jahr.legend_title">Zahl der Aufenthaltstage (Legende):</text>
+    <text key="jahr.legend_days">Aufenthaltstage:</text>
+    <text key="jahr.line_toggle_title">Schaltet die Linie ein oder aus</text>
+    <text key="jahr.line_toggle_label">Verbindungslinie</text>
+    <text key="jahr.line_warning_1">Sie folgt den einzelnen Tagen, ist aber innerhalb eines Tages</text>
+    <text key="jahr.line_warning_not">nicht</text>
+    <text key="jahr.line_warning_2">chronologisch geordnet.</text>
+    <text key="jahr.page_info">Auf dieser Seite werden einzelne Jahre in Schnitzlers Leben visualisiert. Durch die Auswahl eines Punktes werden die jeweiligen Aufenthaltstage innerhalb desselben angezeigt.</text>
+
+    <!-- dekade.xsl - Decade view -->
+    <text key="dekade.title">Wiener Schnitzler</text>
+    <text key="dekade.meta_description">Schnitzlers Aufenthaltsorte nach Dekaden – Übersicht von Arthur Schnitzlers Wegen durch Wien in 10-Jahres-Zeiträumen</text>
+    <text key="dekade.heading">Dekade</text>
+    <text key="dekade.prev_decade">Vorherige Dekade</text>
+    <text key="dekade.next_decade">Nächste Dekade</text>
+    <text key="dekade.select_decade">Dekade auswählen</text>
+    <text key="dekade.legend_title">Zahl der Aufenthaltstage (Legende):</text>
+    <text key="dekade.legend_days">Aufenthaltstage:</text>
+    <text key="dekade.line_toggle_title">Schaltet die Linie ein oder aus</text>
+    <text key="dekade.line_toggle_label">Verbindungslinie</text>
+    <text key="dekade.line_warning_1">Sie folgt den einzelnen Tagen, ist aber innerhalb eines Tages</text>
+    <text key="dekade.line_warning_not">nicht</text>
+    <text key="dekade.line_warning_2">chronologisch geordnet.</text>
+    <text key="dekade.page_info">Auf dieser Seite werden Dekaden in Schnitzlers Leben visualisiert. Durch die Auswahl eines Punktes werden die jeweiligen Aufenthaltstage innerhalb desselben angezeigt.</text>
+
+    <!-- uebersicht.xsl - Overview -->
+    <text key="uebersicht.title">Wiener Schnitzler</text>
+    <text key="uebersicht.meta_description">Übersicht nach Anzahl der Aufenthaltsorte – Interaktive Karte und Heatmap von Arthur Schnitzlers Wegen durch Wien</text>
+    <text key="uebersicht.heading">Übersicht nach Anzahl der Aufenthaltsorte</text>
 </translations>

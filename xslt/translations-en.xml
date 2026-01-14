@@ -241,4 +241,85 @@
     <text key="listplace_missing.title">Unidentified Locations</text>
     <text key="listplace_missing.meta_description">Unidentified locations of Arthur Schnitzler – Place names from diary and letters that could not yet be assigned to a precise geographic position.</text>
     <text key="listplace_missing.intro">We have so far only been able to locate the following places imprecisely on the map. We welcome any hints that can contribute to solving this.</text>
+
+    <!-- tag.xsl - Day view -->
+    <text key="tag.title">Stays by Individual Days | Wiener Schnitzler</text>
+    <text key="tag.meta_description">Browse Schnitzler's locations day by day. Detailed map representation for each individual day between 1862 and 1931.</text>
+    <text key="tag.heading">Day by Day</text>
+    <text key="tag.prev_day">Previous Day</text>
+    <text key="tag.next_day">Next Day</text>
+    <text key="tag.line_toggle_title">Toggles the line on or off</text>
+    <text key="tag.line_toggle_label">Connecting Line</text>
+    <text key="tag.line_info">toggle on/off. It makes the geographical space more visible. It does</text>
+    <text key="tag.line_not">not</text>
+    <text key="tag.line_order">represent the order in which the locations were visited.</text>
+    <text key="tag.page_info">This page visualizes individual days in Schnitzler's life.</text>
+
+    <!-- monat.xsl - Month view -->
+    <text key="monat.title">Wiener Schnitzler</text>
+    <text key="monat.meta_description">Schnitzler's locations by months – Monthly overview of the places where Arthur Schnitzler stayed in Vienna</text>
+    <text key="monat.heading">Months</text>
+    <text key="monat.prev_month">Previous Month</text>
+    <text key="monat.next_month">Next Month</text>
+    <text key="monat.select_month">Select month</text>
+    <text key="monat.select_year">Select year</text>
+    <text key="monat.year_placeholder">Year...</text>
+    <text key="monat.month_janner">January</text>
+    <text key="monat.month_februar">February</text>
+    <text key="monat.month_march">March</text>
+    <text key="monat.month_april">April</text>
+    <text key="monat.month_may">May</text>
+    <text key="monat.month_june">June</text>
+    <text key="monat.month_july">July</text>
+    <text key="monat.month_august">August</text>
+    <text key="monat.month_september">September</text>
+    <text key="monat.month_october">October</text>
+    <text key="monat.month_november">November</text>
+    <text key="monat.month_december">December</text>
+    <text key="monat.legend_title">Number of days stayed (Legend):</text>
+    <text key="monat.legend_days">Days of stay:</text>
+    <text key="monat.line_toggle_title">Toggles the line on or off</text>
+    <text key="monat.line_toggle_label">Connecting Line</text>
+    <text key="monat.line_warning_1">It follows the individual days, but within a single day is</text>
+    <text key="monat.line_warning_not">not</text>
+    <text key="monat.line_warning_2">chronologically ordered.</text>
+    <text key="monat.page_info">This page visualizes individual months in Schnitzler's life. Selecting a dot displays the respective days of stay within the month.</text>
+
+    <!-- jahr.xsl - Year view -->
+    <text key="jahr.title">Wiener Schnitzler</text>
+    <text key="jahr.meta_description">Schnitzler's locations by years – Chronological overview of Arthur Schnitzler's paths through Vienna from 1862 to 1931</text>
+    <text key="jahr.heading">Years</text>
+    <text key="jahr.prev_year">Previous Year</text>
+    <text key="jahr.next_year">Next Year</text>
+    <text key="jahr.select_year">Select year</text>
+    <text key="jahr.loading">Loading...</text>
+    <text key="jahr.legend_title">Number of days stayed (Legend):</text>
+    <text key="jahr.legend_days">Days of stay:</text>
+    <text key="jahr.line_toggle_title">Toggles the line on or off</text>
+    <text key="jahr.line_toggle_label">Connecting Line</text>
+    <text key="jahr.line_warning_1">It follows the individual days, but within a single day is</text>
+    <text key="jahr.line_warning_not">not</text>
+    <text key="jahr.line_warning_2">chronologically ordered.</text>
+    <text key="jahr.page_info">This page visualizes individual years in Schnitzler's life. Selecting a dot displays the respective days of stay within the year.</text>
+
+    <!-- dekade.xsl - Decade view -->
+    <text key="dekade.title">Wiener Schnitzler</text>
+    <text key="dekade.meta_description">Schnitzler's locations by decades – Overview of Arthur Schnitzler's paths through Vienna in 10-year periods</text>
+    <text key="dekade.heading">Decade</text>
+    <text key="dekade.prev_decade">Previous Decade</text>
+    <text key="dekade.next_decade">Next Decade</text>
+    <text key="dekade.select_decade">Select decade</text>
+    <text key="dekade.legend_title">Number of days stayed (Legend):</text>
+    <text key="dekade.legend_days">Days of stay:</text>
+    <text key="dekade.line_toggle_title">Toggles the line on or off</text>
+    <text key="dekade.line_toggle_label">Connecting Line</text>
+    <text key="dekade.line_warning_1">It follows the individual days, but within a single day is</text>
+    <text key="dekade.line_warning_not">not</text>
+    <text key="dekade.line_warning_2">chronologically ordered.</text>
+    <text key="dekade.page_info">This page visualizes decades in Schnitzler's life. Selecting a dot displays the respective days of stay within the decade.</text>
+
+    <!-- uebersicht.xsl - Overview -->
+    <text key="uebersicht.title">Wiener Schnitzler</text>
+    <text key="uebersicht.meta_description">Overview by number of locations – Interactive map and heatmap of Arthur Schnitzler's paths through Vienna</text>
+    <text key="uebersicht.heading">Overview by Number of Locations</text>
 </translations>
