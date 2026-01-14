@@ -1,24 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:tei="http://www.tei-c.org/ns/1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    version="2.0" exclude-result-prefixes="xsl tei xs">
-    <xsl:output encoding="UTF-8" media-type="text/html" method="html" version="5.0" indent="yes"
-        omit-xml-declaration="yes"/>
+    xmlns:local="http://dse-static.foo.bar"
+    version="2.0" exclude-result-prefixes="xsl tei xs local">
+    <xsl:import href="partials/shared.xsl"/>
     <xsl:import href="partials/html_navbar.xsl"/>
     <xsl:import href="partials/html_head.xsl"/>
     <xsl:import href="partials/html_footer.xsl"/>
     <xsl:import href="partials/place.xsl"/>
+    <xsl:output encoding="UTF-8" media-type="text/html" method="html" version="5.0" indent="yes"
+        omit-xml-declaration="yes"/>
     <xsl:param name="distinctPlaces"
         select="document('../data/editions/xml/wienerschnitzler_distinctPlaces.xml')/tei:TEI/tei:text/tei:body/tei:listPlace"
         as="node()"/>
     <xsl:template match="/">
-        <xsl:variable name="doc_title">
-            <xsl:text>Verzeichnis der Aufenthaltsorte | Wiener Schnitzler</xsl:text>
-        </xsl:variable>
-        <xsl:variable name="doc_description">
-            <xsl:text>Durchsuchbares Verzeichnis aller knapp 4950 Aufenthaltsorte Arthur Schnitzlers mit Bewohnerinnen und Bewohnern, Koordinaten und Häufigkeiten.</xsl:text>
-        </xsl:variable>
-        <html lang="de" class="h-100">
+        <xsl:variable name="doc_title" select="local:translate('listplace.title')"/>
+        <xsl:variable name="doc_description" select="local:translate('listplace.meta_description')"/>
+        <html class="h-100">
+            <xsl:attribute name="lang">
+                <xsl:value-of select="$language"/>
+            </xsl:attribute>
             <head>
                 <xsl:call-template name="html_head">
                     <xsl:with-param name="html_title" select="$doc_title"/>
@@ -72,14 +73,14 @@
                             style="width:100%; margin: auto;">
                             <thead>
                                 <tr>
-                                    <th scope="col">Ortsname</th>
-                                    <th scope="col">Zugehörigkeiten</th>
-                                    <th scope="col">Erwähnungen</th>
-                                    <th scope="col">Typ</th>
-                                    <th scope="col">Wohn- und Arbeitsort</th>
-                                    <th scope="col">lat</th>
-                                    <th scope="col">lng</th>
-                                    <th scope="col">linkToEntity</th>
+                                    <th scope="col"><xsl:value-of select="local:translate('listplace.table_placename')"/></th>
+                                    <th scope="col"><xsl:value-of select="local:translate('listplace.table_affiliations')"/></th>
+                                    <th scope="col"><xsl:value-of select="local:translate('listplace.table_mentions')"/></th>
+                                    <th scope="col"><xsl:value-of select="local:translate('listplace.table_type')"/></th>
+                                    <th scope="col"><xsl:value-of select="local:translate('listplace.table_residents')"/></th>
+                                    <th scope="col"><xsl:value-of select="local:translate('listplace.table_lat')"/></th>
+                                    <th scope="col"><xsl:value-of select="local:translate('listplace.table_lng')"/></th>
+                                    <th scope="col"><xsl:value-of select="local:translate('listplace.table_link')"/></th>
                                 </tr>
                             </thead>
                             <tbody>

@@ -83,10 +83,19 @@
         <param name="language" expression="en"/>
         <param name="output_filename" expression="index-en.html"/>
     </xslt>
+    <!-- listplace.html - German version -->
     <xslt in="./data/indices/listplace.xml" out="${target}/listplace.html"
         style="./xslt/listplace.xsl">
         <factory name="net.sf.saxon.TransformerFactoryImpl"/>
         <classpath location="${basedir}/saxon/saxon9he.jar"/>
+        <param name="language" expression="de"/>
+    </xslt>
+    <!-- listplace-en.html - English version -->
+    <xslt in="./data/indices/listplace.xml" out="${target}/listplace-en.html"
+        style="./xslt/listplace.xsl">
+        <factory name="net.sf.saxon.TransformerFactoryImpl"/>
+        <classpath location="${basedir}/saxon/saxon9he.jar"/>
+        <param name="language" expression="en"/>
     </xslt>
     <xslt in="./data/indices/listplace.xml" out="${target}/listplace-missing.html"
         style="./xslt/listplace-missing.xsl">
