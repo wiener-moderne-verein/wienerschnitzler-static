@@ -210,4 +210,16 @@
     <!-- AI Translation Notice -->
     <text key="ai.notice.title">Automatische Übersetzung</text>
     <text key="ai.notice.message">Diese englische Version wurde automatisch mit KI-Unterstützung übersetzt.</text>
+
+    <!-- gesamt_typen.xsl - Map by place types -->
+    <text key="gesamt_typen.title">Wiener Schnitzler</text>
+    <text key="gesamt_typen.meta_description">Aufenthalte Schnitzlers nach Arten von Orten – Übersicht nach Ortstypen wie Wohnhäuser, Theater, Cafés und weitere Kategorien</text>
+    <text key="gesamt_typen.heading">Aufenthalte Schnitzlers nach Arten von Orten</text>
+    <text key="gesamt_typen.filter_time">Zeitraum (Jahre)</text>
+    <text key="gesamt_typen.filter_types">Typen</text>
+    <text key="gesamt_typen.location_select_title">Ortsauswahl</text>
+    <text key="gesamt_typen.location_select_label">Ort auswählen:</text>
+    <text key="gesamt_typen.location_select_placeholder">Wähle einen Ort</text>
+    <text key="gesamt_typen.location_select_info">Das Auswahlfeld mit den Ortsnamen ist kein Filter, sondern fokussiert auf den jeweiligen Ort.</text>
+    <text key="gesamt_typen.page_info">Auf dieser Seite werden die Aufenthaltsorte nach Arten von Orten visualisiert. Manche Orte lassen sich nicht ausreichend sauber voneinander unterscheiden (»Café-Restaurant«). Im Zweifel empfiehlt sich, besser großzügig ähnliche Typen auszuwählen.</text>
 </translations>

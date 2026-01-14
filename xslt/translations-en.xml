@@ -210,4 +210,16 @@
     <!-- AI Translation Notice -->
     <text key="ai.notice.title">Automatic Translation</text>
     <text key="ai.notice.message">This English version was automatically translated with AI assistance.</text>
+
+    <!-- gesamt_typen.xsl - Map by place types -->
+    <text key="gesamt_typen.title">Wiener Schnitzler</text>
+    <text key="gesamt_typen.meta_description">Schnitzler's stays by types of places – Overview by location types such as residential buildings, theaters, cafés and other categories</text>
+    <text key="gesamt_typen.heading">Schnitzler's Stays by Types of Places</text>
+    <text key="gesamt_typen.filter_time">Time Period (Years)</text>
+    <text key="gesamt_typen.filter_types">Types</text>
+    <text key="gesamt_typen.location_select_title">Location Selection</text>
+    <text key="gesamt_typen.location_select_label">Select a location:</text>
+    <text key="gesamt_typen.location_select_placeholder">Choose a location</text>
+    <text key="gesamt_typen.location_select_info">The selection field with location names is not a filter, but focuses on the respective location.</text>
+    <text key="gesamt_typen.page_info">This page visualizes the locations by types of places. Some places cannot be distinguished cleanly from each other (e.g., "Café-Restaurant"). When in doubt, it is advisable to select similar types generously.</text>
 </translations>

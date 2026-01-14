@@ -61,9 +61,17 @@
         <classpath location="${basedir}/saxon/saxon9he.jar"/>
         <param name="language" expression="en"/>
     </xslt>
+    <!-- gesamt_typen.html - German version -->
     <xslt in="${index}" out="${target}/gesamt_typen.html" style="./xslt/gesamt_typen.xsl">
         <factory name="net.sf.saxon.TransformerFactoryImpl"/>
         <classpath location="${basedir}/saxon/saxon9he.jar"/>
+        <param name="language" expression="de"/>
+    </xslt>
+    <!-- gesamt_typen-en.html - English version -->
+    <xslt in="${index}" out="${target}/gesamt_typen-en.html" style="./xslt/gesamt_typen.xsl">
+        <factory name="net.sf.saxon.TransformerFactoryImpl"/>
+        <classpath location="${basedir}/saxon/saxon9he.jar"/>
+        <param name="language" expression="en"/>
     </xslt> 
     <xslt in="${index}" out="${target}/404.html" style="./xslt/404.xsl">
         <factory name="net.sf.saxon.TransformerFactoryImpl"/>
