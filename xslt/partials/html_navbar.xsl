@@ -191,6 +191,12 @@
                                             </xsl:attribute>
                                             <xsl:value-of select="local:translate('nav.schnitzler.interviews')"/>
                                         </a></li>
+                                        <li><a class="dropdown-item" href="https://schnitzler-kultur.acdh.oeaw.ac.at/" target="_blank" rel="noopener noreferrer">
+                                            <xsl:attribute name="aria-label">
+                                                <xsl:value-of select="concat(local:translate('nav.schnitzler.culture'), ' - ', local:translate('aria.opens_new_window'))"/>
+                                            </xsl:attribute>
+                                            <xsl:value-of select="local:translate('nav.schnitzler.culture')"/>
+                                        </a></li>
                                         <li><a class="dropdown-item" href="https://schnitzler-bahr.acdh.oeaw.ac.at/" target="_blank" rel="noopener noreferrer">
                                             <xsl:attribute name="aria-label">
                                                 <xsl:value-of select="concat(local:translate('nav.schnitzler.bahr'), ' - ', local:translate('aria.opens_new_window'))"/>
