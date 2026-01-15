@@ -9,6 +9,19 @@
     <!-- Optional parameter to override page name detection -->
     <xsl:param name="output_filename" select="''"/>
 
+    <!-- Helper function to generate language-aware URLs -->
+    <xsl:function name="local:get-url">
+        <xsl:param name="base" as="xs:string"/>
+        <xsl:choose>
+            <xsl:when test="$language = 'en'">
+                <xsl:value-of select="concat($base, '-en.html')"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:value-of select="concat($base, '.html')"/>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:function>
+
     <xsl:template name="nav_bar">
         <a href="#main-content" class="skip-link" accesskey="1"><xsl:value-of select="local:translate('nav.skip_to_content')"/></a>
         <header role="banner">
@@ -24,13 +37,7 @@
                     <div class="container">
                         <img src="images/wienerschnitzler.jpg" class="me-2" height="30px" alt="Wiener Schnitzler Logo"/>
 
-                        <a class="navbar-brand">
-                            <xsl:attribute name="href">
-                                <xsl:choose>
-                                    <xsl:when test="$language = 'en'">index-en.html</xsl:when>
-                                    <xsl:otherwise>index.html</xsl:otherwise>
-                                </xsl:choose>
-                            </xsl:attribute>
+                        <a class="navbar-brand" href="{local:get-url('index')}">
                             <xsl:value-of select="local:translate('nav.site_title')"/>
                         </a>
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false">
@@ -48,49 +55,19 @@
                                         <xsl:value-of select="local:translate('nav.project')"/>
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="projektDropdown">
-                                        <li><a class="dropdown-item">
-                                            <xsl:attribute name="href">
-                                                <xsl:choose>
-                                                    <xsl:when test="$language = 'en'">projekt-en.html</xsl:when>
-                                                    <xsl:otherwise>projekt.html</xsl:otherwise>
-                                                </xsl:choose>
-                                            </xsl:attribute>
+                                        <li><a class="dropdown-item" href="{local:get-url('projekt')}">
                                             <xsl:value-of select="local:translate('nav.project.about')"/>
                                         </a></li>
-                                        <li><a class="dropdown-item">
-                                            <xsl:attribute name="href">
-                                                <xsl:choose>
-                                                    <xsl:when test="$language = 'en'">faqs-en.html</xsl:when>
-                                                    <xsl:otherwise>faqs.html</xsl:otherwise>
-                                                </xsl:choose>
-                                            </xsl:attribute>
+                                        <li><a class="dropdown-item" href="{local:get-url('faqs')}">
                                             <xsl:value-of select="local:translate('nav.project.faqs')"/>
                                         </a></li>
-                                        <li><a class="dropdown-item">
-                                            <xsl:attribute name="href">
-                                                <xsl:choose>
-                                                    <xsl:when test="$language = 'en'">literatur-en.html</xsl:when>
-                                                    <xsl:otherwise>literatur.html</xsl:otherwise>
-                                                </xsl:choose>
-                                            </xsl:attribute>
+                                        <li><a class="dropdown-item" href="{local:get-url('literatur')}">
                                             <xsl:value-of select="local:translate('nav.project.bibliography')"/>
                                         </a></li>
-                                        <li><a class="dropdown-item">
-                                            <xsl:attribute name="href">
-                                                <xsl:choose>
-                                                    <xsl:when test="$language = 'en'">kontakt-en.html</xsl:when>
-                                                    <xsl:otherwise>kontakt.html</xsl:otherwise>
-                                                </xsl:choose>
-                                            </xsl:attribute>
+                                        <li><a class="dropdown-item" href="{local:get-url('kontakt')}">
                                             <xsl:value-of select="local:translate('nav.project.contact')"/>
                                         </a></li>
-                                        <li><a class="dropdown-item">
-                                            <xsl:attribute name="href">
-                                                <xsl:choose>
-                                                    <xsl:when test="$language = 'en'">impressum-en.html</xsl:when>
-                                                    <xsl:otherwise>impressum.html</xsl:otherwise>
-                                                </xsl:choose>
-                                            </xsl:attribute>
+                                        <li><a class="dropdown-item" href="{local:get-url('impressum')}">
                                             <xsl:value-of select="local:translate('nav.project.imprint')"/>
                                         </a></li>
                                     </ul>
@@ -102,49 +79,19 @@
                                         <xsl:value-of select="local:translate('nav.places')"/>
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="OrteDropdown">
-                                        <li><a class="dropdown-item">
-                                            <xsl:attribute name="href">
-                                                <xsl:choose>
-                                                    <xsl:when test="$language = 'en'">gesamt-en.html</xsl:when>
-                                                    <xsl:otherwise>gesamt.html</xsl:otherwise>
-                                                </xsl:choose>
-                                            </xsl:attribute>
+                                        <li><a class="dropdown-item" href="{local:get-url('gesamt')}">
                                             <xsl:value-of select="local:translate('nav.places.days')"/>
                                         </a></li>
-                                        <li><a class="dropdown-item">
-                                            <xsl:attribute name="href">
-                                                <xsl:choose>
-                                                    <xsl:when test="$language = 'en'">gesamt_typen-en.html</xsl:when>
-                                                    <xsl:otherwise>gesamt_typen.html</xsl:otherwise>
-                                                </xsl:choose>
-                                            </xsl:attribute>
+                                        <li><a class="dropdown-item" href="{local:get-url('gesamt_typen')}">
                                             <xsl:value-of select="local:translate('nav.places.types')"/>
                                         </a></li>
-                                        <li><a class="dropdown-item">
-                                            <xsl:attribute name="href">
-                                                <xsl:choose>
-                                                    <xsl:when test="$language = 'en'">listplace-en.html</xsl:when>
-                                                    <xsl:otherwise>listplace.html</xsl:otherwise>
-                                                </xsl:choose>
-                                            </xsl:attribute>
+                                        <li><a class="dropdown-item" href="{local:get-url('listplace')}">
                                             <xsl:value-of select="local:translate('nav.places.directory')"/>
                                         </a></li>
-                                        <li><a class="dropdown-item">
-                                            <xsl:attribute name="href">
-                                                <xsl:choose>
-                                                    <xsl:when test="$language = 'en'">listplace-missing-en.html</xsl:when>
-                                                    <xsl:otherwise>listplace-missing.html</xsl:otherwise>
-                                                </xsl:choose>
-                                            </xsl:attribute>
+                                        <li><a class="dropdown-item" href="{local:get-url('listplace-missing')}">
                                             <xsl:value-of select="local:translate('nav.places.missing')"/>
                                         </a></li>
-                                        <li><a class="dropdown-item">
-                                            <xsl:attribute name="href">
-                                                <xsl:choose>
-                                                    <xsl:when test="$language = 'en'">schnitzler-und-ich-en.html</xsl:when>
-                                                    <xsl:otherwise>schnitzler-und-ich.html</xsl:otherwise>
-                                                </xsl:choose>
-                                            </xsl:attribute>
+                                        <li><a class="dropdown-item" href="{local:get-url('schnitzler-und-ich')}">
                                             <xsl:value-of select="local:translate('nav.places.schnitzler_and_me')"/>
                                         </a></li>
                                         <li><a class="dropdown-item" href="https://kepler.gl/demo/map?mapUrl=https://raw.githubusercontent.com/wiener-moderne-verein/wienerschnitzler-data/refs/heads/main/data/editions/geojson/wienerschnitzler_distinctPlaces.geojson" target="_blank" rel="noopener noreferrer">
@@ -162,58 +109,22 @@
                                         <xsl:value-of select="local:translate('nav.periods')"/>
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="zeitraeumeDropdown">
-                                        <li><a class="dropdown-item">
-                                            <xsl:attribute name="href">
-                                                <xsl:choose>
-                                                    <xsl:when test="$language = 'en'">tag-en.html</xsl:when>
-                                                    <xsl:otherwise>tag.html</xsl:otherwise>
-                                                </xsl:choose>
-                                            </xsl:attribute>
+                                        <li><a class="dropdown-item" href="{local:get-url('tag')}">
                                             <xsl:value-of select="local:translate('nav.periods.day')"/>
                                         </a></li>
-                                        <li><a class="dropdown-item">
-                                            <xsl:attribute name="href">
-                                                <xsl:choose>
-                                                    <xsl:when test="$language = 'en'">monat-en.html</xsl:when>
-                                                    <xsl:otherwise>monat.html</xsl:otherwise>
-                                                </xsl:choose>
-                                            </xsl:attribute>
+                                        <li><a class="dropdown-item" href="{local:get-url('monat')}">
                                             <xsl:value-of select="local:translate('nav.periods.month')"/>
                                         </a></li>
-                                        <li><a class="dropdown-item">
-                                            <xsl:attribute name="href">
-                                                <xsl:choose>
-                                                    <xsl:when test="$language = 'en'">jahr-en.html</xsl:when>
-                                                    <xsl:otherwise>jahr.html</xsl:otherwise>
-                                                </xsl:choose>
-                                            </xsl:attribute>
+                                        <li><a class="dropdown-item" href="{local:get-url('jahr')}">
                                             <xsl:value-of select="local:translate('nav.periods.year')"/>
                                         </a></li>
-                                        <li><a class="dropdown-item">
-                                            <xsl:attribute name="href">
-                                                <xsl:choose>
-                                                    <xsl:when test="$language = 'en'">dekade-en.html</xsl:when>
-                                                    <xsl:otherwise>dekade.html</xsl:otherwise>
-                                                </xsl:choose>
-                                            </xsl:attribute>
+                                        <li><a class="dropdown-item" href="{local:get-url('dekade')}">
                                             <xsl:value-of select="local:translate('nav.periods.decade')"/>
                                         </a></li>
-                                        <li><a class="dropdown-item">
-                                            <xsl:attribute name="href">
-                                                <xsl:choose>
-                                                    <xsl:when test="$language = 'en'">uebersicht-en.html</xsl:when>
-                                                    <xsl:otherwise>uebersicht.html</xsl:otherwise>
-                                                </xsl:choose>
-                                            </xsl:attribute>
+                                        <li><a class="dropdown-item" href="{local:get-url('uebersicht')}">
                                             <xsl:value-of select="local:translate('nav.periods.overview')"/>
                                         </a></li>
-                                        <li><a class="dropdown-item">
-                                            <xsl:attribute name="href">
-                                                <xsl:choose>
-                                                    <xsl:when test="$language = 'en'">zeitleiste-en.html</xsl:when>
-                                                    <xsl:otherwise>zeitleiste.html</xsl:otherwise>
-                                                </xsl:choose>
-                                            </xsl:attribute>
+                                        <li><a class="dropdown-item" href="{local:get-url('zeitleiste')}">
                                             <xsl:value-of select="local:translate('nav.periods.timeline')"/>
                                         </a></li>
 
