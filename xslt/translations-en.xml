@@ -166,16 +166,6 @@
     <text key="gesamt.location_select_info">The selection field with location names is not a filter, but focuses on the respective location.</text>
     <text key="gesamt.page_info">This page visualizes all days on which Schnitzler stayed at a particular location. Selecting a dot displays more detailed information and links.</text>
 
-    <!-- tag.xsl - Daily view -->
-    <text key="tag.title">Stays by Individual Days | Wiener Schnitzler</text>
-    <text key="tag.meta_description">Browse Schnitzler's locations day by day. Detailed map representation for each individual day between 1862 and 1931.</text>
-    <text key="tag.heading">Day by Day</text>
-    <text key="tag.prev_day">Previous Day</text>
-    <text key="tag.next_day">Next Day</text>
-    <text key="tag.line_toggle_label">Connection Line</text>
-    <text key="tag.line_toggle_info">toggle on/off. It makes the geographical space more visible. It does <strong>not</strong> represent the order in which the locations were visited.</text>
-    <text key="tag.page_info">This page visualizes individual days in Schnitzler's life.</text>
-
     <!-- listplace.xsl - Places directory -->
     <text key="listplace.title">Directory of Locations | Wiener Schnitzler</text>
     <text key="listplace.meta_description">Searchable directory of all nearly 4,950 locations where Arthur Schnitzler stayed, with residents, coordinates, and frequencies.</text>

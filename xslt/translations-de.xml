@@ -166,16 +166,6 @@
     <text key="gesamt.location_select_info">Das Auswahlfeld mit den Ortsnamen ist kein Filter, sondern fokussiert auf den jeweiligen Ort.</text>
     <text key="gesamt.page_info">Auf dieser Seite werden alle Tage visualisiert, an denen sich Schnitzler an einem bestimmten Ort aufhielt. Durch die Auswahl eines Punktes werden genauere Informationen und Links angezeigt.</text>
 
-    <!-- tag.xsl - Daily view -->
-    <text key="tag.title">Aufenthalte nach Einzeltagen | Wiener Schnitzler</text>
-    <text key="tag.meta_description">Durchsuchen Sie Schnitzlers Aufenthaltsorte Tag für Tag. Detaillierte Kartendarstellung für jeden einzelnen Tag zwischen 1862 und 1931.</text>
-    <text key="tag.heading">Tag für Tag</text>
-    <text key="tag.prev_day">Vorheriger Tag</text>
-    <text key="tag.next_day">Nächster Tag</text>
-    <text key="tag.line_toggle_label">Verbindungslinie</text>
-    <text key="tag.line_toggle_info">ein-/ausschalten. Sie macht den geografischen Raum besser sichtbar. Sie stellt <strong>nicht</strong> die Reihenfolge dar, in der die Orte aufgesucht wurden.</text>
-    <text key="tag.page_info">Auf dieser Seite werden die einzelnen Tage in Schnitzlers Leben visualisiert.</text>
-
     <!-- listplace.xsl - Places directory -->
     <text key="listplace.title">Verzeichnis der Aufenthaltsorte | Wiener Schnitzler</text>
     <text key="listplace.meta_description">Durchsuchbares Verzeichnis aller knapp 4950 Aufenthaltsorte Arthur Schnitzlers mit Bewohnerinnen und Bewohnern, Koordinaten und Häufigkeiten.</text>
