@@ -6,10 +6,19 @@
     <delete>
         <fileset dir="${target}" includes="*.html"/>
     </delete>
+    <!-- zeitleiste.html - German version -->
     <xslt in="./data/meta/literatur.xml" style="./xslt/zeitleiste.xsl"
         out="${target}/zeitleiste.html" destdir="${target}">
         <factory name="net.sf.saxon.TransformerFactoryImpl"/>
         <classpath location="${basedir}/saxon/saxon9he.jar"/>
+        <param name="language" expression="de"/>
+    </xslt>
+    <!-- zeitleiste-en.html - English version -->
+    <xslt in="./data/meta/literatur.xml" style="./xslt/zeitleiste.xsl"
+        out="${target}/zeitleiste-en.html" destdir="${target}">
+        <factory name="net.sf.saxon.TransformerFactoryImpl"/>
+        <classpath location="${basedir}/saxon/saxon9he.jar"/>
+        <param name="language" expression="en"/>
     </xslt>
     <!-- Build German meta pages (exclude English versions) -->
     <xslt style="./xslt/meta.xsl" basedir="./data/meta" destdir="${target}" includes="*.xml" excludes="*-en.xml">
@@ -24,25 +33,65 @@
         <param name="language" expression="en"/>
         <mapper type="glob" from="*-en.xml" to="*-en.html"/>
     </xslt>
+    <!-- uebersicht.html - German version -->
     <xslt in="${index}" out="${target}/uebersicht.html" style="./xslt/uebersicht.xsl">
         <factory name="net.sf.saxon.TransformerFactoryImpl"/>
         <classpath location="${basedir}/saxon/saxon9he.jar"/>
+        <param name="language" expression="de"/>
     </xslt>
+    <!-- uebersicht-en.html - English version -->
+    <xslt in="${index}" out="${target}/uebersicht-en.html" style="./xslt/uebersicht.xsl">
+        <factory name="net.sf.saxon.TransformerFactoryImpl"/>
+        <classpath location="${basedir}/saxon/saxon9he.jar"/>
+        <param name="language" expression="en"/>
+    </xslt>
+    <!-- jahr.html - German version -->
     <xslt in="${index}" out="${target}/jahr.html" style="./xslt/jahr.xsl">
         <factory name="net.sf.saxon.TransformerFactoryImpl"/>
         <classpath location="${basedir}/saxon/saxon9he.jar"/>
+        <param name="language" expression="de"/>
     </xslt>
+    <!-- jahr-en.html - English version -->
+    <xslt in="${index}" out="${target}/jahr-en.html" style="./xslt/jahr.xsl">
+        <factory name="net.sf.saxon.TransformerFactoryImpl"/>
+        <classpath location="${basedir}/saxon/saxon9he.jar"/>
+        <param name="language" expression="en"/>
+    </xslt>
+    <!-- monat.html - German version -->
     <xslt in="${index}" out="${target}/monat.html" style="./xslt/monat.xsl">
         <factory name="net.sf.saxon.TransformerFactoryImpl"/>
         <classpath location="${basedir}/saxon/saxon9he.jar"/>
+        <param name="language" expression="de"/>
     </xslt>
+    <!-- monat-en.html - English version -->
+    <xslt in="${index}" out="${target}/monat-en.html" style="./xslt/monat.xsl">
+        <factory name="net.sf.saxon.TransformerFactoryImpl"/>
+        <classpath location="${basedir}/saxon/saxon9he.jar"/>
+        <param name="language" expression="en"/>
+    </xslt>
+    <!-- dekade.html - German version -->
     <xslt in="${index}" out="${target}/dekade.html" style="./xslt/dekade.xsl">
         <factory name="net.sf.saxon.TransformerFactoryImpl"/>
         <classpath location="${basedir}/saxon/saxon9he.jar"/>
+        <param name="language" expression="de"/>
     </xslt>
+    <!-- dekade-en.html - English version -->
+    <xslt in="${index}" out="${target}/dekade-en.html" style="./xslt/dekade.xsl">
+        <factory name="net.sf.saxon.TransformerFactoryImpl"/>
+        <classpath location="${basedir}/saxon/saxon9he.jar"/>
+        <param name="language" expression="en"/>
+    </xslt>
+    <!-- tag.html - German version -->
     <xslt in="${index}" out="${target}/tag.html" style="./xslt/tag.xsl">
         <factory name="net.sf.saxon.TransformerFactoryImpl"/>
         <classpath location="${basedir}/saxon/saxon9he.jar"/>
+        <param name="language" expression="de"/>
+    </xslt>
+    <!-- tag-en.html - English version -->
+    <xslt in="${index}" out="${target}/tag-en.html" style="./xslt/tag.xsl">
+        <factory name="net.sf.saxon.TransformerFactoryImpl"/>
+        <classpath location="${basedir}/saxon/saxon9he.jar"/>
+        <param name="language" expression="en"/>
     </xslt>
     <!-- schnitzler-und-ich.html - German version -->
     <xslt in="${index}" out="${target}/schnitzler-und-ich.html"
