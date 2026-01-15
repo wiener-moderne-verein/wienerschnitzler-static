@@ -248,6 +248,11 @@
     <text key="tag.heading">Tag für Tag</text>
     <text key="tag.prev_day">Vorheriger Tag</text>
     <text key="tag.next_day">Nächster Tag</text>
+    <text key="tag.toggle_title">Schaltet die Linie ein oder aus</text>
+    <text key="tag.connection_line">Verbindungslinie</text>
+    <text key="tag.toggle_text_1">ein-/ausschalten. Sie macht den geografischen Raum besser sichtbar. Sie stellt</text>
+    <text key="tag.toggle_not">nicht</text>
+    <text key="tag.toggle_text_2">die Reihenfolge dar, in der die Orte aufgesucht wurden.</text>
     <text key="tag.line_toggle_title">Schaltet die Linie ein oder aus</text>
     <text key="tag.line_toggle_label">Verbindungslinie</text>
     <text key="tag.line_info">ein-/ausschalten. Sie macht den geografischen Raum besser sichtbar. Sie stellt</text>
@@ -278,6 +283,11 @@
     <text key="monat.month_december">Dezember</text>
     <text key="monat.legend_title">Zahl der Aufenthaltstage (Legende):</text>
     <text key="monat.legend_days">Aufenthaltstage:</text>
+    <text key="monat.toggle_title">Schaltet die Linie ein oder aus</text>
+    <text key="monat.connection_line">Verbindungslinie</text>
+    <text key="monat.toggle_text_1">ein-/ausschalten. Sie folgt den einzelnen Tagen, ist aber innerhalb eines Tages</text>
+    <text key="monat.toggle_not">nicht</text>
+    <text key="monat.toggle_text_2">chronologisch geordnet.</text>
     <text key="monat.line_toggle_title">Schaltet die Linie ein oder aus</text>
     <text key="monat.line_toggle_label">Verbindungslinie</text>
     <text key="monat.line_warning_1">Sie folgt den einzelnen Tagen, ist aber innerhalb eines Tages</text>
@@ -295,6 +305,11 @@
     <text key="jahr.loading">Lädt...</text>
     <text key="jahr.legend_title">Zahl der Aufenthaltstage (Legende):</text>
     <text key="jahr.legend_days">Aufenthaltstage:</text>
+    <text key="jahr.toggle_title">Schaltet die Linie ein oder aus</text>
+    <text key="jahr.connection_line">Verbindungslinie</text>
+    <text key="jahr.toggle_text_1">ein-/ausschalten. Sie folgt den einzelnen Tagen, ist aber innerhalb eines Tages</text>
+    <text key="jahr.toggle_not">nicht</text>
+    <text key="jahr.toggle_text_2">chronologisch geordnet.</text>
     <text key="jahr.line_toggle_title">Schaltet die Linie ein oder aus</text>
     <text key="jahr.line_toggle_label">Verbindungslinie</text>
     <text key="jahr.line_warning_1">Sie folgt den einzelnen Tagen, ist aber innerhalb eines Tages</text>
@@ -308,9 +323,15 @@
     <text key="dekade.heading">Dekade</text>
     <text key="dekade.prev_decade">Vorherige Dekade</text>
     <text key="dekade.next_decade">Nächste Dekade</text>
+    <text key="dekade.decade_select_label">Dekade auswählen</text>
     <text key="dekade.select_decade">Dekade auswählen</text>
     <text key="dekade.legend_title">Zahl der Aufenthaltstage (Legende):</text>
     <text key="dekade.legend_days">Aufenthaltstage:</text>
+    <text key="dekade.toggle_title">Schaltet die Linie ein oder aus</text>
+    <text key="dekade.connection_line">Verbindungslinie</text>
+    <text key="dekade.toggle_text_1">ein-/ausschalten. Sie folgt den einzelnen Tagen, ist aber innerhalb eines Tages</text>
+    <text key="dekade.toggle_not">nicht</text>
+    <text key="dekade.toggle_text_2">chronologisch geordnet.</text>
     <text key="dekade.line_toggle_title">Schaltet die Linie ein oder aus</text>
     <text key="dekade.line_toggle_label">Verbindungslinie</text>
     <text key="dekade.line_warning_1">Sie folgt den einzelnen Tagen, ist aber innerhalb eines Tages</text>
@@ -322,4 +343,11 @@
     <text key="uebersicht.title">Wiener Schnitzler</text>
     <text key="uebersicht.meta_description">Übersicht nach Anzahl der Aufenthaltsorte – Interaktive Karte und Heatmap von Arthur Schnitzlers Wegen durch Wien</text>
     <text key="uebersicht.heading">Übersicht nach Anzahl der Aufenthaltsorte</text>
+
+    <!-- zeitleiste.xsl - Timeline -->
+    <text key="zeitleiste.title">Zeitleiste | Wiener Schnitzler</text>
+    <text key="zeitleiste.meta_description">Zeitleiste – Interaktive Visualisierung der zeitlichen Entwicklung von Arthur Schnitzlers Aufenthalten in Wien</text>
+    <text key="zeitleiste.heading">Zeitleiste</text>
+    <text key="zeitleiste.year_select">Jahr auswählen:</text>
+    <text key="zeitleiste.toggle_additional">In der Wochen- oder Tagesansicht werden Orte innerhalb von Orten gezeigt</text>
 </translations>

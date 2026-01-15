@@ -137,7 +137,13 @@
                                         <xsl:value-of select="local:translate('nav.schnitzler')"/>
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="schnitzlerLinksDropdown">
-                                        <li><a class="dropdown-item" href="https://de.wikipedia.org/wiki/Arthur_Schnitzler" target="_blank" rel="noopener noreferrer">
+                                        <li><a class="dropdown-item" target="_blank" rel="noopener noreferrer">
+                                            <xsl:attribute name="href">
+                                                <xsl:choose>
+                                                    <xsl:when test="$language = 'en'">https://en.wikipedia.org/wiki/Arthur_Schnitzler</xsl:when>
+                                                    <xsl:otherwise>https://de.wikipedia.org/wiki/Arthur_Schnitzler</xsl:otherwise>
+                                                </xsl:choose>
+                                            </xsl:attribute>
                                             <xsl:attribute name="aria-label">
                                                 <xsl:value-of select="concat(local:translate('nav.schnitzler.wikipedia'), ' - ', local:translate('aria.opens_new_window'))"/>
                                             </xsl:attribute>
@@ -226,22 +232,10 @@
 
                                 <!-- Language Switcher with Flags (right-aligned) -->
                                 <li class="nav-item ms-auto">
-                                    <xsl:variable name="current_page">
-                                        <xsl:choose>
-                                            <xsl:when test="$output_filename != ''">
-                                                <xsl:value-of select="$output_filename"/>
-                                            </xsl:when>
-                                            <xsl:otherwise>
-                                                <xsl:variable name="current_xml" select="tokenize(base-uri(), '/')[last()]"/>
-                                                <xsl:value-of select="replace($current_xml, '\.xml', '.html')"/>
-                                            </xsl:otherwise>
-                                        </xsl:choose>
-                                    </xsl:variable>
                                     <xsl:choose>
                                         <xsl:when test="$language = 'de'">
                                             <!-- Show UK flag when on German page -->
-                                            <xsl:variable name="en_page" select="replace($current_page, '\.html', '-en.html')"/>
-                                            <a class="nav-link d-flex align-items-center" href="{$en_page}" title="English" aria-label="Switch to English">
+                                            <a class="nav-link d-flex align-items-center" href="#" id="lang-switcher" title="English" aria-label="Switch to English">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 60 30" style="border: 1px solid #ddd;">
                                                     <rect width="60" height="30" fill="#012169"/>
                                                     <path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/>
@@ -253,8 +247,7 @@
                                         </xsl:when>
                                         <xsl:otherwise>
                                             <!-- Show Austrian flag when on English page -->
-                                            <xsl:variable name="de_page" select="replace($current_page, '-en\.html', '.html')"/>
-                                            <a class="nav-link d-flex align-items-center" href="{$de_page}" title="Deutsch" aria-label="Zu Deutsch wechseln">
+                                            <a class="nav-link d-flex align-items-center" href="#" id="lang-switcher" title="Deutsch" aria-label="Zu Deutsch wechseln">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 900 600" style="border: 1px solid #ddd;">
                                                     <rect width="900" height="600" fill="#ED2939"/>
                                                     <rect width="900" height="400" fill="#FFF"/>
@@ -271,6 +264,29 @@
                 </nav>
             </div>
         </header>
+
+        <!-- Language Switcher Script -->
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                var langSwitcher = document.getElementById('lang-switcher');
+                if (langSwitcher) {
+                    var currentPath = window.location.pathname;
+                    var currentFile = currentPath.split('/').pop() || 'index.html';
+                    var targetFile;
+
+                    // Toggle between German and English versions
+                    if (currentFile.endsWith('-en.html')) {
+                        // Currently on English page, switch to German
+                        targetFile = currentFile.replace('-en.html', '.html');
+                    } else {
+                        // Currently on German page, switch to English
+                        targetFile = currentFile.replace('.html', '-en.html');
+                    }
+
+                    langSwitcher.href = targetFile;
+                }
+            });
+        </script>
 
         <!-- AI Translation Notice Toast (only for English) -->
         <xsl:if test="$language = 'en'">

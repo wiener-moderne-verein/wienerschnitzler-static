@@ -248,6 +248,11 @@
     <text key="tag.heading">Day by Day</text>
     <text key="tag.prev_day">Previous Day</text>
     <text key="tag.next_day">Next Day</text>
+    <text key="tag.toggle_title">Toggles the line on or off</text>
+    <text key="tag.connection_line">Connecting Line</text>
+    <text key="tag.toggle_text_1">on/off. It makes the geographical area more visible. It does</text>
+    <text key="tag.toggle_not">not</text>
+    <text key="tag.toggle_text_2">represent the order in which the locations were visited.</text>
     <text key="tag.line_toggle_title">Toggles the line on or off</text>
     <text key="tag.line_toggle_label">Connecting Line</text>
     <text key="tag.line_info">toggle on/off. It makes the geographical space more visible. It does</text>
@@ -278,6 +283,11 @@
     <text key="monat.month_december">December</text>
     <text key="monat.legend_title">Number of days stayed (Legend):</text>
     <text key="monat.legend_days">Days of stay:</text>
+    <text key="monat.toggle_title">Toggles the line on or off</text>
+    <text key="monat.connection_line">Connecting Line</text>
+    <text key="monat.toggle_text_1">on/off. It follows the individual days, but within a single day is</text>
+    <text key="monat.toggle_not">not</text>
+    <text key="monat.toggle_text_2">chronologically ordered.</text>
     <text key="monat.line_toggle_title">Toggles the line on or off</text>
     <text key="monat.line_toggle_label">Connecting Line</text>
     <text key="monat.line_warning_1">It follows the individual days, but within a single day is</text>
@@ -295,6 +305,11 @@
     <text key="jahr.loading">Loading...</text>
     <text key="jahr.legend_title">Number of days stayed (Legend):</text>
     <text key="jahr.legend_days">Days of stay:</text>
+    <text key="jahr.toggle_title">Toggles the line on or off</text>
+    <text key="jahr.connection_line">Connecting Line</text>
+    <text key="jahr.toggle_text_1">on/off. It follows the individual days, but within a single day is</text>
+    <text key="jahr.toggle_not">not</text>
+    <text key="jahr.toggle_text_2">chronologically ordered.</text>
     <text key="jahr.line_toggle_title">Toggles the line on or off</text>
     <text key="jahr.line_toggle_label">Connecting Line</text>
     <text key="jahr.line_warning_1">It follows the individual days, but within a single day is</text>
@@ -308,9 +323,15 @@
     <text key="dekade.heading">Decade</text>
     <text key="dekade.prev_decade">Previous Decade</text>
     <text key="dekade.next_decade">Next Decade</text>
+    <text key="dekade.decade_select_label">Select decade</text>
     <text key="dekade.select_decade">Select decade</text>
     <text key="dekade.legend_title">Number of days stayed (Legend):</text>
     <text key="dekade.legend_days">Days of stay:</text>
+    <text key="dekade.toggle_title">Toggles the line on or off</text>
+    <text key="dekade.connection_line">Connecting Line</text>
+    <text key="dekade.toggle_text_1">on/off. It follows the individual days, but within a single day is</text>
+    <text key="dekade.toggle_not">not</text>
+    <text key="dekade.toggle_text_2">chronologically ordered.</text>
     <text key="dekade.line_toggle_title">Toggles the line on or off</text>
     <text key="dekade.line_toggle_label">Connecting Line</text>
     <text key="dekade.line_warning_1">It follows the individual days, but within a single day is</text>
@@ -322,4 +343,11 @@
     <text key="uebersicht.title">Wiener Schnitzler</text>
     <text key="uebersicht.meta_description">Overview by number of locations – Interactive map and heatmap of Arthur Schnitzler's paths through Vienna</text>
     <text key="uebersicht.heading">Overview by Number of Locations</text>
+
+    <!-- zeitleiste.xsl - Timeline -->
+    <text key="zeitleiste.title">Timeline | Wiener Schnitzler</text>
+    <text key="zeitleiste.meta_description">Timeline – Interactive visualization of the temporal development of Arthur Schnitzler's stays in Vienna</text>
+    <text key="zeitleiste.heading">Timeline</text>
+    <text key="zeitleiste.year_select">Select year:</text>
+    <text key="zeitleiste.toggle_additional">In weekly or daily view, locations within locations are shown</text>
 </translations>
