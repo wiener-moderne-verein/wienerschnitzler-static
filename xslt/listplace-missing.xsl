@@ -183,7 +183,17 @@
             </body>
         </html>
         <xsl:for-each select=".//tei:place[@xml:id]">
-            <xsl:variable name="filename" select="concat(./@xml:id, '.html')"/>
+            <xsl:variable name="base-id" select="./@xml:id"/>
+            <xsl:variable name="filename">
+                <xsl:choose>
+                    <xsl:when test="$language = 'en'">
+                        <xsl:value-of select="concat($base-id, '-en.html')"/>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:value-of select="concat($base-id, '.html')"/>
+                    </xsl:otherwise>
+                </xsl:choose>
+            </xsl:variable>
             <xsl:variable name="name"
                 select="normalize-space(string-join(./tei:placeName[1]//text()))"/>
             <xsl:result-document href="{$filename}">
@@ -194,7 +204,7 @@
                     <head>
                         <xsl:call-template name="html_head">
                             <xsl:with-param name="html_title" select="$name"/>
-                            <xsl:with-param name="page_description" select="concat('Detailinformationen zum Ort ', $name, ' – noch nicht eindeutig identifizierter Aufenthaltsort Arthur Schnitzlers.')"/>
+                            <xsl:with-param name="page_description" select="concat(local:translate('place_missing.meta_description_prefix'), $name, local:translate('place_missing.meta_description_suffix'))"/>
                         </xsl:call-template>
                     </head>
                     <body class="w-100 h-100">

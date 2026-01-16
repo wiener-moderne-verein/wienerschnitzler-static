@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tei="http://www.tei-c.org/ns/1.0"
-    xmlns:mam="whatever" version="2.0" exclude-result-prefixes="xsl tei xs">
+    xmlns:mam="whatever" xmlns:local="http://dse-static.foo.bar" version="2.0" exclude-result-prefixes="xsl tei xs local">
+    <xsl:import href="./shared.xsl"/>
     <xsl:import href="./LOD-idnos.xsl"/>
     <xsl:param name="currentDocumentIds" as="xs:string*"
         select="descendant::tei:body/tei:listPlace/tei:place/@xml:id"/>
@@ -12,22 +13,28 @@
     <xsl:template match="tei:place" name="place_detail">
         <xsl:variable name="placeName1" select="tei:placeName[1]" as="xs:string"/>
         <xsl:variable name="current-xml-id" select="@xml:id" as="xs:string"/>
+        <xsl:variable name="tag-page">
+            <xsl:choose>
+                <xsl:when test="$language = 'en'">tag-en.html</xsl:when>
+                <xsl:otherwise>tag.html</xsl:otherwise>
+            </xsl:choose>
+        </xsl:variable>
 
         <!-- Inhaltsverzeichnis -->
         <div class="text-center my-4">
             <xsl:if test="./tei:location[@type = 'coords']/tei:geo">
-                <a href="#karte" class="btn btn-outline-secondary btn-sm mx-2">Karte</a>
+                <a href="#karte" class="btn btn-outline-secondary btn-sm mx-2"><xsl:value-of select="local:translate('place.map')"/></a>
             </xsl:if>
-            <a href="#zugehoerigkeiten" class="btn btn-outline-secondary btn-sm mx-2">Zugehörigkeiten</a>
+            <a href="#zugehoerigkeiten" class="btn btn-outline-secondary btn-sm mx-2"><xsl:value-of select="local:translate('place.affiliations')"/></a>
             <xsl:if test="$distinctPlaces/tei:place[@xml:id = $current-xml-id]/tei:listEvent/tei:event[1]">
-                <a href="#aufenthalte" class="btn btn-outline-secondary btn-sm mx-2">Aufenthalte</a>
+                <a href="#aufenthalte" class="btn btn-outline-secondary btn-sm mx-2"><xsl:value-of select="local:translate('place.stays')"/></a>
             </xsl:if>
         </div>
 
         <xsl:choose>
             <xsl:when test="./tei:location[@type = 'coords']/tei:geo">
                 <div id="karte" style="margin-bottom:35px; margin-top:50px;">
-                    <h2 class="mb-3">Karte</h2>
+                    <h2 class="mb-3"><xsl:value-of select="local:translate('place.map')"/></h2>
                     <xsl:if
                         test="key('only-relevant-uris', tei:idno/@subtype, $relevant-uris)[1]">
                         <div class="container w-75 mx-auto mb-2">
@@ -49,8 +56,12 @@
                     <div class="mx-auto" style="max-width: 800px; width: 100%;">
                         <div id="mapContainer" class="position-relative" style="width: 100%; height: 300px; overflow: hidden;">
                             <button type="button" class="btn-close position-absolute top-0 end-0 m-2"
-                                    aria-label="Karte schließen" onclick="document.getElementById('mapContainer').style.display='none';"
-                                    style="z-index: 1000;"></button>
+                                    onclick="document.getElementById('mapContainer').style.display='none';"
+                                    style="z-index: 1000;">
+                                <xsl:attribute name="aria-label">
+                                    <xsl:value-of select="local:translate('place.close_map')"/>
+                                </xsl:attribute>
+                            </button>
                             <div id="map_detail" style="height: 100%; width: 100%;"/>
                         </div>
                         <xsl:if test=".//tei:location">
@@ -74,9 +85,9 @@
                                     <xsl:text>noopener noreferrer</xsl:text>
                                 </xsl:attribute>
                                 <xsl:attribute name="aria-label">
-                                    <xsl:text>OpenStreetMap - öffnet in neuem Fenster</xsl:text>
+                                    <xsl:value-of select="local:translate('place.openstreetmap_aria')"/>
                                 </xsl:attribute>
-                                <i class="bi bi-box-arrow-up-right" aria-hidden="true"/> OpenStreetMap </a>
+                                <i class="bi bi-box-arrow-up-right" aria-hidden="true"/> <xsl:value-of select="local:translate('place.openstreetmap')"/> </a>
                         </xsl:if>
                     </div>
                 </div>
@@ -97,12 +108,12 @@
             </xsl:otherwise>
         </xsl:choose>
         <div id="zugehoerigkeiten" style="margin-bottom:35px; margin-top:50px;">
-            <h2 class="mb-3">Zugehörigkeiten</h2>
+            <h2 class="mb-3"><xsl:value-of select="local:translate('place.affiliations')"/></h2>
             <table class="table entity-table">
                             <xsl:if
                                 test="count(distinct-values(tei:placeName[not(@type = 'legacy-name') and not(@type = 'legacy-name-merge')])) gt 1">
                                 <tr>
-                                    <th> Namensvarianten: </th>
+                                    <th> <xsl:value-of select="local:translate('place.name_variants')"/> </th>
                                     <td>
                                         <ul>
                                             <xsl:for-each
@@ -117,7 +128,7 @@
                             </xsl:if>
                             <xsl:if test="./tei:location[@type = 'located_in_place']">
                                 <tr>
-                                    <th> Zugehörigkeit: </th>
+                                    <th> <xsl:value-of select="local:translate('place.affiliation')"/> </th>
                                     <td>
                                         <ul>
                                             <xsl:for-each
@@ -143,7 +154,7 @@
                             <xsl:if
                                 test="ancestor::tei:listPlace/tei:place[tei:location[@type = 'located_in_place']/tei:placeName/@key = $current-xml-id][1]">
                                 <tr>
-                                    <th> Enthält: </th>
+                                    <th> <xsl:value-of select="local:translate('place.contains')"/> </th>
                                     <td>
                                         <ul>
                                             <xsl:for-each
@@ -165,7 +176,7 @@
                             </xsl:if>
                             <xsl:if test="./tei:noteGrp">
                                 <tr>
-                                    <th> Wohnort oder Arbeitsort von: </th>
+                                    <th> <xsl:value-of select="local:translate('place.residence_of')"/> </th>
                                     <td>
                                         <ul>
                                             <xsl:for-each select="descendant::tei:noteGrp/tei:note">
@@ -222,11 +233,12 @@
                     <h2 class="mb-3">
                         <xsl:choose>
                             <xsl:when test="$anzahl-aufenthalte = 1">
-                                <xsl:text>Ein nachgewiesener Aufenthalt Schnitzlers</xsl:text>
+                                <xsl:value-of select="local:translate('place.stays_one')"/>
                             </xsl:when>
                             <xsl:otherwise>
                                 <xsl:value-of select="$anzahl-aufenthalte"/>
-                                <xsl:text> nachgewiesene Aufenthalte Schnitzlers</xsl:text>
+                                <xsl:text> </xsl:text>
+                                <xsl:value-of select="local:translate('place.stays_many')"/>
                             </xsl:otherwise>
                         </xsl:choose>
                     </h2>
@@ -252,8 +264,8 @@
                                                 10"/>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="100%"
                                         height="300" viewBox="0 0 1000 300" role="img" aria-labelledby="svg-title svg-desc">
-                                        <title id="svg-title">Zeitlinie der Aufenthalte von Arthur Schnitzler</title>
-                                        <desc id="svg-desc">Ein Balkendiagramm zeigt die Häufigkeit von Schnitzlers Aufenthalten über die Jahre von 1870 bis 1930. Die Y-Achse zeigt die Anzahl der Aufenthalte, die X-Achse die Jahre.</desc>
+                                        <title id="svg-title"><xsl:value-of select="local:translate('place.svg_title')"/></title>
+                                        <desc id="svg-desc"><xsl:value-of select="local:translate('place.svg_desc')"/></desc>
                                         <!-- Achsen -->
                                         <line x1="50" y1="10" x2="50" y2="250" stroke="black"/>
                                         <line x1="50" y1="250" x2="950" y2="250" stroke="black"/>
@@ -338,7 +350,7 @@
                                             <xsl:for-each
                                                 select="$distinctPlaces/tei:place[@xml:id = $current-xml-id]/tei:listEvent/tei:event">
                                                 <li>
-                                                  <a href="{concat('tag.html#', @when)}">
+                                                  <a href="{concat($tag-page, '#', @when)}">
                                                   <xsl:value-of select="tei:eventName"/>
                                                   </a>
                                                 </li>
@@ -361,7 +373,7 @@
                                                   <!-- Ereignisse innerhalb des Jahres -->
                                                   <xsl:for-each select="current-group()">
                                                   <li>
-                                                  <a href="{concat('tag.html#', @when)}"
+                                                  <a href="{concat($tag-page, '#', @when)}"
                                                   >
                                                   <xsl:value-of select="tei:eventName"/>
                                                   </a>

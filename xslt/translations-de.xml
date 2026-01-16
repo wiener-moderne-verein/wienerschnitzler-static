@@ -341,4 +341,24 @@
     <text key="zeitleiste.heading">Zeitleiste</text>
     <text key="zeitleiste.year_select">Jahr auswählen:</text>
     <text key="zeitleiste.toggle_additional">In der Wochen- oder Tagesansicht werden Orte innerhalb von Orten gezeigt</text>
+
+    <!-- place.xsl - Place detail pages -->
+    <text key="place.map">Karte</text>
+    <text key="place.affiliations">Zugehörigkeiten</text>
+    <text key="place.stays">Aufenthalte</text>
+    <text key="place.close_map">Karte schließen</text>
+    <text key="place.openstreetmap_aria">OpenStreetMap - öffnet in neuem Fenster</text>
+    <text key="place.openstreetmap">OpenStreetMap</text>
+    <text key="place.name_variants">Namensvarianten:</text>
+    <text key="place.affiliation">Zugehörigkeit:</text>
+    <text key="place.contains">Enthält:</text>
+    <text key="place.residence_of">Wohnort oder Arbeitsort von:</text>
+    <text key="place.stays_one">Ein nachgewiesener Aufenthalt Schnitzlers</text>
+    <text key="place.stays_many">nachgewiesene Aufenthalte Schnitzlers</text>
+    <text key="place.svg_title">Zeitlinie der Aufenthalte von Arthur Schnitzler</text>
+    <text key="place.svg_desc">Ein Balkendiagramm zeigt die Häufigkeit von Schnitzlers Aufenthalten über die Jahre von 1870 bis 1930. Die Y-Achse zeigt die Anzahl der Aufenthalte, die X-Achse die Jahre.</text>
+    <text key="place.meta_description_prefix">Detailinformationen zu </text>
+    <text key="place.meta_description_suffix"> – Aufenthaltsort Arthur Schnitzlers mit Erwähnungen und geografischer Verortung.</text>
+    <text key="place_missing.meta_description_prefix">Detailinformationen zum Ort </text>
+    <text key="place_missing.meta_description_suffix"> – noch nicht eindeutig identifizierter Aufenthaltsort Arthur Schnitzlers.</text>
 </translations>

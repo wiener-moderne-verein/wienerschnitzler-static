@@ -199,24 +199,99 @@ def generate_sitemap():
                 xhtml_link_default.set('hreflang', 'x-default')
                 xhtml_link_default.set('href', f"{base_url}/{de_file}")
 
-    # PMB-Seiten hinzufügen (falls vorhanden) - these don't have language versions
+    # PMB-Seiten hinzufügen mit mehrsprachiger Unterstützung
     pmb_files = glob.glob(os.path.join(html_dir, "pmb*.html"))
+    pmb_filenames = [os.path.basename(f) for f in pmb_files]
+
+    # Track which pmb base IDs we've already processed
+    processed_pmb_bases = set()
+
     for pmb_file in sorted(pmb_files):
         filename = os.path.basename(pmb_file)
+        base = get_base_filename(filename)
 
-        url = SubElement(urlset, 'url')
+        # Skip if we already processed this base
+        if base in processed_pmb_bases:
+            continue
+        processed_pmb_bases.add(base)
 
-        loc = SubElement(url, 'loc')
-        loc.text = f"{base_url}/{filename}"
+        # Get language pair
+        de_file, en_file = get_language_pair(filename)
 
-        lastmod = SubElement(url, 'lastmod')
-        lastmod.text = current_date
+        # Check which versions exist
+        de_exists = de_file in pmb_filenames
+        en_exists = en_file in pmb_filenames
 
-        changefreq = SubElement(url, 'changefreq')
-        changefreq.text = 'yearly'  # PMB-Seiten ändern sich selten
+        # Create URL entries for existing versions
+        if de_exists:
+            url = SubElement(urlset, 'url')
 
-        priority = SubElement(url, 'priority')
-        priority.text = '0.5'  # Mittlere Priorität für Ortsseiten
+            loc = SubElement(url, 'loc')
+            loc.text = f"{base_url}/{de_file}"
+
+            lastmod = SubElement(url, 'lastmod')
+            lastmod.text = current_date
+
+            changefreq = SubElement(url, 'changefreq')
+            changefreq.text = 'yearly'
+
+            priority = SubElement(url, 'priority')
+            priority.text = '0.5'
+
+            # Add hreflang links if both versions exist
+            if en_exists:
+                # Self-reference (German)
+                xhtml_link_de = SubElement(url, '{http://www.w3.org/1999/xhtml}link')
+                xhtml_link_de.set('rel', 'alternate')
+                xhtml_link_de.set('hreflang', 'de')
+                xhtml_link_de.set('href', f"{base_url}/{de_file}")
+
+                # English version
+                xhtml_link_en = SubElement(url, '{http://www.w3.org/1999/xhtml}link')
+                xhtml_link_en.set('rel', 'alternate')
+                xhtml_link_en.set('hreflang', 'en')
+                xhtml_link_en.set('href', f"{base_url}/{en_file}")
+
+                # x-default points to German version
+                xhtml_link_default = SubElement(url, '{http://www.w3.org/1999/xhtml}link')
+                xhtml_link_default.set('rel', 'alternate')
+                xhtml_link_default.set('hreflang', 'x-default')
+                xhtml_link_default.set('href', f"{base_url}/{de_file}")
+
+        if en_exists:
+            url = SubElement(urlset, 'url')
+
+            loc = SubElement(url, 'loc')
+            loc.text = f"{base_url}/{en_file}"
+
+            lastmod = SubElement(url, 'lastmod')
+            lastmod.text = current_date
+
+            changefreq = SubElement(url, 'changefreq')
+            changefreq.text = 'yearly'
+
+            priority = SubElement(url, 'priority')
+            priority.text = '0.5'
+
+            # Add hreflang links if both versions exist
+            if de_exists:
+                # German version
+                xhtml_link_de = SubElement(url, '{http://www.w3.org/1999/xhtml}link')
+                xhtml_link_de.set('rel', 'alternate')
+                xhtml_link_de.set('hreflang', 'de')
+                xhtml_link_de.set('href', f"{base_url}/{de_file}")
+
+                # Self-reference (English)
+                xhtml_link_en = SubElement(url, '{http://www.w3.org/1999/xhtml}link')
+                xhtml_link_en.set('rel', 'alternate')
+                xhtml_link_en.set('hreflang', 'en')
+                xhtml_link_en.set('href', f"{base_url}/{en_file}")
+
+                # x-default points to German version
+                xhtml_link_default = SubElement(url, '{http://www.w3.org/1999/xhtml}link')
+                xhtml_link_default.set('rel', 'alternate')
+                xhtml_link_default.set('hreflang', 'x-default')
+                xhtml_link_default.set('href', f"{base_url}/{de_file}")
 
     # XML formatieren und schreiben
     rough_string = tostring(urlset, 'utf-8')

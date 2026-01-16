@@ -341,4 +341,24 @@
     <text key="zeitleiste.heading">Timeline</text>
     <text key="zeitleiste.year_select">Select year:</text>
     <text key="zeitleiste.toggle_additional">In weekly or daily view, locations within locations are shown</text>
+
+    <!-- place.xsl - Place detail pages -->
+    <text key="place.map">Map</text>
+    <text key="place.affiliations">Affiliations</text>
+    <text key="place.stays">Stays</text>
+    <text key="place.close_map">Close map</text>
+    <text key="place.openstreetmap_aria">OpenStreetMap - opens in new window</text>
+    <text key="place.openstreetmap">OpenStreetMap</text>
+    <text key="place.name_variants">Name variants:</text>
+    <text key="place.affiliation">Affiliation:</text>
+    <text key="place.contains">Contains:</text>
+    <text key="place.residence_of">Residence or workplace of:</text>
+    <text key="place.stays_one">One documented stay by Schnitzler</text>
+    <text key="place.stays_many">documented stays by Schnitzler</text>
+    <text key="place.svg_title">Timeline of Arthur Schnitzler's stays</text>
+    <text key="place.svg_desc">A bar chart shows the frequency of Schnitzler's stays over the years from 1870 to 1930. The Y-axis shows the number of stays, the X-axis shows the years.</text>
+    <text key="place.meta_description_prefix">Detailed information about </text>
+    <text key="place.meta_description_suffix"> – Arthur Schnitzler's place of residence with mentions and geographical location.</text>
+    <text key="place_missing.meta_description_prefix">Detailed information about </text>
+    <text key="place_missing.meta_description_suffix"> – not yet clearly identified location where Arthur Schnitzler stayed.</text>
 </translations>
