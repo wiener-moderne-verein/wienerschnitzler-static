@@ -59,17 +59,17 @@
                                                 <xsl:value-of select="local:translate('monat.month_select_label')"/>
                                             </xsl:attribute>
                                             <option value="01"><xsl:value-of select="local:translate('monat.month_janner')"/></option>
-                                            <option value="02"><xsl:value-of select="local:translate('monat.month_feber')"/></option>
-                                            <option value="03"><xsl:value-of select="local:translate('monat.month_maerz')"/></option>
+                                            <option value="02"><xsl:value-of select="local:translate('monat.month_februar')"/></option>
+                                            <option value="03"><xsl:value-of select="local:translate('monat.month_march')"/></option>
                                             <option value="04"><xsl:value-of select="local:translate('monat.month_april')"/></option>
-                                            <option value="05"><xsl:value-of select="local:translate('monat.month_mai')"/></option>
-                                            <option value="06"><xsl:value-of select="local:translate('monat.month_juni')"/></option>
-                                            <option value="07"><xsl:value-of select="local:translate('monat.month_juli')"/></option>
+                                            <option value="05"><xsl:value-of select="local:translate('monat.month_may')"/></option>
+                                            <option value="06"><xsl:value-of select="local:translate('monat.month_june')"/></option>
+                                            <option value="07"><xsl:value-of select="local:translate('monat.month_july')"/></option>
                                             <option value="08"><xsl:value-of select="local:translate('monat.month_august')"/></option>
                                             <option value="09"><xsl:value-of select="local:translate('monat.month_september')"/></option>
-                                            <option value="10"><xsl:value-of select="local:translate('monat.month_oktober')"/></option>
+                                            <option value="10"><xsl:value-of select="local:translate('monat.month_october')"/></option>
                                             <option value="11"><xsl:value-of select="local:translate('monat.month_november')"/></option>
-                                            <option value="12"><xsl:value-of select="local:translate('monat.month_dezember')"/></option>
+                                            <option value="12"><xsl:value-of select="local:translate('monat.month_december')"/></option>
                                         </select>
                                         <select id="year-select" class="form-select w-auto">
                                             <xsl:attribute name="aria-label">
