@@ -121,12 +121,26 @@
         {
             "@type": "Dataset",
             "name": "Schnitzler Tagebuch",
-            "url": "https://schnitzler-tagebuch.acdh.oeaw.ac.at/"
+            "description": "Digitale Edition des Tagebuchs von Arthur Schnitzler (1879–1931), herausgegeben vom Austrian Centre for Digital Humanities and Cultural Heritage.",
+            "url": "https://schnitzler-tagebuch.acdh.oeaw.ac.at/",
+            "creator": {
+                "@type": "Organization",
+                "name": "Austrian Centre for Digital Humanities and Cultural Heritage",
+                "url": "https://www.oeaw.ac.at/acdh/"
+            },
+            "license": "https://creativecommons.org/licenses/by/4.0/"
         },
         {
             "@type": "Dataset",
             "name": "Schnitzler Briefe",
-            "url": "https://schnitzler-briefe.acdh.oeaw.ac.at/"
+            "description": "Digitale Edition der Briefe von Arthur Schnitzler (1888–1931), herausgegeben vom Austrian Centre for Digital Humanities and Cultural Heritage.",
+            "url": "https://schnitzler-briefe.acdh.oeaw.ac.at/",
+            "creator": {
+                "@type": "Organization",
+                "name": "Austrian Centre for Digital Humanities and Cultural Heritage",
+                "url": "https://www.oeaw.ac.at/acdh/"
+            },
+            "license": "https://creativecommons.org/licenses/by/4.0/"
         }
     ],
     "license": "https://creativecommons.org/licenses/by/4.0/"
@@ -136,9 +150,9 @@
 {
     "@context": "https://schema.org",
     "@type": "<xsl:value-of select="$page_type"/>",
-    "name": "<xsl:value-of select="$html_title"/>",
-    "description": "<xsl:value-of select="$page_description"/>",
-    "inLanguage": "de-AT",<xsl:if test="$page_url">
+    "name": "<xsl:value-of select="replace(replace($html_title, '\\', '\\\\'), '&quot;', '\\&quot;')"/>",
+    "description": "<xsl:value-of select="replace(replace($page_description, '\\', '\\\\'), '&quot;', '\\&quot;')"/>",
+    "inLanguage": "<xsl:choose><xsl:when test="$language = 'en'">en</xsl:when><xsl:otherwise>de-AT</xsl:otherwise></xsl:choose>",<xsl:if test="$page_url">
     "url": "<xsl:value-of select="$page_url"/>",</xsl:if>
     "isPartOf": {
         "@type": "WebSite",

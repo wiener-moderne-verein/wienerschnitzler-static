@@ -227,6 +227,7 @@
                         <xsl:call-template name="html_head">
                             <xsl:with-param name="html_title" select="$name"/>
                             <xsl:with-param name="page_description" select="concat(local:translate('place.meta_description_prefix'), $name, local:translate('place.meta_description_suffix'))"/>
+                            <xsl:with-param name="page_url" select="concat($base_url, '/', $filename)"/>
                         </xsl:call-template>
                     </head>
                     <body class="w-100 h-100">
