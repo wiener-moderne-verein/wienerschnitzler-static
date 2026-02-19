@@ -60,6 +60,9 @@ const wohnsitze = [{
 let currentlyLoadingDate = null; // Verhindert mehrfache Aufrufe
 let tagebuchDates = []; // Liste der Tagebuch-Daten
 
+// Sprache aus dem HTML-Element lesen (wird von XSLT gesetzt)
+const lang = document.documentElement.lang || 'de';
+
 // Map Initialisierung - komplett eigenständig
 function initializeMapLarge() {
   if (map) {
@@ -82,13 +85,23 @@ function formatIsoDateToGerman(dateStr) {
   return `${Number(parts[2])}.${Number(parts[1])}.${parts[0]}`;
 }
 
-// Hilfsfunktion zur Formatierung von ISO-Datum mit Wochentag (z.B. "Dienstag, dem 3.3.1863")
+// Hilfsfunktion zur Formatierung von ISO-Datum mit Wochentag
+// DE: "Dienstag, dem 3.3.1863" | EN: "Tuesday, 3 March 1863"
 function formatIsoDateWithWeekday(dateStr) {
+  const parts = dateStr.split('-');
+  const day = Number(parts[2]);
+  const month = Number(parts[1]);
+  const year = parts[0];
   const date = new Date(dateStr);
+
+  if (lang === 'en') {
+    const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    const months = ['January', 'February', 'March', 'April', 'May', 'June',
+                    'July', 'August', 'September', 'October', 'November', 'December'];
+    return `${weekdays[date.getDay()]}, ${day} ${months[month - 1]} ${year}`;
+  }
   const weekdays = ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'];
-  const weekday = weekdays[date.getDay()];
-  const formattedDate = formatIsoDateToGerman(dateStr);
-  return `${weekday}, dem ${formattedDate}`;
+  return `${weekdays[date.getDay()]}, dem ${day}.${month}.${year}`;
 }
 
 // Funktion, die anhand des Datums den entsprechenden Wohnsitz aus dem Array sucht
@@ -278,12 +291,13 @@ function makePlaceLink(id, name) {
   return `<a href="${encodeURIComponent(id)}.html">${name}</a>`;
 }
 
-// Hilfsfunktion: Liste von Orten mit "und" vor dem letzten verbinden
+// Hilfsfunktion: Liste von Orten mit "und"/"and" vor dem letzten verbinden
 function joinPlaceLinks(places) {
   if (places.length === 0) return '';
   if (places.length === 1) return makePlaceLink(places[0].id, places[0].name);
+  const conjunction = lang === 'en' ? 'and' : 'und';
   const allButLast = places.slice(0, -1).map(p => makePlaceLink(p.id, p.name)).join(', ');
-  return `${allButLast} und ${makePlaceLink(places[places.length - 1].id, places[places.length - 1].name)}`;
+  return `${allButLast} ${conjunction} ${makePlaceLink(places[places.length - 1].id, places[places.length - 1].name)}`;
 }
 
 // Baut den Hierarchietext rekursiv auf (alle Ebenen mit Unterorten)
@@ -294,7 +308,10 @@ function buildHierarchyText(hierarchy) {
     places.forEach(place => {
       if (place.children && place.children.length > 0) {
         const childLinks = joinPlaceLinks(place.children);
-        paragraphs.push(`In ${makePlaceLink(place.id, place.name)} hielt er sich an folgenden Orten auf: ${childLinks}.`);
+        const sentence = lang === 'en'
+          ? `In ${makePlaceLink(place.id, place.name)} he stayed in ${childLinks}.`
+          : `In ${makePlaceLink(place.id, place.name)} hielt er sich an folgenden Orten auf: ${childLinks}.`;
+        paragraphs.push(sentence);
         processLevel(place.children);
       }
     });
@@ -318,7 +335,9 @@ function updateMapInhaltText(features, date, name, hierarchy) {
     if (hierarchy && hierarchy.length > 0) {
       // Erster Satz: die obersten Orte auflisten
       const topLinks = joinPlaceLinks(hierarchy);
-      textContent = `<p>Am ${dateWithWeekday} war Schnitzler in ${topLinks}.</p>`;
+      textContent = lang === 'en'
+        ? `<p>On ${dateWithWeekday}, Schnitzler was in ${topLinks}.</p>`
+        : `<p>Am ${dateWithWeekday} war Schnitzler in ${topLinks}.</p>`;
 
       // Folgesätze: für jeden Ort mit Unterorten einen eigenen Absatz
       const subParagraphs = buildHierarchyText(hierarchy);
@@ -330,18 +349,24 @@ function updateMapInhaltText(features, date, name, hierarchy) {
       const filteredFeatures = features.filter(feature => feature && feature.properties && feature.properties.id);
       if (filteredFeatures.length > 0) {
         const createLinkText = (feature) => feature.properties.title || feature.properties.id;
-        textContent = `<p>Am ${dateWithWeekday} war Schnitzler in ${
-          filteredFeatures.length === 1
-            ? `<a href="${encodeURIComponent(filteredFeatures[0].properties.id)}.html">${createLinkText(filteredFeatures[0])}</a>.`
-            : filteredFeatures.slice(0, -1).map(f => `<a href="${encodeURIComponent(f.properties.id)}.html">${createLinkText(f)}</a>`).join(', ') +
-              ` und <a href="${encodeURIComponent(filteredFeatures[filteredFeatures.length - 1].properties.id)}.html">${createLinkText(filteredFeatures[filteredFeatures.length - 1])}</a>.`
-        }</p>`;
+        const conjunction = lang === 'en' ? 'and' : 'und';
+        const placeList = filteredFeatures.length === 1
+          ? `<a href="${encodeURIComponent(filteredFeatures[0].properties.id)}.html">${createLinkText(filteredFeatures[0])}</a>.`
+          : filteredFeatures.slice(0, -1).map(f => `<a href="${encodeURIComponent(f.properties.id)}.html">${createLinkText(f)}</a>`).join(', ') +
+            ` ${conjunction} <a href="${encodeURIComponent(filteredFeatures[filteredFeatures.length - 1].properties.id)}.html">${createLinkText(filteredFeatures[filteredFeatures.length - 1])}</a>.`;
+        textContent = lang === 'en'
+          ? `<p>On ${dateWithWeekday}, Schnitzler was in ${placeList}</p>`
+          : `<p>Am ${dateWithWeekday} war Schnitzler in ${placeList}</p>`;
       } else {
         const wohnsitz = getWohnsitzForDate(date);
         if (wohnsitz) {
-          textContent = `<p>Für den ${displayedDate} ist kein Aufenthaltsort bekannt. Schnitzler wohnte zu dieser Zeit in der ${wohnsitz.target_label}.</p>`;
+          textContent = lang === 'en'
+            ? `<p>No location is known for ${displayedDate}. Schnitzler lived at ${wohnsitz.target_label} at that time.</p>`
+            : `<p>Für den ${displayedDate} ist kein Aufenthaltsort bekannt. Schnitzler wohnte zu dieser Zeit in der ${wohnsitz.target_label}.</p>`;
         } else {
-          textContent = `<p>Für den ${displayedDate} sind keine Aufenthaltsorte bekannt.</p>`;
+          textContent = lang === 'en'
+            ? `<p>No locations are known for ${displayedDate}.</p>`
+            : `<p>Für den ${displayedDate} sind keine Aufenthaltsorte bekannt.</p>`;
         }
       }
     }
@@ -380,7 +405,9 @@ function loadGeoJsonByDate(date) {
     const formattedDate = formatIsoDateWithWeekday(date);
     const mapInhaltTextDiv = document.getElementById('map-inhalt-text');
     if (mapInhaltTextDiv) {
-      mapInhaltTextDiv.innerHTML = `Am ${formattedDate} war Arthur Schnitzler nicht am Leben.`;
+      mapInhaltTextDiv.innerHTML = lang === 'en'
+        ? `On ${formattedDate}, Arthur Schnitzler was not alive.`
+        : `Am ${formattedDate} war Arthur Schnitzler nicht am Leben.`;
     }
     return;
   }
