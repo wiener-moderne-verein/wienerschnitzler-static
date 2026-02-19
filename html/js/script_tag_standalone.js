@@ -294,7 +294,7 @@ function buildHierarchyText(hierarchy) {
     places.forEach(place => {
       if (place.children && place.children.length > 0) {
         const childLinks = joinPlaceLinks(place.children);
-        paragraphs.push(`In ${makePlaceLink(place.id, place.name)} hielt er sich auf in ${childLinks}.`);
+        paragraphs.push(`In ${makePlaceLink(place.id, place.name)} hielt er sich an folgenden Orten auf: ${childLinks}.`);
         processLevel(place.children);
       }
     });
