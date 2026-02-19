@@ -273,37 +273,76 @@ function updateUrlParameter(key, value) {
   window.history.replaceState(null, '', url.toString());
 }
 
-function updateMapInhaltText(features, date, name) {
+// Hilfsfunktion: Link zu einem Ort erstellen
+function makePlaceLink(id, name) {
+  return `<a href="${encodeURIComponent(id)}.html">${name}</a>`;
+}
+
+// Hilfsfunktion: Liste von Orten mit "und" vor dem letzten verbinden
+function joinPlaceLinks(places) {
+  if (places.length === 0) return '';
+  if (places.length === 1) return makePlaceLink(places[0].id, places[0].name);
+  const allButLast = places.slice(0, -1).map(p => makePlaceLink(p.id, p.name)).join(', ');
+  return `${allButLast} und ${makePlaceLink(places[places.length - 1].id, places[places.length - 1].name)}`;
+}
+
+// Baut den Hierarchietext rekursiv auf (alle Ebenen mit Unterorten)
+function buildHierarchyText(hierarchy) {
+  const paragraphs = [];
+
+  function processLevel(places) {
+    places.forEach(place => {
+      if (place.children && place.children.length > 0) {
+        const childLinks = joinPlaceLinks(place.children);
+        paragraphs.push(`In ${makePlaceLink(place.id, place.name)} hielt er sich auf in ${childLinks}.`);
+        processLevel(place.children);
+      }
+    });
+  }
+
+  processLevel(hierarchy);
+  return paragraphs;
+}
+
+function updateMapInhaltText(features, date, name, hierarchy) {
   const mapInhaltTextDiv = document.getElementById('map-inhalt-text');
 
   if (mapInhaltTextDiv) {
     const isValidDate = date && /^\d{4}-\d{2}-\d{2}$/.test(date);
     const displayedDate = isValidDate ? formatIsoDateToGerman(date) : 'unbekanntes Datum';
     const displayedName = name || displayedDate;
-
-    const filteredFeatures = features.filter(feature => feature && feature.properties && feature.properties.id);
+    const dateWithWeekday = isValidDate ? formatIsoDateWithWeekday(date) : displayedName;
 
     let textContent = '';
-    if (filteredFeatures.length > 0) {
-      const createLinkText = (feature) => {
-        const title = feature.properties.title || feature.properties.id;
-        return `${title}`;
-      };
 
-      const dateWithWeekday = isValidDate ? formatIsoDateWithWeekday(date) : displayedName;
+    if (hierarchy && hierarchy.length > 0) {
+      // Erster Satz: die obersten Orte auflisten
+      const topLinks = joinPlaceLinks(hierarchy);
+      textContent = `<p>Am ${dateWithWeekday} war Schnitzler in ${topLinks}.</p>`;
 
-      textContent = `Am ${dateWithWeekday} war Schnitzler an folgenden Orten: ${
-        filteredFeatures.length === 1
-          ? `<a href="${encodeURIComponent(filteredFeatures[0].properties.id)}.html">${createLinkText(filteredFeatures[0])}</a>.`
-          : filteredFeatures.slice(0, -1).map(feature => `<a href="${encodeURIComponent(feature.properties.id)}.html">${createLinkText(feature)}</a>`).join(', ') +
-            ` und <a href="${encodeURIComponent(filteredFeatures[filteredFeatures.length - 1].properties.id)}.html">${createLinkText(filteredFeatures[filteredFeatures.length - 1])}</a>.`
-      }`;
+      // Folgesätze: für jeden Ort mit Unterorten einen eigenen Absatz
+      const subParagraphs = buildHierarchyText(hierarchy);
+      if (subParagraphs.length > 0) {
+        textContent += subParagraphs.map(p => `<p>${p}</p>`).join('');
+      }
     } else {
-      const wohnsitz = getWohnsitzForDate(date);
-      if (wohnsitz) {
-        textContent = `Für den ${displayedDate} ist kein Aufenthaltsort bekannt. Schnitzler wohnte zu dieser Zeit in der ${wohnsitz.target_label}.`;
+      // Fallback: GeoJSON-Features direkt auflisten (kein Hierarchiefeld vorhanden)
+      const filteredFeatures = features.filter(feature => feature && feature.properties && feature.properties.id);
+      if (filteredFeatures.length > 0) {
+        const createLinkText = (feature) => feature.properties.title || feature.properties.id;
+        textContent = `<p>Am ${dateWithWeekday} war Schnitzler in ${
+          filteredFeatures.length === 1
+            ? `<a href="${encodeURIComponent(filteredFeatures[0].properties.id)}.html">${createLinkText(filteredFeatures[0])}</a>.`
+            : filteredFeatures.slice(0, -1).map(f => `<a href="${encodeURIComponent(f.properties.id)}.html">${createLinkText(f)}</a>`).join(', ') +
+              ` und <a href="${encodeURIComponent(filteredFeatures[filteredFeatures.length - 1].properties.id)}.html">${createLinkText(filteredFeatures[filteredFeatures.length - 1])}</a>.`
+        }</p>`;
       } else {
-        textContent = `Für den ${displayedDate} sind keine Aufenthaltsorte bekannt.`;
+        const wohnsitz = getWohnsitzForDate(date);
+        if (wohnsitz) {
+          textContent = `<p>Für den ${displayedDate} ist kein Aufenthaltsort bekannt. Schnitzler wohnte zu dieser Zeit in der ${wohnsitz.target_label}.</p>`;
+        } else {
+          textContent = `<p>Für den ${displayedDate} sind keine Aufenthaltsorte bekannt.</p>`;
+        }
       }
     }
 
@@ -346,7 +385,7 @@ function loadGeoJsonByDate(date) {
     return;
   }
 
-  const url = `https://raw.githubusercontent.com/wiener-moderne-verein/wienerschnitzler-data/main/data//editions/geojson/${date}.geojson`;
+  const url = `../geojson/${date}.geojson`;
 
   fetch(url)
     .then(response => {
@@ -358,6 +397,7 @@ function loadGeoJsonByDate(date) {
     .then(data => {
       const featuresWithID = [];
       const name = data.features[0]?.properties?.name || date;
+      const hierarchy = data.hierarchy || null;
 
       // Nur Point-Features mit timestamp, die das Datum enthalten
       const pointFeatures = data.features.filter(feature => {
@@ -416,7 +456,7 @@ function loadGeoJsonByDate(date) {
         map.fitBounds(lineLayer.getBounds());
       }
 
-      updateMapInhaltText(featuresWithID, date, name);
+      updateMapInhaltText(featuresWithID, date, name, hierarchy);
     })
     .catch(error => {
       console.error('Error loading GeoJSON:', error);
