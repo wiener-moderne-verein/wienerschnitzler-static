@@ -15,23 +15,29 @@
         as="node()"/>
     <xsl:variable name="place_types" select="document('../data/indices/ortstypen.xml')"/>
 
-    <!-- Function to translate place type -->
+    <!-- Function to translate place type.
+         entity_type_literal may contain "German English" concatenated (e.g. "Wohngebäude Residential building"),
+         so we match by prefix against the German name in ortstypen.xml. -->
     <xsl:function name="local:translate-place-type" as="xs:string">
-        <xsl:param name="de_name" as="xs:string"/>
+        <xsl:param name="raw" as="xs:string"/>
+        <xsl:variable name="match" select="$place_types//item[
+            starts-with($raw, name[@xml:lang='de']) and
+            (string-length($raw) = string-length(name[@xml:lang='de']) or
+             substring($raw, string-length(name[@xml:lang='de']) + 1, 1) = ' ')
+        ][1]"/>
         <xsl:choose>
-            <xsl:when test="$language = 'en'">
-                <xsl:variable name="translation" select="$place_types//item[name[@xml:lang='de'] = $de_name][1]/name[@xml:lang='en']"/>
+            <xsl:when test="$match">
                 <xsl:choose>
-                    <xsl:when test="$translation">
-                        <xsl:value-of select="$translation"/>
+                    <xsl:when test="$language = 'en'">
+                        <xsl:value-of select="$match/name[@xml:lang='en']"/>
                     </xsl:when>
                     <xsl:otherwise>
-                        <xsl:value-of select="$de_name"/>
+                        <xsl:value-of select="$match/name[@xml:lang='de']"/>
                     </xsl:otherwise>
                 </xsl:choose>
             </xsl:when>
             <xsl:otherwise>
-                <xsl:value-of select="$de_name"/>
+                <xsl:value-of select="$raw"/>
             </xsl:otherwise>
         </xsl:choose>
     </xsl:function>
