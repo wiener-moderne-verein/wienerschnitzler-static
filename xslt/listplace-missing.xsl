@@ -20,7 +20,7 @@
         <xsl:param name="de_name" as="xs:string"/>
         <xsl:choose>
             <xsl:when test="$language = 'en'">
-                <xsl:variable name="translation" select="$place_types//item[name[@xml:lang='de'] = $de_name]/name[@xml:lang='en']"/>
+                <xsl:variable name="translation" select="$place_types//item[name[@xml:lang='de'] = $de_name][1]/name[@xml:lang='en']"/>
                 <xsl:choose>
                     <xsl:when test="$translation">
                         <xsl:value-of select="$translation"/>
