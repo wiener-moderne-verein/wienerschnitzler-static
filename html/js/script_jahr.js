@@ -1,6 +1,7 @@
 import { map, createCircleMarkerDynamic, bindPopupEvents, clearGeoJsonLayers, geoJsonLayers, initializeMapLarge } from './fuer-alle-karten.js';
 import { setupLineToggleControl, updateLineUrlParam } from './linie-anzeigen.js';
 import { createStaticLegend } from './legend_static.js';
+import { DATA_BASE_URL } from './config.js';
 
 // Globale Variablen und Funktionen
 let lineLayer =[]; // Für den Linien-Layer
@@ -29,7 +30,7 @@ function getYearFromUrl() {
 
 // Funktion zum Laden von GeoJSON basierend auf einem Jahr
 function loadGeoJsonByYear(year) {
-    const url = `https://raw.githubusercontent.com/wiener-moderne-verein/wienerschnitzler-data/main/data/editions/geojson/${year}.geojson`;
+    const url = `${DATA_BASE_URL}/geojson/${year}.geojson`;
 
     clearGeoJsonLayers(); // Vorherige Layer entfernen
 
@@ -91,7 +92,7 @@ function loadGeoJsonByYear(year) {
 
 // Laden des Linien-Layers für das ausgewählte Jahr
 function loadLineGeoJsonByYear(year) {
-    const url = "https://raw.githubusercontent.com/wiener-moderne-verein/wienerschnitzler-data/refs/heads/main/data/editions/geojson/l_years.geojson";
+    const url = `${DATA_BASE_URL}/geojson/l_years.geojson`;
 
     // Entferne vorhandenen Linien-Layer sicher
     if (lineLayer && map.hasLayer(lineLayer)) {

@@ -1,3 +1,5 @@
+import { DATA_BASE_URL } from './config.js';
+
 const cal = new CalHeatmap();
 const DECADE_LENGTH = 10;
 const formatDate = date => window.dayjs(date).format('YYYY-MM-DD');
@@ -176,14 +178,18 @@ function generateDecadeButtons(min, max) {
 }
 
 // Initialisieren
-fetch('https://raw.githubusercontent.com/wiener-moderne-verein/wienerschnitzler-data/refs/heads/main/data/editions/json/uebersicht.json')
+fetch(`${DATA_BASE_URL}/json/uebersicht.json`)
   .then(res => res.json())
   .then(data => {
     events = data;
     eventByDate = {};
+    const lang = document.documentElement.lang || 'de';
     events.forEach(e => {
       const key = dayjs(e.date).format('YYYY-MM-DD');
-      eventByDate[key] = e.title;
+      const formattedDate = dayjs(e.date).format('D. M. YYYY');
+      eventByDate[key] = lang === 'en'
+        ? `On ${formattedDate} Schnitzler stayed in ${e.places}`
+        : `Am ${formattedDate} hielt sich Schnitzler in ${e.places} auf`;
     });
     const years = events.map(e => new Date(e.date).getFullYear());
     minYear = Math.min(...years);

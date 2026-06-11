@@ -1,11 +1,11 @@
 # bin/bash
 
-echo "fetching from data_repo"
+echo "fetching from data_repo (branch: data)"
 rm -rf data/
-curl -LO https://github.com/wiener-moderne-verein/wienerschnitzler-data/archive/refs/heads/main.zip
-unzip main
+curl -LO https://github.com/wiener-moderne-verein/wienerschnitzler-data/archive/refs/heads/data.zip
+unzip data.zip
 
-mv ./wienerschnitzler-data-main/data/ .
+mv ./wienerschnitzler-data-data/data/ .
 
-rm main.zip
-rm -rf ./wienerschnitzler-data-main
+rm data.zip
+rm -rf ./wienerschnitzler-data-data

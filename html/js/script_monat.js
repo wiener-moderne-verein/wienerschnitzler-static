@@ -1,6 +1,7 @@
 import { map, createCircleMarkerDynamic, bindPopupEvents, clearGeoJsonLayers, geoJsonLayers, initializeMapLarge } from './fuer-alle-karten.js';
 import { setupLineToggleControl, updateLineUrlParam } from './linie-anzeigen.js';
 import { createStaticLegend } from './legend_static.js';
+import { DATA_BASE_URL } from './config.js';
 
 const namedLineLayers = {}; // Behalten wir für die Verwaltung der Linienlayer bei
 let activeLineLayer = null; // Globale Variable für den aktuell aktiven Linien-Layer
@@ -11,7 +12,7 @@ if (!map) {
 }
 
 function loadGeoJsonByMonth(month) { // Erwartet "YYYY-MM"
-    const url = `https://raw.githubusercontent.com/wiener-moderne-verein/wienerschnitzler-data/main/data/editions/geojson/${month}.geojson`;
+    const url = `${DATA_BASE_URL}/geojson/${month}.geojson`;
 
     // Entferne vorherige Punkt-Layer und Legende
     clearGeoJsonLayers();
@@ -64,7 +65,7 @@ function loadGeoJsonByMonth(month) { // Erwartet "YYYY-MM"
 
 
 function loadLineGeoJsonByMonth(month) { // Erwartet "YYYY-MM"
-    const url = "https://raw.githubusercontent.com/wiener-moderne-verein/wienerschnitzler-data/refs/heads/main/data/editions/geojson/l_months.geojson";
+    const url = `${DATA_BASE_URL}/geojson/l_months.geojson`;
     const layerName = "lineLayer_" + month; // Eindeutiger Name pro Monat
 
     // Entferne alle vorhandenen Linien-Layer aus der Karte und dem Speicher

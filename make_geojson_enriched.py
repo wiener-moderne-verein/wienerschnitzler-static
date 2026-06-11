@@ -2,6 +2,8 @@
 Generates enriched local GeoJSON files by adding a 'hierarchy' property
 to each FeatureCollection from wienerschnitzler_complete_nested.xml.
 
+Source: data/editions/geojson/days/YYYY.json (year bundles, one
+FeatureCollection per documented day).
 Output: html/geojson/YYYY-MM-DD.geojson for each daily event.
 The JavaScript fetches these local files instead of the GitHub raw GeoJSON.
 
@@ -13,10 +15,21 @@ import xml.etree.ElementTree as ET
 import json
 import os
 import re
-import glob
+from functools import lru_cache
 
 NS = '{http://www.tei-c.org/ns/1.0}'
 DAILY_DATE_RE = re.compile(r'^\d{4}-\d{2}-\d{2}$')
+DAYS_DIR = 'data/editions/geojson/days'
+
+
+@lru_cache(maxsize=None)
+def load_year_bundle(year):
+    """Load the year bundle (one FeatureCollection per documented day)."""
+    path = os.path.join(DAYS_DIR, f'{year}.json')
+    if not os.path.exists(path):
+        return {}
+    with open(path, encoding='utf-8') as f:
+        return json.load(f)
 
 
 def normalize_id(corresp_id):
@@ -43,7 +56,6 @@ def parse_places(list_place_el):
 
 def main():
     xml_path = 'data/editions/xml/wienerschnitzler_complete_nested.xml'
-    geojson_dir = 'data/editions/geojson'
     output_dir = 'html/geojson'
     os.makedirs(output_dir, exist_ok=True)
 
@@ -67,8 +79,8 @@ def main():
     count = 0
     missing_geojson = 0
     for date, hierarchy in hierarchy_by_date.items():
-        geojson_path = os.path.join(geojson_dir, f'{date}.geojson')
-        if not os.path.exists(geojson_path):
+        geojson_data = load_year_bundle(date[:4]).get(date)
+        if geojson_data is None:
             missing_geojson += 1
             # Create a minimal GeoJSON with only hierarchy, no features
             geojson_data = {
@@ -77,8 +89,6 @@ def main():
                 'features': []
             }
         else:
-            with open(geojson_path, 'r', encoding='utf-8') as f:
-                geojson_data = json.load(f)
             geojson_data['hierarchy'] = hierarchy
 
         output_file = os.path.join(output_dir, f'{date}.geojson')

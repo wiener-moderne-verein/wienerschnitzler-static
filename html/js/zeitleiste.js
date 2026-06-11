@@ -2,6 +2,7 @@ import {
     DataSet, Timeline
 }
 from "https://unpkg.com/vis-timeline/standalone/esm/vis-timeline-graph2d.js";
+import { DATA_BASE_URL } from './config.js';
 
 // Schwellenwert für den Typfilter: 10 Tage in Millisekunden
 const typeThreshold = 10 * 24 * 3600 * 1000;
@@ -11,7 +12,7 @@ let currentYear = 1900;
 let currentYearItems =[];
 
 // JSON-Daten laden
-fetch("https://raw.githubusercontent.com/wiener-moderne-verein/wienerschnitzler-data/main/data/editions/json/wienerschnitzler_timeline.json").then(response => response.json()).then(data => {
+fetch(`${DATA_BASE_URL}/json/wienerschnitzler_timeline.json`).then(response => response.json()).then(data => {
     // Erstelle Timeline-Items und speichere auch den "type" in "eventType"
     const items = data.map((item, index) => {
         const timeStamp = item.timestamp[0];

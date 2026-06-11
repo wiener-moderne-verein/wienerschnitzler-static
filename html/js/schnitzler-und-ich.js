@@ -1,6 +1,7 @@
 import { initializeMapLarge , map } from './fuer-alle-karten.js';
+import { DATA_BASE_URL } from './config.js';
 
-const geojsonUrl = "https://raw.githubusercontent.com/wiener-moderne-verein/wienerschnitzler-data/refs/heads/main/data/editions/geojson/wienerschnitzler_distinctPlaces.geojson";
+const geojsonUrl = `${DATA_BASE_URL}/geojson/wienerschnitzler_distinctPlaces.geojson`;
 
 const resultElement = document.getElementById('result');
 let geojsonData = null;

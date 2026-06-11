@@ -1,6 +1,7 @@
 import { map, createCircleMarkerDynamic, bindPopupEvents, clearGeoJsonLayers, geoJsonLayers, initializeMapLarge } from './fuer-alle-karten.js';
 import { setupLineToggleControl } from './linie-anzeigen.js';
 import { createStaticLegend } from './legend_static.js';
+import { DATA_BASE_URL } from './config.js';
 
 // Array zur Verwaltung der Punkt-Layer
 let lineLayer; 
@@ -9,7 +10,7 @@ let lineLayer;
 function loadGeoJsonByDecade(decade) {
     const startYear = decade;
     const endYear = parseInt(decade, 10) + 9;
-    const url = `https://raw.githubusercontent.com/wiener-moderne-verein/wienerschnitzler-data/main/data/editions/geojson/${encodeURIComponent(startYear)}-${encodeURIComponent(endYear)}.geojson`;
+    const url = `${DATA_BASE_URL}/geojson/${encodeURIComponent(startYear)}-${encodeURIComponent(endYear)}.geojson`;
 
     clearGeoJsonLayers();
 
@@ -65,7 +66,7 @@ function loadLineGeoJsonByDecade(decade) {
     lineLayer = null;
   }
   
-  const url = "https://raw.githubusercontent.com/wiener-moderne-verein/wienerschnitzler-data/refs/heads/main/data/editions/geojson/l_decades.geojson";
+  const url = `${DATA_BASE_URL}/geojson/l_decades.geojson`;
   
   fetch(url)
     .then(response => {

@@ -1,5 +1,6 @@
 import { map, createCircleMarkerDynamic, bindPopupEvents, geoJsonLayers, initializeMapLarge } from './fuer-alle-karten.js';
 import { setupLineToggleControl } from './linie-anzeigen.js';
+import { DATA_BASE_URL } from './config.js';
 
 const wohnsitze =[ {
     target_label: "Sternwartestraße 71",
@@ -74,6 +75,23 @@ let lineLayer;
 // globale Variable für den Linien-Layer
 
 let currentlyLoadingDate = null; // Verhindert mehrfache Aufrufe
+
+// Cache für Jahresbündel: ein JSON-Objekt mit einer FeatureCollection pro belegtem Tag.
+// Beim Blättern innerhalb eines Jahres ist so kein weiterer Request nötig.
+const dayBundleCache = {};
+
+async function loadDayFeatureCollection(date) {
+  const year = date.slice(0, 4);
+  if (!dayBundleCache[year]) {
+    const response = await fetch(`${DATA_BASE_URL}/geojson/days/${year}.json`);
+    if (!response.ok) {
+      throw new Error(`Daten für ${year} nicht gefunden.`);
+    }
+    dayBundleCache[year] = await response.json();
+  }
+  // Tage ohne Beleg fehlen im Bündel
+  return dayBundleCache[year][date] ?? { type: 'FeatureCollection', features: [] };
+}
 
 // Tag-spezifische aggressive Bereinigung für graue Punkte
 function clearTagMap() {
@@ -201,18 +219,10 @@ function loadGeoJsonByDate(date) {
     return;
   }
 
-  const url = `https://raw.githubusercontent.com/wiener-moderne-verein/wienerschnitzler-data/main/data//editions/geojson/${date}.geojson`;
-
-  fetch(url)
-    .then(response => {
-      if (!response.ok) {
-        throw new Error(`GeoJSON für ${date} nicht gefunden.`);
-      }
-      return response.json();
-    })
+  loadDayFeatureCollection(date)
     .then(data => {
       const featuresWithID = [];
-      const name = data.features[0]?.properties?.name || date;
+      const name = formatIsoDateToGerman(date);
 
       // Nur Point-Features mit timestamp, die das Datum enthalten
       const pointFeatures = data.features.filter(feature => {

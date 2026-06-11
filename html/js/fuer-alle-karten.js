@@ -4,6 +4,7 @@
 // import { displayFilteredGeoJsonType } from './script_gesamt_typen.js';
 
 import { t } from './translations.js';
+import { DATA_BASE_URL } from './config.js';
 
 // Globale Map-Referenz
 export let map;
@@ -186,7 +187,8 @@ export function initView() {
   } else if (pathname.includes("gesamt_typen")) {
     viewType = "typen";
   } else if (pathname.includes("tag")) {
-    viewType = "tag";
+    // Tag-Ansicht hat eigene Logik - nicht automatisch laden
+    return;
   } else if (pathname.includes("monat")) {
     // Monat-Ansicht hat eigene Logik - nicht automatisch laden
     return;
@@ -200,12 +202,9 @@ export function initView() {
   }
 
   const geoJsonUrls = {
-    gesamt: "https://raw.githubusercontent.com/wiener-moderne-verein/wienerschnitzler-data/main/data/editions/geojson/wienerschnitzler_distinctPlaces.geojson",
-    typen: "https://raw.githubusercontent.com/wiener-moderne-verein/wienerschnitzler-data/main/data/editions/geojson/wienerschnitzler_distinctPlaces.geojson",
-    tag: "https://raw.githubusercontent.com/wiener-moderne-verein/wienerschnitzler-data/main/data/editions/geojson/1895-01-23.geojson",
-    monat: "https://raw.githubusercontent.com/wiener-moderne-verein/wienerschnitzler-data/main/data/editions/geojson/1895-01.geojson",
-    jahr: "https://raw.githubusercontent.com/wiener-moderne-verein/wienerschnitzler-data/main/data/editions/geojson/1890.geojson",
-    dekade: "https://raw.githubusercontent.com/wiener-moderne-verein/wienerschnitzler-data/main/data/editions/geojson/1891-1900.geojson"
+    gesamt: `${DATA_BASE_URL}/geojson/wienerschnitzler_distinctPlaces.geojson`,
+    typen: `${DATA_BASE_URL}/geojson/wienerschnitzler_distinctPlaces.geojson`,
+    jahr: `${DATA_BASE_URL}/geojson/1890.geojson`
   };
 
   const url = geoJsonUrls[viewType];

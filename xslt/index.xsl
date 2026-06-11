@@ -280,7 +280,7 @@
 
                   <!-- Card: Kepler.gl -->
                   <xsl:call-template name="index-card">
-                     <xsl:with-param name="href">https://kepler.gl/demo/map?mapUrl=https://raw.githubusercontent.com/wiener-moderne-verein/wienerschnitzler-data/refs/heads/main/data/editions/geojson/wienerschnitzler_distinctPlaces.geojson</xsl:with-param>
+                     <xsl:with-param name="href">https://kepler.gl/demo/map?mapUrl=https://raw.githubusercontent.com/wiener-moderne-verein/wienerschnitzler-data/refs/heads/data/data/editions/geojson/wienerschnitzler_distinctPlaces.geojson</xsl:with-param>
                      <xsl:with-param name="aria_key">index.card_kepler_aria</xsl:with-param>
                      <xsl:with-param name="img_src">images/index/keplergl.png</xsl:with-param>
                      <xsl:with-param name="img_alt_key">index.card_kepler_img_alt</xsl:with-param>

@@ -94,7 +94,7 @@
                                         <li><a class="dropdown-item" href="{local:get-url('schnitzler-und-ich')}">
                                             <xsl:value-of select="local:translate('nav.places.schnitzler_and_me')"/>
                                         </a></li>
-                                        <li><a class="dropdown-item" href="https://kepler.gl/demo/map?mapUrl=https://raw.githubusercontent.com/wiener-moderne-verein/wienerschnitzler-data/refs/heads/main/data/editions/geojson/wienerschnitzler_distinctPlaces.geojson" target="_blank" rel="noopener noreferrer">
+                                        <li><a class="dropdown-item" href="https://kepler.gl/demo/map?mapUrl=https://raw.githubusercontent.com/wiener-moderne-verein/wienerschnitzler-data/refs/heads/data/data/editions/geojson/wienerschnitzler_distinctPlaces.geojson" target="_blank" rel="noopener noreferrer">
                                             <xsl:attribute name="aria-label">
                                                 <xsl:value-of select="concat(local:translate('nav.places.kepler'), ' - ', local:translate('aria.opens_new_window'))"/>
                                             </xsl:attribute>
