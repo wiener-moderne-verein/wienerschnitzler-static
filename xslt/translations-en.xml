@@ -31,6 +31,9 @@
     <text key="nav.periods.overview">Overview</text>
     <text key="nav.periods.timeline">Timeline</text>
 
+    <!-- Navigation: Statistiken -->
+    <text key="nav.statistics">Statistics</text>
+
     <!-- Navigation: Schnitzler -->
     <text key="nav.schnitzler">Schnitzler</text>
     <text key="nav.schnitzler.wikipedia">Wikipedia</text>
@@ -334,6 +337,23 @@
     <text key="uebersicht.title">Wiener Schnitzler</text>
     <text key="uebersicht.meta_description">Overview by number of locations – Interactive map and heatmap of Arthur Schnitzler's paths through Vienna</text>
     <text key="uebersicht.heading">Overview by Number of Locations</text>
+
+    <!-- statistik.xsl - Statistics -->
+    <text key="statistik.title">Statistics | Wiener Schnitzler</text>
+    <text key="statistik.meta_description">Statistics on Arthur Schnitzler's documented whereabouts: days per year, most visited places and place types</text>
+    <text key="statistik.heading">Statistics</text>
+    <text key="statistik.intro">Statistical analyses of Arthur Schnitzler's documented whereabouts (1862–1931).</text>
+    <text key="statistik.loading">Loading data …</text>
+    <text key="statistik.years.heading">Documented Days per Year</text>
+    <text key="statistik.years.description">Number of days per year with at least one documented place of stay, divided into days with and without a stay in Vienna. Clicking on a year opens the corresponding annual map.</text>
+    <text key="statistik.places.heading">Most Visited Places</text>
+    <text key="statistik.places.description">The twenty places with the most documented days of stay. Clicking on a bar opens the respective place page.</text>
+    <text key="statistik.places.mode_detail">Buildings and Venues</text>
+    <text key="statistik.places.mode_settlement">Destinations outside Vienna</text>
+    <text key="statistik.types.heading">Place Types</text>
+    <text key="statistik.types.description">Distribution of stays by place type – either by the number of documented days or by the number of distinct places.</text>
+    <text key="statistik.types.by_days">By Days of Stay</text>
+    <text key="statistik.types.by_places">By Number of Places</text>
 
     <!-- zeitleiste.xsl - Timeline -->
     <text key="zeitleiste.title">Timeline | Wiener Schnitzler</text>

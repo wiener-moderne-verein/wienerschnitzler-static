@@ -130,7 +130,14 @@
 
                                     </ul>
                                 </li>
-                                
+
+                                <!-- Statistiken -->
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{local:get-url('statistik')}">
+                                        <xsl:value-of select="local:translate('nav.statistics')"/>
+                                    </a>
+                                </li>
+
                                 <!-- Schnitzler-Links Dropdown -->
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" id="schnitzlerLinksDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">

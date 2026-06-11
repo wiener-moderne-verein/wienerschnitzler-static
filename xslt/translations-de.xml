@@ -31,6 +31,9 @@
     <text key="nav.periods.overview">Übersicht</text>
     <text key="nav.periods.timeline">Zeitleiste</text>
 
+    <!-- Navigation: Statistiken -->
+    <text key="nav.statistics">Statistiken</text>
+
     <!-- Navigation: Schnitzler -->
     <text key="nav.schnitzler">Schnitzler</text>
     <text key="nav.schnitzler.wikipedia">Wikipedia</text>
@@ -334,6 +337,23 @@
     <text key="uebersicht.title">Wiener Schnitzler</text>
     <text key="uebersicht.meta_description">Übersicht nach Anzahl der Aufenthaltsorte – Interaktive Karte und Heatmap von Arthur Schnitzlers Wegen durch Wien</text>
     <text key="uebersicht.heading">Übersicht nach Anzahl der Aufenthaltsorte</text>
+
+    <!-- statistik.xsl - Statistics -->
+    <text key="statistik.title">Statistiken | Wiener Schnitzler</text>
+    <text key="statistik.meta_description">Statistiken zu Arthur Schnitzlers dokumentierten Aufenthalten: Aufenthaltstage pro Jahr, meistbesuchte Orte und Ortstypen</text>
+    <text key="statistik.heading">Statistiken</text>
+    <text key="statistik.intro">Statistische Auswertungen der dokumentierten Aufenthaltsorte Arthur Schnitzlers (1862–1931).</text>
+    <text key="statistik.loading">Daten werden geladen …</text>
+    <text key="statistik.years.heading">Aufenthaltstage pro Jahr</text>
+    <text key="statistik.years.description">Anzahl der Tage pro Jahr mit mindestens einem dokumentierten Aufenthaltsort, unterteilt in Tage mit und ohne Wien-Aufenthalt. Ein Klick auf ein Jahr öffnet die zugehörige Jahreskarte.</text>
+    <text key="statistik.places.heading">Meistbesuchte Orte</text>
+    <text key="statistik.places.description">Die zwanzig Orte mit den meisten dokumentierten Aufenthaltstagen. Ein Klick auf einen Balken öffnet die jeweilige Ortsseite.</text>
+    <text key="statistik.places.mode_detail">Gebäude und Lokale</text>
+    <text key="statistik.places.mode_settlement">Ziele außerhalb Wiens</text>
+    <text key="statistik.types.heading">Ortstypen</text>
+    <text key="statistik.types.description">Verteilung der Aufenthalte nach Ortstypen – wahlweise nach der Zahl der Aufenthaltstage oder nach der Zahl der unterschiedlichen Orte.</text>
+    <text key="statistik.types.by_days">Nach Aufenthaltstagen</text>
+    <text key="statistik.types.by_places">Nach Anzahl der Orte</text>
 
     <!-- zeitleiste.xsl - Timeline -->
     <text key="zeitleiste.title">Zeitleiste | Wiener Schnitzler</text>
