@@ -21,8 +21,14 @@
             <link rel="canonical" href="{$page_url}"/>
         </xsl:if>
         <meta name="description" content="{$page_description}"/>
-        <meta name="author" content="Wiener Moderne Verein"/>
-        <meta name="creator" content="Wiener Moderne Verein"/>
+        <meta name="author" content="Martin Anton Müller"/>
+        <meta name="author" content="Laura Untner"/>
+        <meta name="DC.creator" content="Müller, Martin Anton"/>
+        <meta name="DC.creator" content="Untner, Laura"/>
+        <meta name="DC.publisher" content="Wiener Moderne Verein"/>
+        <meta name="citation_author" content="Müller, Martin Anton"/>
+        <meta name="citation_author" content="Untner, Laura"/>
+        <meta name="citation_title" content="{$html_title}"/>
         <meta name="dcterms.license" content="https://creativecommons.org/licenses/by/4.0/"/>
         <meta name="license" content="CC BY 4.0"/>
         <meta property="og:type" content="website"/>
@@ -31,7 +37,7 @@
         <xsl:if test="$page_url">
             <meta property="og:url" content="{$page_url}"/>
         </xsl:if>
-        <meta property="og:site_name" content="{$project_short_title}"/>
+        <meta property="og:site_name" content="{$project_title}"/>
         <meta property="og:image" content="{$og_image}"/>
         <meta property="og:image:alt"
             content="Wiener Schnitzler – Digitale Karte von Arthur Schnitzlers Aufenthalten in Wien"/>
@@ -112,6 +118,16 @@
             "https://www.wikidata.org/wiki/Q44331"
         ]
     },
+    "author": [
+        {
+            "@type": "Person",
+            "name": "Laura Untner"
+        },
+        {
+            "@type": "Person",
+            "name": "Martin Anton Müller"
+        }
+    ],
     "creator": {
         "@type": "Organization",
         "name": "Wiener Moderne Verein",
@@ -159,6 +175,16 @@
         "name": "Wiener Schnitzler – Schnitzlers Wien",
         "url": "https://wienerschnitzler.org/"
     },
+    "author": [
+        {
+            "@type": "Person",
+            "name": "Laura Untner"
+        },
+        {
+            "@type": "Person",
+            "name": "Martin Anton Müller"
+        }
+    ],
     "creator": {
         "@type": "Organization",
         "name": "Wiener Moderne Verein",
